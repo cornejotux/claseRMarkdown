@@ -1,21 +1,26 @@
+[![IFOP_logo](https://www.ifop.cl/wp-content/uploads/2017/09/logo_ifop_sitio.jpg)](https://www.ifop.cl)
+<br>
 
+# Clase de RMarkdown para IFOP
 
-# ADC Training Site
+[![Build Status](https://travis-ci.org/cornejotux/claseRMarkdown.svg?branch=master)](https://travis-ci.org/cornejotux/claseRMarkodown)
 
+## Introducción práctica al uso de RMarkdown en las actividades de IFOP
 
-## Practical open science approaches to Arctic research and data management
+- Fecha a definir
+- Valparaiso, Chile
 
+### Agradecimientos
 
-## Acknowledgements
-Work on this package was supported by:
-
-- [NSF award #1546024](http://www.nsf.gov/awardsearch/showAward?AWD_ID=1546024) to M. B. Jones, S. Baker-Yeboah, A. Budden, J. Dozier, and M. Schildhauer
-
-Additional support was provided for working group collaboration by the National Center for Ecological Analysis and Synthesis, a Center funded by the University of California, Santa Barbara, and the State of California.
+El presente curso esta basad en el trabajo del proyecto [SASAP](https://alaskasalmonandpeople.org/) desarrollado en 
+[NCEAS](https://www.nceas.ucsb.edu), un centro de investigacoin fundado por la [Universidad de California, Santa Barbara](https://www.ucsb.edu).
 
 [![nceas_footer](static/images/nceas.png)](http://www.nceas.ucsb.edu)
 
-## About this repository
+## Acerca de este repositorio
+
+** Hay que terminar de traducir **
+
 
 This repository is an integration of [Blogdown](https://github.com/rstudio/blogdown) and [Bookdown](https://bookdown.org).
 Some amount of wrangling was required to get all of this set up and not everything may be obvious to all viewers.
