@@ -1,6 +1,6 @@
 --- 
-title: "Arctic Data Center Training"
-date: "February 11-15, 2019"
+title: "Introducción a la Investigación Reproducible con RMarkdown"
+date: "Julio 11-15, 2019"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -10,6 +10,32 @@ link-citations: yes
 description: ""
 always_allow_html: yes
 ---
+
+_**Reconocimiento**_: Gran parte de los documentos introductorios son una traducción libre desde al material preparado 
+y compartido por el grupo [SASAP](https://alaskasalmonandpeople.org/) del [NCEAS](https://www.nceas.ucsb.edu/) en su sitio [SASAP-Training](https://github.com/NCEAS/sasap-training) de en [GitHub](https://github.com/).
+
+
+# Introducción
+
+La reproducibilidad es fundamental en la ciencia, ya que la ciencia está basada en observaciones empíricas acopladas a modelos 
+explicativos. Si bien la reproducibilidad incluye el ciclo de vida completo de la ciencia y ademas incluye aspectos como la 
+consistencia metodológica y tratamiento del sesgo, en este curso nos enfocaremos a la **reproducibilidad computacional**, esto
+es la habilidad para documentar datos, analisos y modelos en forma suficiente para que otros investigadores sean capaces de 
+entender, reproducir y re-ejecutar los pasos computacionales que llevemos a los resultados científicos y sus conclusiones. 
+
+## La crisis de reproducibilidad
+
+@ioannidis_why_2005 destacó la crisis en reproducilidad de la ciencia cuando escribió que "La mayoría de los 
+descubrimientos son falsos para la mayoria de los diseños de invetigación en la mayoría de las áreas de investigación" 
+(_"Most Research Findings Are False for Most Research Designs and for Most Fields"_). Ioannidis indica la formas en que 
+el proceso de investigación a inflado los efectos de los tamaños muestrales y los tests de hipótesis que codifican los 
+sesgos existentes. Subsequent research has confirmed that reproducibility is low across many fields,
+including genetics [@ioannidis_repeatability_2009], ecology [@fraser_questionable_2018], and 
+psychology [@open_science_collaboration_estimating_2015], among others.  For example,
+effect size has been shown to significantly decrease in repeated experiments in 
+psychology (\@ref(fig:effectsize)).
+
+
 
 # Data Science Training for the Arctic Data Center
 
