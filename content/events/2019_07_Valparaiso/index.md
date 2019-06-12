@@ -99,6 +99,7 @@ Necesitaremos usar un _navegador web_, `R`, RStudio, y `git`. Por favor asegures
 Este talles assume un nivel bal de especiencia usando R para propósitos científicos y estaddísticos.
 Sin embargo, sabes que no todos estan en el mismo lugar en términos de familiaridad con la herramientas que usaremos.
 Si ud. quiere refrescar su experiencia en R antes del taller, le recomiendo usar los siguientes recursos: 
+
 __Estan en inglés, pero prometo buscar alternativas en español y las agregaré en la medida que las vaya encontrando__
 
 - The [Data Scientist with R](https://www.datacamp.com/tracks/data-scientist-with-r) track at [DataCamp](https://www.datacamp.com)
@@ -108,7 +109,7 @@ __Estan en inglés, pero prometo buscar alternativas en español y las agregaré
 
 Si eres fan de las _hojas de referencia_ (cheat sheets), [RStudio](https://www.rstudio.com) tiene un listado de algunas en su pagina [Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/).
 
-En particular, revice:
+En particular, revise:
 
 * Base R
 * Data Import 
@@ -120,7 +121,7 @@ En particular, revice:
 
 ## Participantes
 
-|Name         | Email              |Affiliation           |
+|Name         | Email              | Afiliación           |
 |-------------|--------------------|----------------------|
 
 

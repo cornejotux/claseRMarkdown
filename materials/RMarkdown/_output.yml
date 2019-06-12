@@ -5,6 +5,6 @@ bookdown::gitbook:
       collapse: section
       before: |
         <li><a href="./">RMarkdown IFOP</a></li>
-        <li><a href="/">← Página Pricipal</a></li>
+        <li><a href="claseRMarkdown/">← Página Pricipal</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>

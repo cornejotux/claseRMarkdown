@@ -48,7 +48,7 @@ relativeurls = true
     featured_image = "./images/Abate.png"
 
     [params.logo]
-    url = "./images/Logo_Ifop.png"
+    url = "./images/Logo_Ifop.jpg"
     width = 50
     height = 50
     alt = "Logo"

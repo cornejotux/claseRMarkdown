@@ -4,7 +4,7 @@ blogdown::html_page:
 ---
 
 <p align="center">
-  <img src="/images/Logo_Ifop.png">
+  <img src="/images/Logo_Ifop.jpg">
 </p>
 
 
