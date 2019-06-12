@@ -63,12 +63,12 @@ El trabajo para preparar estos documentos esta basado en:
 
 Necesitaremos usar un _navegador web_, `R`, RStudio, y `git`. Por favor asegurese de que todos estos estén instaladados en su computador portatil, las versiones mínimas requeridas son:
 
-- **R:** Usaremos R version 3.5.2, which you can download and install from [CRAN](https://cran.rstudio.com)
+- **R:** Usaremos R versión 3.6.0, la que puede ser instalada desde [CRAN](https://cran.rstudio.com)
 
-- **RStudio**: To download RStudio, visit [RStudio's download page](https://www.rstudio.com/products/rstudio/download/).
-  *If you don't know how up to date your version of RStudio is, please download an updated copy and install it*
+- **RStudio**: Para bajar RStudio, visite [RStudio's download page](https://www.rstudio.com/products/rstudio/download/).
+  *Si no está seguro que es una version reciente, por favor bajela y realice una actualización*
     
-- **R packages:** Please be sure you have installed or updated the following packages:
+- **Paquete de R:** Por favor asegurece de tener instalado y actualizados los siguientes paquetes de R:
 
     - devtools
     - dplyr
@@ -77,7 +77,7 @@ Necesitaremos usar un _navegador web_, `R`, RStudio, y `git`. Por favor asegures
     - leaflet
     - tidyr
     
-    You can install these packages quickly by running the following two code snippets:
+    Puede instalar rápidamente todos estos paquetes corriento el siguiente código en su `R`:
 
     ```r
     packages <- c("dataone", "datapack", "devtools", "dplyr", "EML", "ggplot2", "readxl", "tidyr")
@@ -91,23 +91,24 @@ Necesitaremos usar un _navegador web_, `R`, RStudio, y `git`. Por favor asegures
     }
     ```
 
-- **git:** [Download git](https://git-scm.com/downloads) and install it on your system.
-- **GitHub:** We will be using [GitHub](https://github.com) so you will need create (or remember your existing) GitHub login
+- **git:** [Descargar git](https://git-scm.com/downloads) e instalarlo en su sistema.
+- **GitHub:** Usaremos [GitHub](https://github.com), por favor crear (o recordar) su _login_ a GitHub.
 
-### Refresh your skills
+### Refrescando sus destresas
 
-This workshop assumes a base level of experience using R for scientific and statistical analyses.
-However, we realize that not everyone will be at the same place in terms of familiarity with the tools we'll be using.
-If you'd like to brush up on your R skills prior to the workshop, check out this list of resources we like:
+Este talles assume un nivel bal de especiencia usando R para propósitos científicos y estaddísticos.
+Sin embargo, sabes que no todos estan en el mismo lugar en términos de familiaridad con la herramientas que usaremos.
+Si ud. quiere refrescar su experiencia en R antes del taller, le recomiendo usar los siguientes recursos: 
+__Estan en inglés, pero prometo buscar alternativas en español y las agregaré en la medida que las vaya encontrando__
 
 - The [Data Scientist with R](https://www.datacamp.com/tracks/data-scientist-with-r) track at [DataCamp](https://www.datacamp.com)
 - The [Introduction to R](http://www.datacarpentry.org/R-ecology-lesson/01-intro-to-r.html) lesson in [Data Carpentry's R for data analysis](http://www.datacarpentry.org/R-ecology-lesson/) course.
 - The QCBS [Introduction to R](https://qcbs.ca/wiki/r) lesson
 - [RStudio's R Programming](https://www.rstudio.com/online-learning/) page
 
-If you're a fan of cheat sheets, [RStudio](https://www.rstudio.com) provides some fantastic ones on their [Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/) page.
-*Please make sure to print ahead of time if you prefer hard copies.*
-In particular, check out:
+Si eres fan de las _hojas de referencia_ (cheat sheets), [RStudio](https://www.rstudio.com) tiene un listado de algunas en su pagina [Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/).
+
+En particular, revice:
 
 * Base R
 * Data Import 
@@ -117,26 +118,12 @@ In particular, check out:
 * R Markdown Reference Guide 
 * The leaflet package
 
-## Participants
+## Participantes
 
 |Name         | Email              |Affiliation           |
 |-------------|--------------------|----------------------|
-Adam Schneider|amschne@umich.edu|University of Michigan|
-Aleksey Sheshukov|ashesh@ksu.edu|Kansas State University|
-Alexis C Garretson|alexis@garretson.net|Brigham Young University|
-Ali Paulson|alison.paulson@msstate.edu|Mississippi State|
-Anastasija Mensikova|mensikova.anastasija@gmail.com|George Washington University|
-Anna Nesterovich|annanest@iastate.edu|Iowa State|
-Caixia Wang|cwang12@alaska.edu|University of Alaska - Anchorage|
-Christina Minions|cminions@whrc.org|Woods Hole Research Center|
-Desheng Liu|liu.738@osu.edu|Ohio State University|
-Helene Angot|helene.angot@colorado.edu|University of Colorado - Boulder|
-Ian Baxter|itbaxter@ucsb.edu|UC Santa Barbara|
-Kelly Kapsar|kelly.kapsar@gmail.com|Michigan State|
-Komi Messan|Komi.S.Messan@erdc.dren.mil|US Army Corps of Engineers|
-Olaf Kuhlke|okuhlke@d.umn.edu|University of Minnesota - Duluth|
-Rebecca Finger-Higgens|rebecca.finger@gmail.com|Dartmouth College|
-Sanghoon Kang|sanghoon_kang@baylor.edu|Baylor University|
-Sara Pedro|sara.pedro@uconn.edu|University of Connecticut|
-Susan L. Howard|showard@esr.org|Earth and Space Research|
-Yiyi Huang|yiyi063@email.arizona.edu|University of Arizona|
+
+
+## Consultas y comentarios
+
+Estoy compleamente abierto a responder consultas, comentarios y sugerencias. Por favor dejelos en como [Nuevo tema](https://github.com/cornejotux/claseRMarkdown/issues) (_New Issue_) en la pagina del repositorio en `GitHub`, de esa forma queda asociado al material y no se me pierde en los miles de e-mail que me llegan a diario.
