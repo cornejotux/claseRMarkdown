@@ -57,7 +57,7 @@ El trabajo para preparar estos documentos esta basado en:
 - [NCEAS SASAP-Training](https://github.com/NCEAS/sasap-training) 
 - [NCEAS Arctic Data Center](https://github.com/NCEAS/arctic-data-training) 
 
-## Preparandose para el Taller
+## Preparándose para el Taller
 
 ### Software Requido
 
