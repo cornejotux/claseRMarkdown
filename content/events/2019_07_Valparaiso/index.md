@@ -36,7 +36,7 @@ Temas a incluir en el taller:
 * Modelamiento, limpieza y manejo de datos
 
 
-Para mas detalles de como prepararse para el tales, ver seccion "**Preparse para el taller**" (mas abajo).
+Para mas detalles de como prepararse para el tales, ver seccion [Preparandose para el Taller] (mas abajo).
 
 ## Materiales
 
