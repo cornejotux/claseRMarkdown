@@ -12,7 +12,7 @@ __Dates__: 17 al 18 de julio, 2019<br>
 __Location__: Valparaiso, Chile<br>
 __Venue__: [IFOP](https://www.ifop.cl), Almte. Manuel Blanco Encalada 839, Valparaiso
 
-El Instituto de Formento Pesquero, en su interés por el perfeccionamiento continuo, provee cursos y 
+El Instituto de Fomento Pesquero, en su interés por el perfeccionamiento continuo, provee cursos y 
 alternativas de entrenamiento dentro de los cuales se enmarca este curso. El objetivo principal es introducir
 en la temática de la _Investigación reproducible_, incentivar su uso dentro de IFOP y desarrollar las destrezas 
 necesarias en el uso de [R](https://www.r-project.org/), [RStudio](https://www.rstudio.com/) y
@@ -20,7 +20,7 @@ necesarias en el uso de [R](https://www.r-project.org/), [RStudio](https://www.r
 
 Al final de este curso se espera que los participantes tengan familiaridad con RMarkdown para utilizarlo para generar
 reportes en formato PDF y HTML que puedan compartir con otros investigadores, donde se describa los pasos para reproducir
-a cabalidad los resultados, desde la lectura de datos, su manipulacion, análisis y produccion de gráficos y tablas, 
+a cabalidad los resultados, desde la lectura de datos, su manipulación, análisis y producción de gráficos y tablas, 
 
 Este taller de 3 días es una visión general sobre buenas prácticas, herramientas para la ciencia de datos y describe algunos pasos y métodos prácticos para documentar con facilidad el trabajo y asegurar su replicabilidad. 
 
@@ -29,14 +29,14 @@ Este taller de 3 días es una visión general sobre buenas prácticas, herramien
 
 Temas a incluir en el taller:
 
-* Intrucción al uso de RStudio y RMarkdown
+* Introducción al uso de RStudio y RMarkdown
 * ¿Qué es Investigación reproducible?
-* Analisis literal con RMarkdown
+* Análisis literal con RMarkdown
 * Control de versiones con GitHub (y paginas web)
 * Modelamiento, limpieza y manejo de datos
 
 
-Para mas detalles de como prepararse para el tales, ver seccion [Preparandose para el Taller] (mas abajo).
+Para mas detalles de como prepararse para el tales, ver sección [Preparándose para el Taller] (mas abajo).
 
 ## Materiales
 
@@ -45,7 +45,7 @@ Para mas detalles de como prepararse para el tales, ver seccion [Preparandose pa
 
 ## Organizadores
 
-|Name         | Email              |
+|Nombre         | Email              |
 |-------------|--------------------|
 |Jorge Cornejo| jorge.cornejo@ifop.cl |
 |Alguien Máx? | alguien.mas@ifop.cl |
@@ -59,16 +59,16 @@ El trabajo para preparar estos documentos esta basado en:
 
 ## Preparándose para el Taller
 
-### Software Requido
+### Software Requerido
 
-Necesitaremos usar un _navegador web_, `R`, RStudio, y `git`. Por favor asegurese de que todos estos estén instaladados en su computador portatil, las versiones mínimas requeridas son:
+Necesitaremos usar un _navegador web_, `R`, RStudio, y `git`. Por favor asegúrese de que todos estos estén instalados en su computador portátil, las versiones mínimas requeridas son:
 
 - **R:** Usaremos R versión 3.6.0, la que puede ser instalada desde [CRAN](https://cran.rstudio.com)
 
 - **RStudio**: Para bajar RStudio, visite [RStudio's download page](https://www.rstudio.com/products/rstudio/download/).
-  *Si no está seguro que es una version reciente, por favor bajela y realice una actualización*
+  *Si no está seguro que es una versión reciente, por favor bájela y realice una actualización*
     
-- **Paquete de R:** Por favor asegurece de tener instalado y actualizados los siguientes paquetes de R:
+- **Paquete de R:** Por favor asegúrese de tener instalado y actualizados los siguientes paquetes de R:
 
     - devtools
     - dplyr
@@ -94,13 +94,13 @@ Necesitaremos usar un _navegador web_, `R`, RStudio, y `git`. Por favor asegures
 - **git:** [Descargar git](https://git-scm.com/downloads) e instalarlo en su sistema.
 - **GitHub:** Usaremos [GitHub](https://github.com), por favor crear (o recordar) su _login_ a GitHub.
 
-### Refrescando sus destresas
+### Refrescando sus destrezas
 
-Este talles assume un nivel bal de especiencia usando R para propósitos científicos y estaddísticos.
-Sin embargo, sabes que no todos estan en el mismo lugar en términos de familiaridad con la herramientas que usaremos.
-Si ud. quiere refrescar su experiencia en R antes del taller, le recomiendo usar los siguientes recursos: 
+Este taller asume un nivel básico de experiencia usando R para propósitos científicos y estadísticos.
+Sin embargo, sabes que no todos están en el mismo lugar en términos de familiaridad con la herramientas que usaremos.
+Si Ud. quiere refrescar su experiencia en R antes del taller, le recomiendo usar los siguientes recursos: 
 
-__Estan en inglés, pero prometo buscar alternativas en español y las agregaré en la medida que las vaya encontrando__
+__Están en inglés, pero prometo buscar alternativas en español y las agregaré en la medida que las vaya encontrando__
 
 - The [Data Scientist with R](https://www.datacamp.com/tracks/data-scientist-with-r) track at [DataCamp](https://www.datacamp.com)
 - The [Introduction to R](http://www.datacarpentry.org/R-ecology-lesson/01-intro-to-r.html) lesson in [Data Carpentry's R for data analysis](http://www.datacarpentry.org/R-ecology-lesson/) course.
@@ -121,10 +121,10 @@ En particular, revise:
 
 ## Participantes
 
-|Name         | Email              | Afiliación           |
+|Nombre         | Email              | Afiliación           |
 |-------------|--------------------|----------------------|
 
 
 ## Consultas y comentarios
 
-Estoy compleamente abierto a responder consultas, comentarios y sugerencias. Por favor dejelos en como [Nuevo tema](https://github.com/cornejotux/claseRMarkdown/issues) (_New Issue_) en la pagina del repositorio en `GitHub`, de esa forma queda asociado al material y no se me pierde en los miles de e-mail que me llegan a diario.
+Estoy complemente abierto a responder consultas, comentarios y sugerencias. Por favor déjelos en como [Nuevo tema](https://github.com/cornejotux/claseRMarkdown/issues) (_New Issue_) en la pagina del repositorio en `GitHub`, de esa forma queda asociado al material y no se me pierde en los miles de e-mail que me llegan a diario.
