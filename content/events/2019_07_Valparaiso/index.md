@@ -1,5 +1,5 @@
 ---
-title: "Investigación reproducible: Una Introduccion con RMarkdown"
+title: "Investigación reproducible: Una Introducción con RMarkdown"
 output:
   html_document:
     df_print: paged
