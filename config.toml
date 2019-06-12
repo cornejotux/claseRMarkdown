@@ -26,7 +26,7 @@ relativeurls = true
 
 [params]
     description = "Herramientas y técnicas para la investigación reproducible en IFOP"
-    custom_css = ["/css/sasap.css"]
+    custom_css = ["/css/ADC.css"]
 
     # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = "9.11.0"
