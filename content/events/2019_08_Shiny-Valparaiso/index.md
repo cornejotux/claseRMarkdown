@@ -70,6 +70,7 @@ Necesitaremos usar un _navegador web_, `R`, RStudio, y `git`. Por favor asegúre
     
 - **Paquete de R:** Por favor asegúrese de tener instalado y actualizados los siguientes paquetes de R:
 
+    - Shiny
     - dplyr
     - DT
     - ggplot2
@@ -78,7 +79,7 @@ Necesitaremos usar un _navegador web_, `R`, RStudio, y `git`. Por favor asegúre
     Puede instalar rápidamente todos estos paquetes corriento el siguiente código en su `R`:
 
     ```r
-    packages <- c("dplyr", "ggplot2", "DT", "tidyr")
+    packages <- c("shiny", "dplyr", "ggplot2", "DT", "tidyr")
     ```
     
     ```r
