@@ -1,5 +1,5 @@
 --- 
-title: "Introducción a la Investigación Reproducible con RMarkdown"
+title: "Introducción a la Investigación Reproducible con RStudio y RMarkdown"
 date: "Julio 11-15, 2019"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
