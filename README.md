@@ -19,8 +19,11 @@ El presente curso esta basad en el trabajo del proyecto [SASAP](https://alaskasa
 
 ## Acerca de este repositorio
 
-** Hay que terminar de traducir **
+Este repositorio contiene el material para los libros digitales de los cursos de investigacion reproducible en RMarkdown y Shiny que espero poder realizar in IFOP. El material se complementa con cada iteracion de la clase y por ahora es basicamente el contenido de las clases que se han hecho en [NCEAS](http://www.nceas.ucsb.edu) y que estoy usando como template y base de algunos contenidos.
 
+## Detalles para usar Blogdown y Bookdown
+
+**Esta seccion del material no la traduzco ya que solo contiene la informacion de como usar el repositorio para general el contenido**
 
 This repository is an integration of [Blogdown](https://github.com/rstudio/blogdown) and [Bookdown](https://bookdown.org).
 Some amount of wrangling was required to get all of this set up and not everything may be obvious to all viewers.
