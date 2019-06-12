@@ -1,5 +1,5 @@
 ---
-title: "Arctic Data Center Training (February 2019)"
+title: "Investigación reproducible: Una Introduccion con RMarkdown"
 output:
   html_document:
     df_print: paged
@@ -8,54 +8,62 @@ weight: 1
 
 
 
-__Dates__: February 11 - February 15, 2019<br>
-__Location__: Santa Barbara, CA<br>
-__Venue__: [NCEAS](https://www.nceas.ucsb.edu), 735 State St., Suite 300, UC Santa Barbara
-The Arctic Data Center provides training in data science and data management, as these are critical skills for the stewardship of the data, software, and other research products that are preserved in the Arctic Data Center. A goal of the Arctic Data Center is to advance data archiving and promote reproducible science and data reuse. This 5-day workshop will provide researchers with an overview of best data management practices, data science tools and concrete steps and methods for more easily documenting and uploading their data to the Arctic Data Center.
+__Dates__: 17 al 18 de julio, 2019<br>
+__Location__: Valparaiso, Chile<br>
+__Venue__: [IFOP](https://www.ifop.cl), Almte. Manuel Blanco Encalada 839, Valparaiso
+
+El Instituto de Formento Pesquero, en su interes por el perfeccionamiento continuo provee cursos y 
+alternativas de entrenamiento, dentro del cual se enmarca este curso, cuyo objetivo principal es introducir
+en el tema de la _Investigación reproducible_, incentivar su uso dentro de IFOP y desarrollar las destresas 
+necesarias en el uso de [R](https://www.r-project.org/), [RStudio](https://www.rstudio.com/) y
+[RMarkdown](https://rmarkdown.rstudio.com/) como herramientas para la _ciencia de datos_ e _investifacion reproducible_ gratuitas y ampliamente utilizadas en la comunidad científica. 
+
+Al final de este curso se espera que los participantes tengan familiaridad con RMarkdown para utilizarlo para generar
+reportes en formato PDF y HTML que puedan compartir con otros investigadores, donde se describa los pasos para reproducir
+a cabalidad los resultados, desde la lectura de datos, su manipulacion, análisis y produccion de gráficos y tablas, 
+
+Este taller de 3 dias es una vision general sobre buenas prácticas, herramientas para la ciencia de datos y describe algunos pasos y métodos prácticos para documentar con facilidad el trabajo y asegurar si replicabilidad. 
 
 
-## Overview:
+## Sinopsis:
 
-Workshop topics will include:
+Temas a incluir en el taller:
 
-* Arctic Data Center and NSF Standards and Policies
-* Data Management Plans
-* Effective Data Management for Data Preservation
-* Publishing Data at the Arctic Data Center
-* Data and Metadata Quality
-* Provenance for Data and Software
-
-
-For more detailed information on how to prepare for the workshop, see preparing for the workshop (below).
-
-## Materials
-
-- [Arctic Data Center Training](/materials/arctic-data-training-2019-02/index.html)
+* Intrucción al uso de RStudio y RMarkdown
+* ¿Qué es Investigación reproducible?
+* Analisis literal con RMarkdown
+* Control de versiones con GitHub (y paginas web)
+* Modelamiento, limpieza y manejo de datos
 
 
-## Organizers
+Para mas detalles de como prepararse para el tales, ver seccion "**Preparse para el taller**" (mas abajo).
+
+## Materiales
+
+- [Intro a RMarkdown](/materials/RMarkdown/index.html)
+
+
+## Organizadores
 
 |Name         | Email              |
 |-------------|--------------------|
-|Matthew Jones| jones@nceas.ucsb.edu |
-|Amber Budden | budden@nceas.ucsb.edu|
-|Jeanette Clark| jclark@nceas.ucsb.edu |
+|Jorge Cornejo| jorge.cornejo@ifop.cl |
+|Alguien Máx? | alguien.mas@ifop.cl |
 
-## Acknowledgements
-Work on this package was supported by:
+## Agradecimientos
 
-- [NSF award #1546024](http://www.nsf.gov/awardsearch/showAward?AWD_ID=1546024) to M. B. Jones, S. Baker-Yeboah, A. Budden, J. Dozier, and M. Schildhauer
+El trabajo para preparar estos documentos esta basado en:
 
-Additional support was provided for working group collaboration by the National Center for Ecological Analysis and Synthesis, a Center funded by the University of California, Santa Barbara, and the State of California.
+- [NCEAS SASAP-Training](https://github.com/NCEAS/sasap-training) 
+- [NCEAS Arctic Data Center](https://github.com/NCEAS/arctic-data-training) 
 
+## Preparandose para el Taller
 
-## Preparing for the Workshop
+### Software Requido
 
-### Required software
+Necesitaremos usar un _navegador web_, `R`, RStudio, y `git`. Por favor asegurese de que todos estos estén instaladados en su computador portatil, las versiones mínimas requeridas son:
 
-We will primarily be using a web browser, `R`, RStudio, and `git`. Please be sure these are all installed on your laptop, as follows:
-
-- **R:** We will use R version 3.5.2, which you can download and install from [CRAN](https://cran.rstudio.com)
+- **R:** Usaremos R version 3.5.2, which you can download and install from [CRAN](https://cran.rstudio.com)
 
 - **RStudio**: To download RStudio, visit [RStudio's download page](https://www.rstudio.com/products/rstudio/download/).
   *If you don't know how up to date your version of RStudio is, please download an updated copy and install it*
