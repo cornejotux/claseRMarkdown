@@ -4,11 +4,11 @@ blogdown::html_page:
 ---
 
 <p align="center">
-  <img src="/images/logo-w-title_2x.png">
+  <img src="/images/Logo_Ifop.png">
 </p>
 
 
-### Introducción a la Investigacion Reproducible con RMarkdown
+### Introduccion a la Investigación Reproducible
 
 Esta es una clase en desarrollo para fomentar el uso de R y RMarkdown como plataformas de Ciencia Abierta (Open Science) e investigación reproducible dentre de IFOP Este curso práctico esta en constante desarrollo y se espera pueda ser desarrollado en las diferentes sedes regionales del instituto.
 

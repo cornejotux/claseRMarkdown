@@ -1,6 +1,6 @@
 baseURL = "https://cornejotux.github.io/claseRMarkdown/"
-languageCode = "en-us"
-title = "Introduccion a RMarkdown"
+languageCode = "es-CL"
+title = "Investigación Reproducible"
 theme = "gohugo-theme-ananke"
 googleAnalytics = ""
 disqusShortname = ""
@@ -25,7 +25,7 @@ relativeurls = true
 
 
 [params]
-    description = "Herramientas y técnicas para la investigacion reproducible en IFOP"
+    description = "Herramientas y técnicas para la investigación reproducible en IFOP"
     custom_css = ["/css/sasap.css"]
 
     # options for highlight.js (version, additional languages, and theme)
