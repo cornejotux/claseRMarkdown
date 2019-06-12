@@ -24,6 +24,9 @@ a cabalidad los resultados, desde la lectura de datos, su manipulación, anális
 
 Este taller de 3 días es una visión general sobre buenas prácticas, herramientas para la ciencia de datos y describe algunos pasos y métodos prácticos para documentar con facilidad el trabajo y asegurar su replicabilidad. 
 
+<p align="center">
+  <img src="https://rubenfcasal.github.io/bookdown_intro/images/rmarkdown.png" width="15%" height="15%" />
+</p>
 
 ## Sinopsis:
 

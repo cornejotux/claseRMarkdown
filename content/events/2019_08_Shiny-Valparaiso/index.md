@@ -24,6 +24,9 @@ informacion que se despliega en un gráfico interactivo.
 Este taller de 2 días es un traller para introducir en forma rápida y simple `Shiny` y dar las herramientas 
 básicas necesarias para permitir el auto-aprendizaje. 
 
+<p align="center">
+  <img src="https://community.rstudio.com/uploads/default/original/1X/c017cef9c13bc937df73659d3b5b1411a39c7ed2.png" width="15%" height="15%" />
+</p>
 
 ## Sinopsis:
 
@@ -39,7 +42,7 @@ Para mas detalles de como prepararse para el taller, ver sección [Preparándose
 
 ## Materiales
 
-- [Introduiccion a Shiny](/materials/Shiny/index.html)
+- [Introducción a Shiny](/materials/Shiny/index.html)
 
 
 ## Organizadores
