@@ -1,4 +1,4 @@
-baseURL = "https://cornejotux.github.io/claseRMarkdown/"
+baseURL = "https://cornejotux.github.io/"
 languageCode = "es-CL"
 title = "Investigación Reproducible"
 theme = "gohugo-theme-ananke"

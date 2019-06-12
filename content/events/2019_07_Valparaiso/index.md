@@ -12,17 +12,17 @@ __Dates__: 17 al 18 de julio, 2019<br>
 __Location__: Valparaiso, Chile<br>
 __Venue__: [IFOP](https://www.ifop.cl), Almte. Manuel Blanco Encalada 839, Valparaiso
 
-El Instituto de Formento Pesquero, en su interes por el perfeccionamiento continuo provee cursos y 
-alternativas de entrenamiento, dentro del cual se enmarca este curso, cuyo objetivo principal es introducir
-en el tema de la _Investigación reproducible_, incentivar su uso dentro de IFOP y desarrollar las destresas 
+El Instituto de Formento Pesquero, en su interés por el perfeccionamiento continuo, provee cursos y 
+alternativas de entrenamiento dentro de los cuales se enmarca este curso. El objetivo principal es introducir
+en la temática de la _Investigación reproducible_, incentivar su uso dentro de IFOP y desarrollar las destrezas 
 necesarias en el uso de [R](https://www.r-project.org/), [RStudio](https://www.rstudio.com/) y
-[RMarkdown](https://rmarkdown.rstudio.com/) como herramientas para la _ciencia de datos_ e _investifacion reproducible_ gratuitas y ampliamente utilizadas en la comunidad científica. 
+[RMarkdown](https://rmarkdown.rstudio.com/) como herramientas para la _ciencia de datos_ e _investigación reproducible_ gratuitas y ampliamente utilizadas en la comunidad científica. 
 
 Al final de este curso se espera que los participantes tengan familiaridad con RMarkdown para utilizarlo para generar
 reportes en formato PDF y HTML que puedan compartir con otros investigadores, donde se describa los pasos para reproducir
 a cabalidad los resultados, desde la lectura de datos, su manipulacion, análisis y produccion de gráficos y tablas, 
 
-Este taller de 3 dias es una vision general sobre buenas prácticas, herramientas para la ciencia de datos y describe algunos pasos y métodos prácticos para documentar con facilidad el trabajo y asegurar si replicabilidad. 
+Este taller de 3 días es una visión general sobre buenas prácticas, herramientas para la ciencia de datos y describe algunos pasos y métodos prácticos para documentar con facilidad el trabajo y asegurar su replicabilidad. 
 
 
 ## Sinopsis:
