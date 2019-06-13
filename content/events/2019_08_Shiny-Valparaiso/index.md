@@ -1,5 +1,5 @@
 ---
-title: "Visualización Interactiva de Datos con Shiny"
+title: "Clase: Introducción a las aplicaciones web interactivas con Shiny"
 output:
   html_document:
     df_print: paged
@@ -14,14 +14,13 @@ __Venue__: [IFOP](https://www.ifop.cl), Almte. Manuel Blanco Encalada 839, Valpa
 
 El Instituto de Fomento Pesquero, en su interés por el perfeccionamiento continuo, provee cursos y 
 alternativas de entrenamiento dentro de los cuales se enmarca este curso. El objetivo principal es 
-dar una introducción introducir al uso de Shiny para visualizar datos en forma interactiva y 
-publicar estas aplicaciones en una pagina web para ser utilizado por usuarios que no tienen conociminetos de `R`.
+dar una introducción al uso de Shiny para desarrollar aplicaciones web interactivas para la visualizacion y analisis simples de datos, destinado especialmente a usuarios sin conocimientos en `R`.
 
 Al final de este curso se espera que los participantes tengan familiaridad con `Shiny` y ser capaces de
 construir una aplicación simple que permita la manipulacion de unos pocos parámetros para controlar la 
-informacion que se despliega en un gráfico interactivo.
+información que se despliega en un gráfico interactivo.
 
-Este taller de 2 días es un traller para introducir en forma rápida y simple `Shiny` y dar las herramientas 
+Este taller de 2 días que introduce las herramientas 
 básicas necesarias para permitir el auto-aprendizaje. 
 
 <p align="center">
@@ -34,11 +33,11 @@ Temas a incluir en el taller:
 
 * Introducción al uso de RStudio y Shiny
 * ¿Que esperamos comunicar?
-* Preparacion de los datos
+* Preparación de los datos
 * ggplot para visualzación de datos
 * Gráficos interactivos con shiny
 
-Para mas detalles de como prepararse para el taller, ver sección [Preparándose para el Taller] (más abajo).
+Para más detalles de como prepararse para el taller, ver sección [Preparándose para el Taller] (más abajo).
 
 ## Materiales
 
@@ -96,7 +95,7 @@ Necesitaremos usar un _navegador web_, `R`, RStudio, y `git`. Por favor asegúre
 ### Refrescando sus destrezas
 
 Este taller asume un nivel básico de experiencia usando R para propósitos científicos y estadísticos.
-Sin embargo, sabes que no todos están en el mismo lugar en términos de familiaridad con la herramientas que usaremos.
+Sin embargo, sabemos que no todos están en el mismo lugar en términos de familiaridad con la herramientas que usaremos.
 Si Ud. quiere refrescar su experiencia en R antes del taller, le recomiendo usar los siguientes recursos: 
 
 __Están en inglés, pero prometo buscar alternativas en español y las agregaré en la medida que las vaya encontrando__
@@ -115,6 +114,11 @@ En particular, revise:
 * Data Transformation with dplyr 
 * Shiny
 * Data Visualization with ggplot2
+
+Si estas ansioso por comenzar a jugar con Shiny, un buen punto de partido es [el sitio de
+Shiny](https://shiny.rstudio.com/tutorial/) pero por supuesto esta todo en inglés. Este 
+curso estás basado en el contenido de esas paginas y es una traducción libre, con ejemplos
+y datos orientados al trabajo en IFOP.
 
 ## Participantes
 
