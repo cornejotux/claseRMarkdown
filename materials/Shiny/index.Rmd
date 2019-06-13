@@ -12,8 +12,8 @@ always_allow_html: yes
 ---
 
 _**Reconocimiento**_: Esta libro esta desarrollado utilizando blogdown y bookdown. Sigue el estilo del 
-trabajo realizado para los talleres del [SASAP](https://alaskasalmonandpeople.org/) y [Arctic Data Center](https://arcticdata.io/) de [NCEAS](https://www.nceas.ucsb.edu/). Aquí traduzco, compilo e integro 
-materiales de múltiples fuentes, principalmente la página [https://shiny.rstudio.com/](https://shiny.rstudio.com/).
+trabajo realizado para los talleres del [SASAP](https://alaskasalmonandpeople.org/){target="_blank"}  y [Arctic Data Center](https://arcticdata.io/){target="_blank"}  de [NCEAS](https://www.nceas.ucsb.edu/){target="_blank"} . Aquí traduzco, compilo e integro 
+materiales de múltiples fuentes, principalmente la página [https://shiny.rstudio.com/](https://shiny.rstudio.com/){target="_blank"} .
 
 
 # Introducción
@@ -30,11 +30,11 @@ o bien como parte de documentos generados con RMarkdown (esa es otra clase en la
 
 Algunos ejemplos que yo he desarrollado son:
 
-1. Períodos de retorno de salmones de Alaska [Aquí](https://cornejo.shinyapps.io/ggjoy_Escapement/)
-1. Distribución de frecuencias de talla y edad de salmones de Alaska [Aquí](https://cornejo.shinyapps.io/shiny_asl-AgeLength/)
-1. Capturas artesanales en Chile (Aun en desarrollo) [Aquí](https://cornejo.shinyapps.io/CapturasArtesanales/)
+1. Períodos de retorno de salmones de Alaska [Aquí](https://cornejo.shinyapps.io/ggjoy_Escapement/){target="_blank"} 
+1. Distribución de frecuencias de talla y edad de salmones de Alaska [Aquí](https://cornejo.shinyapps.io/shiny_asl-AgeLength/){target="_blank"} 
+1. Capturas artesanales en Chile (Aun en desarrollo) [Aquí](https://cornejo.shinyapps.io/CapturasArtesanales/){target="_blank"} 
 
-Existen muchas posibilidades y la [galeria](https://shiny.rstudio.com/gallery/see-more.html) en la página de Shiny es la mejor fuente de inspiración posible.
+Existen muchas posibilidades y la [galeria](https://shiny.rstudio.com/gallery/see-more.html){target="_blank"}  en la página de Shiny es la mejor fuente de inspiración posible.
 
 En resumen, Shiny combina el poder computacional y simpleza de R con las capacidades interactivas de las páginas web modernas.
 
