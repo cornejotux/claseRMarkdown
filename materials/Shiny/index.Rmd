@@ -24,6 +24,19 @@ análisis. Y hácelo todo con R".
 
   [![shinyMain](images/main_Shiny)]
 
+El principal atractivo del paquete `Shiny` que es hace muy facil construir aplicaciones web interactivas, utilizando
+código R en forma simple y directa. Estas aplicaciones se pueden hospedar en servidores web en forma independiente
+o bien como parte de documentos generados con RMarkdown (esa es otra clase en la que estoy trabajando).
+
+Algunos ejemplos que yo he desarrollado son:
+
+1. Períodos de retorno de salmones de Alaska [Aquí](https://cornejo.shinyapps.io/ggjoy_Escapement/)
+1. Distribución de frecuencias de talla y edad de salmones de Alaska [Aquí](https://cornejo.shinyapps.io/shiny_asl-AgeLength/)
+1. Capturas artesanales en Chile (Aun en desarrollo) [Aquí](https://cornejo.shinyapps.io/CapturasArtesanales/)
+
+Existen muchas posibilidades y la [galeria](https://shiny.rstudio.com/gallery/see-more.html) en la página de Shiny es la mejor fuente de inspiración posible.
+
+En resumen, Shiny combina el poder computacional y simpleza de R con las capacidades interactivas de las páginas web modernas.
 
 
 ## La crisis de reproducibilidad
