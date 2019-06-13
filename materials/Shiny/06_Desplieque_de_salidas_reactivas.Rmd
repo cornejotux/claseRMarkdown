@@ -1,6 +1,6 @@
-# RStudio and Git/GitHub Setup and Motivation
+# Desplique de las salidas interactivas
 
-## Learning Objectives
+## Objetivos
 
 In this lesson, you will learn:
 

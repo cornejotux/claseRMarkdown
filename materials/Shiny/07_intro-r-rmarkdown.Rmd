@@ -1,6 +1,6 @@
-# Introduction to R and RMarkdown
+# Introducción a RMarkdown
 
-## Learning Objectives
+## Objectivos
 
 In this lesson we will:
 

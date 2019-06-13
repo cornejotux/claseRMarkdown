@@ -1,7 +1,7 @@
 
-# Thinking preferences
+# Intefase de Usiario (UI)
 
-## Learning Objectives
+## Obejtivos
 
 In this lesson, you will: 
 
