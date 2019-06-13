@@ -39,7 +39,7 @@ Para más detalles de como prepararse para el taller, ver sección [Preparándos
 
 ## Materiales
 
-- [Introducción a las aplicaciones web interactivas con Shin](/materials/Shiny/index.html)
+- [Introducción a las aplicaciones web interactivas con Shiny](/materials/Shiny/index.html)
 
 
 ## Organizadores

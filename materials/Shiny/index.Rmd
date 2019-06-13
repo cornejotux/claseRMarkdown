@@ -1,5 +1,5 @@
 --- 
-title: "Introduccion a las aplicaciones web interactivas"
+title: "Introducción a las aplicaciones web interactivas"
 date: "Por definir, 2019"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -12,19 +12,19 @@ always_allow_html: yes
 ---
 
 _**Reconocimiento**_: Esta libro esta desarrollado utilizando blogdown y bookdown. Sigue el estilo del 
-trabajo realizado para los talleres del [SASAP](https://alaskasalmonandpeople.org/) y [Arctic Data Center](https://arcticdata.io/) de [NCEAS](https://www.nceas.ucsb.edu/). Aqui traduzco, compilo e integro 
-materiales de multiples fuentes, principalmente la página [https://shiny.rstudio.com/](https://shiny.rstudio.com/).
+trabajo realizado para los talleres del [SASAP](https://alaskasalmonandpeople.org/) y [Arctic Data Center](https://arcticdata.io/) de [NCEAS](https://www.nceas.ucsb.edu/). Aquí traduzco, compilo e integro 
+materiales de múltiples fuentes, principalmente la página [https://shiny.rstudio.com/](https://shiny.rstudio.com/).
 
 
 # Introducción
 
-En la pagina principal del paquete `Shiny` se puede leer "*Interatúa.* *Analiza.* *Comunica.* Toma una aproximación
-fresca e interactiva para contar tu historia de datos con Shiny. Deja a los usuarios inreactuar con tus datos y
-análisis. Y hácelo todo con R".
+En la página principal del paquete `Shiny` se puede leer "*Interactúa.* *Analiza.* *Comunica.* Toma una aproximación
+fresca e interactiva para contar tu historia de datos con Shiny. Deja a los usuarios interactuar con tus datos y
+análisis. Y hazlo todo con R".
 
-  [shinyMain](imagenes/main_Shiny.jpg)
+  ![shinyMain](imagenes/main_Shiny.jpg)
 
-El principal atractivo del paquete `Shiny` que es hace muy facil construir aplicaciones web interactivas, utilizando
+El principal atractivo del paquete `Shiny` que es hace muy fácil construir aplicaciones web interactivas, utilizando
 código R en forma simple y directa. Estas aplicaciones se pueden hospedar en servidores web en forma independiente
 o bien como parte de documentos generados con RMarkdown (esa es otra clase en la que estoy trabajando).
 
@@ -41,21 +41,21 @@ En resumen, Shiny combina el poder computacional y simpleza de R con las capacid
 
 ## Objetivos
 
-En esta seccion Ud. aprenderá:
+En esta sección Ud. aprenderá:
 
 - Que es Shiny
 - Que cosas se pueden hacer con Shiny
 - Instalar Shiny en su computador
-- Crear su primera aplicación shiny
+- Crear su primera aplicación Shiny
 - Compartir su aplicación en la red
 
 
 ## Bienvenido a Shiny
 
-Como ya se dijo, Shiny es un paquete de R quehace muy facul la implementacióin de aplicaciones web interactivas
-(apps) utilizando el lenguage al que estamos acostumbrados en R. En esta seccion vamos a comenzar a mostrar en que consisten estas aplicaciones, construiremos una y la pondremos en la red para que otras personas puedan verla y jugar con ella.
+Como ya se dijo, Shiny es un paquete de R que hacer muy fácil la implementación de aplicaciones web interactivas
+(apps) utilizando el lenguaje al que estamos acostumbrados en R. En esta sección vamos a comenzar a mostrar en que consisten estas aplicaciones, construiremos una y la pondremos en la red para que otras personas puedan verla y jugar con ella.
 
-Si por algua razón aun no instalar el paquete **Shiny*If**, abra RStudio, conectese a internet y corra el codigo
+Si por alguna razón aun no instalar el paquete **Shiny**, abra RStudio, conéctese a Internet y corra el código
 
 ```
 install.packages("shiny")
@@ -65,15 +65,15 @@ Ejemplo de una aplicación básica.
 
  [Shiny Hello World](imagenes/01_hello.png)
 
-El paquete Shiny contiene 11 ejemplos pre-contruidos que demuestran como trabaja Shiny y son autocontenidos.
+El paquete Shiny contiene 11 ejemplos pre-construidos que demuestran como trabaja Shiny y son auto-contenidos.
 
-El ejemplo "Hello Shiny" grafica un histoframa con el los datos de **R** del 
-[Viejo Fiel](https://es.wikipedia.org/wiki/Old_Faithful) e incluye una barra deslisable para definir el número de  
+El ejemplo "Hello Shiny" gráfica un histograma con el los datos de **R** del 
+[Viejo Fiel](https://es.wikipedia.org/wiki/Old_Faithful) e incluye una barra deslizable para definir el número de  
 intervalos del histograma, de esta forma, al interaccionar con la aplicación, el usuarios puede aumentar o disminuir
 el número de intervalos, moviendo con el puntero del mouse, la barra deslizable que se encuentra a la izquierda del
 gráfico y al aplicación responderá en forma inmediata a esta acción. 
 
-Vamos a usar una aplicación muy similar a esta para explorar la estructura de un Shiny cuando creemos nuesta primera app.
+Vamos a usar una aplicación muy similar a esta para explorar la estructura de un Shiny cuando creemos nuestra primera app.
 
 Para ejecutar en su computador la app **Hello Shiny**, escriba:
 
@@ -85,9 +85,9 @@ runExample("01_hello")
 
 ## Primera aplicación
 
-### Componentes de una aplicacion
+### Componentes de una aplicación
 
-Aqui describir brevemente que se pone en cada seccion de los componentes de la aplicación.
+Aquí describir brevemente que se pone en cada sección de los componentes de la aplicación.
 
 #### Global
 
