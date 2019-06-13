@@ -1,6 +1,6 @@
 --- 
-title: "Introducción a la Investigación Reproducible con RStudio y RMarkdown"
-date: "Julio 11-15, 2019"
+title: "Introduccion a las aplicaciones web interactivas"
+date: "Por definir, 2019"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -11,17 +11,20 @@ description: ""
 always_allow_html: yes
 ---
 
-_**Reconocimiento**_: Gran parte de los documentos introductorios son una traducción libre desde al material preparado 
-y compartido por el grupo [SASAP](https://alaskasalmonandpeople.org/) del [NCEAS](https://www.nceas.ucsb.edu/) en su sitio [SASAP-Training](https://github.com/NCEAS/sasap-training) de en [GitHub](https://github.com/).
+_**Reconocimiento**_: Esta libro esta desarrollado utilizando blogdown y bookdown. Sigue el estilo del 
+trabajo realizado para los talleres del [SASAP](https://alaskasalmonandpeople.org/) y [Arctic Data Center](https://arcticdata.io/) de [NCEAS](https://www.nceas.ucsb.edu/). Aqui traduzco, compilo e integro 
+materiales de multiples fuentes, principalmente la página [https://shiny.rstudio.com/](https://shiny.rstudio.com/).
 
 
 # Introducción
 
-La reproducibilidad es fundamental en la ciencia, ya que la ciencia está basada en observaciones empíricas acopladas a modelos 
-explicativos. Si bien la reproducibilidad incluye el ciclo de vida completo de la ciencia y ademas incluye aspectos como la 
-consistencia metodológica y tratamiento del sesgo, en este curso nos enfocaremos a la **reproducibilidad computacional**, esto
-es la habilidad para documentar datos, analisos y modelos en forma suficiente para que otros investigadores sean capaces de 
-entender, reproducir y re-ejecutar los pasos computacionales que llevemos a los resultados científicos y sus conclusiones. 
+En la pagina principal del paquete `Shiny` se puede leer "*Interatúa.* *Analiza.* *Comunica.* Toma una aproximación
+fresca e interactiva para contar tu historia de datos con Shiny. Deja a los usuarios inreactuar con tus datos y
+análisis. Y hácelo todo con R".
+
+  [![shinyMain](images/main_Shiny)]
+
+
 
 ## La crisis de reproducibilidad
 

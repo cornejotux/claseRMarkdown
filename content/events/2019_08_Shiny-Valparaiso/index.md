@@ -8,7 +8,7 @@ weight: 1
 
 
 
-__Dates__: 17 al 18 de agosto, 2019<br>
+__Dates__: Por definir, 2019<br>
 __Location__: Valparaiso, Chile<br>
 __Venue__: [IFOP](https://www.ifop.cl), Almte. Manuel Blanco Encalada 839, Valparaiso
 
@@ -31,11 +31,11 @@ básicas necesarias para permitir el auto-aprendizaje.
 
 Temas a incluir en el taller:
 
-* Introducción al uso de RStudio y Shiny
-* ¿Que esperamos comunicar?
+* Introducción a RStudio y Shiny
 * Preparación de los datos
+* Control de versiones con Git
 * ggplot para visualzación de datos
-* Gráficos interactivos con shiny
+* Aplicacion interactiva Shiny
 
 Para más detalles de como prepararse para el taller, ver sección [Preparándose para el Taller] (más abajo).
 
