@@ -22,7 +22,7 @@ En la pagina principal del paquete `Shiny` se puede leer "*Interatúa.* *Analiza
 fresca e interactiva para contar tu historia de datos con Shiny. Deja a los usuarios inreactuar con tus datos y
 análisis. Y hácelo todo con R".
 
-  [shinyMain](images/main_Shiny.jpg)
+  [shinyMain](imagenes/main_Shiny.jpg)
 
 El principal atractivo del paquete `Shiny` que es hace muy facil construir aplicaciones web interactivas, utilizando
 código R en forma simple y directa. Estas aplicaciones se pueden hospedar en servidores web en forma independiente
@@ -61,7 +61,27 @@ Si por algua razón aun no instalar el paquete **Shiny*If**, abra RStudio, conec
 install.packages("shiny")
 ```
 
-## Instalar el Paquete Shiny
+Ejemplo de una aplicación básica.
+
+ [Shiny Hello World](imagenes/01_hello.png)
+
+El paquete Shiny contiene 11 ejemplos pre-contruidos que demuestran como trabaja Shiny y son autocontenidos.
+
+El ejemplo "Hello Shiny" grafica un histoframa con el los datos de **R** del 
+[Viejo Fiel](https://es.wikipedia.org/wiki/Old_Faithful) e incluye una barra deslisable para definir el número de  
+intervalos del histograma, de esta forma, al interaccionar con la aplicación, el usuarios puede aumentar o disminuir
+el número de intervalos, moviendo con el puntero del mouse, la barra deslizable que se encuentra a la izquierda del
+gráfico y al aplicación responderá en forma inmediata a esta acción. 
+
+Vamos a usar una aplicación muy similar a esta para explorar la estructura de un Shiny cuando creemos nuesta primera app.
+
+Para ejecutar en su computador la app **Hello Shiny**, escriba:
+
+```
+library(shiny)
+runExample("01_hello")
+```
+
 
 ## Primera aplicación
 
