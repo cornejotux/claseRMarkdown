@@ -22,7 +22,7 @@ En la pagina principal del paquete `Shiny` se puede leer "*Interatúa.* *Analiza
 fresca e interactiva para contar tu historia de datos con Shiny. Deja a los usuarios inreactuar con tus datos y
 análisis. Y hácelo todo con R".
 
-  ![shinyMain](images/main_Shiny)
+  [shinyMain](images/main_Shiny.jpg)
 
 El principal atractivo del paquete `Shiny` que es hace muy facil construir aplicaciones web interactivas, utilizando
 código R en forma simple y directa. Estas aplicaciones se pueden hospedar en servidores web en forma independiente
@@ -38,7 +38,28 @@ Existen muchas posibilidades y la [galeria](https://shiny.rstudio.com/gallery/se
 
 En resumen, Shiny combina el poder computacional y simpleza de R con las capacidades interactivas de las páginas web modernas.
 
+
+## Objetivos
+
+En esta seccion Ud. aprenderá:
+
+- Que es Shiny
+- Que cosas se pueden hacer con Shiny
+- Instalar Shiny en su computador
+- Crear su primera aplicación shiny
+- Compartir su aplicación en la red
+
+
 ## Bienvenido a Shiny
+
+Como ya se dijo, Shiny es un paquete de R quehace muy facul la implementacióin de aplicaciones web interactivas
+(apps) utilizando el lenguage al que estamos acostumbrados en R. En esta seccion vamos a comenzar a mostrar en que consisten estas aplicaciones, construiremos una y la pondremos en la red para que otras personas puedan verla y jugar con ella.
+
+Si por algua razón aun no instalar el paquete **Shiny*If**, abra RStudio, conectese a internet y corra el codigo
+
+```
+install.packages("shiny")
+```
 
 ## Instalar el Paquete Shiny
 
@@ -46,7 +67,7 @@ En resumen, Shiny combina el poder computacional y simpleza de R con las capacid
 
 ### Componentes de una aplicacion
 
-Aqui describir brevemente que pone en cada seccion de los componentes de la aplicación.
+Aqui describir brevemente que se pone en cada seccion de los componentes de la aplicación.
 
 #### Global
 
