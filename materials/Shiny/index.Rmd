@@ -22,7 +22,7 @@ En la pagina principal del paquete `Shiny` se puede leer "*Interatúa.* *Analiza
 fresca e interactiva para contar tu historia de datos con Shiny. Deja a los usuarios inreactuar con tus datos y
 análisis. Y hácelo todo con R".
 
-  [![shinyMain](images/main_Shiny)]
+  ![shinyMain](images/main_Shiny)
 
 El principal atractivo del paquete `Shiny` que es hace muy facil construir aplicaciones web interactivas, utilizando
 código R en forma simple y directa. Estas aplicaciones se pueden hospedar en servidores web en forma independiente

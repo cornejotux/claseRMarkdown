@@ -6,8 +6,6 @@ output:
 weight: 1
 ---
 
-
-
 __Dates__: Por definir, 2019<br>
 __Location__: Valparaiso, Chile<br>
 __Venue__: [IFOP](https://www.ifop.cl), Almte. Manuel Blanco Encalada 839, Valparaiso
@@ -24,7 +22,7 @@ Este taller de 2 días que introduce las herramientas
 básicas necesarias para permitir el auto-aprendizaje. 
 
 <p align="center">
-  <img src="https://community.rstudio.com/uploads/default/original/1X/c017cef9c13bc937df73659d3b5b1411a39c7ed2.png" width="15%" height="15%" />
+![shiny logo](images/shiny_logo.jpg)
 </p>
 
 ## Sinopsis:
@@ -41,7 +39,7 @@ Para más detalles de como prepararse para el taller, ver sección [Preparándos
 
 ## Materiales
 
-- [Introducción a Shiny](/materials/Shiny/index.html)
+- [Introducción a las aplicaciones web interactivas con Shin](/materials/Shiny/index.html)
 
 
 ## Organizadores
