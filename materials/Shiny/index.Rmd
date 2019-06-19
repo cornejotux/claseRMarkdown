@@ -245,7 +245,7 @@ Si quieres utilizar el mode *showcase*, hay que incluir el argumendo *display.mo
 Para crear una aplicación Shiny:
 
 1. Haga un directorio llamado MiAplicacion/ para su app.
-1. Aguar su archivo app.R dentro del directorio.
+1. Guarde su archivo app.R dentro del directorio.
 1. Inicie la app con `runApp` o combinaciones de teclas de RStudio.
 1. Salga de la Shiny app apretando la tecla Escape.
 
