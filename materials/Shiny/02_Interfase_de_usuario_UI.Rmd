@@ -18,7 +18,7 @@ Usaremos la app `MiAplicacion` del capítulo anterior. Para comenzar abra el arc
 ```
 library(shiny)
 
-# En esta sección se define la interfase de usuario y es doned haremos la mayor parte del trabajo
+# En esta sección se define la interfase de usuario y es donde haremos la mayor parte del trabajo
 ui <- fluidPage(
                 )
 
