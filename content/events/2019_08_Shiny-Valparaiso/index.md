@@ -47,7 +47,7 @@ Para más detalles de como prepararse para el taller, ver sección [Preparándos
 |Nombre         | Email              |
 |-------------|--------------------|
 |Jorge Cornejo| jorge.cornejo@ifop.cl |
-|Alguien Máx? | alguien.mas@ifop.cl |
+|Ruth Hernandez | ruth.hernandez@ifop.cl |
 
 ## Agradecimientos
 
