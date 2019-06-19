@@ -101,7 +101,7 @@ Una aspecto muy interesante de programar una aplicacion en un archivo único, es
 
 #### UI
 
-Aqúi esta el objeto `ui` del ejemplo **Hello Shiny**:
+Aquí esta el objeto `ui` del ejemplo **Hello Shiny**:
 
 ```
 library(shiny)
@@ -140,16 +140,53 @@ ui <- fluidPage(
 De este código es posible identificar los componentes:
 1. **titlePanel** donde se define el título de la aplicación.
 1. **sidebarLayout** donde se defines los espacios que se utilizan para las intradas de usuario y las salidas, en este caso gráficas.
-1.1. **sidebarPanel**, esta esta definido como un subcomponente de **sideberLayout** y define la seccion donde el usuario puede interactuar con la aplición-
+1.1. **sidebarPanel**, esta esta definido como un subcomponente de **sideberLayout** y define la seccion donde el usuario puede interactuar con la aplición.
+1.1.1. **sliderInput** es una barra con la que se pueden definir el número de "bins" que usa el gráfico (que se crea en la seccion **server** de la aplicación).
+1.1. **mainPanel** es es espacio donde se desplegaran los resultados, gráficos, tablas, etc.
+1.1.1 **plotOoutput** es una subseccion de **mainPanel** done estamos definiendo que la salida es un gráfico.
 
-
-Aquí describir brevemente que se pone en cada sección de los componentes de la aplicación.
-
-#### Global
 
 #### Servidor
 
-#### UI (Interfase de Usuario)
+Aquí esta la función `server` del ejemplo **Hello Shiny** y es donde se define la lógica que se usar para generar, en esta caso, un histograma, considerando la entrada de número de barras, definida por la barra con la interactúa el usuario.
+
+```
+server <- function(input, output) {
+
+  # Histogram of the Old Faithful Geyser Data ----
+  # with requested number of bins
+  # This expression that generates a histogram is wrapped in a call
+  # to renderPlot to indicate that:
+  #
+  # 1. It is "reactive" and therefore should be automatically
+  #    re-executed when inputs (input$bins) change
+  # 2. Its output type is a plot
+  output$distPlot <- renderPlot({
+
+    x    <- faithful$waiting
+    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+
+    hist(x, breaks = bins, col = "#75AADB", border = "white",
+         xlab = "Waiting time to next eruption (in mins)",
+         main = "Histogram of waiting times")
+
+    })
+
+}
+
+```
+
+Al crear esta función se definen dos variables de entrada, *inputs* y *outputs*. Estos son las variables con las que la funcion **server** interactúa con el resto de la aplicación.
+
+En este ejemplo podemos identificar que tenemos en **output** almacenamos un gráfico en el objeto *disPlot* (que si ven en *ui* es lo que se despliega como resultado). Este gráfico fue construido definiendo:
+inputIds
+1. **bins**: Es el número de barras a desplegar y define su número con *length.out* que toma la entrada de **input$bins**, que es definida en UI, en la seccion *sidebarLayout*, donde la funcion sliderInput, tiene como primer parámetro inputId = "bins", que el nombre al que se le da, para ser utilizado como una variable que puede ser pasada en otras secciones de la shiny app como **input$bins**.
+1. **hist**: Aquí se genera el histograma, utilizando el número **bins** como un varible que se le entrega al parámetro *breaks* de la función hist, que hace el histograma.
+
+En resumen, la funcion **server** es muy simple, el códifo hace unos calculos (i.e. bins) y luego hace un histgrama con el número predefinido de barras y lo devuelve como un output llamado disPlot, que luego es desplegado en la seccion mainPanel de la Interfase de Usuario (UI). 
+
+
+
 
 
 
