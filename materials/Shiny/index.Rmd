@@ -11,9 +11,13 @@ description: ""
 always_allow_html: yes
 ---
 
-_**Reconocimiento**_: Esta libro esta desarrollado utilizando blogdown y bookdown. Sigue el estilo del 
-trabajo realizado para los talleres del [SASAP](https://alaskasalmonandpeople.org/){target="_blank"}  y [Arctic Data Center](https://arcticdata.io/){target="_blank"}  de [NCEAS](https://www.nceas.ucsb.edu/){target="_blank"} . Aquí traduzco, compilo e integro 
-materiales de múltiples fuentes, principalmente la página [https://shiny.rstudio.com/](https://shiny.rstudio.com/){target="_blank"} .
+> _**Reconocimiento**_: Esta libro esta desarrollado utilizando blogdown y bookdown. Sigue el estilo del 
+> trabajo realizado para los talleres del [SASAP](https://alaskasalmonandpeople.org/){target="_blank"}  y 
+> [Arctic Data  Center](https://arcticdata.io/){target="_blank"}  de [NCEAS](https://www.nceas.ucsb.edu/){target="_blank"} . 
+> Aquí traduzco, compilo e integro materiales de múltiples fuentes, principalmente la página 
+> [https://shiny.rstudio.com/](https://shiny.rstudio.com/){target="_blank"}[@shinyL01].
+
+
 
 
 # Introducción
@@ -229,43 +233,30 @@ Inicie su Shiny App ejecutando `runApp("MiAPlicacion")`, luego cierre la aplicai
 - Define como el número mínimo para larra deslizable (slider bar) a 5.
 - Cambien el color del borde el histograma de *Banco* (white) a *naranjo* (orange) o cualquier otro color que ud. prefiera.
 
-Cuando esos 3 pasos esten listo, inicie su aplicación nuevamente. La nueva aplicacion ahora deberia tener los cambio que ud. acaba de realizar, de otra forma por favor verifique su código y pruebe otra vez. 
+Cuando esos 3 pasos esten listos, inicie su aplicación nuevamente. La nueva aplicacion ahora deberia tener los cambio que ud. acaba de realizar, de otra forma por favor verifique su código y pruebe otra vez. 
 
-Modified Hello Shiny screenshot
+![ShinyApp modificada](./imagenes/MiAplicacion_modificada.png)
 
-By default, Shiny apps display in “normal” mode, like the app pictured above. Hello Shiny and the other built in examples display in “showcase mode”, a different mode that displays the app.R script alongside the app.
+Por defecto, las aplicaciones Shiny se muestran en un modo *normal*, como la imagen que se muestra mas arriba. Sin embargo es posible ejecutar las apliciones al lado del código, para eso hay que definir el model “showcase mode”.
 
-If you would like your app to display in showcase mode, you can run runApp("App-1", display.mode = "showcase").
-
-Model Answers
-Relaunching Apps
-To relaunch your Shiny app:
-
-Run runApp("App-1"), or
-
-Open the app.R script in your RStudio editor. RStudio will recognize the Shiny script and provide a Run App button (at the top of the editor). Either click this button to launch your app or use the keyboard shortcut: Command+Shift+Enter (Control+Shift+Enter on Windows).
-
-Run app button
-
-RStudio will launch the app in a new window by default, but you can also choose to have the app launch in a dedicated viewer pane, or in your external web browser. Make your selection by clicking the icon next to Run App.
-
-Launch options
-
-Recap
-To create your own Shiny app:
-
-Make a directory named myapp/ for your app.
-
-Save your app.R script inside that directory.
-
-Launch the app with runApp or RStudio’s keyboard shortcuts.
-
-Exit the Shiny app by clicking escape.
+Si quieres utilizar el mode *showcase*, hay que incluir el argumendo *display.mode* indicando que sea showcase, de esta forma la lines de código quedaría `runApp("MiAplicacion", display.mode = "showcase")`.
 
 
-Go Further
-You can create Shiny apps by copying and modifying existing Shiny apps. The Shiny gallery provides some good examples, or use the eleven pre-built Shiny examples listed below.
+## Resumen
 
+Para crear una aplicación Shiny:
+
+1. Haga un directorio llamado MiAplicacion/ para su app.
+1. Aguar su archivo app.R dentro del directorio.
+1. Inicie la app con `runApp` o combinaciones de teclas de RStudio.
+1. Salga de la Shiny app apretando la tecla Escape.
+
+
+## Aun más
+
+La forma mas fácil de hacer sus propias Shiny App es basarse en otras que ya existan y utilizarlas como punto de partida. La [Galería de Shiny](https://shiny.rstudio.com/gallery/) tiene cientos de excelente ejemplos. Además la librería Shiny trae 11 ejemplos incluidos que puede llamar ejecutando las siguiente lineas de código.
+
+```
 runExample("01_hello")      # a histogram
 runExample("02_text")       # tables and data frames
 runExample("03_reactivity") # a reactive expression
@@ -277,10 +268,9 @@ runExample("08_html")       # Shiny app built from HTML
 runExample("09_upload")     # file upload wizard
 runExample("10_download")   # file download wizard
 runExample("11_timer")      # an automated timer
-Each demonstrates a feature of Shiny apps. All Shiny example apps open in “showcase” mode (with the app.R script in the display).
+```
 
-But why limit yourself to copying other apps? The next few lessons will show you how to build your own Shiny apps from scratch. You’ll learn about each part of a Shiny app, and finish by deploying your own Shiny app online.
+Cada uno de estos ejemplo muestra algunas de las characterísticas mas útiles de Shiny y todas se despligan en el modo “showcase” para que pueda ver el código R.
 
-When you are ready, continue to Lesson 2, where you will learn how to build the layout and appearance of your Shiny apps.
 
 
