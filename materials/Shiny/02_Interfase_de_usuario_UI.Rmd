@@ -30,21 +30,23 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-This code is the bare minimum needed to create a Shiny app. The result is an empty app with a blank user interface, an appropriate starting point for this lesson.
+Esto código representa el mínimo posible necesario para create un Shiny app. El resultado es bastante poco util, es una aplicación vacís, sin contenido, con un espacio blanco donde debería estar la interfase de usuario y las salidas como tablas o gráficos. Es por esto que es un excelente punto de partida para el trabajo que vamos a realizar en este capítulo.
 
-Layout
-Shiny uses the function fluidPage to create a display that automatically adjusts to the dimensions of your user’s browser window. You lay out the user interface of your app by placing elements in the fluidPage function.
+### Diseño (Layout)
 
-For example, the ui function below creates a user interface that has a title panel and a sidebar layout, which includes a sidebar panel and a main panel. Note that these elements are placed within the fluidPage function.
+Shiny usa la función `fluidPage` para crear el display que se ajusta automáticamente las dimenciones de la ventana del navegador del usuario.  Es en esta función donde se introducen los elemento necesarios para diseñar la interfase de usuario.
 
+Por ejemplo, la función `ui` que se ve abajo, crea una interfase de usuario que tiene un panel con un título (`titlePanel`) y un diseño de barra lateral (`sidebarLayout`); incluye un panel lateral (`sidebarPanel`) y un panel principal (`mainPanel`). Hay que hacer notal que estos elemento son incluidos *dentro* de la función `fluidPage`.
+
+```
 ui <- fluidPage(
-  titlePanel("title panel"),
-
+  titlePanel("Panel de Título"),
   sidebarLayout(
-    sidebarPanel("sidebar panel"),
-    mainPanel("main panel")
+        sidebarPanel("Panel lateral"),
+        mainPanel("Panel principal")
+               )
   )
-)
+```
 
 ## Resources
 
