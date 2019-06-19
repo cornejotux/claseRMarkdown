@@ -85,7 +85,63 @@ runExample("01_hello")
 
 ## Primera aplicación
 
+Una aplicación `Shiny` básica puede estar contenida en un solo archivo llamado *app.R* en un *directorio*, que se deja un un directorio y esta puede ser ejecutada con **runApp("NombreDirectorio")**.
+
+El código dentro de *app.R* contiene tres secciones:
+
+1. El *objetivo* Interfase de Usuario (UI): Este objeto contiene los controles sobre el diseño y apariencia de la aplicacióin. 
+1. La función *Servidor*: Contiene las insutrcciones que el computador necesita ejecutar para consturir la aplicación.
+1. La llamada a la funcion *shinyApp*: Esta funcion crea los objetos *Shiny apps* desde el par UI/server.
+
+Para aplicaciones mas complejas y extensas, es recomentable create archivos separados llamados `ui.R` y `serverR`. Además es posible incluir un archivo `global.R` donde se pueden incluir funciones creadas para la aplicación, manipular datos, etc.
+
+Una aspecto muy interesante de programar una aplicacion en un archivo único, es la facilidad de este para ser compartido y ejecutado desde la consola R o lines de comando.
+
 ### Componentes de una aplicación
+
+#### UI
+
+Aqúi esta el objeto `ui` del ejemplo **Hello Shiny**:
+
+```
+library(shiny)
+
+# Define UI for app that draws a histogram ----
+ui <- fluidPage(
+
+  # App title ----
+  titlePanel("Hello Shiny!"),
+
+  # Sidebar layout with input and output definitions ----
+  sidebarLayout(
+
+    # Sidebar panel for inputs ----
+    sidebarPanel(
+
+      # Input: Slider for the number of bins ----
+      sliderInput(inputId = "bins",
+                  label = "Number of bins:",
+                  min = 1,
+                  max = 50,
+                  value = 30)
+
+    ),
+
+    # Main panel for displaying outputs ----
+    mainPanel(
+
+      # Output: Histogram ----
+      plotOutput(outputId = "distPlot")
+
+    )
+  )
+)
+```
+De este código es posible identificar los componentes:
+1. **titlePanel** donde se define el título de la aplicación.
+1. **sidebarLayout** donde se defines los espacios que se utilizan para las intradas de usuario y las salidas, en este caso gráficas.
+1.1. **sidebarPanel**, esta esta definido como un subcomponente de **sideberLayout** y define la seccion donde el usuario puede interactuar con la aplición-
+
 
 Aquí describir brevemente que se pone en cada sección de los componentes de la aplicación.
 
