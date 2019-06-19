@@ -133,15 +133,15 @@ De este código es posible identificar los componentes:
 
 1. **titlePanel** donde se define el título de la aplicación.
 
-1. **sidebarLayout** donde se defines los espacios que se utilizan para las intradas de usuario y las salidas, en este caso gráficas.
+2. **sidebarLayout** donde se defines los espacios que se utilizan para las intradas de usuario y las salidas, en este caso gráficas.
 
-1.1. **sidebarPanel**, esta esta definido como un subcomponente de **sideberLayout** y define la seccion donde el usuario puede interactuar con la aplición.
+2.1. **sidebarPanel**, esta esta definido como un subcomponente de **sideberLayout** y define la seccion donde el usuario puede interactuar con la aplición.
 
-1.1.1. **sliderInput** es una barra con la que se pueden definir el número de "bins" que usa el gráfico (que se crea en la seccion **server** de la aplicación).
+2.1.1. **sliderInput** es una barra con la que se pueden definir el número de "bins" que usa el gráfico (que se crea en la seccion **server** de la aplicación).
 
-1.1. **mainPanel** es es espacio donde se desplegaran los resultados, gráficos, tablas, etc.
+2.2. **mainPanel** es es espacio donde se desplegaran los resultados, gráficos, tablas, etc.
 
-1.1.1 **plotOoutput** es una subseccion de **mainPanel** done estamos definiendo que la salida es un gráfico.
+2.2.1 **plotOoutput** es una subseccion de **mainPanel** done estamos definiendo que la salida es un gráfico.
 
 
 
@@ -221,7 +221,7 @@ Fijese que esto es muy similar alas funciones *read.csv*, *read.table* y muchas 
 
 ## Su Turno
 
-Create a new directory named App-1 in your working directory. Then copy and paste the app.R script above into your directory (the scripts from Hello Shiny). When you are finished the directory should look like this:
+Cree un directorio que se llame MiAPlicacion. Luego copie y pegue el código de app.R que dejamos mas arriba en archivo app.R en su directorio (el código de *Hello Shiny*). When you are finished the directory should look like this:
 
 Example folder
 
