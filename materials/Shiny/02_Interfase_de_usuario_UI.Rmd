@@ -1,5 +1,5 @@
 
-# Intefase de Usiario (UI)
+# Intefase de Usuario (UI)
 
 ## Obejtivos
 
