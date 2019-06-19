@@ -1,12 +1,50 @@
 
-# Intefase de Usuario (UI)
+# Interfase de Usuario: Como construirla
 
-## Obejtivos
+Ahora que ya entiende la estructura de una Shiny app, es tiempo de construir la primera desde cero.
 
-In this lesson, you will: 
 
-- Participate in an interactive group activity
-- Learn about variation in thinking preferences
+## Objetivos
+
+- Crear una Shiny app desde cero
+- Entender los principio básico del diseño de la aplicación.
+
+En este capítulo vamos a ver como contruir una interfase de usuario para la aplicación. Aprenderá como diseñar la interfase, para luego agregar texto, imágenes y otros elementos HTML.
+
+## Manos a la obra
+
+Usaremos la app `MiAplicacion` del capítulo anterior. Para comenzar abra el archivo `app.R` y modifique el código para que se vea de la siguiente forma:
+
+```
+library(shiny)
+
+# En esta sección se define la interfase de usuario y es doned haremos la mayor parte del trabajo
+ui <- fluidPage(
+                )
+
+# Se define la lógica que sigue el servidor
+server <- function(input, output) {
+                                  }
+
+# Ejecuta la aplición
+shinyApp(ui = ui, server = server)
+```
+
+This code is the bare minimum needed to create a Shiny app. The result is an empty app with a blank user interface, an appropriate starting point for this lesson.
+
+Layout
+Shiny uses the function fluidPage to create a display that automatically adjusts to the dimensions of your user’s browser window. You lay out the user interface of your app by placing elements in the fluidPage function.
+
+For example, the ui function below creates a user interface that has a title panel and a sidebar layout, which includes a sidebar panel and a main panel. Note that these elements are placed within the fluidPage function.
+
+ui <- fluidPage(
+  titlePanel("title panel"),
+
+  sidebarLayout(
+    sidebarPanel("sidebar panel"),
+    mainPanel("main panel")
+  )
+)
 
 ## Resources
 
