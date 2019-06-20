@@ -6,9 +6,7 @@ output:
 weight: 1
 ---
 
-
-
-__Dates__: 17 al 18 de julio, 2019<br>
+__Dates__: Por definit, 2019<br>
 __Location__: Valparaiso, Chile<br>
 __Venue__: [IFOP](https://www.ifop.cl), Almte. Manuel Blanco Encalada 839, Valparaiso
 
