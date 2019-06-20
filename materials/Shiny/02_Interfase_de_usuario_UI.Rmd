@@ -82,7 +82,7 @@ Si ud. quiere aprender mas sobre estas opciones avanzadas, puede encontrar la in
 
 ## Contenidos HTML
 
-You can add content to your Shiny app by placing it inside a *Panel function. For example, the apps above display a character string in each of their panels. The words “sidebar panel” appear in the sidebar panel, because we added the string to the sidebarPanel function, e.g. sidebarPanel("sidebar panel"). The same is true for the text in the title panel and the main panel.
+En una Shiny app se puede incluir contenido agregandolo dentro de la **función del panel**. You can add content to your Shiny app by placing it inside a *Panel function. For example, the apps above display a character string in each of their panels. The words “sidebar panel” appear in the sidebar panel, because we added the string to the sidebarPanel function, e.g. sidebarPanel("sidebar panel"). The same is true for the text in the title panel and the main panel.
 
 To add more advanced content, use one of Shiny’s HTML tag functions. These functions parallel common HTML5 tags. Let’s try out a few of them.
 
