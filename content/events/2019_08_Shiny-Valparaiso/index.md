@@ -21,9 +21,8 @@ información que se despliega en un gráfico interactivo.
 Este taller de 2 días que introduce las herramientas 
 básicas necesarias para permitir el auto-aprendizaje. 
 
-<p align="center">
+
 ![shiny logo](https://cpsievert.me/images/thumbs/shiny.png)  
-</p>
 
 ## Sinopsis:
 
