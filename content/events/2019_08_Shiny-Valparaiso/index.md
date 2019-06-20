@@ -25,7 +25,9 @@ básicas necesarias para permitir el auto-aprendizaje.
 ![](https://cpsievert.me/images/thumbs/shiny.png)
 
 
-  <img src="https://cpsievert.me/images/thumbs/shiny.png" width="10" height="40"/>
+  <img src="https://cpsievert.me/images/thumbs/shiny.png">
+  
+   width="10" height="40"/>
 
 
 ## Sinopsis:
