@@ -22,12 +22,10 @@ Este taller de 2 días que introduce las herramientas
 básicas necesarias para permitir el auto-aprendizaje. 
 
 
-![shiny logo](https://cpsievert.me/images/thumbs/shiny.png)
+[shiny logo](https://cpsievert.me/images/thumbs/shiny.png)
 
 
-<p align="center">
   <img src="https://cpsievert.me/images/thumbs/shiny.png" width="20" height="50"/>
-</p>
 
 
 ## Sinopsis:
