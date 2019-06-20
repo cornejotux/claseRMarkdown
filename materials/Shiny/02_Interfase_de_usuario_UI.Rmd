@@ -9,7 +9,7 @@ Ahora que ya entiende la estructura de una Shiny app, es tiempo de construir la 
 - Crear una Shiny app desde cero
 - Entender los principio básico del diseño de la aplicación.
 
-En este capítulo vamos a ver como contruir una interfase de usuario para la aplicación. Aprenderá como diseñar la interfase, para luego agregar texto, imágenes y otros elementos HTML.
+En este capítulo vamos a ver como construir una interfase de usuario para la aplicación. Aprenderá como diseñar la interfase, para luego agregar texto, imágenes y otros elementos HTML.
 
 ## Manos a la obra
 
@@ -30,13 +30,13 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-Esto código representa el mínimo posible necesario para create un Shiny app. El resultado es bastante poco util, es una aplicación vacís, sin contenido, con un espacio blanco donde debería estar la interfase de usuario y las salidas como tablas o gráficos. Es por esto que es un excelente punto de partida para el trabajo que vamos a realizar en este capítulo.
+Esto código representa el mínimo posible necesario para crear un Shiny app. El resultado es bastante poco útil, es una aplicación vacía, sin contenido, con un espacio blanco donde debería estar la interfase de usuario y las salidas como tablas o gráficos. Es por esto que es un excelente punto de partida para el trabajo que vamos a realizar en este capítulo.
 
 ### Diseño (Layout)
 
-Shiny usa la función `fluidPage` para crear el display que se ajusta automáticamente las dimenciones de la ventana del navegador del usuario.  Es en esta función donde se introducen los elemento necesarios para diseñar la interfase de usuario.
+Shiny usa la función `fluidPage` para crear el espacio que se ajusta automáticamente las dimensiones de la ventana del navegador del usuario.  Es en esta función donde se introducen los elemento necesarios para diseñar la interfase de usuario.
 
-Por ejemplo, la función `ui` que se ve abajo, crea una interfase de usuario que tiene un panel con un título (`titlePanel`) y un diseño de barra lateral (`sidebarLayout`); incluye un panel lateral (`sidebarPanel`) y un panel principal (`mainPanel`). Hay que hacer notal que estos elemento son incluidos **dentro** de la función `fluidPage`.
+Por ejemplo, la función `ui` que se ve abajo, crea una interfase de usuario que tiene un panel con un título (`titlePanel`) y un diseño de barra lateral (`sidebarLayout`); incluye un panel lateral (`sidebarPanel`) y un panel principal (`mainPanel`). Hay que hacer notar que estos elemento son incluidos **dentro** de la función `fluidPage`.
 
 ```
 ui <- fluidPage(
@@ -47,19 +47,19 @@ ui <- fluidPage(
                )
   )
 ```
-La Shiny app creada con esta intefase de usuario resultante se puede ver la Figura 2.1.
+La Shiny app creada con esta interfase de usuario resultante se puede ver la Figura 2.1.
 
 
 ![Figura 2.1: Interfase de Usuario (UI) limpia y sin contenido.](imagenes/Clear_shiny.png)
 
-`titlePanel` y `sidebarLayout` son dos de los elemento mas populares para agregar a `fluidPage`^[Recuerde que esta es la función que crea el espacio de la UI que se ajusta al tamaño del navegados del usuario.]. Esto crea ela Shiny app básica con una barra lateral.
+`titlePanel` y `sidebarLayout` son dos de los elemento mas populares para agregar a `fluidPage`^[Recuerde que esta es la función que crea el espacio de la UI que se ajusta al tamaño del navegados del usuario.]. Esto crea la Shiny app básica con una barra lateral.
 
 `sidebarLayout` siempre usa dos argumentos:
 
 - Función `sidebarPanel` que define el espacio para la barra lateral.
 - Función `mainPanel` que define el espacio del panel principal. 
 
-La barra lateral aparecerá por defecto en el lago izquierdo de la aplicación. Esta se puede move al lado derecho agregando a la función `sidebarLayout` el argumento `position = "right"`. Este código se puede ver a continuación y el resultado en la Figura 2.2.
+La barra lateral aparecerá por defecto en el lago izquierdo de la aplicación. Esta se puede mover al lado derecho agregando a la función `sidebarLayout` el argumento `position = "right"`. Este código se puede ver a continuación y el resultado en la Figura 2.2.
 
 ```
 ui <- fluidPage(
@@ -78,14 +78,14 @@ ui <- fluidPage(
 Para esto es posible usar `navbarPage` para crear en la app una interfase de usuarios multi-páginas que incluye una barra 
 de navegación. Otra opción es usar `fluidRow` y `column` para construir un diseño basado en un sistema de grillas. 
 
-Si ud. quiere aprender mas sobre estas opciones avanzadas, puede encontrar la informacion en en la guía [Shiny Application] Layout(https://shiny.rstudio.com/articles/layout-guide.html). En este libro usaremos `sidebarLayout`.
+Si ud. quiere aprender más sobre estas opciones avanzadas, puede encontrar la información en en la guía [Shiny Application] Layout(https://shiny.rstudio.com/articles/layout-guide.html). En este libro usaremos `sidebarLayout`.
 
 ## Contenidos HTML
 
-En una Shiny app se puede incluir contenido agregandolo dentro de la **función del panel**. Por ejemplo, las app anteriores
-despliegan una cadena de caracteres en cada uno de sus paneles. Las palabras *panel lateral* aparecen en la barra lateral, porque fueron agregados como una cadena de caracters a la función `sidebarPanel`, e.g. `sidebarPanel("Panel lateral")`. Lo mismo es verdadero para el texto en el *panel de título* y en el *panel principal*.
+En una Shiny app se puede incluir contenido agregándolo dentro de la **función del panel**. Por ejemplo, las app anteriores
+despliegan una cadena de caracteres en cada uno de sus paneles. Las palabras *panel lateral* aparecen en la barra lateral, porque fueron agregados como una cadena de caracteres a la función `sidebarPanel`, e.j. `sidebarPanel("Panel lateral")`. Lo mismo es verdadero para el texto en el *panel de título* y en el *panel principal*.
 
-Para agregar contenido mas avanzado se debe usar alguna de las fuciones de identificación HTML que usar Shiny. Estas funciones son paralelas a a identificadores (*tags*) de HTML5. Aqui hay una lista de los principalaes para que los pruebe.
+Para agregar contenido mas avanzado se debe usar alguna de las funciones de identificación HTML que usar Shiny. Estas funciones son paralelas a a identificadores (*tags*) de HTML5. Aquí hay una lista de los principales para que los pruebe.
 
 | Función en Shiny	| Equivalente HTML5 | Crea |
 | - | - | - |
@@ -107,5 +107,27 @@ Para agregar contenido mas avanzado se debe usar alguna de las fuciones de ident
 | `em`	| `<em>`	| Texto en cursiva |
 | `HTML`	|  	| Pasa una cadena de caracteres como código HTML |
 
+
+### Títulos
+
+Para crear un título:
+
+- Seleccionear una función de título (ej: h1 a h5)
+- Ingresar el texto que se quiere ver en el título
+
+Por ejemplo, creare un título de primer nivel que diga “Mi titulo” con `h1("Mi titulo")`. Si se ejecuta este comando en la línera de comandos, puede ver que produce un código HTML.
+
+```
+> library(shiny)
+> h1("Mi titulo")
+<h1>Mi titulo</h1>
+```
+
+Para agregar un elemento a tu app:
+
+- Pasar `pass h1("My title")` como un agumento a `titlePanel`, `sidebarPanel` o `mainPanel`.
+El texto aparecerá en el panel correspondiente de su página web. Ud. puede multiplicar los elemento en el mismo panel si los separa con una coma (**,**).
+
+Practique con esto. El código siguiente usa todo los 6 nivel te títulos existentes. Actualice su ui.R o app.R para que produzaca resultados similares y reinicie la aplicación. Recuerde que es necesario reiniciar la Shiny app y eso se puede hacer con `runApp("MiAplicacion")`, haciendo click en el botón *Run App*, o usando las cambinaciones de teclas. 
 
 
