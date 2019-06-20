@@ -26,7 +26,7 @@ básicas necesarias para permitir el auto-aprendizaje.
 
 
 <p align="center">
-  <img src="https://cpsievert.me/images/thumbs/shiny.png" width="50" height="50"/>
+  <img src="https://cpsievert.me/images/thumbs/shiny.png" width="20" height="50"/>
 </p>
 
 
