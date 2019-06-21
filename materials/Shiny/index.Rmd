@@ -24,7 +24,7 @@ En la página principal del paquete `Shiny` se puede leer "*Interactúa.* *Anali
 fresca e interactiva para contar tu historia de datos con Shiny. Deja a los usuarios interactuar con tus datos y
 análisis. Y hazlo todo con R".
 
-  ![shinyMain](imagenes/main_Shiny.jpg)
+  ![Figura 1.1: Imagen de la página principal de shiny.rstudio.com.](imagenes/1.1_Shiny_Main.jpg)
 
 El principal atractivo del paquete `Shiny` que es hace muy fácil construir aplicaciones web interactivas, utilizando
 código R en forma simple y directa. Estas aplicaciones se pueden hospedar en servidores web en forma independiente
@@ -65,7 +65,8 @@ install.packages("shiny")
 
 Ejemplo de una aplicación básica.
 
- [Shiny Hello World](imagenes/01_hello.png)
+ ![Figura 1.2: Shiny Hello World app.](imagenes/1.2_hello.png)
+ 
 
 El paquete Shiny contiene 11 ejemplos pre-construidos que demuestran como trabaja Shiny y son auto-contenidos.
 
@@ -233,7 +234,7 @@ Inicie su Shiny App ejecutando `runApp("MiAPlicacion")`, luego cierre la aplicai
 
 Cuando esos 3 pasos esten listos, inicie su aplicación nuevamente. La nueva aplicacion ahora deberia tener los cambio que ud. acaba de realizar, de otra forma por favor verifique su código y pruebe otra vez. 
 
-![ShinyApp modificada](./imagenes/MiAplicacion_modificada.png)
+![Figura 1.3: ShinyApp con modificaciones de formato. El color de los border es naranjo.](imagenes/1.3_MiAplicacion_modificada.png)
 
 Por defecto, las aplicaciones Shiny se muestran en un modo *normal*, como la imagen que se muestra mas arriba. Sin embargo es posible ejecutar las apliciones al lado del código, para eso hay que definir el model “showcase mode”.
 

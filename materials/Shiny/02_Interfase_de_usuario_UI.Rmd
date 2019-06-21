@@ -6,8 +6,10 @@ Ahora que ya entiende la estructura de una Shiny app, es tiempo de construir la 
 
 ## Objetivos
 
-- Crear una Shiny app desde cero
+- Crear una Shiny app desde cero.
 - Entender los principio básico del diseño de la aplicación.
+- Aprender y utilizar las diferentes opciones para el formato de texto.
+- Incluir imagenes en la interfase de usuario.
 
 En este capítulo vamos a ver como construir una interfase de usuario para la aplicación. Aprenderá como diseñar la interfase, para luego agregar texto, imágenes y otros elementos HTML.
 
@@ -50,7 +52,7 @@ ui <- fluidPage(
 La Shiny app creada con esta interfase de usuario resultante se puede ver la Figura 2.1.
 
 
-![Figura 2.1: Interfase de Usuario (UI) limpia y sin contenido.](imagenes/Shiny_Clear.png)
+![Figura 2.1: Interfase de Usuario (UI) limpia y sin contenido.](imagenes/2.1_Shiny_Clear.png)
 
 `titlePanel` y `sidebarLayout` son dos de los elemento mas populares para agregar a `fluidPage`^[Recuerde que esta es la función que crea el espacio de la UI que se ajusta al tamaño del navegados del usuario.]. Esto crea la Shiny app básica con una barra lateral.
 
@@ -72,7 +74,7 @@ ui <- fluidPage(
   )
 ```
 
-![Figura 2.2: Interfase de Usuario (UI) limpia y sin contenido, con la barra lateral a la derecha, usando el argumento `position = "right"`.](imagenes/Shiny_ClearRight.png)
+![Figura 2.2: Interfase de Usuario (UI) limpia y sin contenido, con la barra lateral a la derecha, usando el argumento `position = "right"`.](imagenes/2.2_Shiny_ClearRight.png)
 
 `titlePanel` y `sidebarLayout` crea un diseño básico para la Shiny app, pero además se puede crear un diseño más avanzado. 
 Para esto es posible usar `navbarPage` para crear en la app una interfase de usuarios multi-páginas que incluye una barra 
@@ -80,7 +82,7 @@ de navegación. Otra opción es usar `fluidRow` y `column` para construir un dis
 
 Si ud. quiere aprender más sobre estas opciones avanzadas, puede encontrar la información en en la guía [Shiny Application] Layout(https://shiny.rstudio.com/articles/layout-guide.html). En este libro usaremos `sidebarLayout`.
 
-## Contenidos HTML
+### Contenidos HTML
 
 En una Shiny app se puede incluir contenido agregándolo dentro de la **función del panel**. Por ejemplo, las app anteriores
 despliegan una cadena de caracteres en cada uno de sus paneles. Las palabras *panel lateral* aparecen en la barra lateral, porque fueron agregados como una cadena de caracteres a la función `sidebarPanel`, e.j. `sidebarPanel("Panel lateral")`. Lo mismo es verdadero para el texto en el *panel de título* y en el *panel principal*.
@@ -157,7 +159,7 @@ ui <- fluidPage(
 
 La Sihny app resultante debería ser similar a lo que se predenta en la Fig. 2.3.
 
-![Figura 2.3: Interfase de Usuario (UI) utilizando los 6 niveles de títulos (h1 a h6).](imagenes/Shiny_Titles.png)
+![Figura 2.3: Interfase de Usuario (UI) utilizando los 6 niveles de títulos (h1 a h6).](imagenes/2.3_Shiny_Titles.png)
 
 Los títulos pueden ser alineado utilizando el argumento `align`. En general, casi todos los atributos de identificadores HTML pueden ser 
 usados como argumento en un funcion de identificacion (tag) de Shiny.
@@ -166,7 +168,7 @@ Si ud. no tiene familiaridad con los atributos de los identificadores HTML, pued
 existen en la red, por ejemplo [w3schools](http://www.w3schools.com/tags/tag_hn.asp){target=_-_new}.
 
 
-## Texto con formato
+### Texto con formato
 
 Shiny ofrec muchsa funciones identificadoras para formatear texto. La forma más simple de enseñarlas es por medio de un ejemplo. 
 
@@ -199,7 +201,45 @@ ui <- fluidPage(
 
 La Shiny app resultate con esta ui se puede ver en la fig. 2.4
 
-![Figura 2.4: Interfase de Usuario (UI) donde se muestran ejemplos de como formatear texto.](imagenes/Shiny_FormatText.png)
+![Figura 2.4: Interfase de Usuario (UI) donde se muestran ejemplos de como formatear texto.](imagenes/2.4_Shiny_FormatText.png)
 
+### Imágenes
 
+Incluir imágenes en el Shiny app puede mejorar significativamente la apariencia de la aplicación y ayudar a los usuarios 
+a entender mejor el contenido. Shiny permite agregar imágenes utilizando la función `img`.
 
+Para incluir una imagen use la función `img()`, se debe incluir en el argumento src el path y el nombre del archivo utilizando
+comillas (ej. img(src = "Path/a/mi/Imagen.png")). Esto tambien se puede hacer utilizando un _url_ si la imagen esta dispoble 
+en una página web. A esta función tambien se le pueden pasar identificadores HTML como alto (_height_) y ancho (_width_), con 
+los números representado a píxeles.
+
+```
+## Utilizando una imagen local
+img(src = "my_image.png", height = 72, width = 72) 
+
+## Utilizando una imagen en un servidor web
+img(src = "https://www.ifop.cl/wp-content/contenidos/uploads/Logo_ifop.jpg")
+```
+
+La función `img` busca la imagen en un lugar específico, los archivos de imágenes locales deben estar contenidos en el directorio
+_www_ que debe estar en el mismo directorio que el archivo app.R o ui.R. Shiny comparte todos los archivos en el directorio _www_ 
+con el navegadore del usuario, lo que lo hace el lugar perfecto para poner imágenes, hojas de estilo y otras cosas que el 
+navegador puede necesitar para contruir los componentes web de la Shiny app.
+
+Un código de ejemplo con una imagen local y otra remota se muestra a continuación. Baje el archivo rstudio.png desde [[aquí]{https://shiny.rstudio.com/tutorial/written-tutorial/lesson2/www/rstudio.png}], déjelo en el directorio _www_ y úselo. La imagen remota no necesita ningún proceso o cambio para que la pueda utilizar. 
+
+> Por favor note que entre las 2 funciones img() existe una coma, esta es necesaria, de otra forma R lo interpreta coom solo una función y generará un error.
+
+```
+ui <- fluidPage(
+  titlePanel("Mi Shiny App"),
+  sidebarLayout(
+    sidebarPanel(),
+    mainPanel(
+      img(src = "rstudio.png", height = 140, width = 400), 
+      img(src = "https://www.ifop.cl/wp-content/contenidos/uploads/Logo_ifop.jpg")
+    )
+  )
+)
+```
+![Figura 2.5: Interfase de Usuario (UI) con una imgaen local en directorio _www_ y una remota en un servidor web.](imagenes/2.5_Shiny_Img.png)
