@@ -255,17 +255,17 @@ Para crear una aplicación Shiny:
 La forma mas fácil de hacer sus propias Shiny App es basarse en otras que ya existan y utilizarlas como punto de partida. La [Galería de Shiny](https://shiny.rstudio.com/gallery/) tiene cientos de excelente ejemplos. Además la librería Shiny trae 11 ejemplos incluidos que puede llamar ejecutando las siguiente lineas de código.
 
 ```
-runExample("01_hello")      # a histogram
-runExample("02_text")       # tables and data frames
-runExample("03_reactivity") # a reactive expression
-runExample("04_mpg")        # global variables
-runExample("05_sliders")    # slider bars
-runExample("06_tabsets")    # tabbed panels
-runExample("07_widgets")    # help text and submit buttons
-runExample("08_html")       # Shiny app built from HTML
-runExample("09_upload")     # file upload wizard
-runExample("10_download")   # file download wizard
-runExample("11_timer")      # an automated timer
+runExample("01_hello")      # Histograma
+runExample("02_text")       # Tablas y data frames
+runExample("03_reactivity") # Una expresión reactiva
+runExample("04_mpg")        # Variables globales
+runExample("05_sliders")    # Barras deslizables
+runExample("06_tabsets")    # Paneles tabulados
+runExample("07_widgets")    # Texto de ayuda y botones de envío
+runExample("08_html")       # Shiny app basada en HTML
+runExample("09_upload")     # Herramienta para subir un archivo
+runExample("10_download")   # Herramienta para la descarga de archivo
+runExample("11_timer")      # Timer automático
 ```
 
 Cada uno de estos ejemplo muestra algunas de las characterísticas mas útiles de Shiny y todas se despligan en el modo “showcase” para que pueda ver el código R.

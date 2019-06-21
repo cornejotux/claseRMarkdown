@@ -50,7 +50,7 @@ ui <- fluidPage(
 La Shiny app creada con esta interfase de usuario resultante se puede ver la Figura 2.1.
 
 
-![Figura 2.1: Interfase de Usuario (UI) limpia y sin contenido.](imagenes/Clear_shiny.png)
+![Figura 2.1: Interfase de Usuario (UI) limpia y sin contenido.](imagenes/Shiny_Clear.png)
 
 `titlePanel` y `sidebarLayout` son dos de los elemento mas populares para agregar a `fluidPage`^[Recuerde que esta es la función que crea el espacio de la UI que se ajusta al tamaño del navegados del usuario.]. Esto crea la Shiny app básica con una barra lateral.
 
@@ -72,7 +72,7 @@ ui <- fluidPage(
   )
 ```
 
-![Figura 2.2: Interfase de Usuario (UI) limpia y sin contenido, con la barra lateral a la derecha, usando el argumento `position = "right"`.](imagenes/Clear_shiny_right.png)
+![Figura 2.2: Interfase de Usuario (UI) limpia y sin contenido, con la barra lateral a la derecha, usando el argumento `position = "right"`.](imagenes/Shiny_ClearRight.png)
 
 `titlePanel` y `sidebarLayout` crea un diseño básico para la Shiny app, pero además se puede crear un diseño más avanzado. 
 Para esto es posible usar `navbarPage` para crear en la app una interfase de usuarios multi-páginas que incluye una barra 
@@ -125,9 +125,81 @@ Por ejemplo, creare un título de primer nivel que diga “Mi titulo” con `h1(
 
 Para agregar un elemento a tu app:
 
-- Pasar `pass h1("My title")` como un agumento a `titlePanel`, `sidebarPanel` o `mainPanel`.
-El texto aparecerá en el panel correspondiente de su página web. Ud. puede multiplicar los elemento en el mismo panel si los separa con una coma (**,**).
+- Pasar `h1("My title")` como un agumento a `titlePanel`, `sidebarPanel` o `mainPanel`.
+El texto aparecerá en el panel correspondiente de su página web. Ud. puede multiplicar los elemento en el mismo panel si los separa 
+con una coma (**,**).
 
-Practique con esto. El código siguiente usa todo los 6 nivel te títulos existentes. Actualice su ui.R o app.R para que produzaca resultados similares y reinicie la aplicación. Recuerde que es necesario reiniciar la Shiny app y eso se puede hacer con `runApp("MiAplicacion")`, haciendo click en el botón *Run App*, o usando las cambinaciones de teclas. 
+Practique con esto. El código siguiente usa todo los 6 nivel te títulos existentes. Actualice su _ui.R_ o _app.R_ para que produzca 
+resultados similares y reinicie la aplicación. Recuerde que es necesario reiniciar la Shiny app y eso se puede hacer con 
+`runApp("MiAplicacion")`, haciendo click en el botón *Run App*, o usando las cambinaciones de teclas. 
+
+Actualice ahora el código para usar los 6 niveles de títulos disponible. Actualice el archivo _ui.R_ o _app.R_ para que sea similar 
+al que se presenta a continuación. Recuerde reiniciar la Shiny app.
+
+```
+ui <- fluidPage(
+  titlePanel("Mi Shiny App"),
+  sidebarLayout(
+    sidebarPanel(),
+    mainPanel(
+      h1("Titulo de primer nivel"),
+      h2("Titulo de segundo nivel"),
+      h3("Titulo de tercer nivel"),
+      h4("Titulo de cuarto nivel"),
+      h5("Titulo de quinto nivel"),
+      h6("Titulo de sexto nivel")
+    )
+  )
+)
+```
+> **Atención**: En algunos casos, el incluir texto con tildes dentro de una Shiny app puede causar problemas con la forma en que se 
+> codifica el texto. Si le genera errores, trate removiendo los tildes.
+
+La Sihny app resultante debería ser similar a lo que se predenta en la Fig. 2.3.
+
+![Figura 2.3: Interfase de Usuario (UI) utilizando los 6 niveles de títulos (h1 a h6).](imagenes/Shiny_Titles.png)
+
+Los títulos pueden ser alineado utilizando el argumento `align`. En general, casi todos los atributos de identificadores HTML pueden ser 
+usados como argumento en un funcion de identificacion (tag) de Shiny.
+
+Si ud. no tiene familiaridad con los atributos de los identificadores HTML, puede verlos en algunas de los muchos recursos que
+existen en la red, por ejemplo [w3schools](http://www.w3schools.com/tags/tag_hn.asp){target=_-_new}.
+
+
+## Texto con formato
+
+Shiny ofrec muchsa funciones identificadoras para formatear texto. La forma más simple de enseñarlas es por medio de un ejemplo. 
+
+Copie el objeto `ui` en su archivo `ui.R` o `app.R` y guárdelo. Si tu Shiny app aun está corriendo, puede refrescar la página 
+web y debería mostrar los cambios. 
+
+``` 
+ui <- fluidPage(
+    titlePanel("Mi Shiny App"),
+    sidebarLayout(
+        sidebarPanel(),
+        mainPanel(
+            p("p() crea un párrafo de texto."),
+            p("El comando p() inicia un nuevo párrafo. Se puede entregar un atributo de estilo para cambiar el formato 
+              de todo el párrafo.", style = "font-family: 'times'; font-si16pt"),
+            strong("strong() hace el texto en negritas."),
+            em("em() crea un texto en cursiva (ej. énfasis)."),
+            br(),
+            code("code() despliega su texto en forma similar a un código de computador"),
+            div("div() crea segmentos de texto con un estilo similar. Esta sección del texto es azul porque se pasó 
+                agumento 'style = color:blue' a la función div()", style = "color:blue"),
+            br(),
+            p("span() hace lo mismo que div(), pero funciona con",
+              span("un grupo de palablas", style = "color:blue"),
+              "que están dentro del párrafo.")
+        )
+    )
+)
+```
+
+La Shiny app resultate con esta ui se puede ver en la fig. 2.4
+
+![Figura 2.4: Interfase de Usuario (UI) donde se muestran ejemplos de como formatear texto.](imagenes/Shiny_FormatText.png)
+
 
 
