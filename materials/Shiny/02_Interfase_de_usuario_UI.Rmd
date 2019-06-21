@@ -243,3 +243,33 @@ ui <- fluidPage(
 )
 ```
 ![Figura 2.5: Interfase de Usuario (UI) con una imgaen local en directorio _www_ y una remota en un servidor web.](imagenes/2.5_Shiny_Img.png)
+
+### Otros Identificadores (tags) de funciones
+
+En este capítulo cubrimos los identificadores de funciones Shiny más comunes y usados, pero existen mucho otros que pueden ser utilizados. Puede aprender sobre estos otros identificadores de funcioes en [Customize your UI with HTML](https://shiny.rstudio.com/articles/html-tags.html){target=_new} y en [Shiny HTML Tags Glosay](https://shiny.rstudio.com/articles/tag-glossary.html){target=_new}.
+
+## Actividad
+
+Cree una Shiny app utilizando lo que ha aprendido sobre el diseño de los paneles, HTML y funciones de imagen para crear una interfase de uruario atractiva. Vea cuando bien entiende estas funciones recreando la Shiny app que se presenta en la figura 2.6. Utilice los ejemplos con los que hemos trabajado durante el capítulo.
+
+![Figura 2.6: Imagen de la Shiny app objetivo para la actividad de aprendizaje-](imagenes/2.6_Actividad.png)
+
+La solución a este ejercicio se puede ver en este [archivo](./archivos/SolucionCapitulo2/app.R){target=_new}.
+
+
+
+## Resumen
+
+Con lo que aprendió en este capítulo ud. ahora debería poder:
+
+- Crear una _ui_ con `fluidPage`, `titlePanel` y `sidebarLayout`.
+- Crear un elemento HTML con alguna de las funciones identificadoras (tags) de Shiny.
+- Defiinr atributos identificadores de HTML en los argumento de cada función de identificación.
+- Agregar un elemento a tu página web pasándoselo a las funciones `titlePanel`, `sidebarPanel` o `mainPanel`.
+- Agregar múltiples elemento a cada panel al separarlos con una coma.
+- Usar la función `img()` para agregar imágenes existentes en la carpeta _www_ o en un servidor web a su aplicación Shiny app.
+
+Ahora que ya puede agrear contenido en su ui, ahora tenemos que ver como trabajar con contenido mas complejo, como complementos (_widgets_). Widgets son los elemento interactivos que el usuario manipula para controlar la aplicación.
+
+
+

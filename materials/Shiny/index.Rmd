@@ -222,7 +222,7 @@ runApp("my_app")
 
 Fíjese que esto es muy similar alas funciones *read.csv*, *read.table* y muchas otras en `R`. El primer argumento de la función runApp el el path al archivo desde el directorio de trabajo de la aplicación. El código asume que el directorio de la aplicación está en tu directorio de trabajo (generalmente definido con la función *setwd*). En este caso, el path es solo el nombre del directorio.
 
-## Su Turno
+## Actividad
 
 Cree un directorio que se llame MiAPlicacion. Luego copie y pegue el código de app.R que dejamos mas arriba en archivo app.R en su directorio (el código de *Hello Shiny*). 
 
