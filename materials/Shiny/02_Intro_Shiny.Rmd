@@ -1,0 +1,256 @@
+
+# Introducción
+
+En la página principal del paquete `Shiny` se puede leer "*Interactúa.* *Analiza.* *Comunica.* Toma una aproximación
+fresca e interactiva para contar tu historia de datos con Shiny. Deja a los usuarios interactuar con tus datos y
+análisis. Y hazlo todo con R".
+
+  ![Figura 2.1: Imagen de la página principal de shiny.rstudio.com.](imagenes/2.1_Shiny_Main.jpg)
+
+El principal atractivo del paquete `Shiny` que es hace muy fácil construir aplicaciones web interactivas, utilizando
+código R en forma simple y directa. Estas aplicaciones se pueden hospedar en servidores web en forma independiente
+o bien como parte de documentos generados con RMarkdown (esa es otra clase en la que estoy trabajando).
+
+Algunos ejemplos que yo he desarrollado son:
+
+1. Períodos de retorno de salmones de Alaska [Aquí](https://cornejo.shinyapps.io/ggjoy_Escapement/){target="_blank"} 
+1. Distribución de frecuencias de talla y edad de salmones de Alaska [Aquí](https://cornejo.shinyapps.io/shiny_asl-AgeLength/){target="_blank"} 
+1. Capturas artesanales en Chile (Aun en desarrollo) [Aquí](https://cornejo.shinyapps.io/CapturasArtesanales/){target="_blank"} 
+
+Existen muchas posibilidades y la [galeria](https://shiny.rstudio.com/gallery/see-more.html){target="_blank"}  en la página de Shiny es la mejor fuente de inspiración posible.
+
+En resumen, Shiny combina el poder computacional y simpleza de R con las capacidades interactivas de las páginas web modernas.
+
+
+## Objetivos
+
+En esta sección Ud. aprenderá:
+
+- Que es Shiny
+- Que cosas se pueden hacer con Shiny
+- Instalar Shiny en su computador
+- Crear su primera aplicación Shiny
+- Compartir su aplicación en la red
+
+
+## Bienvenido a Shiny
+
+Como ya se dijo, Shiny es un paquete de R que hacer muy fácil la implementación de aplicaciones web interactivas
+(apps) utilizando el lenguaje al que estamos acostumbrados en R. En esta sección vamos a comenzar a mostrar en que consisten estas aplicaciones, construiremos una y la pondremos en la red para que otras personas puedan verla y jugar con ella.
+
+Si por alguna razón aun no instalar el paquete **Shiny**, abra RStudio, conéctese a Internet y corra el código
+
+```
+install.packages("shiny")
+```
+
+Ejemplo de una aplicación básica.
+
+ ![Figura 2.2: Shiny Hello World app.](imagenes/2.2_hello.png)
+ 
+
+El paquete Shiny contiene 11 ejemplos pre-construidos que demuestran como trabaja Shiny y son auto-contenidos.
+
+El ejemplo "Hello Shiny" gráfica un histograma con el los datos de **R** del 
+[Viejo Fiel](https://es.wikipedia.org/wiki/Old_Faithful) e incluye una barra deslizable para definir el número de  
+intervalos del histograma, de esta forma, al interaccionar con la aplicación, el usuarios puede aumentar o disminuir
+el número de intervalos, moviendo con el puntero del mouse, la barra deslizable que se encuentra a la izquierda del
+gráfico y al aplicación responderá en forma inmediata a esta acción. 
+
+Vamos a usar una aplicación muy similar a esta para explorar la estructura de un Shiny cuando creemos nuestra primera app.
+
+Para ejecutar en su computador la app **Hello Shiny**, escriba:
+
+```
+library(shiny)
+runExample("01_hello")
+```
+
+
+## Primera aplicación
+
+Una aplicación `Shiny` básica puede estar contenida en un solo archivo llamado *app.R* en un *directorio*, que se deja un un directorio y esta puede ser ejecutada con **runApp("NombreDirectorio")**.
+
+El código dentro de *app.R* contiene tres secciones:
+
+1. El *objetivo* Interfase de Usuario (UI): Este objeto contiene los controles sobre el diseño y apariencia de la aplicación. 
+1. La función *Servidor*: Contiene las instrucciones que el computador necesita ejecutar para construir la aplicación.
+1. La llamada a la función *shinyApp*: Esta función crea los objetos *Shiny apps* desde el par UI/server.
+
+Para aplicaciones más complejas es recomendable crear archivos separados llamados `ui.R` y `serverR`. Además es posible incluir un archivo `global.R` donde se pueden incluir funciones creadas para la aplicación, manipular datos, etc.
+
+Una aspecto muy interesante de programar una aplicación en un archivo único, es la facilidad de este para ser compartido y ejecutado desde la consola R o lineas de comando.
+
+### UI
+
+Aquí esta el objeto `ui` del ejemplo **Hello Shiny**:
+
+```
+library(shiny)
+
+# Define UI for app that draws a histogram ----
+ui <- fluidPage(
+  # App title ----
+  titlePanel("Hello Shiny!"),
+
+  # Sidebar layout with input and output definitions ----
+  sidebarLayout(
+    # Sidebar panel for inputs ----
+    sidebarPanel(
+      # Input: Slider for the number of bins ----
+      sliderInput(inputId = "bins",
+                  label = "Number of bins:",
+                  min = 1,
+                  max = 50,
+                  value = 30)
+    ),
+
+    # Main panel for displaying outputs ----
+    mainPanel(
+      # Output: Histogram ----
+      plotOutput(outputId = "distPlot")
+    )
+  )
+)
+```
+De este código es posible identificar los componentes:
+
+1. **titlePanel** donde se define el título de la aplicación.
+
+2. **sidebarLayout** donde se definen los espacios que se utilizan para las entradas que hace el usuario y las generadas por la aplicación, en este caso un gráfico.
+
+2.1. **sidebarPanel**, esta definido como un subcomponente de **sideberLayout** y define la sección donde el usuario puede interactuar con la aplicación.
+
+2.1.1. **sliderInput** es una barra con la que se pueden definir el número de "bins" que usa el gráfico (que se crea en la sección **server** de la aplicación).
+
+2.2. **mainPanel** es es espacio donde se desplegaran los resultados, gráficos, tablas, etc.
+
+2.2.1 **plotOoutput** es una subsección de **mainPanel** done estamos definiendo que la salida es un gráfico.
+
+
+
+### Server 
+
+Aquí esta la función `server` del ejemplo **Hello Shiny** y es donde se define la lógica que se usar para generar, en esta caso, un histograma, considerando la entrada de número de barras, definida por la barra con la interactúa el usuario.
+
+```
+server <- function(input, output) {
+
+  # Histogram of the Old Faithful Geyser Data ----
+  # with requested number of bins
+  # This expression that generates a histogram is wrapped in a call
+  # to renderPlot to indicate that:
+  #
+  # 1. It is "reactive" and therefore should be automatically
+  #    re-executed when inputs (input$bins) change
+  # 2. Its output type is a plot
+  output$distPlot <- renderPlot({
+
+    x    <- faithful$waiting
+    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+
+    hist(x, breaks = bins, col = "#75AADB", border = "white",
+         xlab = "Waiting time to next eruption (in mins)",
+         main = "Histogram of waiting times")
+
+    })
+}
+
+```
+
+Al crear esta función se definen dos variables de entrada, *inputs* y *outputs*. Estos son las variables con las que la función **server** interactúa con el resto de la aplicación.
+
+En este ejemplo podemos identificar que tenemos en **output** almacenamos un gráfico en el objeto *disPlot* (que si ven en *ui* es lo que se despliega como resultado). Este gráfico fue construido definiendo:
+inputIds.
+
+1. **bins**: Es el número de barras a desplegar y define su número con *length.out* que toma la entrada de `input$bins`, que es definida en UI, en la sección *sidebarLayout*, donde la función sliderInput, tiene como primer argumento *infurtid = "bins"*, que el nombre al que se le da, para ser utilizado como una variable que puede ser pasada en otras secciones de la shiny app como `input$bins`.
+
+1. **hist**: Aquí se genera el histograma, utilizando el número **bins** como un variable que se le entrega al argumento *breaks* de la función hist, que hace el histograma.
+
+En resumen, la función **server** es muy simple, el código hace unos cálculos (i.e. bins) y luego hace un histograma con el número predefinido de barras y lo devuelve como un output llamado disPlot, que luego es desplegado en la sección mainPanel de la Interfase de Usuario (UI). 
+
+Ahora que tiene una mejor comprensión del funcionamiento, manipule algunos argumentos y vea los resultados, trate de ir entendiendo como funciona y que pasa cuando hace los cambios. 
+
+> Una aplicación Shiny tiene que comenzar con la carga de la librería Shiny (library(shiny)) y terminar con 
+> la llamada a shinyApp, de esta forma ud.
+> Recuerde que su sesión `R` estará ocupada mientras la aplicación Shiny esté corriendo, por lo que no podrá
+> ejecutar comando `R` mientras esta dure. R en este periodo esta monitoriando la app y ejecutando las reacciones
+> a los inputs del usuario.
+> Para recuperar la sesión de `R`, aprete la tecla 'Esc' o haga click en el botón **Stop** (se encuentra en la 
+> esquina superior izquierda del panel de la consola RStudio).
+
+```
+library(shiny)
+
+ui <- ... ## Definiciones d ela interfase de Usuario
+
+server <- ... ## Que es lo que hace la plicacion
+
+shinyApp(ui = ui, server = server) ## La ejecución de la Aplicación Shiny.
+
+```
+
+## Ejecutando ShinyApp
+
+Todas las aplicaciones Shiny tienen la misma estructura: un archivo **app.R** que contiene la ui y el servidor. Ud. puede crear un aplicación Shiny haciendo un nuevo directorio y guardando un archivo app.R adentro. Es recomendado que cada aplicación este siempre en su directorio propio. 
+
+Para ejecutar la aplicación, utilice la función *runApp* pasando el nombre del directorio donde esta contenido el archivo app.R, si el directorio se llama mi_aplicacion, entonces el código para ejecutarlo sería: 
+
+```
+library(shiny)
+runApp("my_app")
+```
+
+Fíjese que esto es muy similar alas funciones *read.csv*, *read.table* y muchas otras en `R`. El primer argumento de la función runApp el el path al archivo desde el directorio de trabajo de la aplicación. El código asume que el directorio de la aplicación está en tu directorio de trabajo (generalmente definido con la función *setwd*). En este caso, el path es solo el nombre del directorio.
+
+## Actividad
+
+Cree un directorio que se llame MiAPlicacion. Luego copie y pegue el código de app.R que dejamos mas arriba en archivo app.R en su directorio (el código de *Hello Shiny*). 
+
+Inicie su Shiny App ejecutando `runApp("MiAPlicacion")`, luego cierre la aplicaicon (aprete Esc) y haga algunos cambios:
+
+- Cambien el título de "Hello Shiny!" a "Hola Shiny!").
+- Define como el número mínimo para larra deslizable (slider bar) a 5.
+- Cambien el color del borde el histograma de *Banco* (white) a *naranjo* (orange) o cualquier otro color que ud. prefiera.
+
+Cuando esos 3 pasos esten listos, inicie su aplicación nuevamente. La nueva aplicacion ahora deberia tener los cambio que ud. acaba de realizar, de otra forma por favor verifique su código y pruebe otra vez. 
+
+![Figura 2.3: ShinyApp con modificaciones de formato. El color de los border es naranjo.](imagenes/2.3_MiAplicacion_modificada.png)
+
+Por defecto, las aplicaciones Shiny se muestran en un modo *normal*, como la imagen que se muestra mas arriba. Sin embargo es posible ejecutar las apliciones al lado del código, para eso hay que definir el model “showcase mode”.
+
+Si quieres utilizar el mode *showcase*, hay que incluir el argumendo *display.mode* indicando que sea showcase, de esta forma la lines de código quedaría `runApp("MiAplicacion", display.mode = "showcase")`.
+
+
+## Resumen
+
+Para crear una aplicación Shiny:
+
+1. Haga un directorio llamado MiAplicacion/ para su app.
+1. Guarde su archivo app.R dentro del directorio.
+1. Inicie la app con `runApp` o combinaciones de teclas de RStudio.
+1. Salga de la Shiny app apretando la tecla Escape.
+
+
+## Aun más
+
+La forma mas fácil de hacer sus propias Shiny App es basarse en otras que ya existan y utilizarlas como punto de partida. La [Galería de Shiny](https://shiny.rstudio.com/gallery/) tiene cientos de excelente ejemplos. Además la librería Shiny trae 11 ejemplos incluidos que puede llamar ejecutando las siguiente lineas de código.
+
+```
+runExample("01_hello")      # Histograma
+runExample("02_text")       # Tablas y data frames
+runExample("03_reactivity") # Una expresión reactiva
+runExample("04_mpg")        # Variables globales
+runExample("05_sliders")    # Barras deslizables
+runExample("06_tabsets")    # Paneles tabulados
+runExample("07_widgets")    # Texto de ayuda y botones de envío
+runExample("08_html")       # Shiny app basada en HTML
+runExample("09_upload")     # Herramienta para subir un archivo
+runExample("10_download")   # Herramienta para la descarga de archivo
+runExample("11_timer")      # Timer automático
+```
+
+Cada uno de estos ejemplo muestra algunas de las characterísticas mas útiles de Shiny y todas se despligan en el modo “showcase” para que pueda ver el código R.
+
+
+

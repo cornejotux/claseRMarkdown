@@ -49,10 +49,10 @@ ui <- fluidPage(
                )
   )
 ```
-La Shiny app creada con esta interfase de usuario resultante se puede ver la Figura 2.1.
+La Shiny app creada con esta interfase de usuario resultante se puede ver la Figura 3.1.
 
 
-![Figura 2.1: Interfase de Usuario (UI) limpia y sin contenido.](imagenes/2.1_Shiny_Clear.png)
+![Figura 3.1: Interfase de Usuario (UI) limpia y sin contenido.](imagenes/3.1_Shiny_Clear.png)
 
 `titlePanel` y `sidebarLayout` son dos de los elemento mas populares para agregar a `fluidPage`^[Recuerde que esta es la función que crea el espacio de la UI que se ajusta al tamaño del navegados del usuario.]. Esto crea la Shiny app básica con una barra lateral.
 
@@ -61,7 +61,7 @@ La Shiny app creada con esta interfase de usuario resultante se puede ver la Fig
 - Función `sidebarPanel` que define el espacio para la barra lateral.
 - Función `mainPanel` que define el espacio del panel principal. 
 
-La barra lateral aparecerá por defecto en el lago izquierdo de la aplicación. Esta se puede mover al lado derecho agregando a la función `sidebarLayout` el argumento `position = "right"`. Este código se puede ver a continuación y el resultado en la Figura 2.2.
+La barra lateral aparecerá por defecto en el lago izquierdo de la aplicación. Esta se puede mover al lado derecho agregando a la función `sidebarLayout` el argumento `position = "right"`. Este código se puede ver a continuación y el resultado en la Figura 3.2.
 
 ```
 ui <- fluidPage(
@@ -74,7 +74,7 @@ ui <- fluidPage(
   )
 ```
 
-![Figura 2.2: Interfase de Usuario (UI) limpia y sin contenido, con la barra lateral a la derecha, usando el argumento `position = "right"`.](imagenes/2.2_Shiny_ClearRight.png)
+![Figura 3.2: Interfase de Usuario (UI) limpia y sin contenido, con la barra lateral a la derecha, usando el argumento `position = "right"`.](imagenes/3.2_Shiny_ClearRight.png)
 
 `titlePanel` y `sidebarLayout` crea un diseño básico para la Shiny app, pero además se puede crear un diseño más avanzado. 
 Para esto es posible usar `navbarPage` para crear en la app una interfase de usuarios multi-páginas que incluye una barra 
@@ -157,9 +157,9 @@ ui <- fluidPage(
 > **Atención**: En algunos casos, el incluir texto con tildes dentro de una Shiny app puede causar problemas con la forma en que se 
 > codifica el texto. Si le genera errores, trate removiendo los tildes.
 
-La Sihny app resultante debería ser similar a lo que se predenta en la Fig. 2.3.
+La Sihny app resultante debería ser similar a lo que se predenta en la Fig. 3.3.
 
-![Figura 2.3: Interfase de Usuario (UI) utilizando los 6 niveles de títulos (h1 a h6).](imagenes/2.3_Shiny_Titles.png)
+![Figura 3.3: Interfase de Usuario (UI) utilizando los 6 niveles de títulos (h1 a h6).](imagenes/3.3_Shiny_Titles.png)
 
 Los títulos pueden ser alineado utilizando el argumento `align`. En general, casi todos los atributos de identificadores HTML pueden ser 
 usados como argumento en un funcion de identificacion (tag) de Shiny.
@@ -199,9 +199,9 @@ ui <- fluidPage(
 )
 ```
 
-La Shiny app resultate con esta ui se puede ver en la fig. 2.4
+La Shiny app resultate con esta ui se puede ver en la fig. 3.4
 
-![Figura 2.4: Interfase de Usuario (UI) donde se muestran ejemplos de como formatear texto.](imagenes/2.4_Shiny_FormatText.png)
+![Figura 3.4: Interfase de Usuario (UI) donde se muestran ejemplos de como formatear texto.](imagenes/3.4_Shiny_FormatText.png)
 
 ### Imágenes
 
@@ -242,7 +242,7 @@ ui <- fluidPage(
   )
 )
 ```
-![Figura 2.5: Interfase de Usuario (UI) con una imgaen local en directorio _www_ y una remota en un servidor web.](imagenes/2.5_Shiny_Img.png)
+![Figura 3.5: Interfase de Usuario (UI) con una imgaen local en directorio _www_ y una remota en un servidor web.](imagenes/3.5_Shiny_Img.png)
 
 ### Otros Identificadores (tags) de funciones
 
@@ -250,9 +250,9 @@ En este capítulo cubrimos los identificadores de funciones Shiny más comunes y
 
 ## Actividad
 
-Cree una Shiny app utilizando lo que ha aprendido sobre el diseño de los paneles, HTML y funciones de imagen para crear una interfase de uruario atractiva. Vea cuando bien entiende estas funciones recreando la Shiny app que se presenta en la figura 2.6. Utilice los ejemplos con los que hemos trabajado durante el capítulo.
+Cree una Shiny app utilizando lo que ha aprendido sobre el diseño de los paneles, HTML y funciones de imagen para crear una interfase de uruario atractiva. Vea cuando bien entiende estas funciones recreando la Shiny app que se presenta en la figura 3.6. Utilice los ejemplos con los que hemos trabajado durante el capítulo.
 
-![Figura 2.6: Imagen de la Shiny app objetivo para la actividad de aprendizaje-](imagenes/2.6_Actividad.png)
+![Figura 3.6: Imagen de la Shiny app objetivo para la actividad de aprendizaje-](imagenes/3.6_Actividad.png)
 
 La solución a este ejercicio se puede ver en este [archivo](./archivos/SolucionCapitulo2/app.R){target=_new}.
 
