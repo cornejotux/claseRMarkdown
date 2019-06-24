@@ -1,5 +1,5 @@
 
-# Introducción
+# Introducción a Shiny
 
 En la página principal del paquete `Shiny` se puede leer "*Interactúa.* *Analiza.* *Comunica.* Toma una aproximación
 fresca e interactiva para contar tu historia de datos con Shiny. Deja a los usuarios interactuar con tus datos y

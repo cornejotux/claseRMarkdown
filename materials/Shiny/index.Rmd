@@ -34,13 +34,75 @@ Uno de los principales con el trabajo en R es su complejidad, lo que a vez lo ha
 
 ## RStudio
 
-[](https://www.rstudio.com/wp-content/uploads/2019/03/RStudio-Logo-Blue-Gray-125.png) 
+![Logo de RStudio](https://www.rstudio.com/wp-content/uploads/2019/03/RStudio-Logo-Blue-Gray-125.png) 
 
-RStudio (IDE para R; Figura 1.2), es un software libre con licencia GPLv3 que también puede ser ejecutado sobre distintos sistemas operativos (Windows, Mac, o Linux). 
+RStudio (IDE para R; Fig. 1.2), es un software libre con licencia GPLv3 que también puede ser ejecutado sobre distintos sistemas operativos (Windows, Mac, o Linux). 
 
 La figura 1.2 muestra la vista típica del IDE Rstudio y sus cuatro paneles, donde se destaca en panel del editor de texto ( superior izquierdo), la consola R (panel inferior izquierdo), panel con las variables (superior derecho) y el navegador de archivos (panel inferior derecho).
 
 ![Figura 1.2: RStudio, IDE de R. Es la rueda que le faltaba a R para hacer el trabajo mas sencillo](imagenes/1.2_RStudio.png)
 
+Entre las muchas ventajas que tiene trabajar con _RStudio_ podemos destacar:
+
+- Permite tener en una misma ventana el código, gráficos, comandos de R, historial de comandos, variables, etc.
+- Se puede trabajar con multiples archivos a la vez.
+- Se puede ejecutar todo el código o solo parte de el con un click o combinacion de teclas. 
+- Muestra el workspace y lo objetos (varibles) que contiene.
+- Tiene un historial de los comando ejecutados. 
+- Tiene una ayuda integrada y facil de navegar.
+- Tiene un gestor de librería y packetes para instlar y cargar en el workspace.
+- Tiene un gestor de conecciones para bases de datos.
+- Contiene un gestor de desarrollo de librerias o packetes de R.
+- Tiene integración con [git](https://git-scm.com/){target=_new} y [GitHub](https://github.com/){target=_new}.
+- Navegador de archivos.
+- Visor de gráficos.
 
 
+## Instalación de packetes en RStudio
+
+Para instalar un nuevo paquete de R se pueden descargar desde CRAN utilizando la linea de comando (como se hace en R) o utiliznado la intergase gráfico que entrega RStudio.
+
+En el panel inferior derecho de la pantalla de Rstudio se encuentra la pestaña _Packages_ se da clic en esa pestaña y luego en Install y aparecerá una ventana donde podemos escribir las librerías que necesitamos. En el ejemplo en la figura 1.3 se va a instalar la libreria de Shiny, que es la que usarmes en el presente libro.
+
+![Figura 1.3: Administrador de instlacion de packetes de RStudio](imagenes/1.3_InstallPackages.png)
+
+## Proyecto en RStudio
+
+Una de los aspectos más útiles que a mi pareces tiene RStudio son los _Proyectos_ (Project en inglés). Esto es un conjutos de
+archivos, datos, variables, que quedan autocontenidos en el proyecto y hacen más fácil su administración y uso. 
+
+Cada vez que ud. inicia el trabajo en un nuevo tema, tópico o proyecto, es una muy buena práctica iniciarlo con la creacion de un nuevo proyecto, donde guardará sus archivos de código. Estos códigos son los que luego ud. usa para cargar datos, crear gráficos, producir tablar y exportar datos.
+
+Uno da los aspectos mas útiles que tiene la creación de un proyecto es que deja el directorio de trabajo (equivalente a
+a la funcion _setwd_) relativo a donde fue creado el proyecto. De esta forma se puede ahorrar escribir esos path largos antes
+de leer/escribir cada archivo. Además, los archivos de código que se generen en el proyecto, estarán siempre disponibles para consultarlos en cualquier momento que el usuario así lo desee. Para crear un proyecto, vamos a la pestaña superior derecha de Rstudio y damos clic en crear un proyecto (fig. 1.4).
+
+![Figura 1.4: Menú desplegable para la creación de un nuevo proyecto de RStudio.](imagenes/1.4_NewProject.png)
+
+## Editor de código
+
+Para iniciar el editor de texto, donde vamos a escribir el código necesario para crear nuestras aplicación Shiny más adelante, o
+realizar análisis estadísticos, crear gráficos, tablar, leer o exportar datos, se debe ir a Archivo (File) -> Nuevo Archivo (New File) -> R Script (RScrit). Fijese que RStudio es un IDE que puede trabajar con mucho otros lenguajes y convenciones (Fig. 1.5).
+
+![Figura 1.5: Creación de un archivo nuevo en RStudio](imagenes/1.5_NewFile.png)
+
+
+## Actividad
+
+- Cree un nuevo proyecto.
+- Dentro de este projecto cree un nuevo archivo que se llame _test.R_ 
+- Escriba un código para definir una matriz de 4x4 con datos al azar.
+- Ejecute este código linea por linea.
+- Guarde estos datos en un directio llamado datos.
+- Vea donde fueron creados estos datos utilizando el explorador de archivos de RStudio.
+- Revise el historias de RStudio
+
+
+## Resumen
+
+- Para crear un proyecto de RStudio abra el menu desplegable en el extremo superior derecho.
+- RStudio tiene multiples paneles con tabs que permiten ver mas informacion de la que se ve en un principio.
+- Los path son relativos de doned se crea el proyecto de RStudio.
+
+
+**Nota**: Parte de esta introducción se basa en el Capitulo I del curso desarrollado por [Marco A Gonzalez)(https://rstudio-pubs-static.s3.amazonaws.com/195980_3f4cd84bc3ca434daeec55c6c211d13e.html){target=_new} [@GonzalezTagle2016]
