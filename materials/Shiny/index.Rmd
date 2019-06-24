@@ -12,3 +12,11 @@ always_allow_html: yes
 ---
 
 
+
+# Introducción
+
+En la página principal del paquete `Shiny` se puede leer "*Interactúa.* *Analiza.* *Comunica.* Toma una aproximación
+fresca e interactiva para contar tu historia de datos con Shiny. Deja a los usuarios interactuar con tus datos y
+análisis. Y hazlo todo con R".
+
+  ![Figura 2.1: Imagen de la página principal de shiny.rstudio.com.](imagenes/2.1_Shiny_Main.jpg)
