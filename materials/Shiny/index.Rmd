@@ -12,11 +12,35 @@ always_allow_html: yes
 ---
 
 
-
 # Introducción
 
-En la página principal del paquete `Shiny` se puede leer "*Interactúa.* *Analiza.* *Comunica.* Toma una aproximación
-fresca e interactiva para contar tu historia de datos con Shiny. Deja a los usuarios interactuar con tus datos y
-análisis. Y hazlo todo con R".
+R es es un lenguage de programación gratuito, descarga e instalación muy sencilla. Solo hay que ir al sitio [CRAN](ttp://cran.r-project.org){taget=_new} (**C**omprehensive **R** **A**rchive **N**erwork) y descargarglo. Está siponible para Windows, MacOS y Linux. 
 
-  ![Figura 2.1: Imagen de la página principal de shiny.rstudio.com.](imagenes/2.1_Shiny_Main.jpg)
+R es un lenguaje ampliamente utilizado por la comunidad científica gracias a por su capacidad para realizar análisis estadísticos
+complejos, gráficas potentes y de calidad profesional (ej. [ggplot](https://ggplot2.tidyverse.org/){target=_new}) y a la 
+versatilidad para el manejo de datos, lo que en conjunto de ser una plataforma de software abierto, lo hacen especialmente 
+atractivo para la ciencia de datos y a la investigación reproducible, ya que no tiene formatos privados que podrian dejar de 
+ser soportados en el futuro. 
+
+Ahora, si ud. no conoce **R**, le sugiero que cierre este curso, porque aqui se parte de la base que tiene familiaridad con R, 
+puede realizar análisis, gráficos y manipulación de datos. 
+
+
+## Consola R
+
+![Figura 1.1: R es como trabajar con una rueda cuadrada.](imagenes/1.1_rueda.jpg)
+
+Uno de los principales con el trabajo en R es su complejidad, lo que a vez lo hace tan flexible, y lo poco amigable de su consola de trabajo. Sin embargo, la compañía [RStudio](http://www.rstudio.com){target=_new} ha hecho disniple un excelente entorno de desarrollo integrado (IDE) que hace su uso significativamente mas simple.
+
+## RStudio
+
+[](https://www.rstudio.com/wp-content/uploads/2019/03/RStudio-Logo-Blue-Gray-125.png) 
+
+RStudio (IDE para R; Figura 1.2), es un software libre con licencia GPLv3 que también puede ser ejecutado sobre distintos sistemas operativos (Windows, Mac, o Linux). 
+
+La figura 1.2 muestra la vista típica del IDE Rstudio y sus cuatro paneles, donde se destaca en panel del editor de texto ( superior izquierdo), la consola R (panel inferior izquierdo), panel con las variables (superior derecho) y el navegador de archivos (panel inferior derecho).
+
+![Figura 1.2: RStudio, IDE de R. Es la rueda que le faltaba a R para hacer el trabajo mas sencillo](imagenes/1.2_RStudio.png)
+
+
+
