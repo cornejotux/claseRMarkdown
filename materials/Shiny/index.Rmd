@@ -105,4 +105,4 @@ realizar análisis estadísticos, crear gráficos, tablar, leer o exportar datos
 - Los path son relativos de doned se crea el proyecto de RStudio.
 
 
-**Nota**: Parte de esta introducción se basa en el Capitulo I del curso desarrollado por [Marco A Gonzalez)(https://rstudio-pubs-static.s3.amazonaws.com/195980_3f4cd84bc3ca434daeec55c6c211d13e.html){target=_new} [@GonzalezTagle2016]
+**Nota**: Parte de esta introducción se basa en el Capitulo I del curso desarrollado por [Marco A Gonzalez](https://rstudio-pubs-static.s3.amazonaws.com/195980_3f4cd84bc3ca434daeec55c6c211d13e.html){target=_new} [@GonzalezTagle2016]

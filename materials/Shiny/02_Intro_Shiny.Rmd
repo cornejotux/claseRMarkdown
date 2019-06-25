@@ -22,6 +22,14 @@ Existen muchas posibilidades y la [galeria](https://shiny.rstudio.com/gallery/se
 En resumen, Shiny combina el poder computacional y simpleza de R con las capacidades interactivas de las páginas web modernas.
 
 
+_**Reconocimiento**_: Esta libro esta desarrollado utilizando blogdown y bookdown. Sigue el estilo del 
+ trabajo realizado para los talleres del [SASAP](https://alaskasalmonandpeople.org/){target="_blank"}  y 
+ [Arctic Data  Center](https://arcticdata.io/){target="_blank"}  de [NCEAS](https://www.nceas.ucsb.edu/){target="_blank"} . 
+ Aquí traduzco, compilo e integro materiales de múltiples fuentes, principalmente la página 
+ [https://shiny.rstudio.com/](https://shiny.rstudio.com/){target="_blank"}[@shinyL01].
+ 
+ 
+
 ## Objetivos
 
 En esta sección Ud. aprenderá:
