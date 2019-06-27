@@ -127,7 +127,7 @@ Por ejemplo, creare un título de primer nivel que diga “Mi titulo” con `h1(
 
 Para agregar un elemento a tu app:
 
-- Pasar `h1("My title")` como un agumento a `titlePanel`, `sidebarPanel` o `mainPanel`.
+- Pase `h1("My title")` como un agumento a `titlePanel`, `sidebarPanel` o `mainPanel`.
 El texto aparecerá en el panel correspondiente de su página web. Ud. puede multiplicar los elemento en el mismo panel si los separa 
 con una coma (**,**).
 
