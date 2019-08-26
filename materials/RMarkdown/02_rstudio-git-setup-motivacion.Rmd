@@ -1,22 +1,28 @@
+Antes de comenzar con el material para la investigación reproducible, es necesario que 
+aprendamos sobre algunas herramientas fundamentales, como son RStudio, Git/Github y con 
+posterioridad comenzaremos a trabajar con _RMarkDown_.
+
 # RStudio y Git/GitHub Configuración y Motivación
 
 ## Objetivos
 
-In this lesson, you will learn:
+En esta leccion Ud. aprenderá:
 
-- What computational reproducibility is and why it is useful
-- How version control can increase computational reproducibility
-- How to check to make sure your RStudio environment is set up properly for analysis
-- How to set up git
+- En que consiste la reproducibilidad computacional y por que es útil e importante. 
+- Cómo el control de versiones es fundamental para la reproducibilidad computacional.
+- Cómo verificar que el ambiente de RStudio esta configurado adecuadamente para el análisis.
+- Cómo configurar Git.
 
 ## Investigación reproducible
-Reproducibility is the hallmark of science, which is based on empirical observations 
-coupled with explanatory models.  While reproducibility encompasses 
-the full science lifecycle, and includes issues such as methodological consistency and
-treatment of bias, in this course we will focus on **computational reproducibility**: 
-the ability to document data, analyses, and models sufficiently for other researchers 
-to be able to understand and ideally re-execute the computations that led to 
-scientific results and conclusions.
+
+Las reproducibilidad es fundamental en la ciencia, que a su vez esta basad en observaciones empíricas, 
+sobre las cuales definimos modelos explicatorios.  
+Reproducibilidad por su parte, envuelve todo el ciclo de via de la ciencia, incluyendo aspectos como la 
+consistencia metodológica y el tratamiento del sesgo. En este curso nos vamos a enfocar en la 
+**reproducibilidad computacional**, esto entendido como la habilidad de documentar datos, análisis y 
+modelos con la suficiente informacion para que otros investigadores sean capaces de entender e
+idealmente ejecutar nuevamente, paso a paso, el procesos que llevó a producir los resultados y 
+concluciones científicas.
 
 ### ¿Qué es necesario para la reproducibilidad computacional?
 
