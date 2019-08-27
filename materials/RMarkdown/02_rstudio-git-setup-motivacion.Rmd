@@ -6,7 +6,7 @@ posterioridad comenzaremos a trabajar con _RMarkDown_.
 
 ## Objetivos
 
-En esta leccion Ud. aprenderá:
+En esta lección Ud. aprenderá:
 
 - En que consiste la reproducibilidad computacional y por que es útil e importante. 
 - Cómo el control de versiones es fundamental para la reproducibilidad computacional.
@@ -17,31 +17,35 @@ En esta leccion Ud. aprenderá:
 
 Las reproducibilidad es fundamental en la ciencia, que a su vez esta basad en observaciones empíricas, 
 sobre las cuales definimos modelos explicatorios.  
-Reproducibilidad por su parte, envuelve todo el ciclo de via de la ciencia, incluyendo aspectos como la 
+Reproducibilidad por su parte, envuelve todo el ciclo de vía de la ciencia, incluyendo aspectos como la 
 consistencia metodológica y el tratamiento del sesgo. En este curso nos vamos a enfocar en la 
 **reproducibilidad computacional**, esto entendido como la habilidad de documentar datos, análisis y 
-modelos con la suficiente informacion para que otros investigadores sean capaces de entender e
+modelos con la suficiente información para que otros investigadores sean capaces de entender e
 idealmente ejecutar nuevamente, paso a paso, el procesos que llevó a producir los resultados y 
-concluciones científicas.
+conclusiones científicas.
 
 ### ¿Qué es necesario para la reproducibilidad computacional?
 
-The first step towards addressing these issues is to be able to evaluate the data,
-analyses, and models on which conclusions are drawn.  Under current practice, 
-this can be difficult because data are typically unavailable, the method sections
-of papers do not detail the computational approaches used, and analyses and models
-are often conducted in graphical programs, or, when scripted analyses are employed,
-the code is not available.
+El primer paso para abordar este problema es ser capaz de evaluar los datos, 
+análisis y modelos con los que se sacan las conclusiones.  Considerando cuales son las 
+prácticas más comunes, esto resulta bastante difícil, dado que la generalidad de los 
+datos no se encuentran disponibles, la sección sobre la metodología no 
+describe en detalle las aproximaciones computacionales utilizadas, 
+los análisis y modelos son generalmente realizado en programas gráficos o, cuando 
+se usan ambientes tipo script, el código no está disponible.
 
-And yet, this is easily remedied.  Researchers can achieve computational 
-reproducibility through open science approaches, including straightforward steps 
-for archiving data and code openly along with the scientific workflows describing 
-the provenance of scientific results (e.g., @hampton_tao_2015, @munafo_manifesto_2017).
+Sin embargo todos estos inconvenientes podrían ser fácilmente remediados. 
+Los investigadores pueden obtener reproducibilidad computacional siguiendo 
+aproximaciones de _ciencia libre_ , incluyendo pasos simples y directos para 
+archivar y hacer disponible los datos y códigos, describiendo el flujo del trabajo
+que permita la trazabilidad o describir la procedencia de los
+resultados científicos (ej.:, @hampton_tao_2015, @munafo_manifesto_2017).
 
-### Conceptualizando flujos de trabajo (workflows)
+### Conceptualizando los flujos de trabajo (workflows)
 
-Scientific workflows encapsulate all of the steps from data acquisition, cleaning,
-transformation, integration, analysis, and visualization.  
+El flujo del trabajo científico encapsula todos los pasos desde la 
+adquisición de los datos, limpieza, transformación, integración, análisis y 
+visualización.  
 
 ```{r workflow, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Scientific workflows and provenance capture the multiple steps needed to reproduce a scientific result from raw data.'}
 knitr::include_graphics("images/workflow.png")
