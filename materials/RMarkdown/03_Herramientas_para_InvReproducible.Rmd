@@ -6,24 +6,28 @@
 
 ![](images/phd_comics_final.png)
 
-Every file in the scientific process changes.  Manuscripts are edited.
-Figures get revised.  Code gets fixed when problems are discovered.  Data files
-get combined together, then errors are fixed, and then they are split and 
-combined again. In the course of a single analysis, one can expect thousands of
-changes to files.  And yet, all we use to track this are simplistic *filenames*.  
-You might think there is a better way, and you'd be right: __version control__.
+Cada archivo en un proceso científico sufre de cambios. Los manuscritos son editados.
+Las figuras son revisadas. Los códigos se corrigen cuand se encuentran problemas. Los
+archivos de datos se combinan, errores son corregidos, se dividen y combinan nuevamente.
+En el curso de un análsisi simple, uno puede esperar miles de cambios en los ardhivos. 
+Y aún así, todo lo que usarmos para identificas este sinnúmero de cambios son los 
+simples **nombres de archivos**. Teniendo esto en consideración, es lógico pensar que 
+debe exisite una forma mejor... Y si la hay, se conoce como __Control de Versiones__.
 
-Version control systems help you track all of the changes to your files, without
-the spaghetti mess that ensues from simple file renaming.  In version control systems
-like `git`, the system tracks not just the name of the file, but also its contents,
-so that when contents change, it can tell you which pieces went where.  It tracks
-which version of a file a new version came from.  So its easy to draw a graph
-showing all of the versions of a file, like this one:
+Un sistemas de control de versiones ayuda a seguir todos lo cambos que se realizan a
+nuestros archivos, sin el desatre que resulta utilizando sólo el nombre de archivos.
+En los sistemas de control de versiones como `git`, el sistema registra no solo el 
+nombre del archivo, si no que ademas su contenido, de esta forma, cuando el contenido 
+cambia, permite identificar que partes estaban y donde. Registra además que versión de 
+un archivo viene de una versión previe, de esta forma se tiene un historial de todos
+los cambios. De esta forma es facil debujar un gráfico que muestre todos los cambios
+que ha sufrido un archivos, con todas sus versiones, algo como lo que se muetra en la 
+figura:
 
 ![](images/version-graph.png)
 
-Version control systems assign an identifier to every version of every file, and 
-track their relationships. They also allow branches in those versions, and merging
+Los sitemas de control de versiones asignan un identificados a cada version de cada 
+archivos y mantiene un registro de sus relaciones. They also allow branches in those versions, and merging
 those branches back into the main line of work.  They also support having 
 *multiple copies* on multiple computers for backup, and for collaboration.
 And finally, they let you tag particular versions, such that it is easy to return 

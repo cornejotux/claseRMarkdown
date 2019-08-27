@@ -20,19 +20,19 @@ y compartido por el grupo [SASAP](https://alaskasalmonandpeople.org/) del [NCEAS
 La reproducibilidad es fundamental en la ciencia, ya que la ciencia está basada en observaciones empíricas acopladas a modelos 
 explicativos. Si bien la reproducibilidad incluye el ciclo de vida completo de la ciencia y ademas incluye aspectos como la 
 consistencia metodológica y tratamiento del sesgo, en este curso nos enfocaremos a la **reproducibilidad computacional**, esto
-es la habilidad para documentar datos, analisos y modelos en forma suficiente para que otros investigadores sean capaces de 
+es la habilidad para documentar datos, análisis y modelos en forma suficiente para que otros investigadores sean capaces de 
 entender, reproducir y re-ejecutar los pasos computacionales que llevemos a los resultados científicos y sus conclusiones. 
 
 ## La crisis de reproducibilidad
 
 @ioannidis_why_2005 destacó la crisis en reproducilidad de la ciencia cuando escribió que "La mayoría de los 
-descubrimientos son falsos para la mayoria de los diseños de invetigación en la mayoría de las áreas de investigación" 
+descubrimientos son falsos para la mayoría de los diseños de investigación en la mayoría de las áreas de investigación" 
 (_"Most Research Findings Are False for Most Research Designs and for Most Fields"_). Ioannidis indica la formas en que 
 el proceso de investigación a inflado los efectos de los tamaños muestrales y los tests de hipótesis que codifican los 
 sesgos existentes. Investigación posteriores han confirmado que la reproducibilidad es baja a través de muchos campos, 
-incluyento genética [@ioannidis_repeatability_2009], ecología [@fraser_questionable_2018], y psicología
-[@open_science_collaboration_estimating_2015], enter otras. Por ejemplo, el efecto del tamaño de muestra en la psicología
-se ha mostrado que que decrese significativamente cuando se repiten los experimentos (\@ref(fig:effectsize)).
+incluyendo genética [@ioannidis_repeatability_2009], ecología [@fraser_questionable_2018], y psicología
+[@open_science_collaboration_estimating_2015], entre otras. Por ejemplo, el efecto del tamaño de muestra en la psicología
+se ha mostrado que decrece significativamente cuando se repiten los experimentos (\@ref(fig:effectsize)).
 
 #### Reconocimientos
 
