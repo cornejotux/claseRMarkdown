@@ -31,79 +31,86 @@ knitr::include_graphics("images/3.2_version-graph.png")
 ```
 
 Los sistemas de control de versiones asignan un identificador a cada versión de cada 
-archivo y mantiene un registro de como estan relacionados entre ellos. Además, estos
-permiten ramificaciones en esas versoines, permitiendo fusiones de esas ramificaciones
+archivo y mantiene un registro de como están relacionados entre ellos. Además, estos
+permiten ramificaciones en esas versiones, permitiendo fusiones de esas ramificaciones
 de regreso a la tronco principal de trabajo. sus relaciones. Estos sistemas permiten
-ademas tener *multiples copia* en multiples computadores como respaldos y para trabajar
+ademas tener *múltiples copias* en múltiples computadores como respaldos y para trabajar
 en colaboración. Finalmente, además se puede incluir etiquetas (tags) a versiones 
-en particular, de esta forma es fácil retornar a la versió que tenian los archivos 
+en particular, de esta forma es fácil retornar a la versión que tenían los archivos 
 cuando fueron etiquetados. Por ejemplo, la versión exacta de los datos, código y texto
-de un manuscrito que fue envado y que tiene la etiqueta `R2` en la figura \@ref(fig:figVersiones).
+de un manuscrito que fue enviado y que tiene la etiqueta `R2` en la figura \@ref(fig:figVersiones).
 
 ## Revisando el ambiente de RStudio
 
 ### Versión de R
 
-Vamos a usar `r R.version.string`, que puede ser descargada e instalada desde [CRAN](https://cran.rstudio.com). Para ver que versión tiene instaldas, ejecute este comando en la consola de RStudio:
+Vamos a usar `r R.version.string`, que puede ser descargada e instalada desde [CRAN](https://cran.rstudio.com). Para ver que versión tiene instalada, ejecute el siguiente comando en la consola de RStudio:
 
 ```
 R.version$version.string
 ```
 
-### RStudio Version
+### Versión de RStudio
 
-We will be using RStudio version 1.1.463 or later, which you can download and install [here](https://www.rstudio.com/products/rstudio/download/) To check your RStudio version, run the following in your RStudio console:
+Vamos a usar la versión de RStudio 1.2.1335 o posterior, la que se puede descargar e instalar [aquí](https://www.rstudio.com/products/rstudio/download/). Para verificar que versión de RStudio tiene instalada, ejecute el siguiente comando en la consola de RStudio:
 
 ```
 RStudio.Version()$version
 ```
 
-If the output of this does not say `1.1.463`, you should update your RStudio. Do this by selecting Help -> Check for Updates and follow the prompts.
+Si el resultado no dice `1.2.1335` (o es una version anterior), por favor actualice su RStudio. Esto lo puede hacer haciendo click en "Help -> Check for Updates" y siguiendo las indicaciones.
 
-### Package installation
+### Instalación de Paquetes de R
 
-Run the following lines to check that all of the packages we need for the training are installed on your computer.
+Ejecute las siguientes lineas para verificar que todos los paquetes necesarios para este curso están instalados en su computador.
 
 ```{r, eval = F}
 
 packages <- c("devtools", "dplyr", "DT", "ggplot2", "leaflet", "roxygen2", "tidyr")
 for (package in packages) { if (!(package %in% installed.packages())) { install.packages(package) } }
 
-rm(packages) #remove variables from workspace
+rm(packages) #Elimina los paquetes desde el entorno de trabajo
 
 ```
 
-If you haven't installed all of the packages, this will automatically start installing them. If they are installed, it won't do anything.
+Si hay algún paquete que no esté instalado, esto va a instalarlo automáticamente. Si ya 
+estuvieran  instalados, no hará nada.
 
-Next, create a new R Markdown (File -> New File -> R Markdown). If you have never made an R Markdown document before, a dialog box will pop up asking if you wish to install the required packages. Click yes.
+A continuación, cree un nuevo archivo de _R Markdown_ (File -> New File -> R Markdown). Si nunca 
+ha creado archivo R Markdown con anterioridad, aparecerá un diálogo preguntando si desea instalar los paquetes requeridos. Haga click en Yes.
 
 
-## Setting up git
+## Configurando git
 
-If you haven't already, go to [github.com](http://github.com) and create an account. If you haven't downloaded git already, you can download it [here](https://git-scm.com/downloads).
+Si no lo ha hecho ya, vaya a [github.com](http://github.com) y cree una cuenta. Si aun no ha bajado
+e instalado el software de git, descárgelo [aquí](https://git-scm.com/downloads) y proceda a su instalación.
 
-Before using git, you need to tell it who you are, also known as setting the global options. The only way to do this is through the command line. Newer versions of RStudio have a nice feature where you can open a terminal window in your RStudio session. Do this by selecting Tools -> Terminal -> New Terminal.
+Antes de usar _git_, tiene que decirle quien es Ud., para eso debemos establecer la opciones de 
+configuración globales (setting the global options). Lamentablemente, la única forma de hacer 
+esto es por medio de la linea de comando. La versión RStudio que tiene instalada (si es que siguió las instrucciones de este curso) tiene una característica muy útil, que le permite abrir una ventana de terminal en su sesión de RStudio. Haga esto seleccionando Tools -> Terminal -> New Terminal.
 
-A terminal tab should now be open where your console usually is. To set the global options, type the following into the command prompt, with your actual name, and press enter:
+Una pestaña de terminal debería abrirse donde se encuentra normalmente la consola de R. Para estableces las opciones de configuración global, escriba los siguiente comando en la pestaña del terminal, reemplazando "_Su Nombre_" por su nombre real y luego presione enter:
 
 ```
-git config --global user.name "Your Name"
+git config --global user.name "Su Nombre"
 ```
 
-Next, enter the following line, with the email address you used when you created your account on github.com:
+Luego escriba la siguiente linea, con su dirección de correo electrónico que usó cuando creó la cuenta en github.com:
 
 ```
-git config --global user.email "yourEmail@emaildomain.com"
+git config --global user.email "SuEmail@DominioEmail.cl"
 ```
 
-Note that these lines need to be run one at a time.
+Por favor note que estas lineas DEBEN ser ejecutada una a la vez.
 
-Finally, check to make sure everything looks correct by entering this line, which will return the options that you have set.
+Finalmente, para asegurarse que todo está correcto, escriba esta linea, que entrega las
+opciones que acaba de definir.
 
 ```
 git config --global --list
 ```
 
-### Note for Windows Users
+### Nota para Usuario de Windows
 
-If you get "command not found" (or similar) when you try these steps through the RStudio terminal tab, you may need to set the type of terminal that gets launched by RStudio. Under some git install senerios, the git executable may not be available to the default terminal type.
+Si obtienen el mensaje "comando no encontrado" ("command not found" o similar) cuando trate estos pasos en la pestaña del terminar de RStudio, puede ser que necesite definir  el tipo de terminal
+que abre RStudio. Bajo algunas instalaciones de git, puede darse que el ejecutable de git no funcione base el terminal que se abre por defecto.
