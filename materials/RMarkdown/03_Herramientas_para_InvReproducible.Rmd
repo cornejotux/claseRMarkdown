@@ -7,26 +7,26 @@
 ![](images/phd_comics_final.png)
 
 Cada archivo en un proceso científico sufre de cambios. Los manuscritos son editados.
-Las figuras son revisadas. Los códigos se corrigen cuand se encuentran problemas. Los
+Las figuras son revisadas. Los códigos se corrigen cuando se encuentran problemas. Los
 archivos de datos se combinan, errores son corregidos, se dividen y combinan nuevamente.
-En el curso de un análsisi simple, uno puede esperar miles de cambios en los ardhivos. 
-Y aún así, todo lo que usarmos para identificas este sinnúmero de cambios son los 
+En el curso de un análisis simple, uno puede esperar miles de cambios en los archivos. 
+Y aún así, todo lo que usamos para identificas este sinnúmero de cambios son los 
 simples **nombres de archivos**. Teniendo esto en consideración, es lógico pensar que 
-debe exisite una forma mejor... Y si la hay, se conoce como __Control de Versiones__.
+debe existir una forma mejor... Y si la hay, se conoce como __Control de Versiones__.
 
-Un sistemas de control de versiones ayuda a seguir todos lo cambos que se realizan a
-nuestros archivos, sin el desatre que resulta utilizando sólo el nombre de archivos.
+Un sistema de control de versiones ayuda a seguir todos lo cambios que se realizan a
+nuestros archivos, sin el desastre que resulta utilizando sólo el nombre de archivos.
 En los sistemas de control de versiones como `git`, el sistema registra no solo el 
 nombre del archivo, si no que ademas su contenido, de esta forma, cuando el contenido 
 cambia, permite identificar que partes estaban y donde. Registra además que versión de 
-un archivo viene de una versión previe, de esta forma se tiene un historial de todos
-los cambios. De esta forma es facil debujar un gráfico que muestre todos los cambios
-que ha sufrido un archivos, con todas sus versiones, algo como lo que se muetra en la 
+un archivo viene de una versión previa, de esta forma se tiene un historial de todos
+los cambios. De esta forma es fácil dibujar un gráfico que muestre todos los cambios
+que ha sufrido un archivos, con todas sus versiones, algo como lo que se muestra en la 
 figura:
 
 ![](images/version-graph.png)
 
-Los sitemas de control de versiones asignan un identificados a cada version de cada 
+Los sistemas de control de versiones asignan un identificados a cada versión de cada 
 archivos y mantiene un registro de sus relaciones. They also allow branches in those versions, and merging
 those branches back into the main line of work.  They also support having 
 *multiple copies* on multiple computers for backup, and for collaboration.
