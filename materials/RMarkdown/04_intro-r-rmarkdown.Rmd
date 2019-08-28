@@ -10,7 +10,9 @@
 
 ## Introducción y Motivación
 
-There is a vibrant community out there that is collectively developing increasingly easy to use and powerful open source programming tools. The changing landscape of programming is making learning how to code easier than it ever has been. Incorporating programming into analysis workflows not only makes science more efficient, but also more computationally reproducible. In this course, we will use the programming language R, and the accompanying integrated development environment (IDE) RStudio. R is a great language to learn for data-oriented programming because it is widely adopted, user-friendly, and (most importantly) open source!
+Existe una comunidad muy activa y que en forma colectiva esta desarrollando en forma
+cada vez herramientas de programación ed código abiermo mas faciles de usar y 
+potentes. The changing landscape of programming is making learning how to code easier than it ever has been. Incorporating programming into analysis workflows not only makes science more efficient, but also more computationally reproducible. In this course, we will use the programming language R, and the accompanying integrated development environment (IDE) RStudio. R is a great language to learn for data-oriented programming because it is widely adopted, user-friendly, and (most importantly) open source!
 
 So what is the difference between R and RStudio? Here is an analogy to start us off. **If you were a chef, R is a knife.** You have food to prepare, and the knife is one of the tools that you'll use to accomplish your task.
 

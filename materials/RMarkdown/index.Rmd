@@ -4,7 +4,7 @@ date: "Julio 11-15, 2019"
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
-    toc_depth: 2
+    toc_depth: 3
 documentclass: book
 bibliography: [book.bib]
 biblio-style: apalike
