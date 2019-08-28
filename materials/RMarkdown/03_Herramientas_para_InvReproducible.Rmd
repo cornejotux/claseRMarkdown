@@ -95,7 +95,7 @@ Una pestaña de terminal debería abrirse donde se encuentra normalmente la cons
 git config --global user.name "Su Nombre"
 ```
 
-Luego escriba la siguiente linea, con su dirección de correo electrónico que usó cuando creó la cuenta en github.com:
+Luego escriba la siguiente linea, con la dirección de correo electrónico que usó cuando creó la cuenta en github.com:
 
 ```
 git config --global user.email "SuEmail@DominioEmail.cl"
