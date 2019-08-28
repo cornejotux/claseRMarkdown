@@ -48,10 +48,10 @@ adquisición de los datos, limpieza, transformación, integración, análisis y
 visualización.  
 
 ```{r workflow, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de un flujo de trabajo científico y procedencia de múltiples pasos necesarios para reproducir un resultado científico desde los datos crudos.'}
-knitr::include_graphics("images/workflow.png")
+knitr::include_graphics("images/2.1_workflow.png")
 ```
 
-El flujo de trabajo puede variar desde simples diagramas de flujo (\@ref(fig:workflow))
+El flujo de trabajo puede variar desde simples diagramas de flujo (fig. \@ref(fig:workflow))
 a códigos totalmente ejecutables. Códigos de R y python son una forma literal de un flujo
 de trabajo, y cuando los investigadores publican versiones específicas de un código y
 de los datos utilizados esto permite la repetición en forma simple de sus 

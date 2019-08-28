@@ -4,14 +4,16 @@
 
 ### El problema con los nombres de archivos
 
-![](images/phd_comics_final.png)
+```{r finalDoc, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'El dilema de usar nombres como descriptor de versiones.'}
+knitr::include_graphics("images/3.1_phd_comics_final.png")
+```
 
 Cada archivo en un proceso científico sufre de cambios. Los manuscritos son editados.
 Las figuras son revisadas. Los códigos se corrigen cuando se encuentran problemas. Los
 archivos de datos se combinan, errores son corregidos, se dividen y combinan nuevamente.
 En el curso de un análisis simple, uno puede esperar miles de cambios en los archivos. 
 Y aún así, todo lo que usamos para identificas este sinnúmero de cambios son los 
-simples **nombres de archivos**. Teniendo esto en consideración, es lógico pensar que 
+simples **nombres de archivos** (fig. \@ref(fig:finalDoc)). Teniendo esto en consideración, es lógico pensar que 
 debe existir una forma mejor... Y si la hay, se conoce como __Control de Versiones__.
 
 Un sistema de control de versiones ayuda a seguir todos lo cambios que se realizan a
@@ -24,16 +26,19 @@ los cambios. De esta forma es fácil dibujar un gráfico que muestre todos los c
 que ha sufrido un archivos, con todas sus versiones, algo como lo que se muestra en la 
 figura:
 
-![](images/version-graph.png)
+```{r figVersiones, echo=FALSE, out.width = '40%', fig.align = 'center', fig.cap = 'Evolución de las versiones de un archivo.'}
+knitr::include_graphics("images/3.2_version-graph.png")
+```
 
-Los sistemas de control de versiones asignan un identificados a cada versión de cada 
-archivos y mantiene un registro de sus relaciones. They also allow branches in those versions, and merging
-those branches back into the main line of work.  They also support having 
-*multiple copies* on multiple computers for backup, and for collaboration.
-And finally, they let you tag particular versions, such that it is easy to return 
-to a set of files exactly as they were when you tagged them.  For example, the 
-exact versions of data, code, and narrative that were used when a manuscript was 
-submitted might be `R2` in the graph above.
+Los sistemas de control de versiones asignan un identificador a cada versión de cada 
+archivo y mantiene un registro de como estan relacionados entre ellos. Además, estos
+permiten ramificaciones en esas versoines, permitiendo fusiones de esas ramificaciones
+de regreso a la tronco principal de trabajo. sus relaciones. Estos sistemas permiten
+ademas tener *multiples copia* en multiples computadores como respaldos y para trabajar
+en colaboración. Finalmente, además se puede incluir etiquetas (tags) a versiones 
+en particular, de esta forma es fácil retornar a la versió que tenian los archivos 
+cuando fueron etiquetados. Por ejemplo, la versión exacta de los datos, código y texto
+de un manuscrito que fue envado y que tiene la etiqueta `R2` en la figura \@ref(fig:figVersiones).
 
 ## Revisando el ambiente de RStudio
 
