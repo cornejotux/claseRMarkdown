@@ -1,16 +1,14 @@
-# Introduction to R and RMarkdown
+# Introdución a R and RMarkdown
 
-## Learning Objectives
+## Objetivos
 
-In this lesson we will:
+- Orientarse en la interfase de RStudio
+- Trabajar en la consola de R
+- Explorar RMarkdown
+- Introduccion a las funciones básicas incluidas en R
+- Aprender como usar las páginas de ayuda
 
-- get oriented to the RStudio interface
-- work with R in the console
-- explore RMarkdown
-- be introduced to built-in R functions
-- learn to use the help pages
-
-## Introduction and Motivation
+## Introducción y Motivación
 
 There is a vibrant community out there that is collectively developing increasingly easy to use and powerful open source programming tools. The changing landscape of programming is making learning how to code easier than it ever has been. Incorporating programming into analysis workflows not only makes science more efficient, but also more computationally reproducible. In this course, we will use the programming language R, and the accompanying integrated development environment (IDE) RStudio. R is a great language to learn for data-oriented programming because it is widely adopted, user-friendly, and (most importantly) open source!
 
@@ -60,7 +58,9 @@ Other resources:
 
 Launch RStudio/R.
 
-![](images/RStudio_IDE.png)
+```{r RStudioIDE, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de la interfase de desarrollo de RStudio.'}
+knitr::include_graphics("images/4.1_RStudio_IDE.png")
+```
 
 Notice the default panes:
 
@@ -75,8 +75,9 @@ An important first question: **where are we?**
 
 If you've just opened RStudio for the first time, you'll be in your Home directory. This is noted by the `~/` at the top of the console. You can see too that the Files pane in the lower right shows what is in the Home directory where you are. You can navigate around within that Files pane and explore, but note that you won't change where you are: even as you click through you'll still be Home: `~/`. 
 
-![](images/RStudio_IDE_homedir.png)
-
+```{r RStudioIDEhomeDir, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Consola de R en la interfase de usuario de RStudio.'}
+knitr::include_graphics("images/4.2_RStudio_IDE_homedir.png")
+```
 
 OK let's go into the Console, where we interact with the live R process.
 
@@ -205,9 +206,9 @@ Implicit contract with the computer/scripting language: Computer will do tedious
 
 Remember that this is a language, not unsimilar to English! There are times you aren't understood -- it's going to happen. There are different ways this can happen. Sometimes you'll get an error. This is like someone saying 'What?' or 'Pardon'? Error messages can also be more useful, like when they say 'I didn't understand this specific part of what you said, I was expecting something else'. That is a great type of error message. Error messages are your friend. Google them (copy-and-paste!) to figure out what they mean. 
 
-<div style="width:400px">
-![](images/practicalDev_googleErrorMessage.jpg)
-</div>
+```{r googleError, echo=FALSE, out.width = '50%', fig.align = 'center', fig.cap = '.'}
+knitr::include_graphics("images/4.3_practicalDev_googleErrorMessage.jpg")
+```
 
 And also know that there are errors that can creep in more subtly, without an error message right away, when you are giving information that is understood, but not in the way you meant. Like if I'm telling a story about tables and you're picturing where you eat breakfast and I'm talking about data. This can leave me thinking I've gotten something across that the listener (or R) interpreted very differently. And as I continue telling my story you get more and more confused... So write clean code and check your work as you go to minimize these circumstances!
 
@@ -236,7 +237,9 @@ RStudio offers many handy [keyboard shortcuts](https://support.rstudio.com/hc/en
 ### Clearing the environment
 Now look at the objects in your environment (workspace) -- in the upper right pane. The workspace is where user-defined objects accumulate. 
 
-![](images/RStudio_IDE_env.png)
+```{r RStudioIDEenv, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de la interfase de desarrollo de RStudio con comando ejecutados.'}
+knitr::include_graphics("images/4.4_RStudio_IDE_env.png")
+```
 
 You can also get a listing of these objects with a few different R commands:
 
@@ -267,9 +270,10 @@ An RMarkdown file will allow us to weave markdown text with chunks of R code to 
 
 File -> New File -> RMarkdown... -> Document of output format HTML, OK.
 
-<div style="width:300px">
-![](images/rstudio_new-rmd-doc-html.png)
-</div>
+
+```{r RStudioNew, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de la interfase para la creación de un proyecto nuevo de RStudio.'}
+knitr::include_graphics("images/4.5_rstudio_new-rmd-doc-html.png")
+```
 
 You can give it a Title like "My Project". Then click OK. 
 
@@ -279,7 +283,10 @@ Let's have a look at this file — it's not blank; there is some initial text is
 
 - There are white and grey sections. R code is in grey sections, and other text is in white. 
 
-![](images/rmarkdown.png)
+```{r rmarkdown, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Imagen con el código fuente de un archivo RMarkdown.'}
+knitr::include_graphics("images/4.6_rmarkdown.png")
+```
+
 
 <br>
 
@@ -287,7 +294,10 @@ Let's go ahead and "Knit HTML" by clicking the blue yarn at the top of the RMark
 
 <br>
 
-![](images/rmarkdown_side_by_side.png)
+```{r rmarkdownSideSide, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Imagen con el código fuente y pagina resultante de un archivo RMarkdown.'}
+knitr::include_graphics("images/4.7_rmarkdown_side_by_side.png")
+```
+
 
 What do you notice between the two? 
 
