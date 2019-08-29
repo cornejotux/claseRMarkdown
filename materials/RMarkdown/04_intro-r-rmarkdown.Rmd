@@ -36,7 +36,7 @@ es posible preparar comida sin una cocina, es totalmente posible aprender y trab
 en R sin usar RStudio, eso no es lo que vamos hacer. Nosotros vamos a aprovechar los 
 beneficios de usar RStudio y aprenderemos R y RStudio al mismo tiempo.
 
-```{r rueda, echo=FALSE, out.width = '50%', fig.align = 'center', fig.cap = 'Consola de R en la interfase de usuario de RStudio.'}
+```{r rueda, echo=FALSE, out.width = '50%', fig.align = 'center', fig.cap = 'Usar R sin RStudio es como tener una rueda cuadrada. No tiene sentido.'}
 knitr::include_graphics("images/4.1_rueda.jpg")
 ```
 
@@ -60,9 +60,15 @@ patrones en un texto, calcular la media o mediana,  reorganizacr columnas en fil
 subset de datos, etc. Paso a paso, vamos a ir incrementando sus espectativas y aprenderán como 
 preguntar (en RStudio) y encontrar las _palabras_ que están buscando.
 
-### Rescursos
+### Recursos
 
-This lesson is a combination of excellent lessons by others. Huge thanks to Julie Lowndes for writing most of this content and letting us build on her material, which in turn was built on Jenny Bryan's materials. I definitely recommend reading through the original lessons and using them as reference:   
+Este curso es una traducción libre, modificada y adaptada, desde una combinaciñon de excelentes clases
+y materiales desarrollados por otros. Muchas gracias al Data Task Force de [NCEAS](http://www.nceas.ucsb.edu),
+en especial a Jeannette Clark, Jared Kibele, Matt Jones y yo) quienes desarrollaron la version original
+de este curso en Inglés. A  Julie Lowndes por escribir la mayoría del contenido del cual se basó el
+Data task Force y nos compartió el material para basarnos en su trabajo, el que a su vez está basado
+en el material de Jenny Bryan. Todo el material original sobre el cual está basado este curso está en inglés, 
+sin embargo les recomiendo darle una mirada y usarlo como referencia:
 
 [Julie Lowndes' Data Science Training for the Ocean Health Index](http://ohi-science.org/data-science-training/)
 
@@ -75,99 +81,124 @@ This lesson is a combination of excellent lessons by others. Huge thanks to Juli
 - [R basics, workspace and working directory, RStudio projects](http://stat545-ubc.github.io/block002_hello-r-workspace-wd-project.html)
 - [Basic care and feeding of data in R](http://stat545-ubc.github.io/block006_care-feeding-data.html)
 
-RStudio has great resources as well: 
+RStudio (también en inglés): 
 
 - [webinars](https://www.rstudio.com/resources/webinars/) 
 - [cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
 
-Finally, Hadley Wickham's book R for Data Science is a great resource to get more in depth. 
+Finalmente, el libro _R for Data Science_ por Hadley Wickham es un regurso genial para profundizar en estos temas.
 
--[R for Data Science](http://r4ds.had.co.nz/)
+- [R for Data Science](http://r4ds.had.co.nz/)
 
-Other resources:
+Otros recursos relacoiandos:
 
-- [LaTeX Equation Formatting](https://www.caam.rice.edu/~heinken/latex/symbols.pdf)
+- [Formate de ecuaciones en LaTeX](https://www.caam.rice.edu/~heinken/latex/symbols.pdf)
 - [Base R Cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/05/base-r.pdf)
 - [RMarkdown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
 - [MATLAB/R Translation Cheat Sheet](http://mathesaurus.sourceforge.net/octave-r.html)
 
 
-## R at the console
+## R en la consola
 
-Launch RStudio/R.
+Y ahora manos a la obra.
+
+Inicie RStudio/R.
+
 
 ```{r RStudioIDE, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de la interfase de desarrollo de RStudio.'}
 knitr::include_graphics("images/4.2_RStudio_IDE.png")
 ```
 
-Notice the default panes:
+Identifique los paneles que se abren por defecto:
 
-  * Console (entire left)
-  * Environment/History (tabbed in upper right)
-  * Files/Plots/Packages/Help (tabbed in lower right)
+  * Consola (Todo el espacio a la izquierda)
+  * Hambiente/Historial (Pestañas al lado superior derecho)
+  * Archivos/Gráficos/Paquetes/Ayuda (Pestañas al lado inferior derecho)
 
-FYI: you can change the default location of the panes, among many other things: [Customizing RStudio](https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio). 
+NOTA: Es posible cambiar la ubicación por defecto de los paneles, entre otra muchas
+cosas: [Configurando RStudio](https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio)
+(En inglés). 
 
+Una primera pregunta importante: **¿Dónde estamos?** 
 
-An important first question: **where are we?** 
-
-If you've just opened RStudio for the first time, you'll be in your Home directory. This is noted by the `~/` at the top of the console. You can see too that the Files pane in the lower right shows what is in the Home directory where you are. You can navigate around within that Files pane and explore, but note that you won't change where you are: even as you click through you'll still be Home: `~/`. 
+Si usted acaba de abrir RStudio por primera vez, se va a encontrar en el su directorio 
+Home o Mis Documentos en Windows. Esto se doneta por como `~/` en la barra superior de 
+la consola (destacado en rojo en la figura \@ref(fig:RStudioIDEhomeDir)). Es posible 
+ver tambien el panel de archivos en el lado inferior derecho, doned se muestra que esta 
+en el directorio Home. Usted puede nevegar con el explorador de archivos, pero note que 
+no es posible cambiar donde está: incluso cuando haga click el otros directorios, 
+la consola seguirá estando en el directorio Home: `~/`. 
 
 ```{r RStudioIDEhomeDir, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Consola de R en la interfase de usuario de RStudio.'}
 knitr::include_graphics("images/4.3_RStudio_IDE_homedir.png")
 ```
 
-OK let's go into the Console, where we interact with the live R process.
+OK vamos ahora a la consola, doned vamos interactuar con el proceso interactiva de R.
 
-We use R to calculate things for us, so let's do some simple math.
+Vamos a usar R para calcular algunas cosas. Primero hagamos algunos cálculos matemáticos
+simples.
 
 ```{r}
 3*4
 ```
 
-You can assign the value of that mathematic operation to a variable, or object, in R. You do this using the assignment operator, `<-`.
+Usted puede asignar un valos de una operación matemática a una variable u objeto en R. 
+Para esto se utiliza el operador de asignación `<-`.
 
-Make an assignment and then inspect the object you just created.
+Haga una asignación y luego inspeccion el objeto que aca de crear.
 
 ```{r}
 x <- 3 * 4
 x
 ```
-In my head I hear, e.g., "x gets 12".
 
-All R statements where you create objects -- "assignments" -- have this form: `objectName <- value`.  
+Esas operaciones yo las lego como "asocie el valor 12 a **x**".
 
-I'll write it in the console with a hash `#`, which is the way R comments so it won't be evaluated. 
+Todas las declaraciones en R donde usted crea objetos -- "assignaciones" -- tiene esta
+forma: `nombreObjeto <- valor`.  
+
+Voy a escribir ahora en la consola con el simbolo gato o hash `#`, que es la forma en 
+que R reconoce un texto como comentario y no lo evalúa.
+
 ```{r eval = FALSE}
-## objectName <- value
+## nombreBbjecto <- valor
 
-## This is also how you write notes in your code to explain what you are doing.
+## Esta es la forma en que se escriben textos en el código para explicar que es lo que 
+## se está haciendo.
 ```
 
-Object names cannot start with a digit and cannot contain certain other characters such as a comma or a space. You will be wise to adopt a [convention for demarcating words](http://en.wikipedia.org/wiki/Snake_case) in names.
+Los nombres de objetos en R no pueden comenzar con número o contener algunos caracteres 
+como son la coma "," o espacios en blanco. Es útil adoptar la [estándares de nomenclatura]
+(http://programacion.jias.es/2017/09/estandares-de-nomenclatura-snake-case-kebab-case-camel-case/)
+en los nombres de variables.
 
 ```{r}
-# i_use_snake_case
-# other.people.use.periods
-# evenOthersUseCamelCase
+# yo_uso_snake_case
+# otra.gente.usa.puntos
+# yOtrosUsanCamelCase
 ```
 
-Make an assignment
+Haciendo una asignación
+
 ```{r}
-this_is_a_really_long_name <- 2.5
+este_es_un_nombre_muy_largo <- 2.5
 ```
 
-To inspect this variable, instead of typing it, we can press the up arrow key and call your command history, with the most recent commands first. Let's do that, and then delete the assignment: 
+Para inspeccionar esta variable, en vez que escribirla completa, podemos apretar
+la flecha hacia arriba y llamar a nuestro historial de comandos, con los comandos
+más recientes primero. Ahora intente de hacer eso y luego borre la asignación (`<- 2.5`): 
 
 ```{r}
-this_is_a_really_long_name
+este_es_un_nombre_muy_largo
 ```
 
-Another way to inspect this variable is to begin typing `this_`...and RStudio will automagically have suggested completions for you that you can select by hitting the tab key, then press return. 
+Otra forma de inspeccionar esta variable es escribiendo el inicio `este_`... y luego
+presionando la techa _Tab_, de esta forma RStudio le va a ofrecer opciones, entre las que
+puede seleccionar apretanto return.
 
-One more:
+Y una más
 ```{r}
-science_rocks <- "yes it does!"
+la_ciencia_es_genial <- "Si lo es!!!"
 ```
 
 You can see that we can assign an object to be a word, not a number. In R, this is called a "string", and R knows it's a word and not a number because it has quotes `" "`. You can work with strings in your data in R pretty easily, thanks to the [`stringr`](http://stringr.tidyverse.org/) and [`tidytext`](https://github.com/juliasilge/tidytext#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools) packages. We won't talk about strings very much specifically, but know that R can handle text, and it can work with text and numbers together. 
