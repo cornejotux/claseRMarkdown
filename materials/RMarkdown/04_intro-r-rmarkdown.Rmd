@@ -12,11 +12,34 @@
 
 Existe una comunidad muy activa y que en forma colectiva esta desarrollando en forma
 cada vez herramientas de programación ed código abiermo mas faciles de usar y 
-potentes. The changing landscape of programming is making learning how to code easier than it ever has been. Incorporating programming into analysis workflows not only makes science more efficient, but also more computationally reproducible. In this course, we will use the programming language R, and the accompanying integrated development environment (IDE) RStudio. R is a great language to learn for data-oriented programming because it is widely adopted, user-friendly, and (most importantly) open source!
+potentes. El progreso actual en realcion a las herramients de programación permiten que 
+aprender a escribir códigos computacionales sea cada vez más facil. Incorporando la 
+programción a el procesos de análisis no solo hace que la ciencia sea más eficientes, 
+si no que además sea computacionalmente reproducible. En este curso, vamos a usar 
+el lenguaje de programa R y para esto usaresmos el Ambiente de Programación Integrada
+(integrated development environment o IDE) RStudio. R es un lenguaje ideal para aprenedr
+programación orientada al los datos, porque es ampliamente utilizada por la comunidad
+científica, es amigable con el usuario (user-friendly) y lo mas importante es de código
+abierto (open source). 
 
-So what is the difference between R and RStudio? Here is an analogy to start us off. **If you were a chef, R is a knife.** You have food to prepare, and the knife is one of the tools that you'll use to accomplish your task.
+Entonces, ¿cuales son las diferencias enter _R_ y _RStudio_? Aquí les presento una analogía como punto de partida. **Si usted fuera un chef, _R_ es un cuchillo.** Usted tiene comida para preparar y el cuchillo es una de las herramienas que va a usar para realizar esta tarea.
 
-And **if R were a knife, RStudio is the kitchen**. RStudio provides a place to do your work! Other tools, communication, community, it makes your life as a chef easier. RStudio makes your life as a researcher easier by bringing together other tools you need to do your work efficiently - like a file browser, data viewer, help pages, terminal, community, support, the list goes on. So it's not just the infrastructure (the user interface or IDE), although it is a great way to learn and interact with your variables, files, and interact directly with git. It's also data science philosophy, R packages, community, and more. So although you can prepare food without a kitchen and we could learn R without RStudio, that's not what we're going to do. We are going to take advantage of the great RStudio support, and learn R and RStudio together.
+Y **si _R_ es un cuchillo, entonces _RStudio_ es la cocina**. ¡RStudio le entrega el 
+lugar donde puede realizar todo su trabajo! Otras herramientas, comunicaciones, comunidad
+y hacer su vida como chef más facil. Ahora, como científico, RStudio hace su vida mas
+fácil, poniendo todas las herramienta que usted necesita en un mismo lugar, de esta 
+forma puede trabajar en forma más eficiente. Algunas de las herramientas que puede 
+encontrar son un nevagador de archivos, visor de datos, páginas de ayuda, terminal, 
+comunidad, soporte y la lista suma y sigue. De esta forma, se puede ver que es mucho 
+más que sálo una infraestructura (la interfase del usuario o IDE). Entonces, si bien
+es posible preparar comida sin una cocina, es totalmente posible aprender y trabajar
+en R sin usar RStudio, eso no es lo que vamos hacer. Nosotros vamos a aprovechar los 
+beneficios de usar RStudio y aprenderemos R y RStudio al mismo tiempo.
+
+```{r rueda, echo=FALSE, out.width = '50%', fig.align = 'center', fig.cap = 'Consola de R en la interfase de usuario de RStudio.'}
+knitr::include_graphics("images/4.1_rueda.jpg")
+```
+
 
 Something else to start us off is to mention that you are learning a new language here. It's an ongoing process, it takes time, you'll make mistakes, it can be frustrating, but it will be overwhelmingly awesome in the long run. We all speak at least one language; it's a similar process, really. And no matter how fluent you are, you'll always be learning, you'll be trying things in new contexts, learning words that mean the same as others, etc, just like everybody else. And just like any form of communication, there will be miscommunications that can be frustrating, but hands down we are all better off because of it. 
 
@@ -61,7 +84,7 @@ Other resources:
 Launch RStudio/R.
 
 ```{r RStudioIDE, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de la interfase de desarrollo de RStudio.'}
-knitr::include_graphics("images/4.1_RStudio_IDE.png")
+knitr::include_graphics("images/4.2_RStudio_IDE.png")
 ```
 
 Notice the default panes:
@@ -78,7 +101,7 @@ An important first question: **where are we?**
 If you've just opened RStudio for the first time, you'll be in your Home directory. This is noted by the `~/` at the top of the console. You can see too that the Files pane in the lower right shows what is in the Home directory where you are. You can navigate around within that Files pane and explore, but note that you won't change where you are: even as you click through you'll still be Home: `~/`. 
 
 ```{r RStudioIDEhomeDir, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Consola de R en la interfase de usuario de RStudio.'}
-knitr::include_graphics("images/4.2_RStudio_IDE_homedir.png")
+knitr::include_graphics("images/4.3_RStudio_IDE_homedir.png")
 ```
 
 OK let's go into the Console, where we interact with the live R process.
@@ -209,7 +232,7 @@ Implicit contract with the computer/scripting language: Computer will do tedious
 Remember that this is a language, not unsimilar to English! There are times you aren't understood -- it's going to happen. There are different ways this can happen. Sometimes you'll get an error. This is like someone saying 'What?' or 'Pardon'? Error messages can also be more useful, like when they say 'I didn't understand this specific part of what you said, I was expecting something else'. That is a great type of error message. Error messages are your friend. Google them (copy-and-paste!) to figure out what they mean. 
 
 ```{r googleError, echo=FALSE, out.width = '50%', fig.align = 'center', fig.cap = '.'}
-knitr::include_graphics("images/4.3_practicalDev_googleErrorMessage.jpg")
+knitr::include_graphics("images/4.4_practicalDev_googleErrorMessage.jpg")
 ```
 
 And also know that there are errors that can creep in more subtly, without an error message right away, when you are giving information that is understood, but not in the way you meant. Like if I'm telling a story about tables and you're picturing where you eat breakfast and I'm talking about data. This can leave me thinking I've gotten something across that the listener (or R) interpreted very differently. And as I continue telling my story you get more and more confused... So write clean code and check your work as you go to minimize these circumstances!
@@ -240,7 +263,7 @@ RStudio offers many handy [keyboard shortcuts](https://support.rstudio.com/hc/en
 Now look at the objects in your environment (workspace) -- in the upper right pane. The workspace is where user-defined objects accumulate. 
 
 ```{r RStudioIDEenv, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de la interfase de desarrollo de RStudio con comando ejecutados.'}
-knitr::include_graphics("images/4.4_RStudio_IDE_env.png")
+knitr::include_graphics("images/4.5_RStudio_IDE_env.png")
 ```
 
 You can also get a listing of these objects with a few different R commands:
@@ -274,7 +297,7 @@ File -> New File -> RMarkdown... -> Document of output format HTML, OK.
 
 
 ```{r RStudioNew, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de la interfase para la creación de un proyecto nuevo de RStudio.'}
-knitr::include_graphics("images/4.5_rstudio_new-rmd-doc-html.png")
+knitr::include_graphics("images/4.6_rstudio_new-rmd-doc-html.png")
 ```
 
 You can give it a Title like "My Project". Then click OK. 
@@ -286,7 +309,7 @@ Let's have a look at this file — it's not blank; there is some initial text is
 - There are white and grey sections. R code is in grey sections, and other text is in white. 
 
 ```{r rmarkdown, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Imagen con el código fuente de un archivo RMarkdown.'}
-knitr::include_graphics("images/4.6_rmarkdown.png")
+knitr::include_graphics("images/4.7_rmarkdown.png")
 ```
 
 
@@ -297,7 +320,7 @@ Let's go ahead and "Knit HTML" by clicking the blue yarn at the top of the RMark
 <br>
 
 ```{r rmarkdownSideSide, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Imagen con el código fuente y pagina resultante de un archivo RMarkdown.'}
-knitr::include_graphics("images/4.7_rmarkdown_side_by_side.png")
+knitr::include_graphics("images/4.8_rmarkdown_side_by_side.png")
 ```
 
 
