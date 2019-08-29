@@ -40,14 +40,27 @@ beneficios de usar RStudio y aprenderemos R y RStudio al mismo tiempo.
 knitr::include_graphics("images/4.1_rueda.jpg")
 ```
 
+Algo para tener en cuenta que es vamos a aprender un nuevo leguage (de programación). Este es un proceso, 
+toma tiempo, se cometerán errores, puede resultar frustrante, pero a largo plazo va a 
+ser genial. Todos hablamos a lo menos un lenguaje; este es un proceso siimlar, de verdad.
+Y no importa cuan fluido seas en tu lengua materna, siempre se aprende algo nuevo, se tratan
+cosas en un nuevo contexto, se aprenden sinónimos, o que significal algo diferente en otro pais,
+etc. Y como cualquier otra forma de comunicacion, se producirán malos entendidos que serán
+frustrantes, pero a la largo, todos terminamos siendo mejores producto de ellos.
 
-Something else to start us off is to mention that you are learning a new language here. It's an ongoing process, it takes time, you'll make mistakes, it can be frustrating, but it will be overwhelmingly awesome in the long run. We all speak at least one language; it's a similar process, really. And no matter how fluent you are, you'll always be learning, you'll be trying things in new contexts, learning words that mean the same as others, etc, just like everybody else. And just like any form of communication, there will be miscommunications that can be frustrating, but hands down we are all better off because of it. 
+Así como un lenguales es un concepto familia, lenguages de programación existen en un contexto 
+diferente de los lenguases hablados, pero vamos a llegar a conocer este contexto con el tiempo.
+Por ejemplo: tenemos un concepto que es la primera comida del día y tenemos un nombre para eso:
+en español esa palabra es "desayuno". Si usted aprende inglés, puede esperar que exista una
+palabra para expresar este concepto de la primera comida (esa palabra es "breakfast"). **Vamos 
+a llegar al punto en que usted va a esperar la existencia de cierta palabras en un el lenguaje 
+de programación (llamados funciones en R) que representen conceptos**. Pronto, usted va a 
+esperar que exista una forma de ordenar valores en forma numérica o alfabética, para buscar 
+patrones en un texto, calcular la media o mediana,  reorganizacr columnas en fila, extraer un 
+subset de datos, etc. Paso a paso, vamos a ir incrementando sus espectativas y aprenderán como 
+preguntar (en RStudio) y encontrar las _palabras_ que están buscando.
 
-While language is a familiar concept, programming languages are in a different context from spoken languages, but you will get to know this context with time. For example: you have a concept that there is a first meal of the day, and there is a name for that: in English it's "breakfast". So if you're learning Spanish, you could expect there is a word for this concept of a first meal. (And you'd be right: 'desayuno'). **We will get you to expect that programming languages also have words (called functions in R) for concepts as well**. You'll soon expect that there is a way to order values numerically. Or alphabetically. Or search for patterns in text. Or calculate the median. Or reorganize columns to rows. Or subset exactly what you want. We will get you increase your expectations and learn to ask and find what you're looking for.
-
-
-
-### Resources
+### Rescursos
 
 This lesson is a combination of excellent lessons by others. Huge thanks to Julie Lowndes for writing most of this content and letting us build on her material, which in turn was built on Jenny Bryan's materials. I definitely recommend reading through the original lessons and using them as reference:   
 
