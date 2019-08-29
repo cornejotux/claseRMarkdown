@@ -201,75 +201,93 @@ Y una más
 la_ciencia_es_genial <- "Si lo es!!!"
 ```
 
-You can see that we can assign an object to be a word, not a number. In R, this is called a "string", and R knows it's a word and not a number because it has quotes `" "`. You can work with strings in your data in R pretty easily, thanks to the [`stringr`](http://stringr.tidyverse.org/) and [`tidytext`](https://github.com/juliasilge/tidytext#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools) packages. We won't talk about strings very much specifically, but know that R can handle text, and it can work with text and numbers together. 
+De esta forma, usted puede que que es posible hacer asignaciones de palabras
+y no solo número. En R, un objetito compuesto por palabras se conoce como 
+"string" y R reconoce que esto es una palabra y no a número porque estan en 
+comillas `" "`. Usted puede trabajar R con datos con strings en una forma muy
+simple gracias a los paquete [`stringr`](http://stringr.tidyverse.org/) y  [`tidytext`](https://github.com/juliasilge/tidytext#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools).
+No vamos a hablar mucho de string, pero por ahora recuerde que R puede
+manejar texto y que puede trabajar con texto y con números en forma combinada.
 
-Strings and numbers lead us to an important concept in programming: that there are different "classes" or types of objects. An object is a variable, function, data structure, or method that you have written to your environment. You can see what objects you have loaded by looking in the "environment" pane in RStudio. The operations you can do with an object will depend on what type of object it is. This makes sense! Just like you wouldn't do certain things with your car (like use it to eat soup), you won't do certain operations with character objects (strings), for example.
+El hablar de strings y números nos lleva a abordar un concepto muy imporante en programación: 
+las diferentes _clases_  o _tipos de objetos_. Un objeto es una variable, una función, 
+una estructura de datos, un método que haya escrito en nu ambiente de desarrollo.
+Usted puede ver que objetivos estan cargados mirando el panel del ambiente (Environment)
+en RStudio. Las opracoin que se pueden hacer con un objeto van a depender del tipo
+de objeto que es. ¡¡Esto tiene mucho sentido!! Por ejemplo, no es posible hacer operaciones
+matemáticas con un objeto de caractes (string).
 
-Try running the following line in your console:
+Trate de ejecutar lo siguiente en la linea de comandos de su consola:
 
 ```{r, eval = F}
-"Hello world!" * 3
+"Hola mundo!" * 3
 ```
 
-What happened? Why?
+¿Qué pasó? ¿Por qué?
 
-
-
-
-You may have noticed that when assigning a value to an object, R does not print anything. You can force R to print the value by using parentheses or by typing the object name:
+Usted deberia haber notado que cuando se asigna un valor a un objeto,
+R no imprime el valor por pantalla. Se puede forzar a R a imprimir por 
+pantalla poniendo un parentesis en la asignacion del valor o escribiendo
+el nombre del objeto:
 
 ```{r, purl=FALSE}
-weight_kg <- 55    # doesn't print anything
-(weight_kg <- 55)  # but putting parenthesis around the call prints the value of `weight_kg`
-weight_kg          # and so does typing the name of the object
+peso_kg <- 55    # doesn't print anything
+(peso_kg <- 55)  # but putting parenthesis around the call prints the value of `weight_kg`
+peso_kg          # and so does typing the name of the object
 ```
 
-Now that R has `weight_kg` in memory, we can do arithmetic with it. For
-instance, we may want to convert this weight into pounds (weight in pounds is 2.2 times the weight in kg):
+Ahora que R tiene `peso_kg` en la memoria, podemos utilizar la variable para 
+hacer operaciones aritméticas. Por ejemplo, podemos quere convertis este peso
+a libras (pero en libras es 2.2 veces el peso en kilogramos):
 
 ```{r}
-2.2 * weight_kg
+2.2 * peso_kg
 ```
 
-We can also change a variable's value by assigning it a new one:
+También es posible cambiar el valor de la variable asignando una nuevo:
 
 ```{r}
-weight_kg <- 57.5
-2.2 * weight_kg
+peso_kg <- 57.5
+2.2 * peso_kg
 ```
 
-This means that assigning a value to one variable does not change the values of
-other variables.  For example, let's store the animal's weight in pounds in a new
-variable, `weight_lb`:
+Esto significa que al asignar el valor a una varieble, esto no cambia el valor de 
+otras variables. Por ejemplo, asignemos el valor del peso del animal en libras a una
+nueva variable, `peso_lb`:
 
 ```{r}
-weight_lb <- 2.2 * weight_kg
+peso_lb <- 2.2 * peso_kg
 ```
 
-and then change `weight_kg` to 100.
+y ahora cambiemos `peso_kg` a 100.
 
 ```{r}
-weight_kg <- 100
+peso_kg <- 100
 ```
 
-What do you think is the current content of the object `weight_lb`? 126.5 or 220? Why?
+¿Cuál cree que es el valor ahora del objeto `peso_lb`? ¿126.5 o 220? ¿Por qué?
 
-You can also store more than one value in a single object. Storing a series of weights in a single object is a convenient way to perform the same operation on multiple values at the same time. One way to create such an object is the function `c()`, which stands for combine or concatenate.
+Usted puede tambien almacenar más de un valor en un único objeto. Almacenar
+una series de pesos en un solo objeto es una forma muy conveniente de desarrollar
+un misma operacion en multiples valores al mismo tiempo. Una forma de create 
+un objeto como este es con la función `c()`, la que se refiere a la acción de 
+_combinar_ o _concatenar_.
 
-Here we will create a _vector_ of weights in kilograms, and convert them to pounds, saving the weight in pounds as a new object.
+Aquí vamos a crear un _vector_ de pesos en kilogramos y vamos a convertirlos 
+todos a libras, asignando el peso en libras a un nuevo objeto.
 
 ```{r}
-weight_kg <- c(55, 25, 12)
-weight_kg
+peso_kg <- c(55, 25, 12)
+peso_kg
 ```
 
 ```{r}
-weight_lb <- weight_kg * 2.2
-weight_lb
+peso_lb <- peso_kg * 2.2
+peso_lb
 ```
 
 
-### Error messages are your friends
+### Los mensajes de arror son tus amigo
 
 Implicit contract with the computer/scripting language: Computer will do tedious computation for you. In return, you will be completely precise in your instructions. Typos matter. Case matters. Pay attention to how you type.
 
