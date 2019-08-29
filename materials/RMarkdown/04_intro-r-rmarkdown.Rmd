@@ -232,7 +232,7 @@ el nombre del objeto:
 
 ```{r, purl=FALSE}
 peso_kg <- 55    # doesn't print anything
-(peso_kg <- 55)  # but putting parenthesis around the call prints the value of `weight_kg`
+(peso_kg <- 55)  # but putting parenthesis around the call prints the value of `peso_kg`
 peso_kg          # and so does typing the name of the object
 ```
 
@@ -310,9 +310,9 @@ A moment about **logical operators and expressions**. We can ask questions about
 - `<=` means ` is less than or equal to'
 - `>=` means ` is greater than or equal to'
 ```{r}
-weight_kg == 2
-weight_kg >= 30
-weight_kg != 5
+peso_kg == 2
+peso_kg >= 30
+peso_kg != 5
 ```
 
 > Shortcuts
@@ -335,10 +335,10 @@ objects()
 ls()
 ```
 
-If you want to remove the object named `weight_kg`, you can do this:
+If you want to remove the object named `peso_kg`, you can do this:
 
 ```{r}
-rm(weight_kg)
+rm(peso_kg)
 ```
 
 To remove everything:
@@ -471,13 +471,13 @@ To take a very simple example, let's look at the `mean()` function. As you might
 Let's create our vector of weights again:
 
 ```{r}
-weight_kg <- c(55, 25, 12)
+peso_kg <- c(55, 25, 12)
 ```
 
 and use the `mean` function to calculate the mean weight.
 
 ```{r}
-mean(weight_kg)
+mean(peso_kg)
 ```
 
 ### Getting help
