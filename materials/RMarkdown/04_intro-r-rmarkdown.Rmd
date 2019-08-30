@@ -1,25 +1,25 @@
-# Introdución a R and RMarkdown
+# Introducción a R y RMarkdown
 
 ## Objetivos
 
 - Orientarse en la interfase de RStudio
 - Trabajar en la consola de R
 - Explorar RMarkdown
-- Introduccion a las funciones básicas incluidas en R
+- Introducción a las funciones básicas incluidas en R
 - Aprender como usar las páginas de ayuda
 
 ## Introducción y Motivación
 
 Existe una comunidad muy activa y que en forma colectiva esta desarrollando en forma
-cada vez herramientas de programación ed código abiermo mas faciles de usar y 
-potentes. El progreso actual en realcion a las herramients de programación permiten que 
-aprender a escribir códigos computacionales sea cada vez más facil. Incorporando la 
-programción a el procesos de análisis no solo hace que la ciencia sea más eficientes, 
+cada vez herramientas de programación de código abierto mas fáciles de usar y 
+potentes. El progreso actual en relación a las herramientas de programación permiten que 
+aprender a escribir códigos computacionales sea cada vez más fácil. Incorporando la 
+programación a el procesos de análisis no solo hace que la ciencia sea más eficientes, 
 si no que además sea computacionalmente reproducible. En este curso, vamos a usar 
-el lenguaje de programa R y para esto usaresmos el Ambiente de Programación Integrada
-(integrated development environment o IDE) RStudio. R es un lenguaje ideal para aprenedr
+el lenguaje de programa R y para esto usaremos el Ambiente de Programación Integrada
+(integrated development environment o IDE) RStudio. R es un lenguaje ideal para aprender
 programación orientada al los datos, porque es ampliamente utilizada por la comunidad
-científica, es amigable con el usuario (user-friendly) y lo mas importante es de código
+científica, es amigable con el usuario (user-friendly) y lo más importante es de código
 abierto (open source). 
 
 Entonces, ¿cuales son las diferencias enter _R_ y _RStudio_? Aquí les presento una analogía como punto de partida. **Si usted fuera un chef, _R_ es un cuchillo.** Usted tiene comida para preparar y el cuchillo es una de las herramienas que va a usar para realizar esta tarea.
@@ -287,11 +287,21 @@ peso_lb
 ```
 
 
-### Los mensajes de arror son tus amigo
+### Los mensajes de error son sus amigos
 
-Implicit contract with the computer/scripting language: Computer will do tedious computation for you. In return, you will be completely precise in your instructions. Typos matter. Case matters. Pay attention to how you type.
+Contrato implícito con el lenguage de computador/codificación: Un computador hará todas 
+las computaciones tediosas por usted. Usted tiene que ser completamente explícito 
+y preciso son sus instrucciones. Errores ortográficos importan. Mayúsculas importan.
+¡Tiene que poner antención a como escribre!
 
-Remember that this is a language, not unsimilar to English! There are times you aren't understood -- it's going to happen. There are different ways this can happen. Sometimes you'll get an error. This is like someone saying 'What?' or 'Pardon'? Error messages can also be more useful, like when they say 'I didn't understand this specific part of what you said, I was expecting something else'. That is a great type of error message. Error messages are your friend. Google them (copy-and-paste!) to figure out what they mean. 
+Recuerde que este es un leguage, no demasido distanto al español!. Hay tiempos en los
+que la gente no entiende lo que usted dice -- Eso pasa y va a pasar nuevamente y hay 
+diferentes formas en que esto puede pasar. Algunas  veces se obtendrá un error. Esto 
+es similar a cuando alguien le dice ¿Qúe? o ¿Puede repetir por favor? No logro entenderlo.
+Los mensajes de error son muy útiles en este sendito, porque le indican cuales on las 
+partes específicas en las que no le lograron entender. Este es el mejor tipo de errores
+que se pueden obtener. Los mensajes de error son su amigo. Búsquelos en Google (Copiar y 
+Pegar!) para descubrir que es lo que significan y como los puede corregir.
 
 ```{r googleError, echo=FALSE, out.width = '50%', fig.align = 'center', fig.cap = '.'}
 knitr::include_graphics("images/4.4_practicalDev_googleErrorMessage.jpg")
