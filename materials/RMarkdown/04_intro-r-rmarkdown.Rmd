@@ -307,28 +307,46 @@ Pegar!) para descubrir que es lo que significan y como los puede corregir.
 knitr::include_graphics("images/4.4_practicalDev_googleErrorMessage.jpg")
 ```
 
-And also know that there are errors that can creep in more subtly, without an error message right away, when you are giving information that is understood, but not in the way you meant. Like if I'm telling a story about tables and you're picturing where you eat breakfast and I'm talking about data. This can leave me thinking I've gotten something across that the listener (or R) interpreted very differently. And as I continue telling my story you get more and more confused... So write clean code and check your work as you go to minimize these circumstances!
+Pero tambien hay que tener en cuenta que hay errores que pueden aparecen en forma 
+mucho mas sutil, sin un mensaje de error que lo indique. Esto sucede cuando se le da información
+que el computados entiende, pero que no es exactamente lo que se quiso decir. 
+Es como si yo contara un historia sobre tablas y usted se imagina una con la que va a contruir
+una repisa, sin embargo yo esoty hablando de tablas de datos. Esto puede llevarme a pensar que
+logré transmitir la informacion que me interesaba a mi audiencia (o a R) sin embargo, lo que dije
+fue interpretado en una forma completamente distinta a lo que estaba tratando de decir. 
+Y en la medida que yo sigo hablando se genera más y mas confusión... Entonces, es muy importante
+que se escriban los código de una forma lo mas limpia y clara, verificando que el código hace
+lo que quiere que haga, de estoa forma es posible minimizar las confusiones y malos entendidos.
 
-### Logical operators and expressions
+### Operadores y expresiones lógicas
 
-A moment about **logical operators and expressions**. We can ask questions about the objects we just made. 
+Vamos a tomarnos un momento para hablar sobre **operadores y expresiones lógicas** ya que nos 
+permiten hacer preguntas sobre objetos que hemos creado.
 
-- `==` means 'is equal to'
-- `!=` means 'is not equal to'
-- `<` means ` is less than'
-- `>` means ` is greater than'
-- `<=` means ` is less than or equal to'
-- `>=` means ` is greater than or equal to'
+- `==` significa 'es igual a'
+- `!=` significa 'no es igual a'
+- `<` significa 'es menor a'
+- `>` significa 'es mayor a'
+- `<=` significa 'es menor o igual a'
+- `>=` significa 'es mayor o igual a'
+
 ```{r}
 peso_kg == 2
 peso_kg >= 30
 peso_kg != 5
 ```
 
-> Shortcuts
-You will make lots of assignments and the operator `<-` is a pain to type. Don't be lazy and use `=`, although it would work, because it will just sow confusion later. Instead, utilize **RStudio's keyboard shortcut: Alt + - (the minus sign)**.
-Notice that RStudio automagically surrounds `<-` with spaces, which demonstrates a useful code formatting practice. Code is miserable to read on a good day. Give your eyes a break and use spaces.
-RStudio offers many handy [keyboard shortcuts](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts). Also, Alt+Shift+K brings up a keyboard shortcut reference card.
+> Atajos
+En su vida como programador de R se van a realizar michas signaciones y el operador `<-`
+es un dolor de cabeza para escribir. Sin embargo no sea flojo y se acostumbre a usar `=`, 
+aunque esto funciona, porque solo le va a generar confusión más tarde. Es mucho mejor 
+utilizar los atajos con combinaciones de teclas para este fin, **en RStudio se obtiene
+combinando Alt + - (signo menos)**. Note que en RStudio los espacios alrededor de `<-`
+aparecen en forma automágica!, lo que demuestra una prática para formatear el código
+muy útil. Los códigos (especialmente los agenos) son miserables de leer en un buen día.
+Dele un descanso a sus ojos y SIEMPRE use los espacior. RStudio tiene muchos [atajos de teclado shortcuts](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts) 
+muy útiles. Uno imporante de mensionar es Alt+Shift+K que muestra la tabla de referencias
+de las combinaciones de teclado.
 
 
 ### Clearing the environment
