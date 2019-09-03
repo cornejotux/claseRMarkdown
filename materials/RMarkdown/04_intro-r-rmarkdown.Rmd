@@ -1,12 +1,10 @@
-# Introducción a R y RMarkdown
+# Introducción a R
 
 ## Objetivos
 
 - Orientarse en la interfase de RStudio
 - Trabajar en la consola de R
-- Explorar RMarkdown
-- Introducción a las funciones básicas incluidas en R
-- Aprender como usar las páginas de ayuda
+
 
 ## Introducción y Motivación
 
@@ -22,16 +20,16 @@ programación orientada al los datos, porque es ampliamente utilizada por la com
 científica, es amigable con el usuario (user-friendly) y lo más importante es de código
 abierto (open source). 
 
-Entonces, ¿cuales son las diferencias enter _R_ y _RStudio_? Aquí les presento una analogía como punto de partida. **Si usted fuera un chef, _R_ es un cuchillo.** Usted tiene comida para preparar y el cuchillo es una de las herramienas que va a usar para realizar esta tarea.
+Entonces, ¿cuales son las diferencias entre _R_ y _RStudio_? Aquí les presento una analogía como punto de partida. **Si usted fuera un chef, _R_ es un cuchillo.** Usted tiene comida para preparar y el cuchillo es una de las herramientas que va a usar para realizar esta tarea.
 
 Y **si _R_ es un cuchillo, entonces _RStudio_ es la cocina**. ¡RStudio le entrega el 
 lugar donde puede realizar todo su trabajo! Otras herramientas, comunicaciones, comunidad
-y hacer su vida como chef más facil. Ahora, como científico, RStudio hace su vida mas
+y hacer su vida como chef más fácil. Ahora, como científico, RStudio hace su vida mas
 fácil, poniendo todas las herramienta que usted necesita en un mismo lugar, de esta 
 forma puede trabajar en forma más eficiente. Algunas de las herramientas que puede 
-encontrar son un nevagador de archivos, visor de datos, páginas de ayuda, terminal, 
+encontrar son un navegador de archivos, visor de datos, páginas de ayuda, terminal, 
 comunidad, soporte y la lista suma y sigue. De esta forma, se puede ver que es mucho 
-más que sálo una infraestructura (la interfase del usuario o IDE). Entonces, si bien
+más que solo una infraestructura (la interfase del usuario o IDE). Entonces, si bien
 es posible preparar comida sin una cocina, es totalmente posible aprender y trabajar
 en R sin usar RStudio, eso no es lo que vamos hacer. Nosotros vamos a aprovechar los 
 beneficios de usar RStudio y aprenderemos R y RStudio al mismo tiempo.
@@ -40,31 +38,31 @@ beneficios de usar RStudio y aprenderemos R y RStudio al mismo tiempo.
 knitr::include_graphics("images/4.1_rueda.jpg")
 ```
 
-Algo para tener en cuenta que es vamos a aprender un nuevo leguage (de programación). Este es un proceso, 
+Algo para tener en cuenta que es vamos a aprender un nuevo lenguaje (de programación). Este es un proceso, 
 toma tiempo, se cometerán errores, puede resultar frustrante, pero a largo plazo va a 
-ser genial. Todos hablamos a lo menos un lenguaje; este es un proceso siimlar, de verdad.
+ser genial. Todos hablamos a lo menos un lenguaje; este es un proceso similar, de verdad.
 Y no importa cuan fluido seas en tu lengua materna, siempre se aprende algo nuevo, se tratan
-cosas en un nuevo contexto, se aprenden sinónimos, o que significal algo diferente en otro pais,
-etc. Y como cualquier otra forma de comunicacion, se producirán malos entendidos que serán
+cosas en un nuevo contexto, se aprenden sinónimos, o que significa algo diferente en otro país,
+etc. Y como cualquier otra forma de comunicación, se producirán malos entendidos que serán
 frustrantes, pero a la largo, todos terminamos siendo mejores producto de ellos.
 
-Así como un lenguales es un concepto familia, lenguages de programación existen en un contexto 
-diferente de los lenguases hablados, pero vamos a llegar a conocer este contexto con el tiempo.
+Así como un lenguaje es un concepto familiar, lenguajes de programación existen en un contexto 
+diferente de los lenguajes hablados, pero vamos a llegar a conocer este contexto con el tiempo.
 Por ejemplo: tenemos un concepto que es la primera comida del día y tenemos un nombre para eso:
 en español esa palabra es "desayuno". Si usted aprende inglés, puede esperar que exista una
 palabra para expresar este concepto de la primera comida (esa palabra es "breakfast"). **Vamos 
 a llegar al punto en que usted va a esperar la existencia de cierta palabras en un el lenguaje 
 de programación (llamados funciones en R) que representen conceptos**. Pronto, usted va a 
 esperar que exista una forma de ordenar valores en forma numérica o alfabética, para buscar 
-patrones en un texto, calcular la media o mediana,  reorganizacr columnas en fila, extraer un 
-subset de datos, etc. Paso a paso, vamos a ir incrementando sus espectativas y aprenderán como 
+patrones en un texto, calcular la media o mediana,  reorganizar columnas en fila, extraer un 
+subset de datos, etc. Paso a paso, vamos a ir incrementando sus expectativas y aprenderán como 
 preguntar (en RStudio) y encontrar las _palabras_ que están buscando.
 
 ### Recursos
 
-Este curso es una traducción libre, modificada y adaptada, desde una combinaciñon de excelentes clases
+Este curso es una traducción libre, modificada y adaptada, desde una combinación de excelentes clases
 y materiales desarrollados por otros. Muchas gracias al Data Task Force de [NCEAS](http://www.nceas.ucsb.edu),
-en especial a Jeannette Clark, Jared Kibele, Matt Jones y yo) quienes desarrollaron la version original
+en especial a Jeannette Clark, Jared Kibele, Matt Jones y yo) quienes desarrollaron la versión original
 de este curso en Inglés. A  Julie Lowndes por escribir la mayoría del contenido del cual se basó el
 Data task Force y nos compartió el material para basarnos en su trabajo, el que a su vez está basado
 en el material de Jenny Bryan. Todo el material original sobre el cual está basado este curso está en inglés, 
@@ -86,11 +84,11 @@ RStudio (también en inglés):
 - [webinars](https://www.rstudio.com/resources/webinars/) 
 - [cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
 
-Finalmente, el libro _R for Data Science_ por Hadley Wickham es un regurso genial para profundizar en estos temas.
+Finalmente, el libro _R for Data Science_ por Hadley Wickham es un recurso genial para profundizar en estos temas.
 
 - [R for Data Science](http://r4ds.had.co.nz/)
 
-Otros recursos relacoiandos:
+Otros recursos relacionados:
 
 - [Formate de ecuaciones en LaTeX](https://www.caam.rice.edu/~heinken/latex/symbols.pdf)
 - [Base R Cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/05/base-r.pdf)
@@ -112,7 +110,7 @@ knitr::include_graphics("images/4.2_RStudio_IDE.png")
 Identifique los paneles que se abren por defecto:
 
   * Consola (Todo el espacio a la izquierda)
-  * Hambiente/Historial (Pestañas al lado superior derecho)
+  * Ambiente/Historial (Pestañas al lado superior derecho)
   * Archivos/Gráficos/Paquetes/Ayuda (Pestañas al lado inferior derecho)
 
 NOTA: Es posible cambiar la ubicación por defecto de los paneles, entre otra muchas
@@ -122,18 +120,18 @@ cosas: [Configurando RStudio](https://support.rstudio.com/hc/en-us/articles/2005
 Una primera pregunta importante: **¿Dónde estamos?** 
 
 Si usted acaba de abrir RStudio por primera vez, se va a encontrar en el su directorio 
-Home o Mis Documentos en Windows. Esto se doneta por como `~/` en la barra superior de 
+Home o Mis Documentos en Windows. Esto se denota por como `~/` en la barra superior de 
 la consola (destacado en rojo en la figura \@ref(fig:RStudioIDEhomeDir)). Es posible 
-ver tambien el panel de archivos en el lado inferior derecho, doned se muestra que esta 
-en el directorio Home. Usted puede nevegar con el explorador de archivos, pero note que 
-no es posible cambiar donde está: incluso cuando haga click el otros directorios, 
+ver también el panel de archivos en el lado inferior derecho, donde se muestra que esta 
+en el directorio Home. Usted puede navegar con el explorador de archivos, pero note que 
+no es posible cambiar donde está: incluso cuando haga clic el otros directorios, 
 la consola seguirá estando en el directorio Home: `~/`. 
 
 ```{r RStudioIDEhomeDir, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Consola de R en la interfase de usuario de RStudio.'}
 knitr::include_graphics("images/4.3_RStudio_IDE_homedir.png")
 ```
 
-OK vamos ahora a la consola, doned vamos interactuar con el proceso interactiva de R.
+OK vamos ahora a la consola, donde vamos interactuar con el proceso interactiva de R.
 
 Vamos a usar R para calcular algunas cosas. Primero hagamos algunos cálculos matemáticos
 simples.
@@ -142,10 +140,10 @@ simples.
 3*4
 ```
 
-Usted puede asignar un valos de una operación matemática a una variable u objeto en R. 
+Usted puede asignar un valor de una operación matemática a una variable u objeto en R. 
 Para esto se utiliza el operador de asignación `<-`.
 
-Haga una asignación y luego inspeccion el objeto que aca de crear.
+Haga una asignación y luego inspección el objeto que acaba de crear.
 
 ```{r}
 x <- 3 * 4
@@ -154,10 +152,10 @@ x
 
 Esas operaciones yo las lego como "asocie el valor 12 a **x**".
 
-Todas las declaraciones en R donde usted crea objetos -- "assignaciones" -- tiene esta
+Todas las declaraciones en R donde usted crea objetos -- "asignaciones" -- tiene esta
 forma: `nombreObjeto <- valor`.  
 
-Voy a escribir ahora en la consola con el simbolo gato o hash `#`, que es la forma en 
+Voy a escribir ahora en la consola con el símbolo gato o hash `#`, que es la forma en 
 que R reconoce un texto como comentario y no lo evalúa.
 
 ```{r eval = FALSE}
@@ -194,7 +192,7 @@ este_es_un_nombre_muy_largo
 
 Otra forma de inspeccionar esta variable es escribiendo el inicio `este_`... y luego
 presionando la techa _Tab_, de esta forma RStudio le va a ofrecer opciones, entre las que
-puede seleccionar apretanto return.
+puede seleccionar apretando return.
 
 Y una más
 ```{r}
@@ -202,20 +200,20 @@ la_ciencia_es_genial <- "Si lo es!!!"
 ```
 
 De esta forma, usted puede que que es posible hacer asignaciones de palabras
-y no solo número. En R, un objetito compuesto por palabras se conoce como 
-"string" y R reconoce que esto es una palabra y no a número porque estan en 
+y no solo número. En R, un objetivo compuesto por palabras se conoce como 
+"string" y R reconoce que esto es una palabra y no a número porque están en 
 comillas `" "`. Usted puede trabajar R con datos con strings en una forma muy
 simple gracias a los paquete [`stringr`](http://stringr.tidyverse.org/) y  [`tidytext`](https://github.com/juliasilge/tidytext#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools).
 No vamos a hablar mucho de string, pero por ahora recuerde que R puede
 manejar texto y que puede trabajar con texto y con números en forma combinada.
 
-El hablar de strings y números nos lleva a abordar un concepto muy imporante en programación: 
+El hablar de strings y números nos lleva a abordar un concepto muy importante en programación: 
 las diferentes _clases_  o _tipos de objetos_. Un objeto es una variable, una función, 
-una estructura de datos, un método que haya escrito en nu ambiente de desarrollo.
-Usted puede ver que objetivos estan cargados mirando el panel del ambiente (Environment)
-en RStudio. Las opracoin que se pueden hacer con un objeto van a depender del tipo
+una estructura de datos, un método que haya escrito en un ambiente de desarrollo.
+Usted puede ver que objetivos están cargados mirando el panel del ambiente (Environment)
+en RStudio. Las operaciones que se pueden hacer con un objeto van a depender del tipo
 de objeto que es. ¡¡Esto tiene mucho sentido!! Por ejemplo, no es posible hacer operaciones
-matemáticas con un objeto de caractes (string).
+matemáticas con un objeto de caracteres (string).
 
 Trate de ejecutar lo siguiente en la linea de comandos de su consola:
 
@@ -225,9 +223,9 @@ Trate de ejecutar lo siguiente en la linea de comandos de su consola:
 
 ¿Qué pasó? ¿Por qué?
 
-Usted deberia haber notado que cuando se asigna un valor a un objeto,
+Usted debería haber notado que cuando se asigna un valor a un objeto,
 R no imprime el valor por pantalla. Se puede forzar a R a imprimir por 
-pantalla poniendo un parentesis en la asignacion del valor o escribiendo
+pantalla poniendo un paréntesis en la asignación del valor o escribiendo
 el nombre del objeto:
 
 ```{r, purl=FALSE}
@@ -237,7 +235,7 @@ peso_kg          # and so does typing the name of the object
 ```
 
 Ahora que R tiene `peso_kg` en la memoria, podemos utilizar la variable para 
-hacer operaciones aritméticas. Por ejemplo, podemos quere convertis este peso
+hacer operaciones aritméticas. Por ejemplo, podemos querer convertir este peso
 a libras (pero en libras es 2.2 veces el peso en kilogramos):
 
 ```{r}
@@ -251,7 +249,7 @@ peso_kg <- 57.5
 2.2 * peso_kg
 ```
 
-Esto significa que al asignar el valor a una varieble, esto no cambia el valor de 
+Esto significa que al asignar el valor a una variable, esto no cambia el valor de 
 otras variables. Por ejemplo, asignemos el valor del peso del animal en libras a una
 nueva variable, `peso_lb`:
 
@@ -267,9 +265,9 @@ peso_kg <- 100
 
 ¿Cuál cree que es el valor ahora del objeto `peso_lb`? ¿126.5 o 220? ¿Por qué?
 
-Usted puede tambien almacenar más de un valor en un único objeto. Almacenar
+Usted puede también almacenar más de un valor en un único objeto. Almacenar
 una series de pesos en un solo objeto es una forma muy conveniente de desarrollar
-un misma operacion en multiples valores al mismo tiempo. Una forma de create 
+un misma operación en múltiples valores al mismo tiempo. Una forma de crear 
 un objeto como este es con la función `c()`, la que se refiere a la acción de 
 _combinar_ o _concatenar_.
 
@@ -289,16 +287,16 @@ peso_lb
 
 ### Los mensajes de error son sus amigos
 
-Contrato implícito con el lenguage de computador/codificación: Un computador hará todas 
+Contrato implícito con el lenguaje de computador/codificación: Un computador hará todas 
 las computaciones tediosas por usted. Usted tiene que ser completamente explícito 
 y preciso son sus instrucciones. Errores ortográficos importan. Mayúsculas importan.
-¡Tiene que poner antención a como escribre!
+¡Tiene que poner atención a como escribe!
 
-Recuerde que este es un leguage, no demasido distanto al español!. Hay tiempos en los
+Recuerde que este es un lenguaje, no demasiado distinto al español!. Hay tiempos en los
 que la gente no entiende lo que usted dice -- Eso pasa y va a pasar nuevamente y hay 
 diferentes formas en que esto puede pasar. Algunas  veces se obtendrá un error. Esto 
-es similar a cuando alguien le dice ¿Qúe? o ¿Puede repetir por favor? No logro entenderlo.
-Los mensajes de error son muy útiles en este sendito, porque le indican cuales on las 
+es similar a cuando alguien le dice ¿Qué? o ¿Puede repetir por favor? No logro entenderlo.
+Los mensajes de error son muy útiles en este sentido, porque le indican cuales son las 
 partes específicas en las que no le lograron entender. Este es el mejor tipo de errores
 que se pueden obtener. Los mensajes de error son su amigo. Búsquelos en Google (Copiar y 
 Pegar!) para descubrir que es lo que significan y como los puede corregir.
@@ -307,16 +305,16 @@ Pegar!) para descubrir que es lo que significan y como los puede corregir.
 knitr::include_graphics("images/4.4_practicalDev_googleErrorMessage.jpg")
 ```
 
-Pero tambien hay que tener en cuenta que hay errores que pueden aparecen en forma 
+Pero también hay que tener en cuenta que hay errores que pueden aparecen en forma 
 mucho mas sutil, sin un mensaje de error que lo indique. Esto sucede cuando se le da información
 que el computados entiende, pero que no es exactamente lo que se quiso decir. 
-Es como si yo contara un historia sobre tablas y usted se imagina una con la que va a contruir
-una repisa, sin embargo yo esoty hablando de tablas de datos. Esto puede llevarme a pensar que
-logré transmitir la informacion que me interesaba a mi audiencia (o a R) sin embargo, lo que dije
+Es como si yo contara un historia sobre tablas y usted se imagina una con la que va a construir
+una repisa, sin embargo yo estoy hablando de tablas de datos. Esto puede llevarme a pensar que
+logré transmitir la información que me interesaba a mi audiencia (o a R) sin embargo, lo que dije
 fue interpretado en una forma completamente distinta a lo que estaba tratando de decir. 
 Y en la medida que yo sigo hablando se genera más y mas confusión... Entonces, es muy importante
 que se escriban los código de una forma lo mas limpia y clara, verificando que el código hace
-lo que quiere que haga, de estoa forma es posible minimizar las confusiones y malos entendidos.
+lo que quiere que haga, de esta forma es posible minimizar las confusiones y malos entendidos.
 
 ### Operadores y expresiones lógicas
 
@@ -337,20 +335,20 @@ peso_kg != 5
 ```
 
 > Atajos
-En su vida como programador de R se van a realizar michas signaciones y el operador `<-`
+En su vida como programador de R se van a realizar muchas asignaciones y el operador `<-`
 es un dolor de cabeza para escribir. Sin embargo no sea flojo y se acostumbre a usar `=`, 
 aunque esto funciona, porque solo le va a generar confusión más tarde. Es mucho mejor 
 utilizar los atajos con combinaciones de teclas para este fin, **en RStudio se obtiene
 combinando Alt + - (signo menos)**. Note que en RStudio los espacios alrededor de `<-`
-aparecen en forma automágica!, lo que demuestra una prática para formatear el código
-muy útil. Los códigos (especialmente los agenos) son miserables de leer en un buen día.
-Dele un descanso a sus ojos y SIEMPRE use los espacior. RStudio tiene muchos [atajos de teclado shortcuts](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts) 
-muy útiles. Uno imporante de mensionar es Alt+Shift+K que muestra la tabla de referencias
+aparecen en forma automágica!, lo que demuestra una práctica para formatear el código
+muy útil. Los códigos (especialmente los ajenos) son miserables de leer en un buen día.
+Dele un descanso a sus ojos y SIEMPRE use los espacios. RStudio tiene muchos [atajos de teclado shortcuts](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts) 
+muy útiles. Uno importante de mencionar es Alt+Shift+K que muestra la tabla de referencias
 de las combinaciones de teclado.
 
 
-### Limpiendo el ambiente de trabajo
-Ahora vamos a mirar los objetos que estan en nuestro ambiente de trabajo (workspace)
+### Limpiando el ambiente de trabajo
+Ahora vamos a mirar los objetos que están en nuestro ambiente de trabajo (workspace)
 -- en el costado superior derecho. El ambiente de trabajo es donde se acumulan los objetos definidos
 por el usuario.
 
@@ -358,14 +356,14 @@ por el usuario.
 knitr::include_graphics("images/4.5_RStudio_IDE_env.png")
 ```
 
-También se puede obtener una lista de los objetos creado usando los siguienre comandos en R:
+También se puede obtener una lista de los objetos creado usando los siguiente comandos en R:
 
 ```{r}
 objects()
 ls()
 ```
 
-Si quiere elimnar el objeto llamado `peso_kg` puede hacer lo siguiente:
+Si quiere eliminar el objeto llamado `peso_kg` puede hacer lo siguiente:
 
 ```{r}
 rm(peso_kg)
@@ -377,297 +375,4 @@ Para eliminar todo:
 rm(list = ls())
 ```
 
-o hacer click en el icono de la la escoba en el panel _Environment_ en RStudio.
-
-
-# RMarkdown
-
-Now that we know some basic R syntax, let's learn a little about RMarkdown. You will drive yourself crazy (and fail to generate a reproducible workflow!) running code directly in the console. RMarkdown is really key for collaborative research, so we're going to get started with it early and then use it for the rest of the course. 
-
-An RMarkdown file will allow us to weave markdown text with chunks of R code to be evaluated and output content like tables and plots.
-
-File -> New File -> RMarkdown... -> Document of output format HTML, OK.
-
-
-```{r RStudioNew, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de la interfase para la creación de un proyecto nuevo de RStudio.'}
-knitr::include_graphics("images/4.6_rstudio_new-rmd-doc-html.png")
-```
-
-You can give it a Title like "My Project". Then click OK. 
-
-OK, first off: by opening a file, we are seeing the 4th pane of the RStudio console, which is essentially a text editor. This lets us organize our files within RStudio instead of having a bunch of different windows open.
-
-Let's have a look at this file — it's not blank; there is some initial text is already provided for you. Notice a few things about it: 
-
-- There are white and grey sections. R code is in grey sections, and other text is in white. 
-
-```{r rmarkdown, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Imagen con el código fuente de un archivo RMarkdown.'}
-knitr::include_graphics("images/4.7_rmarkdown.png")
-```
-
-
-<br>
-
-Let's go ahead and "Knit HTML" by clicking the blue yarn at the top of the RMarkdown file. When you first click this button, RStudio will prompt you to save this file. Create a new folder for it somewhere that you will be able to find again (such as your Desktop or Documents), and name that folder something you'll remember (like `arctic_training_files`).
-
-<br>
-
-```{r rmarkdownSideSide, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Imagen con el código fuente y pagina resultante de un archivo RMarkdown.'}
-knitr::include_graphics("images/4.8_rmarkdown_side_by_side.png")
-```
-
-
-What do you notice between the two? 
-
-Notice how the grey **R code chunks** are surrounded by 3 backticks and `{r LABEL}`. These are evaluated and return the output text in the case of `summary(cars)` and the output plot in the case of `plot(pressure)`.
-
-Notice how the code `plot(pressure)` is not shown in the HTML output because of the R code chunk option `echo=FALSE`.
-
-More details...
-
-This RMarkdown file has 2 different languages within it: **R** and **Markdown**. 
-
-We don't know that much R yet, but you can see that we are taking a summary of some data called 'cars', and then plotting. There's a lot more to learn about R, and we'll get into it for the next few days. 
-
-The second language is Markdown. This is a formatting language for plain text, and there are only about 15 rules to know. 
-
-Notice the syntax for:
-
-- **headers** get rendered at multiple levels: `#`, `##`
-- **bold**: `**word**`
-
-There are some good [cheatsheets](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet) to get you started, and here is one built into RStudio: Go to Help > Markdown Quick Reference
-<br />
-<br />
-
-**Important**: note that the hashtag `#` is used differently in Markdown and in R: 
-
-- in R, a hashtag indicates a comment that will not be evaluated. You can use as many as you want: `#` is equivalent to `######`. It's just a matter of style.
-- in Markdown, a hashtag indicates a level of a header. And the number you use matters: `#` is a "level one header", meaning the biggest font and the top of the hierarchy. `###` is a level three header, and will show up nested below the `#` and `##` headers.
-
-Learn more: http://rmarkdown.rstudio.com/
-
-### Your Turn
-
-1. In Markdown, Write some italic text, and make a numbered list. And add a few subheaders.
-Use the Markdown Quick Reference (in the menu bar: Help > Markdown Quick Reference). 
-1. Reknit your html file. 
-
-
-### Code chunks
-
-OK. Now let's practice with some of those commands.
-
-Create a new chunk in your RMarkdown first in one of these ways: 
-
-- click "Insert > R" at the top of the editor pane
-- type by hand 
-   \```{r}
-   \```
-- if you haven't deleted a chunk that came with the new file, edit that one
-
-Now, let's write some R code. 
-
-```
-x <- 4*3
-x
-```
-
-Now, hitting return does not execute this command; remember, it's just a text file. To execute it, we need to get what we typed in the the R chunk (the grey R code) down into the console. How do we do it? There are several ways (let's do each of them):
-
-1. copy-paste this line into the console.
-1. select the line (or simply put the cursor there), and click 'Run'. This is available from 
-    a. the bar above the file (green arrow)
-    b. the menu bar: Code > Run Selected Line(s)
-    c. keyboard shortcut: command-return
-1. click the green arrow at the right of the code chunk
-
-### Your turn
-
-Add a few more commands to your file. Execute them by trying the three ways above. Then, save your R Markdown file. 
-
-
-## R functions, help pages
-
-So far we've learned some of the basic syntax and concepts of R programming, how to navigate RStudio, and RMarkdown, but we haven't done any complicated or interesting programming processes yet. This is where functions come in!
-
-A function is a way to group a set of commands together to undertake a task in a reusable way. When a function is executed, it produces a return value. We often say that we are "calling" a function when it is executed. Functions can be user defined and saved to an object using the assignment operator, so you can write whatever functions you need, but R also has a mind-blowing collection of built-in functions ready to use. To start, we will be using some built in R functions.
-
-All functions are called using the same syntax: function name with parentheses around what the function needs in order to do what it was built to do. The pieces of information that the function needs to do its job are called arguments. So the syntax will look something like: `result_value <- function_name(argument1 = value1, argument2 = value2, ...)`. 
-
-### A simple example
-
-To take a very simple example, let's look at the `mean()` function. As you might expect, this is a function that will take the mean of a set of numbers. Very convenient!
-
-Let's create our vector of weights again:
-
-```{r}
-peso_kg <- c(55, 25, 12)
-```
-
-and use the `mean` function to calculate the mean weight.
-
-```{r}
-mean(peso_kg)
-```
-
-### Getting help
-
-What if you know the name of the function that you want to use, but don't know exactly how to use it? Thankfully RStudio provides an easy way to access the help documentation for functions.
-
-To access the help page for `mean`, enter the following into your console:
-
-```{r, eval = F}
-?mean
-```
-
-The help pane will show up in the lower right hand corner of your RStudio.
-
-The help page is broken down into sections:
-
- - Description: An extended description of what the function does.
- - Usage: The arguments of the function(s) and their default values.
- - Arguments: An explanation of the data each argument is expecting.
- - Details: Any important details to be aware of.
- - Value: The data the function returns.
- - See Also: Any related functions you might find useful.
- - Examples: Some examples for how to use the function.
-
-
-### Your turn
-
-> Exercise: Talk to your neighbor(s) and look up the help file for a function that you know or expect to exist. Here are some ideas: `?getwd()`, `?plot()`,  `min()`, `max()`, `?log()`).
-
-And there's also help for when you only sort of remember the function name: double-questionmark:
-```{r, eval=F}
-??install 
-```
-
-Not all functions have (or require) arguments:
-```{r}
-date()
-```
-
-### Use a function to read a file into R
-
-So far we have learned how to assign values to objects in R, and what a function is, but we haven't quite put it all together yet with real data yet. To do this, we will introduce the function `read.csv`, which will be in the first lines of many of your future scripts. It does exactly what it says, it reads in a csv file to R.
-
-Since this is our irst time using this function, first access the help page for `read.csv`. This has a lot of information in it, as this function has a lot of arguments, and the first one is especially important - we have to tell it what file to look for. Let's get a file!
-
-#### Download a file from the Arctic Data Center
-
-Navigate to this dataset by Craig Tweedie that is published on the Arctic Data Center. [Craig Tweedie. 2009. North Pole Environmental Observatory Bottle Chemistry. Arctic Data Center. doi:10.18739/A25T3FZ8X.](http://doi.org/10.18739/A25T3FZ8X), and download the first csv file called "BGchem2008data.csv"
-
-Move this file from your Downloads folder into a place you can more easily find it. I recommend creating a folder called `data` in your previously-created directory `arctic_training_files`, and putting the file there.
-
-Now we have to tell `read.csv` how to find the file. We do this using the `file` argument which you can see in usage section in the help page. In RMarkdown, you can either use absolute paths (which will start with your home directory `~/`) or paths **relative to the location of the RMarkdown.** RStudio and RMarkdown have some great autocomplete capabilities when using relative paths, so we will go that route. Assuming you have moved your file to a folder within `arctic_training_files` called `data`, your `read.csv` call will look like this:
-
-```{r, eval = F}
-bg_chem <- read.csv("data/BGchem2008data.csv")
-```
-
-You should now have an object of the class `data.frame` in your environment called `bg_chem`. Check your environment pane to ensure this is true.
-
-Note that in the help page there are a whole bunch of arguments that we didn't use in the call above. Some of the arguments in function calls are optional, and some are required. Optional arguments will be shown in the usage section with a `name = value` pair, with the default value shown. If you do not specify a `name = value` pair for that argument in your function call, the function will assume the default value (example: `header = TRUE` for `read.csv`). Required arguments will only show the name of the argument, without a value. Note that the only required argument for `read.csv` is `file`.
-
-You can always specify arguments in `name = value` form. But if you do not, R attempts to resolve by position. So above, it is assumed that we want `file = "data/BGchem2008data.csv"`, since file is the first argument. If we wanted to add another argument, say `stringsAsFactors`, we need to specify it explicitly using the `name = value` pair, since the second argument is `header`. For functions I call often, I use this resolve by position for the first argument or maybe the first two. After that, I always use `name = value`.
-
-Many R users (including myself) will override the default `stringsAsFactors` argument using the following call:
-
-```{r}
-bg_chem <- read.csv("data/BGchem2008data.csv", stringsAsFactors = FALSE)
-```
-
-
-
-## Using `data.frames`
-
-A `data.frame` is a two dimensional data structure in R that mimics spreadsheet behavior. It is a collection of rows and columns of data, where each column has a name and represents a variable, and each row represents a measurement of that variable. When we ran `read.csv`, the object `bg_chem` that we created is a `data.frame`. There are a a bunch of ways R and RStudio help you explore data frames. Here are a few, give them each a try:
-
-- click on the word `bg_chem` in the environment pane
-- click on the arrow next to `bg_chem` in the environment pane
-- execute `head(bg_chem)` in the console
-- execute `View(bg_chem)` in the console
-
-Usually we will want to run functions on individual columns in a `data.frame`. To call a specific column, we use the list subset operator `$`. Say you want to look at the first few rows of the `Date` column only. This would do the trick:
-
-```{r}
-head(bg_chem$Date)
-```
-
-How about calculating the mean temperature of all the CTD samples?
-
-```{r}
-mean(bg_chem$CTD_Temperature)
-```
-
-Or, if we want to save this to a variable to use later:
-
-```{r}
-mean_temp <- mean(bg_chem$CTD_Temperature)
-```
-
-You can also create basic plots using the list subset operator.
-
-```{r}
-plot(bg_chem$CTD_Depth, bg_chem$CTD_Temperature)
-```
-
-There are many more advancted tools and functions in R that will enable you to make better plots using cleaner syntax, we will cover some of these later in the course. 
-
-### Your Turn
-
-> Exercise: Spend a few minutes exploring this dataset. Try out different functions on columns using the list subset operator and experiment with different plots. 
-
-## Troubleshooting
-
-### My RMarkdown won't knit to PDF
-
-If you get an error when trying to knit to PDF that says your computer doesn't have a LaTeX installation, one of two things is likely happening:
-
-1. Your computer doesn't have LaTeX installed
-2. You have an installation of LaTeX but RStudio cannot find it (it is not on the path)
-
-If you already use LaTeX (like to write papers), you fall in the second category. Solving this requires directing RStudio to your installation - and isn't covered here.
-
-If you fall in the first category - you are sure you don't have LaTeX installed - can use the R package `tinytex` to easily get an installation recognized by RStudio, as long as you have administrative rights to your computer.
-
-To install `tinytex` run:
-
-```{r, eval = F}
-install.packages("tinytex")
-tinytex::install_tinytex()
-```
-
-If you get an error that looks like `destination /usr/local/bin not writable`, you need to give yourself permission to write to this directory (again, only possible if you have administrative rights). To do this, run this command in the terminal:
-
-
-    sudo chown -R `whoami`:admin /usr/local/bin
-
-and then try the above install instructions again. More information about `tinytex` can be found [here](https://yihui.name/tinytex/)
-
-### I just entered a command and nothing is happening
-
-It may be because you didn't complete a command: is there a little `+` in your console? R is saying that it is waiting for you to finish. In the example below, I need to close that parenthesis.
-
-```{r, eval=FALSE}
-> x <- seq(1, 10
-+ 
-```
-
-You can either just type the closing parentheses here and push return, or push the `esc` button twice.
-
-### R says my object is not found
-
-New users will frequently see errors that look like this: `Error in mean(myobject) : object 'myobject' not found`
-
-This means that you do not have an object called `myobject` saved in your environment. The common reasons for this are:
-
-- **typeo**: make sure your object name is spelled exactly like what shows up in the console. Remember R is case sensitive.
-- **not writing to a variable**: note that the object is only saved in the environment if you use the assignment operator, eg: `myobject <- read.csv(...)`
-- **not executing the line in your RMarkdown**: remember that writing a line of code in RMarkdown is not the same as writing in the console, you have to execute the line of code using command + enter, running the chunk, or one of the other ways outlined in the RMarkdown section of this training
-
-## Literate Analysis
-
-RMarkdown is an excellent way to generate literate analysis, and a reproducible workflow. [Here](https://nceas.github.io/sasap-training/materials/reproducible_research_in_r_fairbanks/example-brood-table-analysis.html) is an example of a real analysis workflow written using RMarkdown.
-
+o hacer clic en el icono de la la escoba en el panel _Environment_ en RStudio.
