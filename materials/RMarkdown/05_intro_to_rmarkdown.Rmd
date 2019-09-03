@@ -172,50 +172,60 @@ para hacer su trabajo se conocen como argumentos. De esta forma, la sintaxis
 para usar una función se ve así: 
 `valor_resultante <- nombre_de_función(argumento1 = valor1, argumento2 = valor2, ...)`. 
 
-### A simple example
+### Ejemplo simple
 
-To take a very simple example, let's look at the `mean()` function. As you might expect, this is a function that will take the mean of a set of numbers. Very convenient!
+Para tomar un ejemplo muy simple, vamos a utilizar la función para calcular el promedio
+`mean()`. Como se lo puede imaginar, esta función calcula el promedio de los números
+entregados como argumentos. Super útil!
 
-Let's create our vector of weights again:
+Creemos un vector con los pesos:
 
 ```{r}
 peso_kg <- c(55, 25, 12)
 ```
 
-and use the `mean` function to calculate the mean weight.
+y ahora usemos la función `mean` para calcular el peso promedio.
 
 ```{r}
 mean(peso_kg)
 ```
+
 ## Páginas de ayuda
-### Getting help
 
-What if you know the name of the function that you want to use, but don't know exactly how to use it? Thankfully RStudio provides an easy way to access the help documentation for functions.
+### Obteniendo ayuda
 
-To access the help page for `mean`, enter the following into your console:
+¿Qué pasaría ahora si sabe cual es la función que necesita pero no 
+sabe como funciona? Afortunadamente RStudio entrega una forma myu fácil para acceder
+a las páginas de documentación y ayuda.
+
+Para acceder a la ayuda para la función `mean`, entre el siguiente comando en la consola:
 
 ```{r, eval = F}
 ?mean
 ```
 
-The help pane will show up in the lower right hand corner of your RStudio.
+Esto va a abrir el panel de ayuda en la seccion inferior derecha de RStudio.
 
-The help page is broken down into sections:
+Las páginas de ayuda están dividads en secciones, la documentación está en inglés:
 
- - Description: An extended description of what the function does.
- - Usage: The arguments of the function(s) and their default values.
- - Arguments: An explanation of the data each argument is expecting.
- - Details: Any important details to be aware of.
- - Value: The data the function returns.
- - See Also: Any related functions you might find useful.
- - Examples: Some examples for how to use the function.
+ - Description: Se entrega una descripción extendidad de lo que hace la función.
+ - Usage: Los argumentos de la función(es) y sus valores por defecto.
+ - Arguments: Una explicación de los datos que cada argumento está esperando.
+ - Details: Cualquier detalle que sea relevante conocer.
+ - Value: Los datos que la función devuelve.
+ - See Also: Otras funciones que podrían resultar útiles en este contexto.
+ - Examples: Algunos ejemplos de como usar la función.
 
 
-### Your turn
+### Actividad
 
-> Exercise: Talk to your neighbor(s) and look up the help file for a function that you know or expect to exist. Here are some ideas: `?getwd()`, `?plot()`,  `min()`, `max()`, `?log()`).
+> Ejercicio: Hable con su vecino(s) y dele una mirada a las ayudas de algunas 
+funciones que usted estara que existan. Aquí le dejo alguna udeas: `?getwd()`,
+`?plot()`,  `min()`, `max()`, `?log()`.
 
-And there's also help for when you only sort of remember the function name: double-questionmark:
+También existe ayuda para cuando usted no está seguro del nombre de la función, 
+en esos casos de usar doble símbolo de pregunta:
+
 ```{r, eval=F}
 ??install 
 ```
@@ -225,15 +235,27 @@ Not all functions have (or require) arguments:
 date()
 ```
 
-### Use a function to read a file into R
+### Uso de la función que lee un archio a R
 
-So far we have learned how to assign values to objects in R, and what a function is, but we haven't quite put it all together yet with real data yet. To do this, we will introduce the function `read.csv`, which will be in the first lines of many of your future scripts. It does exactly what it says, it reads in a csv file to R.
+Hasta ahora hemos aprendido como asignar valores a objetos de R y lo que es una
+función, pero no hemos hecho nada aun con datos reales. Para hacer eso, es necesario
+introducir la función `read.csv`, la que usaremos generalmente en las primeras líneas
+del código que escribamos. Esta función hace exacatamente lo que dice (en inglés!),
+lee un archivo _csv_ a R.
 
-Since this is our irst time using this function, first access the help page for `read.csv`. This has a lot of information in it, as this function has a lot of arguments, and the first one is especially important - we have to tell it what file to look for. Let's get a file!
+Ya que esta será nuestra primera vez usando esta función, promero leeremos la página de 
+ayuda de `read.csv`. La ayuda tiene mucha información y acepta muchos argumentos, sin 
+embargo el primedo de ellos es el mas improtante - tenemos que decirle que archivo
+es el que va a leer. 
 
-#### Download a file from the Arctic Data Center
+#### Descarge un archivo desde el Arctic Data Center
 
-Navigate to this dataset by Craig Tweedie that is published on the Arctic Data Center. [Craig Tweedie. 2009. North Pole Environmental Observatory Bottle Chemistry. Arctic Data Center. doi:10.18739/A25T3FZ8X.](http://doi.org/10.18739/A25T3FZ8X), and download the first csv file called "BGchem2008data.csv"
+Nevege al set de datos de Craig Tweedie que está publicado en el Arctic Data Center. 
+[Craig Tweedie. 2009. North Pole Environmental Observatory Bottle Chemistry. Arctic 
+Data Center. doi:10.18739/A25T3FZ8X.](http://doi.org/10.18739/A25T3FZ8X) y descargue 
+el primer archivo _csv_ llamado "BGchem2008data.csv"
+
+
 
 Move this file from your Downloads folder into a place you can more easily find it. I recommend creating a folder called `data` in your previously-created directory `arctic_training_files`, and putting the file there.
 
