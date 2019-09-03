@@ -349,35 +349,38 @@ muy útiles. Uno imporante de mensionar es Alt+Shift+K que muestra la tabla de r
 de las combinaciones de teclado.
 
 
-### Clearing the environment
-Now look at the objects in your environment (workspace) -- in the upper right pane. The workspace is where user-defined objects accumulate. 
+### Limpiendo el ambiente de trabajo
+Ahora vamos a mirar los objetos que estan en nuestro ambiente de trabajo (workspace)
+-- en el costado superior derecho. El ambiente de trabajo es donde se acumulan los objetos definidos
+por el usuario.
 
 ```{r RStudioIDEenv, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de la interfase de desarrollo de RStudio con comando ejecutados.'}
 knitr::include_graphics("images/4.5_RStudio_IDE_env.png")
 ```
 
-You can also get a listing of these objects with a few different R commands:
+También se puede obtener una lista de los objetos creado usando los siguienre comandos en R:
 
 ```{r}
 objects()
 ls()
 ```
 
-If you want to remove the object named `peso_kg`, you can do this:
+Si quiere elimnar el objeto llamado `peso_kg` puede hacer lo siguiente:
 
 ```{r}
 rm(peso_kg)
 ```
 
-To remove everything:
+Para eliminar todo:
 
 ```{r}
 rm(list = ls())
 ```
 
-or click the broom in RStudio's Environment pane.
+o hacer click en el icono de la la escoba en el panel _Environment_ en RStudio.
 
-## RMarkdown
+
+# RMarkdown
 
 Now that we know some basic R syntax, let's learn a little about RMarkdown. You will drive yourself crazy (and fail to generate a reproducible workflow!) running code directly in the console. RMarkdown is really key for collaborative research, so we're going to get started with it early and then use it for the rest of the course. 
 
