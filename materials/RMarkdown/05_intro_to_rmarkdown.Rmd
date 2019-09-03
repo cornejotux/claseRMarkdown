@@ -3,37 +3,55 @@
 ## Objetivos
 
 - Explorar RMarkdown
-- Introducción a las funciones básicas incluidas en R
+- Introducción a las funciones básicas incluidas en RStudio
 - Aprender como usar las páginas de ayuda
 
-## Introduccion
-Now that we know some basic R syntax, let's learn a little about RMarkdown. You will drive yourself crazy (and fail to generate a reproducible workflow!) running code directly in the console. RMarkdown is really key for collaborative research, so we're going to get started with it early and then use it for the rest of the course. 
+## Introducción
+Ahora que conocer un poco de la sintaxis básica de R, podemos comenzar a aprender sobre
+RMarkdown. La experiencia nos dice que te vas a volver loco y aun así a fallar en generar
+un flujo de trabajo reproducible, si tratas de desarrollar código directamente en la 
+consola de R. RMarkdown es realmente clave para la investifación colaborativa, es por 
+esto que vamos a comenzar con esto rápidamente y lo usaremore durante el resto de este 
+curso.
 
-An RMarkdown file will allow us to weave markdown text with chunks of R code to be evaluated and output content like tables and plots.
+Un archivo de RMarkdown no va a ayudar a tejer un texto _markdown_ con fragmentos de 
+código de R que es evaluado y cuyas salidas, como tables y gráficos, son incluidas en el 
+documento.
+
+Para abrir un nuevo documento de RMarkdown siga los siguiente pasos:
 
 File -> New File -> RMarkdown... -> Document of output format HTML, OK.
 
 
-```{r RStudioNew, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de la interfase para la creación de un proyecto nuevo de RStudio.'}
+```{r RStudioNew, echo=FALSE, out.width = '75%', fig.align = 'center', fig.cap = 'Captura de pantalla de la interfase para la creación de un proyecto nuevo de RStudio.'}
 knitr::include_graphics("images/5.1_rstudio_new-rmd-doc-html.png")
 ```
 
-You can give it a Title like "My Project". Then click OK. 
+Le puede dar un título como "Mi Projecto". Luego clic en OK. 
 
-OK, first off: by opening a file, we are seeing the 4th pane of the RStudio console, which is essentially a text editor. This lets us organize our files within RStudio instead of having a bunch of different windows open.
+OK, primero que todo: Al abrir el archivo, vamos a ver un 4° panel de la consola de RStudio, 
+este panel es un editor de texto. Este panel editor nos permite abrir varios archivos en 
+un único panel.
 
-Let's have a look at this file — it's not blank; there is some initial text is already provided for you. Notice a few things about it: 
+Ahora démoles una mira a este archivo - a primera vista se puede ver que no está en blanco;
+hay un texto inicial que se entrega por defecto. Hay algunas cosas que identificar en el texto: 
 
-- There are white and grey sections. R code is in grey sections, and other text is in white. 
+- Está en inglés (no se preocupe, lo vamos a reescribir!)
+- Hay secciones en blanco y otras en negro. El código R está en las secciones plomas, mientras
+que el texto está con fondo blando (por defecto, este color del fondo se puede cambiar). 
 
 ```{r rmarkdown, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Imagen con el código fuente de un archivo RMarkdown.'}
 knitr::include_graphics("images/5.2_rmarkdown.png")
 ```
 
-
 <br>
 
-Let's go ahead and "Knit HTML" by clicking the blue yarn at the top of the RMarkdown file. When you first click this button, RStudio will prompt you to save this file. Create a new folder for it somewhere that you will be able to find again (such as your Desktop or Documents), and name that folder something you'll remember (like `arctic_training_files`).
+Lo primero que vamos a hacer es hacer generar el código HTML (Knit HTML) haciendo clic 
+en la pelota de lana azul en la parte superior del panel con el archivo RMarkdown. 
+Cuando haga clic por primera vez en este botón, RStudio pedirá que guarde este archivo. 
+Cree un nuevo directorio en algún lugar que le sea facil encontrarlo posteriormente
+(por jemeplo Escritorio o Mis Documentos) y dele un nombre que tenga sentido y le permita
+recordarlo despues (ej: `clase_rmarkdown`).
 
 <br>
 
@@ -42,83 +60,117 @@ knitr::include_graphics("images/5.3_rmarkdown_side_by_side.png")
 ```
 
 
-What do you notice between the two? 
+¿Que cosas puede notar entre al comparar los dos archivos? 
 
-Notice how the grey **R code chunks** are surrounded by 3 backticks and `{r LABEL}`. These are evaluated and return the output text in the case of `summary(cars)` and the output plot in the case of `plot(pressure)`.
+Las **secciones de código R** plomas están rodeadas de 3 ticks y `{r LABEL}`.
+Estas secciones son evaluadas, generando una salida de texto en el caso de 
+`summary(cars)` y de un gráfico en el caso de `plot(pressure)`.
 
-Notice how the code `plot(pressure)` is not shown in the HTML output because of the R code chunk option `echo=FALSE`.
+Note como el código `plot(pressure)` no se muestra en la salida HTML porque 
+la sección de código R tiene la opción `echo=FALSE`.
 
-More details...
+Algunos otros detalles...
 
-This RMarkdown file has 2 different languages within it: **R** and **Markdown**. 
+Este archivo de RMarkdown tiene 2 lenguales incluidos: **R** y **Markdown**. 
 
-We don't know that much R yet, but you can see that we are taking a summary of some data called 'cars', and then plotting. There's a lot more to learn about R, and we'll get into it for the next few days. 
+Aun no sabemos mucho de R, pero ya puede ver que estamos tomando el 
+resument de los datos llamados 'cars' y luego los graficamos. Hay mucho más
+para aprender sobre R y vamos a trabajar eso en las próximas clases.
 
-The second language is Markdown. This is a formatting language for plain text, and there are only about 15 rules to know. 
+El segundo lenguaje que incluyo el archivo es Markdown. Estes es un lenguage
+que para dar formato a texto plano y solo hay aproximadamete 15 reglas para 
+conocer.
 
-Notice the syntax for:
+Vea la siguiente sintaxis:
 
-- **headers** get rendered at multiple levels: `#`, `##`
-- **bold**: `**word**`
+- **Títulos** son procesador en nuvemes múltiples con: `#`, `##`
+- **Negrita**: `**palabra**`
 
-There are some good [cheatsheets](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet) to get you started, and here is one built into RStudio: Go to Help > Markdown Quick Reference
+Hay muchas tablas [cheatsheets](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
+que te puede ayudar a comenzar y una de esas está incluida en RStudio: para abrirla vaya a Help > Markdown Quick Reference
 <br />
 <br />
 
-**Important**: note that the hashtag `#` is used differently in Markdown and in R: 
+**Importante**: El símbolo de gato, número o para los milenial hashtag `#` tiene un 
+significado diferente si es usado en Markdown o en R: 
 
-- in R, a hashtag indicates a comment that will not be evaluated. You can use as many as you want: `#` is equivalent to `######`. It's just a matter of style.
-- in Markdown, a hashtag indicates a level of a header. And the number you use matters: `#` is a "level one header", meaning the biggest font and the top of the hierarchy. `###` is a level three header, and will show up nested below the `#` and `##` headers.
+- en R, un gato indica que es un comentario y no será evaluado. Se pueden usar tantos como 
+se quiera: `#` es equivalente a `######`. Es sólo una cuestión de estilos.
+- en Markdown, un gato indica el nivel del título. Y cuantos use tienen un efecto:
+`#` es un "título nivel 1", lo que significa que es la fuente de mayor tamaño y que
+está al tope de la gerarquía. `###` es un título nivel 3 y se muestra anidado bajo el 
+título `#` y `##`.
 
-Learn more: http://rmarkdown.rstudio.com/
+Más osbre esto en: http://rmarkdown.rstudio.com/
 
-### Your Turn
+### Actividad
 
-1. In Markdown, Write some italic text, and make a numbered list. And add a few subheaders.
-Use the Markdown Quick Reference (in the menu bar: Help > Markdown Quick Reference). 
-1. Reknit your html file. 
+1. En Markdown, escriba un texto en cursiva (Itálica) y haga una lista numerada. Luego 
+agrege algunos subtítulo. Use la Referencia de Uso Rápido de Markdown (en barra del menú: 
+Help > Markdown Quick Reference). 
+1. Haga clic en Knit para crear su archivo html. 
 
 
-### Code chunks
+### Secciones de código
 
-OK. Now let's practice with some of those commands.
+OK. Ahora practiquemos con algunos comandos de R.
 
-Create a new chunk in your RMarkdown first in one of these ways: 
+Cree una nueva sección en en su RMarkdown siguiendo alguno de estos pasos:
 
-- click "Insert > R" at the top of the editor pane
-- type by hand 
+- clic "Insert > R" en la parte superior del panel de edición.
+- Escriba a mano 
    \```{r}
    \```
-- if you haven't deleted a chunk that came with the new file, edit that one
+- si no ha borrado una sección de las que venían con el archivo creado por defecto, 
+edite esa
 
-Now, let's write some R code. 
+Ahora escribamos un poco de código de R. 
 
 ```
 x <- 4*3
 x
 ```
 
-Now, hitting return does not execute this command; remember, it's just a text file. To execute it, we need to get what we typed in the the R chunk (the grey R code) down into the console. How do we do it? There are several ways (let's do each of them):
+Ahora al apretar la tecla return el comando no se ejecuta; recuerde que esto
+es solo un archivo de texto. Para ejecutarlo, tenemos que ejecutar lo que escribimos
+dentro de la seccón de R (el código R en plomo) en la consola. ¿Cómo se hace eso?
+Hay vairas formas de hacerlo:
 
-1. copy-paste this line into the console.
-1. select the line (or simply put the cursor there), and click 'Run'. This is available from 
-    a. the bar above the file (green arrow)
-    b. the menu bar: Code > Run Selected Line(s)
-    c. keyboard shortcut: command-return
-1. click the green arrow at the right of the code chunk
+1. Copiar y pegar los comando en la consola.
+1. Seleccionar la linea (o poner el curso en ella) y hacer clic en 'Run'. Esto está 
+diponible desde:
+    a. la barra arriba del archivo (flecha verde)
+    b. la barra menú: Code > Run Selected Line(s)
+    c. combinación de teclas: control-return en Windows o command-return en macOS.
+1. Clic en la flecha verde en el lado superior derecho de su seccion de código.
 
-### Your turn
+### Actividad
 
-Add a few more commands to your file. Execute them by trying the three ways above. Then, save your R Markdown file. 
+Agrege algunos otros comandos a su archivo. Ejecutelos de las tres formas indicadas
+más arriba. Finalmente, guarde su archivo RMarkdown. 
 
 
-## R functions, help pages
+## Funciones de R
 
-So far we've learned some of the basic syntax and concepts of R programming, how to navigate RStudio, and RMarkdown, but we haven't done any complicated or interesting programming processes yet. This is where functions come in!
+Hasta ahora hemos aprendido alguna sintaxis básica y conceptos de programación en 
+R, como navegar en RStudio y RMarkdown, pero no hemos hecho nada complicado o 
+interesantes. Aquó es donde las _funciones_ son útiles.
 
-A function is a way to group a set of commands together to undertake a task in a reusable way. When a function is executed, it produces a return value. We often say that we are "calling" a function when it is executed. Functions can be user defined and saved to an object using the assignment operator, so you can write whatever functions you need, but R also has a mind-blowing collection of built-in functions ready to use. To start, we will be using some built in R functions.
+Una función es una forma de agrupar una serie de comandos para desarrollar una
+tarea en una forma reusable. Cuando una función es ejecutada, se produce un valor
+de salida. Nosotros generalmente deciros que "llamamos" a una función cuando
+la ejecutamos. Lo interesante sobre las funciones es que pueden ser creadas por 
+los usuarios y guardadas como un objeto usando el operador de asignación ('<-'),
+de esta forma es posible escribir una función para lo que sea que se necesite. 
+Tenga en cuenta que R tiene una collección gigantesca de funciones pre-existentes.
+Para comenzar, vamos a usar algunas funciones de incluidas en R.
 
-All functions are called using the same syntax: function name with parentheses around what the function needs in order to do what it was built to do. The pieces of information that the function needs to do its job are called arguments. So the syntax will look something like: `result_value <- function_name(argument1 = value1, argument2 = value2, ...)`. 
+Todas las funcioens se llaman usando la misma sintaxis: nombre de la función 
+seguido de un paréntesis donde se entregan lo que necesita la función para hacer
+lo que fue creada para hacer. Las piezas de informacion que la función necesita 
+para hacer su trabajo se conocen como argumentos. De esta forma, la sintaxis 
+para usar una función se ve así: 
+`valor_resultante <- nombre_de_función(argumento1 = valor1, argumento2 = valor2, ...)`. 
 
 ### A simple example
 
@@ -135,7 +187,7 @@ and use the `mean` function to calculate the mean weight.
 ```{r}
 mean(peso_kg)
 ```
-
+## Páginas de ayuda
 ### Getting help
 
 What if you know the name of the function that you want to use, but don't know exactly how to use it? Thankfully RStudio provides an easy way to access the help documentation for functions.
