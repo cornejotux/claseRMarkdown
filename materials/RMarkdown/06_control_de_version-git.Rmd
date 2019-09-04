@@ -1,9 +1,9 @@
 
-# Version Control With git and GitHub
+# Control de versiones con git y GitHub
 
-## Learning Objectives
+## Objetivos
 
-In this lesson, you will learn:
+En esta leccion aprenderemos:
 
 - Why __git__ is useful for reproducible analysis
 - How to use __git__ to track changes to your work over time
@@ -13,34 +13,44 @@ In this lesson, you will learn:
 
 ## The problem with filenames
 
-![](images/phd_comics_final.png)
+```{r finalDoc, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'El dilema de usar nombres como descriptor de versiones.'}
+knitr::include_graphics("images/3.1_phd_comics_final.png")
+```
 
-Every file in the scientific process changes.  Manuscripts are edited.
-Figures get revised.  Code gets fixed when problems are discovered.  Data files
-get combined together, then errors are fixed, and then they are split and 
-combined again. In the course of a single analysis, one can expect thousands of
-changes to files.  And yet, all we use to track this are simplistic *filenames*.  
-You might think there is a better way, and you'd be right: __version control__.
+Cada archivo en un proceso científico sufre de cambios. Los manuscritos son editados. Las figuras son 
+revisadas. Los códigos se corrigen cuando se encuentran problemas. Los archivos de datos se combinan, 
+errores son corregidos, se dividen y combinan nuevamente. En el curso de un análisis simple, uno puede 
+esperar miles de cambios en los archivos. Y aún así, todo lo que usamos para identificas este sinnúmero 
+de cambios son los simples **nombres de archivos** (fig. \@ref(fig:finalDoc)). Teniendo esto en consideración, es lógico 
+pensar que debe existir una forma mejor… Y si la hay, se conoce como **Control de Versiones**.
 
-Version control systems help you track all of the changes to your files, without
-the spaghetti mess that ensues from simple file renaming.  In version control systems
-like `git`, the system tracks not just the name of the file, but also its contents,
-so that when contents change, it can tell you which pieces went where.  It tracks
-which version of a file a new version came from.  So its easy to draw a graph
-showing all of the versions of a file, like this one:
 
-![](images/version-graph.png)
+Un sistema de control de versiones ayuda a seguir todos lo cambios que se realizan a nuestros 
+archivos, sin el desastre que resulta utilizando sólo el nombre de archivos. En los sistemas de 
+control de versiones como `git`, el sistema registra no solo el nombre del archivo, si no que 
+además su contenido, de esta forma, cuando el contenido cambia, permite identificar que partes 
+estaban y donde. Registra además que versión de un archivo viene de una versión previa, de esta 
+forma se tiene un historial de todos los cambios. De esta forma es fácil dibujar un gráfico 
+que muestre todos los cambios que ha sufrido un archivos, con todas sus versiones, algo como 
+lo que se muestra en la figura \@ref(fig:figVersiones):
 
-Version control systems assign an identifier to every version of every file, and 
-track their relationships. They also allow branches in those versions, and merging
-those branches back into the main line of work.  They also support having 
-*multiple copies* on multiple computers for backup, and for collaboration.
-And finally, they let you tag particular versions, such that it is easy to return 
-to a set of files exactly as they were when you tagged them.  For example, the 
-exact versions of data, code, and narrative that were used when a manuscript was 
-submitted might be `R2` in the graph above.
 
-## Version control and Collaboration using Git and GitHub
+
+```{r figVersiones, echo=FALSE, out.width = '40%', fig.align = 'center', fig.cap = 'Evolución de las versiones de un archivo.'}
+knitr::include_graphics("images/3.2_version-graph.png")
+```
+
+Los sistemas de control de versiones asignan un identificador a cada versión de cada 
+archivo y mantiene un registro de como están relacionados entre ellos. Además, estos
+permiten ramificaciones en esas versiones, permitiendo fusiones de esas ramificaciones
+de regreso a la tronco principal de trabajo. Estos sistemas permiten
+ademas tener *múltiples copias* en múltiples computadores como respaldos y para trabajar
+en colaboración. Finalmente, además se puede incluir etiquetas (tags) a versiones 
+en particular, de esta forma es fácil retornar a la versión que tenían los archivos 
+cuando fueron etiquetados. Por ejemplo, la versión exacta de los datos, código y texto
+de un manuscrito que fue enviado y que tiene la etiqueta `R2` en la figura \@ref(fig:figVersiones).
+
+## Control de versiones y colaboracion usando Git and GitHub
 
 Let's distinguish between git and GitHub:
 
@@ -48,7 +58,11 @@ Let's distinguish between git and GitHub:
     - git creates the versioned history of a repository
 - __GitHub__: web site that allows users to store their git repositories and share them with others
 
-![](images/vc-local-github.png)
+
+```{r gitExplicado, echo=FALSE, out.width = '60%', fig.align = 'center', fig.cap = 'Diferencia entre git y GitHub.'}
+knitr::include_graphics("images/6.3_vc-local-github.png")
+```
+
 
 ## Let's look at a GitHub repository
 
@@ -56,18 +70,28 @@ This screen shows the copy of a repository stored on GitHub,
 with its list of files, when the files and directories were last modified, 
 and some information on who made the most recent changes.  
 
-![](images/ss3sim-github.png)
+```{r webGitHub, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de un repositorio en GitHub.'}
+knitr::include_graphics("images/6.4_ss3sim-github.png")
+```
+
+
 If we drill into the 
 "commits" for the repository, we can see the history of changes made to all of 
 the files.  Looks like `kellijohnson` and `seananderson` were fixing things in
 June and July:
 
-![](images/ss3sim-commits.png)
+```{r githubCommits, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de los Commits de un repositorio en GitHub.'}
+knitr::include_graphics("images/6.5_ss3sim-commits.png")
+```
 
 And finally, if we drill into the changes made on June 13, we can see exactly what
 was changed in each file:
 
-![](images/ss3sim-diff.png)
+```{r githubDiferencias, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla donde se presentan las diferencias entre dos versiones alojadas en un repositorio de GitHub.'}
+knitr::include_graphics("images/6.6_ss3sim-diff.png")
+```
+
+
 Tracking these changes, how they relate to released versions of software and files
 is exactly what Git and GitHub are good for.  And we will show how they can really 
 be effective for tracking versions of scientific code, figures, and manuscripts

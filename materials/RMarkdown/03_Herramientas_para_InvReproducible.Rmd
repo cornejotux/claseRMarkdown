@@ -19,7 +19,7 @@ debe existir una forma mejor... Y si la hay, se conoce como __Control de Version
 Un sistema de control de versiones ayuda a seguir todos lo cambios que se realizan a
 nuestros archivos, sin el desastre que resulta utilizando sólo el nombre de archivos.
 En los sistemas de control de versiones como `git`, el sistema registra no solo el 
-nombre del archivo, si no que ademas su contenido, de esta forma, cuando el contenido 
+nombre del archivo, si no que además su contenido, de esta forma, cuando el contenido 
 cambia, permite identificar que partes estaban y donde. Registra además que versión de 
 un archivo viene de una versión previa, de esta forma se tiene un historial de todos
 los cambios. De esta forma es fácil dibujar un gráfico que muestre todos los cambios
@@ -33,7 +33,7 @@ knitr::include_graphics("images/3.2_version-graph.png")
 Los sistemas de control de versiones asignan un identificador a cada versión de cada 
 archivo y mantiene un registro de como están relacionados entre ellos. Además, estos
 permiten ramificaciones en esas versiones, permitiendo fusiones de esas ramificaciones
-de regreso a la tronco principal de trabajo. sus relaciones. Estos sistemas permiten
+de regreso a la tronco principal de trabajo. Estos sistemas permiten
 ademas tener *múltiples copias* en múltiples computadores como respaldos y para trabajar
 en colaboración. Finalmente, además se puede incluir etiquetas (tags) a versiones 
 en particular, de esta forma es fácil retornar a la versión que tenían los archivos 
