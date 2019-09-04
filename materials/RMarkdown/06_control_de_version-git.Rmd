@@ -13,7 +13,7 @@ En esta leccion aprenderemos:
 
 ## The problem with filenames
 
-```{r finalDoc, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'El dilema de usar nombres como descriptor de versiones.'}
+```{r finalDoc2, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'El dilema de usar nombres como descriptor de versiones.'}
 knitr::include_graphics("images/3.1_phd_comics_final.png")
 ```
 
@@ -21,7 +21,7 @@ Cada archivo en un proceso científico sufre de cambios. Los manuscritos son edi
 revisadas. Los códigos se corrigen cuando se encuentran problemas. Los archivos de datos se combinan, 
 errores son corregidos, se dividen y combinan nuevamente. En el curso de un análisis simple, uno puede 
 esperar miles de cambios en los archivos. Y aún así, todo lo que usamos para identificas este sinnúmero 
-de cambios son los simples **nombres de archivos** (fig. \@ref(fig:finalDoc)). Teniendo esto en consideración, es lógico 
+de cambios son los simples **nombres de archivos** (fig. \@ref(fig:finalDoc2)). Teniendo esto en consideración, es lógico 
 pensar que debe existir una forma mejor… Y si la hay, se conoce como **Control de Versiones**.
 
 
@@ -36,7 +36,7 @@ lo que se muestra en la figura \@ref(fig:figVersiones):
 
 
 
-```{r figVersiones, echo=FALSE, out.width = '40%', fig.align = 'center', fig.cap = 'Evolución de las versiones de un archivo.'}
+```{r figVersiones2, echo=FALSE, out.width = '40%', fig.align = 'center', fig.cap = 'Evolución de las versiones de un archivo.'}
 knitr::include_graphics("images/3.2_version-graph.png")
 ```
 
@@ -48,7 +48,7 @@ ademas tener *múltiples copias* en múltiples computadores como respaldos y par
 en colaboración. Finalmente, además se puede incluir etiquetas (tags) a versiones 
 en particular, de esta forma es fácil retornar a la versión que tenían los archivos 
 cuando fueron etiquetados. Por ejemplo, la versión exacta de los datos, código y texto
-de un manuscrito que fue enviado y que tiene la etiqueta `R2` en la figura \@ref(fig:figVersiones).
+de un manuscrito que fue enviado y que tiene la etiqueta `R2` en la figura \@ref(fig:figVersiones2).
 
 ## Control de versiones y colaboracion usando Git and GitHub
 
