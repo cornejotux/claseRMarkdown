@@ -3,15 +3,15 @@
 
 ## Objetivos
 
-En esta leccion aprenderemos:
+En esta lección usted aprenderá:
 
-- Why __git__ is useful for reproducible analysis
-- How to use __git__ to track changes to your work over time
-- How to use __GitHub__ to collaborate with others
-- How to structure your commits so your changes are clear to others
-- How to write effective commit messages
+- ¿Por qué __git__ es útil para analisis reproducibles?
+- ¿Cómo usar __git__ para controlar los cambios que se hacen en el tiempo?
+- ¿Cómo usar __GitHub__ para colaboración?
+- ¿Cómo estructurar los "_commits_" para que los cambios sean claros para otros?
+- ¿Cómo escribir mensajes de "_commits_" que sean efectivos?
 
-## The problem with filenames
+## El problema con los archivos de nombre
 
 ```{r finalDoc2, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'El dilema de usar nombres como descriptor de versiones.'}
 knitr::include_graphics("images/3.1_phd_comics_final.png")
@@ -50,54 +50,54 @@ en particular, de esta forma es fácil retornar a la versión que tenían los ar
 cuando fueron etiquetados. Por ejemplo, la versión exacta de los datos, código y texto
 de un manuscrito que fue enviado y que tiene la etiqueta `R2` en la figura \@ref(fig:figVersiones2).
 
-## Control de versiones y colaboracion usando Git and GitHub
+## Control de versiones y colaboración usando Git and GitHub
 
-Let's distinguish between git and GitHub:
+Hagamos la distición entre **git** y **GitHub**.
 
-- __git__: version control software used to track files in a folder (a repository)
-    - git creates the versioned history of a repository
-- __GitHub__: web site that allows users to store their git repositories and share them with others
-
+- __git__: Software the control de versones que se usa para monitorear los archivos de un 
+directorio (un repositorio)
+    - git crea el historial de versiones de un repositorio
+- __GitHub__: Sitio web que permite a usuarios almacenar sus repositorios git y compartilos
+con otros
 
 ```{r gitExplicado, echo=FALSE, out.width = '60%', fig.align = 'center', fig.cap = 'Diferencia entre git y GitHub.'}
 knitr::include_graphics("images/6.3_vc-local-github.png")
 ```
 
 
-## Let's look at a GitHub repository
+## Veamos un repositorio de GitHub
 
-This screen shows the copy of a repository stored on GitHub,
-with its list of files, when the files and directories were last modified, 
-and some information on who made the most recent changes.  
+El pantallaso en la figura \@ref(fig:webGitHub) muestra una copia de un repositorio 
+almacenado en GitHub, con el listado de archivos, cuando se modificaron los archivos 
+y directorios y laguna información acerca de quien hizo los cambios más recientes.
 
 ```{r webGitHub, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de un repositorio en GitHub.'}
 knitr::include_graphics("images/6.4_ss3sim-github.png")
 ```
 
-
-If we drill into the 
-"commits" for the repository, we can see the history of changes made to all of 
-the files.  Looks like `kellijohnson` and `seananderson` were fixing things in
-June and July:
+Si nos metemos en los "commits" del repositorio (fig. \@ref(fig:githubCommits)), podemos 
+que que la historia de los
+cambios que se le han realizado a todos los archivos.  Se puede ver que `kellijohnson`
+y `seananderson` arreglaron algunas cosas durante junio y julio:
 
 ```{r githubCommits, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de los Commits de un repositorio en GitHub.'}
 knitr::include_graphics("images/6.5_ss3sim-commits.png")
 ```
 
-And finally, if we drill into the changes made on June 13, we can see exactly what
-was changed in each file:
+Y finalmente, si vemos ahora los cambios realizado el 13 de julio (fig. \@ref(fig:githubDiferencias)),
+se puede exactamente cuales fueron los cambios realizados a cada archivo:
 
 ```{r githubDiferencias, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla donde se presentan las diferencias entre dos versiones alojadas en un repositorio de GitHub.'}
 knitr::include_graphics("images/6.6_ss3sim-diff.png")
 ```
 
+Monitorear estos cabmios, como se relacionan a cada las versiones de un software en 
+particular y a los archivos es exactamente para lo que fueron diseñados git y 
+GitHub. Vamos a mostrar como pueden ser realmente efectivos para monitorear 
+versiones de códigos científicos, figuras y manuscritors para lograr tener
+flujos de trabajo reproducibles.
 
-Tracking these changes, how they relate to released versions of software and files
-is exactly what Git and GitHub are good for.  And we will show how they can really 
-be effective for tracking versions of scientific code, figures, and manuscripts
-to accomplish a reproducible workflow.
-
-## The Git lifecycle
+## El ciclo de cida de Git
 
 As a git user, you'll need to understand the basic concepts associated with versioned
 sets of changes, and how they are stored and moved across repositories.  Any given
