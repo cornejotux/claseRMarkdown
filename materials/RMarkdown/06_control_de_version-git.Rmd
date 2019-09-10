@@ -32,7 +32,7 @@ además su contenido, de esta forma, cuando el contenido cambia, permite identif
 estaban y donde. Registra además que versión de un archivo viene de una versión previa, de esta 
 forma se tiene un historial de todos los cambios. De esta forma es fácil dibujar un gráfico 
 que muestre todos los cambios que ha sufrido un archivos, con todas sus versiones, algo como 
-lo que se muestra en la figura \@ref(fig:figVersiones):
+lo que se muestra en la figura \@ref(fig:figVersiones2):
 
 
 
