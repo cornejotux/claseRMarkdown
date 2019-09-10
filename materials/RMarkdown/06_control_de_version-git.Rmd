@@ -96,61 +96,78 @@ GitHub. Vamos a mostrar como pueden ser realmente efectivos para monitorear
 versiones de códigos científicos, figuras y manuscritors para lograr tener
 flujos de trabajo reproducibles.
 
-## El ciclo de cida de Git
+## El ciclo de vida de Git
 
-As a git user, you'll need to understand the basic concepts associated with versioned
-sets of changes, and how they are stored and moved across repositories.  Any given
-git repository can be cloned so that it exist both locally, and remotely.  But each of
-these cloned repositories is simply a copy of all of the files and change history
-for those files, stored in git's particular format.  For our purposes, we can consider
-a git repository just a folder with a bunch of additional version-related metadata.
+Como usuario de git usted tiene que entener algunos conceptos básicos
+asociados a los set de cambios con versiones y como estos son almacenado y 
+se mueven a traves del repositorio.  Cualquier repositorio de git puede ser
+clonado, de esta forma existe en forma local y remota. Pero cada uno de estos
+repositorios clonados son una copia simple de todos los archivos y el historial
+de cambios de ellos, almacenados en un forma git particular. Para
+nuestros propósitos, tenemos que considerar un repositorio de git 
+simplemente un un directorio que contiene adicionalmente un set de 
+metadatos relacionado con las versiones.
 
-In a local git-enabled folder, the folder contains a workspace containing the 
-current version of all files in the repository. These working files are linked to
-a hidden folder containing the 'Local repository', which contains all of the other
-changes made to the files, along with the version metadata.
+En un directorio local donde git fue habilitado, el directorio contiene la 
+versíon actual de todos los archivos del repositorio. Estos archivos de trabajo
+están unidos a un directorio escondido que contiene el 'Repositorio local', 
+el que a su vez contiene todos los otros cambios que se han realizado a los
+archivos y los metadatos sobre las versiones.
 
-So, when working with files using git, you can use git commands to indicate specifically
-which changes to the local working files should be staged for versioning 
-(using the `git add` command), and when to record those changes as a version in
-the local repository (using the command `git commit`).
+De esta forma, cuando se está usando git para trabajar con archivos, se pueden 
+usar los comando de git para indicar específicamente que cambios a los archivos
+de trabajo deben ser definidos para las versiones (usando el comando `git add`)
+y cuando grabar estos cambios como una versión en el repositorio local (usando
+el comando `git commit`).
 
-The remaining concepts are involved in synchronizing the changes in your local 
-repository with changes in a remote repository.  The `git push` command is used to
-send local changes up to a remote repository (possibly on GitHub), and the `git pull`
-command is used to fetch changes from a remote repository and merge them into the
-local repository.
+Los demás conceptos se relacionan a la sincronización de los cambios en el 
+repositorio local a un repositorio remoto. El comando `git push` se usar para
+enviar los cambios realizados en forma local a un repositorio remoto (posiblemente
+en GitHub) y el comando `git pull` es usado para traer los cambios del repositorio
+remoto y unirlos al repositorio local.
 
-![](images/git-flowchart.png)
 
-- `git clone`: to copy a whole remote repository to local
-- `git add` (stage): notify git to track particular changes
-- `git commit`: store those changes as a version
-- `git pull`: merge changes from a remote repository to our local repository
-- `git push`: copy changes from our local repository to a remote repository
-- `git status`: determine the state of all files in the local repository
-- `git log`: print the history of changes in a repository
+```{r gitFlowChart, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Diagrama de flujo del ciclo de vida de git.'}
+knitr::include_graphics("images/6.7_git-flowchart.png")
+```
 
-Those seven commands are the majority of what you need to successfully use git.  
-But this is all super abstract, so let's explore with some real examples.
 
-## Create a remote repository on GitHub
+- `git clone`: Copia tod el repositorio remoto a uno local
+- `git add` (stage): Notifica a git de monitorear un set particular de cambios
+- `git commit`: Almacena los cambios realizados como una versión
+- `git pull`: Combina los calbios de un repositorio remoto a nuestro repositorio local
+- `git push`: Copia los cambios de nuestro repositorio local al repositorio remoto
+- `git status`: Determina el estado de los archivos en el repositorio local
+- `git log`: Imprime el historial de cambios en el repositorio
 
-Let's start by creating a repository on GitHub, then we'll edit some files.
+Estos siete comando con la mayoría de los que usted va a necesitar para utilizar git en forma
+exitosa. Pero todo esto es demasiado abstracto, mejor exploremos estos conceptos utilizando
+ejemplos reales.
 
-- Log into [GitHub](https://github.com)
-- Click the New repository button
-- Name it `sasap-test`
-- Create a README.md
-- Set the LICENSE to Apache 2.0
+## Cree un repositorio remoto en GitHub
 
-![](images/new-repo-github.png)
-You've now created your first repository! It has a couple of files that GitHub created
-for you, like the README.md file, and the LICENSE file, and the .gitignore file.
+Empecemos creando un repositorio en GitHub, luego editemos algunos archivos.
 
-![](images/sasap-test-repo.png)
+- Ingrese al sitio [GitHub](https://github.com)
+- Clic en el botor de repositorio nuevo (New repository)
+- Nombrelo como `sasap-test`
+- Cree un archivo README.md
+- Defina la licencia a Apache 2.0
 
-For simple changes to text files, you can make edits right in the GitHub web interface.  For example,
+
+```{r githubNewRepo, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Captura de pantalla de la creación de un repositorio nuevo en GitHub.'}
+knitr::include_graphics("images/6.8_new-repo-github.png")
+```
+
+¡Usted acaba de crear su primer repositorio! Tiene un par de archivos que 
+GitHub creó por usted, por ejemplo los archivpos README.md, LICENSE y .gitignore.
+
+
+```{r githubSasapRepo, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Captura de pantalla con el repositorio recién creado llamado sasap-test.'}
+knitr::include_graphics("images/6.9_sasap-test-repo.png")
+```
+
+Para hacer cambios menores a archivos de texto, se puede utilizar la interfase web de GitHub.  For example,
 navigate to the `README.md` file in the file listing, and edit it by clicking on the *pencil* icon.
 This is a regular Markdown file, so you can just add text, and when done, add a commit message, and 
 hit the `Commit changes` button.  
