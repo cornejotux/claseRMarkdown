@@ -35,7 +35,6 @@ que muestre todos los cambios que ha sufrido un archivos, con todas sus versione
 lo que se muestra en la figura \@ref(fig:figVersiones2):
 
 
-
 ```{r figVersiones2, echo=FALSE, out.width = '40%', fig.align = 'center', fig.cap = 'Evolución de las versiones de un archivo.'}
 knitr::include_graphics("images/3.2_version-graph.png")
 ```
