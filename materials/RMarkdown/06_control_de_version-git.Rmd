@@ -211,7 +211,7 @@ knitr::include_graphics("images/6.13_sasap-test-clone-url.png")
 ## Trabajando localmente con Git vía RStudio
 
 RStudio sabe como trabajar con archivos utilizando Git como sistema de control de 
-versiones, pero esto **solo** ocurre si estamos trabajando en un _Proyecto de RStudio_
+versiones, pero esto **sólo** ocurre si estamos trabajando en un _Proyecto de RStudio_
 (RStudio project folder).  En esta seccion vamos a clonar el repositorio que se creo
 en GitHuba y lo vamos a dejar un repositorio local de un proyecto de RStudio.  
 Esto es lo que vamos a hacer:
@@ -300,42 +300,55 @@ ver los cambios (comparando las diferencias) que guardó (note que estos cambios
 se han confirmado aun a su repositorio local).
 
 
-![](images/rstudio-status-pane.png)
-
-```{r rstudioPanelStatus, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Historial de los cambios realizados en el repositorio local.'}
+```{r rstudioPanelStatus, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Panel de estado de los cambios en los archivos.'}
 knitr::include_graphics("images/6.17_rstudio-status-pane.png")
 ```
 
-And here's what the newly made changes look like compared to the original file.
-New lines are highlighted in green, while removed lines are in red.
+Y ahora aquí se muestra como se ven los cambios cuando se comparan con el 
+archivo original. La líneas nuveas se destacan en color verde y en rojo 
+las que fueron eliminadas.
 
-![](images/rstudio-diff.png)
-__Commit the RStudio changes.__
+```{r rstudioDiferencias, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Ventana que presenta las diferencias entre la versión almacenada en el repositorio y los últimos cambios realizados.'}
+knitr::include_graphics("images/6.18_rstudio-diff.png")
+```
 
-To commit the changes you made to the README.md file, check the *Staged*
-checkbox next to the file (which tells Git which changes you want included in
-the commit), then provide a descriptive Commit message, and then click *Commit*.
+__Confirmar los cambios en Rstudio (Commit the RStudio changes).__
 
-![](images/rstudio-commit-1.png)
+Para confirmar los cambios que se acaban de hacer en el archivo README.md, 
+selecciones la caja de selección *Staged* a lado del nombre del archivo (que
+indica a Git cuales son los cambios que quiere sean incluido en la confirmación
+o commit), escriba un mensaje de confirmación que describa que se hizo y luego
+haga clic en *Commit* (fig. \@ref(fig:rstudioCommit1)).
 
-Note that some of the changes in the repository, namely `.gitignore` and 
-`sasap-test.Rproj` are still listed as having not been committed.  This means
-there are still pending changes to the repository.  You can also see the note
-that says:
+```{r rstudioCommit1, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla con un mensaje describiendo la confirmación (commit) que se realizará.'}
+knitr::include_graphics("images/6.19_rstudio-commit-1.png")
+```
+
+Note que algunos de los cambios en el repositorio, `.gitignore` y 
+`sasap-test.Rproj`, aun se identificaon que no estan confirmados 
+(commited). Esto significa que un existen cambios pendientes para ser indicados
+en el repositorio. Usted puede ver la nota que dice, in inglés:
 
 <code>Your branch is ahead of 'origin/master' by 1 commit.</code>
 
-This means that we have committed 1 change in the local repository, but that 
-commit has not yet been pushed up to the `origin` repository, where `origin`
-is the typical name for our remote repository on GitHub.  So, let's commit the
-remaining project files by staging them and adding a commit message.
+<code>Lo que se traduce como _Su rama esta más avanzadada que el 
+'maestro/origen' por una confirmación</code>
 
-![](images/rstudio-commit-2.png)
+Esto significa que hemos confirmado 1 cambios en el repositorio 
+local, pero que este no se ha empujado (pushed) al repositorio de 
+origen (`origin`), donde origen es el nombre que se usar típicamente
+para el repositorio en GitHub. Entonces, confirmemos los cambios 
+pendientes, para eso seleccione la caja (staging) y luego escriba el 
+mensaje de confirmación (commit message; fig .
 
-When finished, you'll see that no changes remain in the *Git* tab, and the repository
-is clean.  
+```{r rstudioCommit2, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla con los archivos a confirmar sus cambios y el texto descriptivo de la confirmación.'}
+knitr::include_graphics("images/6.20_rstudio-commit-2.png")
+```
 
-__Inspect the history.__ Note that the message now says:
+Cuando haya terminado, ahora puede ver que no existen cambios pendientes
+en el panel *Git* y el repositorio esta completamente limpio.
+
+__Inspecciones el historial (Inspect the history).__ Note that the message now says:
 
 <code>Your branch is ahead of 'origin/master' by 2 commits.</code>
 
