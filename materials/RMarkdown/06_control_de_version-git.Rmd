@@ -331,7 +331,8 @@ en el repositorio. Usted puede ver la nota que dice, in inglés:
 
 <code>Your branch is ahead of 'origin/master' by 1 commit.</code>
 
-<code>Lo que se traduce como _Su rama esta más avanzadada que el 
+Lo que se traduce como: 
+<code>_Su rama esta más avanzadada que el 
 'maestro/origen' por una confirmación</code>
 
 Esto significa que hemos confirmado 1 cambios en el repositorio 
@@ -348,22 +349,28 @@ knitr::include_graphics("images/6.20_rstudio-commit-2.png")
 Cuando haya terminado, ahora puede ver que no existen cambios pendientes
 en el panel *Git* y el repositorio esta completamente limpio.
 
-__Inspecciones el historial (Inspect the history).__ Note that the message now says:
+__Inspeccione el historial.__ Fíjese que ahora el mensaje dice:
 
 <code>Your branch is ahead of 'origin/master' by 2 commits.</code>
 
-These 2 commits are the two we just made, and have not yet been pushed to GitHub.
-By clicking on the *History* button, we can see that there are now a total of
-four commits in the local repository (while there had only been two on GitHub).
+<code>_Su rama esta más avanzadada que el 
+'maestro/origen' por 2 confirmación</code>
 
-![](images/rstudio-history-2.png)
+Estas 2 confirmaciones son las dos que acabamos de hacer y no se han empujado
+aun a GitHub. Haciendo clic en el botón *History* (historial), podemos ver que 
+ahora hay un total de 4 confirmaciones en el repositorio local, mientras hay 
+solo 2 en GitHub (fig. \@ref(fig:rstudioCommit3)).
 
-__Push these changes to GitHub.__ Now that everything has been changed as desired
-locally, you can *push* the changes to GitHub using the *Push* button.  This will
-prompt you for your GitHub username and password, and upload the changes, leaving
-your repository in a totally clean and synchronized state.  When finished, looking
-at the history shows all four commits, including the two that were done on GitHub
-and the two that were done locally on RStudio.  
+```{r rstudioCommit3, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla con 4 commits.'}
+knitr::include_graphics("images/6.21_rstudio-history-2.png")
+```
+__Empuje estos cambios a GitHub.__ Ahora que se han hecho todos los cambios deseados
+en el repositorio local, usted puede empujar (*push*) los cambios a GitHub usando el 
+boton *Push*.  Esto hará que se le pregunte por su usuario y password de GitHub y
+subir los cambios, dejando que su repositorio local en un estado totalmente limpio
+y sincronizado. Terminado esto, al mirar en el historial (en GitHub) se muestran todos
+los commits, incluendo los 2 que fueron hechos en GitHub y los 2 que se hicieron en
+forma local con RStudio.  
 
 ![](images/rstudio-history-3.png)
 And note that the labels indicate that both the local repository (`HEAD`) and the
