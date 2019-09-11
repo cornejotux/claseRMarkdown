@@ -155,7 +155,7 @@ Empecemos creando un repositorio en GitHub, luego editemos algunos archivos.
 - Defina la licencia a Apache 2.0
 
 
-```{r githubNewRepo, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Captura de pantalla de la creación de un repositorio nuevo en GitHub.'}
+```{r githubNewRepo, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de la creación de un repositorio nuevo en GitHub.'}
 knitr::include_graphics("images/6.8_new-repo-github.png")
 ```
 
@@ -163,7 +163,7 @@ knitr::include_graphics("images/6.8_new-repo-github.png")
 GitHub creó por usted, por ejemplo los archivpos README.md, LICENSE y .gitignore.
 
 
-```{r githubSasapRepo, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Captura de pantalla con el repositorio recién creado llamado sasap-test.'}
+```{r githubSasapRepo, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla con el repositorio recién creado llamado sasap-test.'}
 knitr::include_graphics("images/6.9_sasap-test-repo.png")
 ```
 
@@ -172,11 +172,11 @@ navigate to the `README.md` file in the file listing, and edit it by clicking on
 This is a regular Markdown file, so you can just add text, and when done, add a commit message, and 
 hit the `Commit changes` button.  
 
-```{r githubSasapEdit, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Captura de pantalla con la interfase web de GitHub para la edición de documentos de texto.'}
+```{r githubSasapEdit, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla con la interfase web de GitHub para la edición de documentos de texto.'}
 knitr::include_graphics("images/6.10_sasap-test-edit.png")
 ```
 
-```{r githubSasapCommit, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Captura de pantalla con la interfase web de GitHub para la confirmar de los cambios realizados al documento de texto (commit changes).'}
+```{r githubSasapCommit, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla con la interfase web de GitHub para la confirmar de los cambios realizados al documento de texto (commit changes).'}
 knitr::include_graphics("images/6.11_sasap-test-commit.png")
 ```
 
@@ -185,54 +185,60 @@ es el autor de la primera version de este archivo. Si navega de regreso a la pá
 repositorio GitHub, puede ver la lista de los cambios confirmados (commits) ahi, así como 
 la visualisación del documento generado a partir del archivo README.md.
 
-```{r githubSasapDisplayed, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Captura de pantalla con la interfase web los cambios corfimados (commits) y de la visualización de la página README.md.'}
+```{r githubSasapDisplayed, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla con la interfase web los cambios corfimados (commits) y de la visualización de la página README.md.'}
 knitr::include_graphics("images/6.12_sasap-test-displayed.png")
 ```
 
-Let's point out a few things about this window.  It represents a view of the repository
-that you created, showing all of the files in the repository so far.  For each file,
-it shows when the file was last modified, and the commit message that was used to last
-change each file.  This is why it is important to write good, descriptive commit
-messages.  In addition, the blue header above the file listing shows the most recent
-commit, along with its commit message, and its SHA identifer.  That SHA identifier is
-the key to this set of versioned changes.  If you click on the SHA identifier (*810f314*), 
-it will display the set of changes made in that particular commit.
+Expliquemos alguas cosas sobre esta ventana. Representa una vista de el repositorio que
+acaba de crear, hasta ahora mostrando todos sus archivos. Para cada archivo, muestra
+la fecha de la última modificación y el mensaje asociado a la confirmación (commit) que
+se utilizó para describir el último cambio realizado en cada archivo. Esta es la razón
+de por qué es tan importante escribir buenos mensajes, que contengan información 
+relevante cuando se hace el _commit_. Además, el título azul sobre el listado de archivos
+muestra el _commit_ más reciente, con su mensaje asociado y su identificados SHA. Ese 
+identificador SHA es la clave para el set de versiones. Si hace clic en el identificados 
+SHA (*810f314*), va a mostrar los cambios que se hicieron en ese _commit_ en particular.
 
-In the next section we'll use the GitHub URL for the GitHub repository you created 
-to `clone` the repository onto your local machine so that you can edit the files 
-in RStudio.  To do so, start by copying the GitHub URL, which represents the repository
-location:
+En la sigguiente seccion vamos a usar el URL de GitHub para el repositorio que creo y 
+lo vamos a clonar (`clone`) a nuestra máquina local y así poder editar los archivos con 
+RStudio.  Para eso, primero tenemos que copiar el URL de GitHub, que representa la
+direccion del repositorio:
 
-![](images/sasap-test-clone-url.png)
+```{r githubSasapClone, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla para clonar un repositorio GitHub.'}
+knitr::include_graphics("images/6.13_sasap-test-clone-url.png")
+```
 
+## Trabajando localmente con Git vía RStudio
 
+RStudio sabe como trabajar con archivos utilizando Git como sistema de control de 
+versiones, pero esto **solo** ocurre si estamos trabajando en un _Proyecto de RStudio_
+(RStudio project folder).  En esta seccion vamos a clonar el repositorio que se creo
+en GitHuba y lo vamos a dejar un repositorio local de un proyecto de RStudio.  
+Esto es lo que vamos a hacer:
 
-## Working locally with Git via RStudio
+1. Crear un proyecto nuevo
+1. Inspeccionar el panel Git y el historial de versiones
+1. Confirmar una modificación (commit) al archivo README.md
+1. Confirmar las modificaciones que hizo RStudio
+1. Inspeccionar el historial de versiones
+1. Create y confirmar (commit) un archivo Rmd
+1. Enviar (_Push_) estos cambios a GitHub
+1. Ver el historial de cambios en GitHub
 
-RStudio knows how to work with files under version control with Git, but only if
-you are working within an RStudio project folder.  In this next section, we will
-clone the repository that you created on GitHub into a local repository as an 
-RStudio project.  Here's what we're going to do:
+__Crear nuevo Proyecto (Create a New Project).__ Comience creando un *New Project...*
+en R Studio, seleccione la opción *Version Control* y pegue el URL de GitHub que
+copió en el espacio para repositorio remoto (*Repository URL*). Si bien usted puede
+darle el nombre que quiera al repositorio local, se usa típicamente el mismo nombre
+que el que se tiene en GitHub, de esta forma se mantene un grado de correspondencia.
+Usted puede elegir cualquier directorio para su copia local, en mi caso use el 
+directorio `development` (fig. \@ref(fig:githubClone)).
 
-- Create the new project
-- Inspect the Git tab and version history
-- Commit a change to the README.md file
-- Commit the changes that RStudio made
-- Inspect the version history
-- Add and commit an Rmd file
-- Push these changes to GitHub
-- View the change history on GitHub
+```{r githubClone, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla para la creasción de un proyecto de RStudio clonando un repositorio remoto.'}
+knitr::include_graphics("images/6.14_rstudio-clone-repo.png")
+```
 
-__Create a New Project.__ Start by creating a *New Project...* in R Studio, select the *Version Control* 
-option, and paste the GitHub URL that you copied into the field for the 
-remote repository *Repository URL*.  While you can name the local copy of the 
-repository anything, its typical to use the same name as the GitHub repository to
-maintain the correspondence.  You can choose any folder for your local copy, in
-my case I used my standard `development` folder.
-
-![](images/rstudio-clone-repo.png)
-Once you hit `Create Project, a new RStudio windo will open with all of the files
-from the remote repository copied locally.  Depending on how your version of RStudio
+Un vez que haga clic en `Create Project` (crear proyecto), una nueva página de RStudio
+se abrirá con todos los archivos copiados localmente desde el repositorio remoto.  Depending on how your version of RStudio
 is configured, the location and size of the panes may differ, but they should all
 be present, including a *Git* tab and the normal *Files* tab listing the files that 
 had been created in the remote repository.
