@@ -281,22 +281,30 @@ sección nueva con un block de _markdown_ como este:
 
 ## Git desde RStudio
 
-From within RStudio, we can perform the same versioning actions that we can
-in GitHub, and much more.  Plus, we have the natural advantages of the 
-programming IDE with code completion and other features to make our work
-easier.
+Desde la interfase de RStudio, es posible hacer las mismas acciones con el 
+sistema de versiones que se hicieron hicimos en  GitHub y mucho más. Además 
+en RStudio se tienen las ventajas propias de programar en un IDE con completación
+de comandos y otras características que hacen nuestro trabajo más fácil.
 
-- Add files to version control
-- Commit changes
-- Push commits to GitHub
+- Agregar archivos al control de versiones
+- Confirmar (commit) cambios
+- Empujar confirmaciones (push commits) a GitHub
+
 </code></pre>
 
-Once you save, you'll immediately see the *README.md* file show up in the Git
-tab, marks as a modification.  You can select the file in the Git tab, and click
-*Diff* to see the differences that you saved (but which are not yet committed to
-your local repository).
+Una vez que se haya guardado, pueden ver en forma inmediata el archivo 
+*README.md* en el panel Git (fig. \@ref(fig:rstudioPanelStatus)), marcado 
+con una **M** de modificación.  Ahora usted
+puede seleccionar este archivo en el panel de Git y hacer clic en *Diff* para
+ver los cambios (comparando las diferencias) que guardó (note que estos cambios no 
+se han confirmado aun a su repositorio local).
+
 
 ![](images/rstudio-status-pane.png)
+
+```{r rstudioPanelStatus, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Historial de los cambios realizados en el repositorio local.'}
+knitr::include_graphics("images/6.17_rstudio-status-pane.png")
+```
 
 And here's what the newly made changes look like compared to the original file.
 New lines are highlighted in green, while removed lines are in red.
