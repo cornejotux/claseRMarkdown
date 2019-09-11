@@ -372,15 +372,21 @@ y sincronizado. Terminado esto, al mirar en el historial (en GitHub) se muestran
 los commits, incluendo los 2 que fueron hechos en GitHub y los 2 que se hicieron en
 forma local con RStudio.  
 
-![](images/rstudio-history-3.png)
-And note that the labels indicate that both the local repository (`HEAD`) and the
-remote repository (`origin/HEAD`) are pointing at the same version in the history.
-So, if we go look at the commit history on GitHub, all the commits will be shown
-there as well.
 
-![](images/github-history.png)
+```{r rstudioCommit3, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla con los 4 modificaciones confirmadas.'}
+knitr::include_graphics("images/6.22_rstudio-history-3.png")
+````
 
-## On good commit messages
+Note que las etiquetas tanto del repositorio local (`HEAD`) y el repositorio
+remoto (`origin/HEAD`) están apuntando a la misma versión en el historial.
+De esta forma, si vamos a mirar el historial de los commits en GitHub serán
+iguales a los que tenemos en forma local.
+
+```{r githubHistory, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla con el historial de cambios en github.'}
+knitr::include_graphics("images/6.23_github-history.png")
+````
+
+## Sobre buenos mensajes de confirmación (commit)
 
 Clearly, good documentation of what you've done is critical to making the version
 history of your repository meaningful and helpful.  Its tempting to skip the 
