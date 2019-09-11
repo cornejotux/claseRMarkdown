@@ -1,56 +1,72 @@
-# Data Modeling & Tidy Data
+# Modelamiento de datos y datos ordenados
 
-## Learning Objectives
+## Objetivos
 
-- Understand basics of relational data models aka tidy data
-- Learn how to design and create effective data tables
+- Entender los conceptos básicos de modelos de datos relacionales, tambien conocidos como datos ordenados (tidy data)
+- Aprender a diseñar y crear tablas de datos efectivas
 
-## Benefits of relational data systems
+## Beneficios de los sistemas de datos relacionales
 
-- Powerful search and filtering
-- Handle large, complex data sets
-- Enforce data integrity
-- Decrease errors from redundant updates
+- Poderoso sistema de filtrado y búsqueda
+- Manejo de set de datos grandes y complejos
+- Oblica a la integridad de datos
+- Disminulle los errores producto de las actualizaciones redundantes
 
-## Data Organization
+## Organización de datos
 
-![](images/excel-org-01.png)
+```{r excelOrg1, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Planilla excel infernal.'}
+knitr::include_graphics("images/7.1_excel-org-01.png")
+```
 
-## Multiple tables
+## Tablas múltiples
 
-![](images/excel-org-02.png)
+```{r excelOrg2, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Múltiples tablas en una misma planilla. Otro caso de un excel infernal.'}
+knitr::include_graphics("images/7.2_excel-org-02.png")
+```
 
-## Inconsistent observations
+## Observaciones inconsistentes
 
-![](images/excel-org-03.png)
+```{r excelOrg3, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Observaciones diferentes en una misma fila de la tabla. Otro caso de un excel infernal.'}
+knitr::include_graphics("images/7.3_excel-org-03.png")
+```
 
-## Inconsistent variables
+## Inconsistencia en las variables
 
-![](images/excel-org-04.png)
+```{r excelOrg4, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Variables diferentes en la misma columna.'}
+knitr::include_graphics("images/7.4_excel-org-04.png")
+```
 
-## Marginal sums and statistics
+## Estadísticas y sumas al margen
 
-![](images/excel-org-05.png)
+```{r excelOrg5, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Valores que pueden ser calculados partir de los datos de la tabla. Otra mala práctica.'}
+knitr::include_graphics("images/7.5_excel-org-05.png")
+```
 
-## Good enough data modeling
+## Modelamiento de datos adecuado
 
-### Denormalized data
+### Datos DeNormalizados
 
-- Observations about different entities combined
+- Observaciones de diferentes entidadaes en forma combinada
 
-![](images/table-denorm.png)
-In the above example, each row has measurements about both the `site` at which observations
-occurred, as well as observations of two individuals of possibly different species
-found at that site.  This is *not normalized* data.
+```{r tableDenorm1, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Valores obtenidos en diferentes entidades en la misma fila.'}
+knitr::include_graphics("images/7.6_table-denorm.png")
+```
 
-People often refer to this as *wide* format, because the observations are spread across a
-wide number of columns.  Note that, should one encounter a new species in the survey, we
-wold have to add new columns to the table.  This is difficult to analyze, understand, and
-maintain.
+En el ejemplo presentado en la figura \@ref(fig:tableDenorm1), se puede ver 
+como cada columna tiene información tanto de los sitios (`site`) donde se 
+registraron las observaciones, asi como de 2 individuos, aparentemente de 
+diferentes especies, que fueron encontrados en el sitio. Estos son datos _no_
+*normalizados*.
 
-### Tabular data
+La gente se refiere comunmente a esto como **formato ancho** o de 
+**mantel de cocina**, porque las observaciones estan repartidas a lo ancho
+de las columnas.  Notece que si encuentra una nueva especie en un 
+muestreo, tendríamos que agregar una nueva columna en la tabla. Esto es
+muy dificil de analizar, entender y mantener.
 
-__Observations__. A better way to model data is to organize the observations about each type of entity in its own table.  This results in:
+### Datos tabulares
+
+__Observaciones__. A better way to model data is to organize the observations about each type of entity in its own table.  This results in:
 
 - Separate tables for each type of entity measured
 - Each row represents a single observed entity
