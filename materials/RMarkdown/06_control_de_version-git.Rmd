@@ -243,29 +243,43 @@ is configured, the location and size of the panes may differ, but they should al
 be present, including a *Git* tab and the normal *Files* tab listing the files that 
 had been created in the remote repository.
 
-![](images/rstudio-sasap-test.png)
-You'll note that there is one new file `sasap-test.Rproj`, and three files that we
-created earlier on GitHub (`.gitignore`, `LICENSE`, and `README.md`).
+```{r githubCloneLocal, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de la interfase del projecto de RStudio con el clon local de repositorio.'}
+knitr::include_graphics("images/6.15_rstudio-sasap-test.png")
+```
 
-In the *Git* tab, you'll note that two files are listed.  This is the status pane
-that shows the current modification status of all of the files in the repository.
-In this case, the `.gitignore` file is listed as *M* for Modified, and `sasap-test.Rproj` 
-is listed with a *? ?* to indicate that the file is untracked.  This means that
-git has not stored any versions of this file, and knows nothing about the file.
-As you make version control decisions in RStudio, these icons will change to reflect
-the current version status of each of the files.
+En la figura \@ref(fig:githubCloneLocal) usted puede ver que apareció un  
+archivo llamado `sasap-test.Rproj` y que están los otros 3 archivos 
+que se crearon con el repositorio en GitHub (`.gitignore`, `LICENSE` y
+`README.md`).
 
-__Inspect the history.__ For now, let's click on the *History* button in the Git tab, which will show the
-log of changes that occurred, and will be identical to what we viewed on GitHub.
-By clicking on each row of the history, you can see exactly what was added and
-changed in each of the two commits in this repository.
+En el panel *Git* de RStudio, puede ver que presentan 2 archivos. Este es 
+el panel de estatus se muestran todos los archivos del repositorio que tienen
+modificaciones. En este caso, el archivo `.gitignore` se muesta con una
+*M* que significa Modificado y `sasap-test.Rproj` con un *? ?* para indicar que 
+este archivo con están siendo monitoreado. Esto significa que git no tiene
+registro de ninguna version para este archivo y que no sabe nada acerca de el.
+A medida que usted vaya tomando decisiones sobre el control de versiones en 
+RStudio, estos iconos van a ir cambiando para reflejar el estatus de la versión
+actual de cada uno de los archivos.
 
-![](images/rstudio-history-1.png)
-__Commit a README.md change.__ Next let's make a change to the README.md file
-in RStudio. Add a new section, with a markdown block like this:
+__Inspeccionar el historial (Inspect the history).__ Por ahora, vamos a hacer
+clic en el boton *History* (historial), con el que le van a mostar el 
+registro de los cambios que han ocurrido y que deben ser idénticos a lo que 
+usted vio en GitHub. Al hacer clic en cada fila del historial, podrá ir viendo
+exactamente que fue agregado y cambiado en cada uno de los commits en este 
+repositorio.
+
+```{r rstudioHistory1, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Historial de los cambios realizados en el repositorio local.'}
+knitr::include_graphics("images/6.16_rstudio-history-1.png")
+```
+
+__Confirme cambios al archivo README.md (Commit a README.md change).__ 
+Ahora hagamos algunos cambios al archivo README.md en RStudio. Agregue una 
+sección nueva con un block de _markdown_ como este:
 
 <pre><code>
-## Git from RStudio
+
+## Git desde RStudio
 
 From within RStudio, we can perform the same versioning actions that we can
 in GitHub, and much more.  Plus, we have the natural advantages of the 
