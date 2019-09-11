@@ -5,7 +5,7 @@
 
 En esta lección usted aprenderá:
 
-- ¿Por qué __git__ es útil para analisis reproducibles?
+- ¿Por qué __git__ es útil para análisis reproducibles?
 - ¿Cómo usar __git__ para controlar los cambios que se hacen en el tiempo?
 - ¿Cómo usar __GitHub__ para colaboración?
 - ¿Cómo estructurar los "_commits_" para que los cambios sean claros para otros?
@@ -51,12 +51,12 @@ de un manuscrito que fue enviado y que tiene la etiqueta `R2` en la figura \@ref
 
 ## Control de versiones y colaboración usando Git and GitHub
 
-Hagamos la distición entre **git** y **GitHub**.
+Hagamos la distinción entre **git** y **GitHub**.
 
-- __git__: Software the control de versones que se usa para monitorear los archivos de un 
+- __git__: Software para el control de versiones que monitorea los archivos de un 
 directorio (un repositorio)
     - git crea el historial de versiones de un repositorio
-- __GitHub__: Sitio web que permite a usuarios almacenar sus repositorios git y compartilos
+- __GitHub__: Sitio web que permite a usuarios almacenar sus repositorios git y compartirlos
 con otros
 
 ```{r gitExplicado, echo=FALSE, out.width = '60%', fig.align = 'center', fig.cap = 'Diferencia entre git y GitHub.'}
@@ -66,7 +66,7 @@ knitr::include_graphics("images/6.3_vc-local-github.png")
 
 ## Veamos un repositorio de GitHub
 
-El pantallaso en la figura \@ref(fig:webGitHub) muestra una copia de un repositorio 
+La captura de pantalla en la figura \@ref(fig:webGitHub) muestra una copia de un repositorio 
 almacenado en GitHub, con el listado de archivos, cuando se modificaron los archivos 
 y directorios y laguna información acerca de quien hizo los cambios más recientes.
 
@@ -90,17 +90,17 @@ se puede exactamente cuales fueron los cambios realizados a cada archivo:
 knitr::include_graphics("images/6.6_ss3sim-diff.png")
 ```
 
-Monitorear estos cabmios, como se relacionan a cada las versiones de un software en 
+Monitorear estos cambios, como se relacionan a cada las versiones de un software en 
 particular y a los archivos es exactamente para lo que fueron diseñados git y 
 GitHub. Vamos a mostrar como pueden ser realmente efectivos para monitorear 
-versiones de códigos científicos, figuras y manuscritors para lograr tener
+versiones de códigos científicos, figuras y manuscritos para lograr tener
 flujos de trabajo reproducibles.
 
 ## El ciclo de vida de Git
 
-Como usuario de git usted tiene que entener algunos conceptos básicos
+Como usuario de git usted tiene que entender algunos conceptos básicos
 asociados a los set de cambios con versiones y como estos son almacenado y 
-se mueven a traves del repositorio.  Cualquier repositorio de git puede ser
+se mueven a través del repositorio.  Cualquier repositorio de git puede ser
 clonado, de esta forma existe en forma local y remota. Pero cada uno de estos
 repositorios clonados son una copia simple de todos los archivos y el historial
 de cambios de ellos, almacenados en un forma git particular. Para
@@ -109,7 +109,7 @@ simplemente un un directorio que contiene adicionalmente un set de
 metadatos relacionado con las versiones.
 
 En un directorio local donde git fue habilitado, el directorio contiene la 
-versíon actual de todos los archivos del repositorio. Estos archivos de trabajo
+versión actual de todos los archivos del repositorio. Estos archivos de trabajo
 están unidos a un directorio escondido que contiene el 'Repositorio local', 
 el que a su vez contiene todos los otros cambios que se han realizado a los
 archivos y los metadatos sobre las versiones.
@@ -132,10 +132,10 @@ knitr::include_graphics("images/6.7_git-flowchart.png")
 ```
 
 
-- `git clone`: Copia tod el repositorio remoto a uno local
+- `git clone`: Copia todo el repositorio remoto a uno local
 - `git add` (stage): Notifica a git de monitorear un set particular de cambios
 - `git commit`: Almacena los cambios realizados como una versión
-- `git pull`: Combina los calbios de un repositorio remoto a nuestro repositorio local
+- `git pull`: Combina los cambios de un repositorio remoto a nuestro repositorio local
 - `git push`: Copia los cambios de nuestro repositorio local al repositorio remoto
 - `git status`: Determina el estado de los archivos en el repositorio local
 - `git log`: Imprime el historial de cambios en el repositorio
@@ -149,8 +149,8 @@ ejemplos reales.
 Empecemos creando un repositorio en GitHub, luego editemos algunos archivos.
 
 - Ingrese al sitio [GitHub](https://github.com)
-- Clic en el botor de repositorio nuevo (New repository)
-- Nombrelo como `sasap-test`
+- Clic en el botón de repositorio nuevo (New repository)
+- Nómbrelo como `sasap-test`
 - Cree un archivo README.md
 - Defina la licencia a Apache 2.0
 
@@ -160,17 +160,19 @@ knitr::include_graphics("images/6.8_new-repo-github.png")
 ```
 
 ¡Usted acaba de crear su primer repositorio! Tiene un par de archivos que 
-GitHub creó por usted, por ejemplo los archivpos README.md, LICENSE y .gitignore.
+GitHub creó por usted, por ejemplo los archivos README.md, LICENSE y .gitignore.
 
 
 ```{r githubSasapRepo, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla con el repositorio recién creado llamado sasap-test.'}
 knitr::include_graphics("images/6.9_sasap-test-repo.png")
 ```
 
-Para hacer cambios menores a archivos de texto, se puede utilizar la interfase web de GitHub.  For example,
-navigate to the `README.md` file in the file listing, and edit it by clicking on the *pencil* icon.
-This is a regular Markdown file, so you can just add text, and when done, add a commit message, and 
-hit the `Commit changes` button.  
+Para hacer cambios menores a archivos de texto, se puede utilizar la interfase web 
+de GitHub.  Por ejemplo, navegue al archivo `README.md` en el listado de archivos 
+y habilite la edición haciendo clic en el icono del _lápiz_. Este es una archivo
+normal con el formado Markdown, ahora se puede editar, agregando o removiendo texto.
+Cuando haya terminado, incluya un mensaje de commit y luego haga clic en el botón
+`Commit changes`.  
 
 ```{r githubSasapEdit, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla con la interfase web de GitHub para la edición de documentos de texto.'}
 knitr::include_graphics("images/6.10_sasap-test-edit.png")
@@ -182,14 +184,14 @@ knitr::include_graphics("images/6.11_sasap-test-commit.png")
 
 Felicitaciones, ahora usted acaba de confirmar (commit) los cambios, de esta forma ahora 
 es el autor de la primera version de este archivo. Si navega de regreso a la página del 
-repositorio GitHub, puede ver la lista de los cambios confirmados (commits) ahi, así como 
-la visualisación del documento generado a partir del archivo README.md.
+repositorio GitHub, puede ver la lista de los cambios confirmados (commits) ahí, así como 
+la visualización del documento generado a partir del archivo README.md.
 
 ```{r githubSasapDisplayed, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla con la interfase web los cambios corfimados (commits) y de la visualización de la página README.md.'}
 knitr::include_graphics("images/6.12_sasap-test-displayed.png")
 ```
 
-Expliquemos alguas cosas sobre esta ventana. Representa una vista de el repositorio que
+Expliquemos algunas cosas sobre esta ventana. Representa una vista de el repositorio que
 acaba de crear, hasta ahora mostrando todos sus archivos. Para cada archivo, muestra
 la fecha de la última modificación y el mensaje asociado a la confirmación (commit) que
 se utilizó para describir el último cambio realizado en cada archivo. Esta es la razón
@@ -199,10 +201,10 @@ muestra el _commit_ más reciente, con su mensaje asociado y su identificados SH
 identificador SHA es la clave para el set de versiones. Si hace clic en el identificados 
 SHA (*810f314*), va a mostrar los cambios que se hicieron en ese _commit_ en particular.
 
-En la sigguiente seccion vamos a usar el URL de GitHub para el repositorio que creo y 
+En la siguiente sección vamos a usar el URL de GitHub para el repositorio que creo y 
 lo vamos a clonar (`clone`) a nuestra máquina local y así poder editar los archivos con 
 RStudio.  Para eso, primero tenemos que copiar el URL de GitHub, que representa la
-direccion del repositorio:
+dirección del repositorio:
 
 ```{r githubSasapClone, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla para clonar un repositorio GitHub.'}
 knitr::include_graphics("images/6.13_sasap-test-clone-url.png")
@@ -212,8 +214,8 @@ knitr::include_graphics("images/6.13_sasap-test-clone-url.png")
 
 RStudio sabe como trabajar con archivos utilizando Git como sistema de control de 
 versiones, pero esto **sólo** ocurre si estamos trabajando en un _Proyecto de RStudio_
-(RStudio project folder).  En esta seccion vamos a clonar el repositorio que se creo
-en GitHuba y lo vamos a dejar un repositorio local de un proyecto de RStudio.  
+(RStudio project folder).  En esta sección vamos a clonar el repositorio que se creo
+en GitHub y lo vamos a dejar un repositorio local de un proyecto de RStudio.  
 Esto es lo que vamos a hacer:
 
 1. Crear un proyecto nuevo
@@ -221,7 +223,7 @@ Esto es lo que vamos a hacer:
 1. Confirmar una modificación (commit) al archivo README.md
 1. Confirmar las modificaciones que hizo RStudio
 1. Inspeccionar el historial de versiones
-1. Create y confirmar (commit) un archivo Rmd
+1. Cree y confirma (commit) un archivo Rmd
 1. Enviar (_Push_) estos cambios a GitHub
 1. Ver el historial de cambios en GitHub
 
@@ -229,7 +231,7 @@ __Crear nuevo Proyecto (Create a New Project).__ Comience creando un *New Projec
 en R Studio, seleccione la opción *Version Control* y pegue el URL de GitHub que
 copió en el espacio para repositorio remoto (*Repository URL*). Si bien usted puede
 darle el nombre que quiera al repositorio local, se usa típicamente el mismo nombre
-que el que se tiene en GitHub, de esta forma se mantene un grado de correspondencia.
+que el que se tiene en GitHub, de esta forma se mantiene un grado de correspondencia.
 Usted puede elegir cualquier directorio para su copia local, en mi caso use el 
 directorio `development` (fig. \@ref(fig:githubClone)).
 
@@ -238,10 +240,11 @@ knitr::include_graphics("images/6.14_rstudio-clone-repo.png")
 ```
 
 Un vez que haga clic en `Create Project` (crear proyecto), una nueva página de RStudio
-se abrirá con todos los archivos copiados localmente desde el repositorio remoto.  Depending on how your version of RStudio
-is configured, the location and size of the panes may differ, but they should all
-be present, including a *Git* tab and the normal *Files* tab listing the files that 
-had been created in the remote repository.
+se abrirá con todos los archivos copiados localmente desde el repositorio remoto. 
+Dependiendo de como esté configurada la versión de RStudio, la posición 
+y tamaño de los paneles puede cambiar, pero generalmente todos van a estar presentes,
+incluyendo los paneles *Git* y el listado de *Files* que fueron creados en el
+repositorio remoto.
 
 ```{r githubCloneLocal, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla de la interfase del projecto de RStudio con el clon local de repositorio.'}
 knitr::include_graphics("images/6.15_rstudio-sasap-test.png")
@@ -254,7 +257,7 @@ que se crearon con el repositorio en GitHub (`.gitignore`, `LICENSE` y
 
 En el panel *Git* de RStudio, puede ver que presentan 2 archivos. Este es 
 el panel de estatus se muestran todos los archivos del repositorio que tienen
-modificaciones. En este caso, el archivo `.gitignore` se muesta con una
+modificaciones. En este caso, el archivo `.gitignore` se muestra con una
 *M* que significa Modificado y `sasap-test.Rproj` con un *? ?* para indicar que 
 este archivo con están siendo monitoreado. Esto significa que git no tiene
 registro de ninguna version para este archivo y que no sabe nada acerca de el.
@@ -263,7 +266,7 @@ RStudio, estos iconos van a ir cambiando para reflejar el estatus de la versión
 actual de cada uno de los archivos.
 
 __Inspeccionar el historial (Inspect the history).__ Por ahora, vamos a hacer
-clic en el boton *History* (historial), con el que le van a mostar el 
+clic en el botón *History* (historial), con el que le van a mostrar el 
 registro de los cambios que han ocurrido y que deben ser idénticos a lo que 
 usted vio en GitHub. Al hacer clic en cada fila del historial, podrá ir viendo
 exactamente que fue agregado y cambiado en cada uno de los commits en este 
@@ -305,7 +308,7 @@ knitr::include_graphics("images/6.17_rstudio-status-pane.png")
 ```
 
 Y ahora aquí se muestra como se ven los cambios cuando se comparan con el 
-archivo original. La líneas nuveas se destacan en color verde y en rojo 
+archivo original. La líneas nuevas se destacan en color verde y en rojo 
 las que fueron eliminadas.
 
 ```{r rstudioDiferencias, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Ventana que presenta las diferencias entre la versión almacenada en el repositorio y los últimos cambios realizados.'}
@@ -325,7 +328,7 @@ knitr::include_graphics("images/6.19_rstudio-commit-1.png")
 ```
 
 Note que algunos de los cambios en el repositorio, `.gitignore` y 
-`sasap-test.Rproj`, aun se identificaon que no estan confirmados 
+`sasap-test.Rproj`, aun se identificación que no están confirmados 
 (commited). Esto significa que un existen cambios pendientes para ser indicados
 en el repositorio. Usted puede ver la nota que dice, in inglés:
 
@@ -340,7 +343,7 @@ local, pero que este no se ha empujado (pushed) al repositorio de
 origen (`origin`), donde origen es el nombre que se usar típicamente
 para el repositorio en GitHub. Entonces, confirmemos los cambios 
 pendientes, para eso seleccione la caja (staging) y luego escriba el 
-mensaje de confirmación (commit message; fig .
+mensaje de confirmación (commit message; fig \@ref(fig:rstudioCommit2)).
 
 ```{r rstudioCommit2, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla con los archivos a confirmar sus cambios y el texto descriptivo de la confirmación.'}
 knitr::include_graphics("images/6.20_rstudio-commit-2.png")
@@ -366,10 +369,10 @@ knitr::include_graphics("images/6.21_rstudio-history-2.png")
 ```
 __Empuje estos cambios a GitHub.__ Ahora que se han hecho todos los cambios deseados
 en el repositorio local, usted puede empujar (*push*) los cambios a GitHub usando el 
-boton *Push*.  Esto hará que se le pregunte por su usuario y password de GitHub y
+botón *Push*.  Esto hará que se le pregunte por su usuario y password de GitHub y
 subir los cambios, dejando que su repositorio local en un estado totalmente limpio
 y sincronizado. Terminado esto, al mirar en el historial (en GitHub) se muestran todos
-los commits, incluendo los 2 que fueron hechos en GitHub y los 2 que se hicieron en
+los commits, incluyendo los 2 que fueron hechos en GitHub y los 2 que se hicieron en
 forma local con RStudio.  
 
 
@@ -389,69 +392,74 @@ knitr::include_graphics("images/6.23_github-history.png")
 ## Sobre buenos mensajes de confirmación (commit)
 
 Es claro que una buena documentación es crítica para hacer del historial de versiones
-significativo y util. Es tentador saltarse la escritura del mensaje asociado al 
+significativo y útil. Es tentador saltarse la escritura del mensaje asociado al 
 commit o escribir algo por defecto como 'Actualización!'. Sin embargo es mucho
 mejor escribir mensajes que serán útiles para ti en el futuro, tal que te 
-entrege información que te permita sabe no solo que fue lo que hiciste, si no que
+entregue información que te permita sabe no solo que fue lo que hiciste, si no que
 además se pueda entender el por qué. Ademas, los mensajes que se usan en commits
-son en general más faciles de entender si usan una convención de verbos activos. 
+son en general más fáciles de entender si usan una convención de verbos activos. 
 Por ejemplo, se puede ver que los mensajes de commit en las capturas de pantallas 
 comienzan siempre con un verbo en pasado (en inglés!) y que explican que fue 
 lo que se cambió.
 
 Si bien mucho de los cambios que aquí se hicieron son simples y se explican por 
 si mismos, para cambios más complejos, es mejor entregar un mensaje completo y 
-autocontenido. La convención, sin embargo, es tratar de usar mensajes cortos, 
-con una sentencia breve, seguido de una explicación más detallasda y racional 
-para el cambio. Esto permite que el nivel de detallas seas leible en el registro
+auto-contenido. La convención, sin embargo, es tratar de usar mensajes cortos, 
+con una sentencia breve, seguido de una explicación más detallada y racional 
+para el cambio. Esto permite que el nivel de detallas seas leíble en el registro
 de las versiones (version log). No puedo contar el número de veces que he visto
 los registro de commits de hace 2, 3 o 10 años y agradecido el nivel de diligencia
-de los caloboradores que se tomaron el tiempo de describir el trabajo que 
+de los colaboradores que se tomaron el tiempo de describir el trabajo que 
 realizaron.
 
 ## Flujos de trabajo colaborativos y libres de conflictos (relacionados con Git)
 
-Up to now, we have been focused on using Git and GitHub for yourself, which is a 
-great use. But equally powerful is to share a GitHib repository with other
-researchers so that you can work on code, analyses, and models together.  When
-working together, you will need to pay careful attention to the state of the 
-remote repository to avoid and handle merge conflicts.  A *merge conflict* occurs
-when two collaborators make two separate commits that change the same lines of the
-same file.  When this happens, git can't merge the changes together automatically,
-and will give you back an error asking you to resolve the conflict. Don't be afraid
-of merge conflicts, they are pretty easy to handle.  and there are some 
-[great](https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/) [guides](https://stackoverflow.com/questions/161813/how-to-resolve-merge-conflicts-in-git).
+Hasta ahora nos hemos enfocado a usar Git y GitHub sólo para nosotros, esto es muy 
+útil. Pero aún más poderoso es compartir un repositorio con GitHub con otros
+investigadores, tal que se puede trabajar en un código, análisis y modelos en forma
+colaborativa. Cuando se trabaja de esta manera con otros colaboradores, es muy
+importante poner atención al estado del repositorio remoto para evitar potenciales
+conflictos al combinar el trabajo. Un *merge conflict* ocurre cuando dos colaboradores
+hace 2 commits en forma separada que han cambiado las misma líneas de código de un 
+archivo. Cuando esto ocurre, git no puede combinar los cambios en forma automática 
+y arroja un error preguntando como resolver el conflicto. Esto no es preocupante, 
+no le tenga miedo a los _merge conflicts_ ya que son muy fáciles resolver y aquí
+hay 
+[guías](https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/) [geniales](https://stackoverflow.com/questions/161813/how-to-resolve-merge-conflicts-in-git).
+de como resolverlos (por ahora sólo en inglés).
 
-That said, its truly painless if you can avoid merge conflicts in the first place.
-You can minimize conflicts by:
+Dicho esto, es siempre mucho mejor evadir este tipo de conflictos y se pueden minimizar
+siguientes las siguientes sugerencias:
 
-- Ensure that you pull down changes just before you commit
-  + Ensures that you have the most recent changes
-  + But you may have to fix your code if conflict would have occurred
-- Coordinate with your collaborators on who is touching which files
-  + You still need to comunicate to collaborate
+- Asegúrese de traer (_pull down_) todos los cambios antes de confirmarlos (commit)
+  + Asegurese que tiene los cambios más recientes
+  + Pero puede ser que necesite arreglar su código si ocurren conflictos
+- Coordínese con con sus colaboradores en quien va a trabajar en que archivos
+  + Usted **tiene** que comunicarse para colaborar
 
-## Exercise
+## Ejercicio
 
-Use RStudio to add a new RMarkdown file to your `sasap-test`
-repository, build a basic structure for the file, and then save it.
+Use RStudio para agregar un nuevo archivo al repositorio `sasap-test`,
+desarrolle una estructura básica y guárdela.
 
-Next, stage and commit the file locally, and push it up to GitHub.
+A continuación, stage y commit el archivo en forma local y luego push it a GitHub.
 
-## Advanced topics
+## Tópicos avanzados
 
-There's a lot we haven't covered in this brief tutorial.  There are some great
-and much longer tutorials that cover advanced topics, such as:
+Hay mucho que acá no se ha visto en este tutorial. Existen tutoriales muy 
+completos que cubre tópicos mas avanzados, hasta ahora tengo link a versiones en 
+inglés que espero poder reemplazar con otras en español más adelante. Alguno
+de estos temas son:
 
-- Using git on the command line
-- Resolving conflicts
-- Branching and merging
+- Usando git en la linea de comándos
+- Resolviendo conflictos
+- Branching y merging
 - Pull requests versus direct contributions for collaboration
 - Using .gitignore to protect sensitive data
 - GitHub Issues and why they are useful
 - and much, much more
 
-- [Try Git](https://try.github.io) is a great interactive tutorial
+- [Try Git](https://try.github.io) es un tutorial interactivo muy bueno y completo.
 - Software Carpentry [Version Control with Git](http://swcarpentry.github.io/git-novice/)
 - Codecademy [Learn Git](https://www.codecademy.com/learn/learn-git) (some paid)
 
