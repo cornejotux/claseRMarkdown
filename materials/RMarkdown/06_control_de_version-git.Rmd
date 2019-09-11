@@ -373,7 +373,7 @@ los commits, incluendo los 2 que fueron hechos en GitHub y los 2 que se hicieron
 forma local con RStudio.  
 
 
-```{r rstudioCommit3, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla con los 4 modificaciones confirmadas.'}
+```{r rstudioCommit4, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Captura de pantalla con los 4 modificaciones confirmadas.'}
 knitr::include_graphics("images/6.22_rstudio-history-3.png")
 ````
 
@@ -388,23 +388,28 @@ knitr::include_graphics("images/6.23_github-history.png")
 
 ## Sobre buenos mensajes de confirmación (commit)
 
-Clearly, good documentation of what you've done is critical to making the version
-history of your repository meaningful and helpful.  Its tempting to skip the 
-commit message altogether, or to add some stock blurd like 'Updates'.  Its better
-to use messages that will be helpful to your future self in deducing not just what
-you did, but why you did it.  Also, commit messaged are best understood if they
-follow the active verb convention.  For example, you can see that my commit
-messages all started with a past tense verb, and then explained what was changed.
+Es claro que una buena documentación es crítica para hacer del historial de versiones
+significativo y util. Es tentador saltarse la escritura del mensaje asociado al 
+commit o escribir algo por defecto como 'Actualización!'. Sin embargo es mucho
+mejor escribir mensajes que serán útiles para ti en el futuro, tal que te 
+entrege información que te permita sabe no solo que fue lo que hiciste, si no que
+además se pueda entender el por qué. Ademas, los mensajes que se usan en commits
+son en general más faciles de entender si usan una convención de verbos activos. 
+Por ejemplo, se puede ver que los mensajes de commit en las capturas de pantallas 
+comienzan siempre con un verbo en pasado (en inglés!) y que explican que fue 
+lo que se cambió.
 
-While some of the changes we illustrated here were simple and so easily explained
-in a short phrase, for more complext changes, its best to provide a more complete
-message.  The convention, however, is to always have a short, terse first sentence, 
-followed by a more verbose explanation of the details and rationale for the change.
-This keeps the high level details readable in the version log.  I can't count the
-number of times I've looked at the commit log from 2, 3, or 10 years prior and
-been so grateful for diligence of my past self and collaborators.
+Si bien mucho de los cambios que aquí se hicieron son simples y se explican por 
+si mismos, para cambios más complejos, es mejor entregar un mensaje completo y 
+autocontenido. La convención, sin embargo, es tratar de usar mensajes cortos, 
+con una sentencia breve, seguido de una explicación más detallasda y racional 
+para el cambio. Esto permite que el nivel de detallas seas leible en el registro
+de las versiones (version log). No puedo contar el número de veces que he visto
+los registro de commits de hace 2, 3 o 10 años y agradecido el nivel de diligencia
+de los caloboradores que se tomaron el tiempo de describir el trabajo que 
+realizaron.
 
-## Collaboration and conflict free workflows
+## Flujos de trabajo colaborativos y libres de conflictos (relacionados con Git)
 
 Up to now, we have been focused on using Git and GitHub for yourself, which is a 
 great use. But equally powerful is to share a GitHib repository with other
