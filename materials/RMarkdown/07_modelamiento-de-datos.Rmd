@@ -91,49 +91,68 @@ propiedades de los sitios donde las especies estaban presentes.
 knitr::include_graphics("images/7.7_table-denorm.png")
 ```
 
-## Claves primaria y foraneas
+## Claves primarias y foraneas
 
-When one has normalized data, we often use unique identifiers to reference
-particular observations, which allows us to link across tables.  Two types of
-identifiers are common within relational data:
+Cuando se usan datos nornalizados, es común usar identificadores únicos para 
+hacer referencia a observaciones particulares, esto nos permite hacer uniones 
+entre dos o más tablas. Los dos tipos de identificadores que se usan 
+comúnmente con datos relacionales son:
 
-- Primary Key: unique identifier for each observed entity, one per row
-- Foreign Key: reference to a primary key in another table (linkage)
+- Clave primaria: Identificados único para cada una de las observaciones de la entidad,
+es uno por fila
+- Clave foranea: Esto hace referencia una clave primaria que está en otra tabla
+(referencia para unir)
 
-For example, in the second table below, the `site` column is the *primary key* 
-of that table, because it uniquely identifies each row of the table as a unique
-observation of a site.  Inthe first table, however, the `site` column is a 
-*foreign key* that references the primary key from the second table.  This linkage
-tells us that the first height measurement for the `DAPU` observation occurred
-at the site with the name `Taku`.
+Por ejemplo, en la segunda tabla de la figura \@ref(fig:tableNorm3), la columna
+`site` es la **clave primaria** (primary key) de esa tabla. La puede identificar
+como tal porque es un identificador único para una observación realizada en un 
+sitio y que corresponde a una fila de la tabla. En la primera tabla, sin embargo, 
+la columna sitio (`site`) es una **clave foranea** (foreign key) que hace refencia
+a la clave primaria presente en la segunda tabla. Esta unión nos dice que 
+la primera medición de la altura (height) para la especie `DAPU` se realizó en el 
+sitio con el nombre `Taku`.
 
-![](images/tables-keys.png)
+```{r tableNorm3, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Explicación de la relación entre clave primaria y foranea entre dos tablas con datos normalizados.'}
+knitr::include_graphics("images/7.8_tables-keys.png")
+```
 
-## Entity-Relationship Model (ER)
+## Modelo de Relación-Entidad
 
-An Entity-Relationship model allows us to compactly draw the structure of the
-tables in a relational database, including the primary and foreign keys in the tables.
+Un modelo de Relación-Entidad nos permite dibujar en forma compacta la estructura
+de las tablas en una base de datos relacional, incluyendo las claves primaria y 
+foraneas de las tablas.
 
-![](images/plotobs-diagram.png)
-In the above model, one can see that each site in the `SITES` table must have one
-or more observations in the `PLOTOBS` table, whereas each `PLOTOBS` has one and 
-only one `SITE`.
+```{r modeloRE, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Representación gráfica de una relación-entidad de dos tablas, incluyendo las claves con que se unen..'}
+knitr::include_graphics("images/7.9_plotobs-diagram.png")
+```
 
-## Merging data
+En el modelo presentado en la figura \@ref(fig:modeloRE), se puede ver que cada
+sitio en la tabla `SITES` **debe** tener uno o más observaciones en la tabla 
+`PLOTOBS`, doned cada `PLOTOBS` tiene un y **solo un** `SITE`.
 
-Frequently, analysis of data will require merging these separately managed tables
-back together.  There are multiple ways to join the observations in two tables, based
-on how the rows of one table are merged with the rows of the other.
+## Combinando datos
 
-When conceptualizing merges, one can think of two tables, one on the *left* and
-one on the *right*. The most common (and often useful) join is when you merge the subset 
-of rows that have matches in both the left table and the right table: 
-this is called an *INNER JOIN*.  Other types of join are possible as well. 
-A *LEFT JOIN* takes all of the rows from the left table, and merges on the data from matching rows in the right table.  A *RIGHT JOIN* is the same, except that all of the rows from the right table are included with matching data from the left. Finally, a *FULL OUTER JOIN* includes all data from all rows in both tables (and is rarely practical).
+Frecuentemente, lo análisis de datos van a requiere que se combinen estas
+tablas que se manejan en forma separada. Esto se puede hacer de múltiples
+formas y estas uniones van a depender de como estas tablas se relación 
+(fig. \@ref(fig:sqlJoins)).
 
-![](images/sql-joins.png)
-In the figure above, the blue regions show the set of rows that are included in the result.
-For the INNER join, the rows returned are all rows in A that have a matching row in B.
+Cuando se conceptualizan las uniones, uno puede pensar en dos tablas, una 
+en la **izquierda** (left) y otra en la **derecha** (right). La unión más 
+común (generalmente usada) es cuando se combina un subgrupo de filas que 
+tienen parejas en ambas tablas (a la izquierda y derecha): esto se conoce 
+como **INNER JOIN** (unión interna). Existen otros tipos de uniones posibles
+también. Un **LEFT JOIN** (unión a la izquierda), toma todas las filas de 
+la tabla a la izquierda y las combina con los datos que se emparejan en la 
+tabla a la derecha. Un **RIGHT JOIN** (unión a la derecha) es lo mismo, sólo
+que en este caso se mantienen todas las filas presentes en la tabla de la 
+derecha y se agregarn aquellas que tienen parejas en la izquierda. Finalmente,
+un **FULL OUTER JOIN** (unión total) incluye todas las filas en ambas tablas,
+esta union en muy pocas veces práctica.
+
+```{r sqlJoins, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Las regiones en azul representan las filas que son incluidas en el resultado. Para un INNER join, las filas resultantes son todas las filas en A que tienen una pareja en B.'}
+knitr::include_graphics("images/7.10_sql-joins.png")
+```
 
 ## Simple Guidelines for Effective Data
 
