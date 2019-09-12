@@ -88,7 +88,7 @@ especies y la segunda tabla son las observaciones que contiene las
 propiedades de los sitios donde las especies estaban presentes.
 
 ```{r tableNorm2, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Ejemplo de tablas con datos normalizados.'}
-knitr::include_graphics("images/7.7_table-denorm.png")
+knitr::include_graphics("images/7.7_tables-norm.png")
 ```
 
 ## Claves primarias y foraneas
@@ -122,7 +122,7 @@ Un modelo de Relación-Entidad nos permite dibujar en forma compacta la estructu
 de las tablas en una base de datos relacional, incluyendo las claves primaria y 
 foraneas de las tablas.
 
-```{r modeloRE, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Representación gráfica de una relación-entidad de dos tablas, incluyendo las claves con que se unen..'}
+```{r modeloRE, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Representación gráfica de una relación-entidad de dos tablas, incluyendo las claves con que se unen..'}
 knitr::include_graphics("images/7.9_plotobs-diagram.png")
 ```
 
@@ -150,7 +150,7 @@ derecha y se agregarn aquellas que tienen parejas en la izquierda. Finalmente,
 un **FULL OUTER JOIN** (unión total) incluye todas las filas en ambas tablas,
 esta union en muy pocas veces práctica.
 
-```{r sqlJoins, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Las regiones en azul representan las filas que son incluidas en el resultado. Para un INNER join, las filas resultantes son todas las filas en A que tienen una pareja en B.'}
+```{r sqlJoins, echo=FALSE, out.width = '80%', fig.align = 'center', fig.cap = 'Las regiones en azul representan las filas que son incluidas en el resultado. Para un INNER join, las filas resultantes son todas las filas en A que tienen una pareja en B.'}
 knitr::include_graphics("images/7.10_sql-joins.png")
 ```
 
