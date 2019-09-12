@@ -14,31 +14,31 @@
 
 ## Organización de datos
 
-```{r excelOrg1, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Planilla excel infernal.'}
+```{r excelOrg1, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Planilla excel infernal.'}
 knitr::include_graphics("images/7.1_excel-org-01.png")
 ```
 
 ## Tablas múltiples
 
-```{r excelOrg2, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Múltiples tablas en una misma planilla. Otro caso de un excel infernal.'}
+```{r excelOrg2, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Múltiples tablas en una misma planilla. Otro caso de un excel infernal.'}
 knitr::include_graphics("images/7.2_excel-org-02.png")
 ```
 
 ## Observaciones inconsistentes
 
-```{r excelOrg3, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Observaciones diferentes en una misma fila de la tabla. Otro caso de un excel infernal.'}
+```{r excelOrg3, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Observaciones diferentes en una misma fila de la tabla. Otro caso de un excel infernal.'}
 knitr::include_graphics("images/7.3_excel-org-03.png")
 ```
 
 ## Inconsistencia en las variables
 
-```{r excelOrg4, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Variables diferentes en la misma columna.'}
+```{r excelOrg4, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Variables diferentes en la misma columna.'}
 knitr::include_graphics("images/7.4_excel-org-04.png")
 ```
 
 ## Estadísticas y sumas al margen
 
-```{r excelOrg5, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Valores que pueden ser calculados partir de los datos de la tabla. Otra mala práctica.'}
+```{r excelOrg5, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Valores que pueden ser calculados partir de los datos de la tabla. Otra mala práctica.'}
 knitr::include_graphics("images/7.5_excel-org-05.png")
 ```
 
@@ -48,7 +48,7 @@ knitr::include_graphics("images/7.5_excel-org-05.png")
 
 - Observaciones de diferentes entidadaes en forma combinada
 
-```{r tableDenorm1, echo=FALSE, out.width = '70%', fig.align = 'center', fig.cap = 'Valores obtenidos en diferentes entidades en la misma fila.'}
+```{r tableDenorm1, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Valores obtenidos en diferentes entidades en la misma fila.'}
 knitr::include_graphics("images/7.6_table-denorm.png")
 ```
 
@@ -66,23 +66,30 @@ muy dificil de analizar, entender y mantener.
 
 ### Datos tabulares
 
-__Observaciones__. A better way to model data is to organize the observations about each type of entity in its own table.  This results in:
+__Observaciones__. Una forma mucho mas efectiva de modelas datos es organizando
+las observaciones acerca de cada tipo de entidad en su propia tabla. Esto resulta
+en:
 
-- Separate tables for each type of entity measured
-- Each row represents a single observed entity
-- Observations (rows) are all unique
+- tablas separadas para cada entidad medida
+- Cada fila representa una única observación de la entidad
+- Las observaciones (filas) son únicas
+- Estp es datos *normalizados* (*tidy data*)
 
-- This is *normalized* data (aka *tidy data*)
+__Variables__. Además, en el caso de datos normalizados, podemos esperar que 
+las variables estén organizada de tal forma que:
 
-__Variables__. In addition, for normalized data, we expect the variables to be organized such that:
+- Todos los valores enu na columna representan lo mismo
+- Todas las columnas pertecne a la misma entidad observada (ej. fila)
+- Cada columna representa o una variable identificadora o una variable medida
 
-- All values in a column are of the same type
-- All columns pertain to the same observed entity (e.g., row)
-- Each column represents either an identifying variable or a measured variable
+En la figura \@ref(fig:tableNorm1) hay un ejemplo de datos normalizados. En la figura,
+la primera tabla se refiere a la colección de datos sobre los individuos de varias 
+especies y la segunda tabla son las observaciones que contiene las
+propiedades de los sitios donde las especies estaban presentes.
 
-Here's an example of tidy (normalized) data in which the top table is the collection
-of observations about individuals of several species, and the bottom table are the
-observations containing properties of the sites at which the species occurred.
+```{r tableNorm1, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Ejemplo de tablas con datos normalizados.'}
+knitr::include_graphics("images/7.6_table-denorm.png")
+```
 
 ![](images/tables-norm.png)
 
