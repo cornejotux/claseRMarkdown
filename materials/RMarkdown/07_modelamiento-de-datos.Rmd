@@ -82,19 +82,16 @@ las variables estén organizada de tal forma que:
 - Todas las columnas pertecne a la misma entidad observada (ej. fila)
 - Cada columna representa o una variable identificadora o una variable medida
 
-En la figura \@ref(fig:tableNorm1) hay un ejemplo de datos normalizados. En la figura,
+En la figura \@ref(fig:tableNorm2) hay un ejemplo de datos normalizados. En la figura,
 la primera tabla se refiere a la colección de datos sobre los individuos de varias 
 especies y la segunda tabla son las observaciones que contiene las
 propiedades de los sitios donde las especies estaban presentes.
 
-```{r tableNorm1, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Ejemplo de tablas con datos normalizados.'}
-knitr::include_graphics("images/7.6_table-denorm.png")
+```{r tableNorm2, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Ejemplo de tablas con datos normalizados.'}
+knitr::include_graphics("images/7.7_table-denorm.png")
 ```
 
-![](images/tables-norm.png)
-
-
-## Primary and Foreign Keys
+## Claves primaria y foraneas
 
 When one has normalized data, we often use unique identifiers to reference
 particular observations, which allows us to link across tables.  Two types of
