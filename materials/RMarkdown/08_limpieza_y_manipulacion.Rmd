@@ -1,17 +1,17 @@
-# Data Cleaning and Manipulation
+# Limpieza y manipulación de datos
 
-## Learning Objectives
+## Objetivos
 
-In this lesson, you will learn:
+En esta lección aprenderemos:
 
-- What the Split-Apply-Combine strategy is and how it applies to data
-- The difference between wide vs. tall table formats and how to convert between them
-- How to use `dplyr` and `tidyr` to clean and manipulate data for analysis
-- How to join multiple `data.frame`s together using `dplyr`
+- Que es la estrategia Divida-Aplique-Combine y como se aplica a los datos
+- La diferencia entre los formatos de tablas anchas vs. largas y como convertilas entre ellas
+- Como usar `dplyr` y `tidyr` para limpaar y manipular datos para análisis
+- Como unir multiples `data.frame` usando `dplyr`
 
-## Introduction
+## Introducción
 
-The data we get to work with are rarely, if ever, in the format we need to do our analyses.
+Los he data we get to work with are rarely, if ever, in the format we need to do our analyses.
 It's often the case that one package requires data in one format, while another package requires the data to be in another format.
 To be efficient analysts, we should have good tools for reformatting data for our needs so we can do our actual work like making plots and fitting models.
 The `dplyr` and `tidyr` R packages provide a fairly complete and extremely powerful set of functions for us to do this reformatting quickly and learning these tools well will greatly increase your efficiency as an analyst.
@@ -23,7 +23,9 @@ This strategy follows a usual set of steps:
 - **Apply:** Calculate some summary statistic on each group (e.g. mean total length by year)
 - **Combine:** Combine the groups back together into a single table
 
-![Figure 1: diagram of the split apply combine strategy](images/split-apply-combine-diagram.png)
+```{r splitApply, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Diagrama de la estragegia divida, aplique y combines.'}
+knitr::include_graphics("images/8.1_split-apply-combine-diagram.png")
+```
 
 As shown above (Figure 1), our original table is split into groups by `year`, we calculate the mean length for each group, and finally combine the per-year means into a single table.
 
