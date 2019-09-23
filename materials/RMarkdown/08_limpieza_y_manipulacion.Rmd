@@ -127,18 +127,21 @@ y `tidyr`:
 
 ## Configurgación (Setup)
 
-Let's start going over the most common functions you'll use from the `dplyr` package.
-To demonstrate, we'll be working with a tidied up version of a dataset from ADF&G containing commercial catch data from 1878-1997.
-The dataset and reference to the original source can be found at its public archive: https://knb.ecoinformatics.org/#view/df35b.304.2.
+Vamos a comenzar con las funciones más comunies del paquete `dplyr`.
+Para demostrar como se usan, vamos a trabajar con una versión de un set de datos ya 
+pre-ordenado del Departamento de Pesca y Caza de Alaska (ADF&G) que contiene los datos 
+de capturas comerciales de 1878 a 1997.
+El set de datos y su referencia a la fuente original se puede encontrar en el siguiente 
+archivo público: https://knb.ecoinformatics.org/#view/df35b.304.2.
 
-First, let's load `dplyr` and `tidyr`:
+Primero, vamos a leer los paquetes `dplyr` y `tidyr`:
 
 ```{r, message = F, warning = F}
 library(dplyr)
 library(tidyr)
 ```
 
-Then let's read in the data and take a look at it:
+Aohra tenemos que lees los datos y darle una mirada:
 
 ```{r, cache=TRUE}
 catch_original <- read.csv(url("https://knb.ecoinformatics.org/knb/d1/mn/v2/object/df35b.302.1", method = "libcurl"),
@@ -146,25 +149,30 @@ catch_original <- read.csv(url("https://knb.ecoinformatics.org/knb/d1/mn/v2/obje
 head(catch_original)
 ```
 
-Note: I copied the URL from the Download button on https://knb.ecoinformatics.org/#view/df35b.304.2
+Nota: para descargar los datos, copié el URL desde el botón de descarga (Download) en 
+https://knb.ecoinformatics.org/#view/df35b.304.2
 
-This dataset is relatively clean and easy to interpret as-is.
-But while it may be clean, it's in a shape that makes it hard to use for some types of analyses so we'll want to fix that first.
+Este dataset estpá relativamente limpio y es de fácil interpretación.
+Si bien estos datos están limpios, el formato de la tabla hace que sea dificil usarlos 
+para alguno de los análisis que debemos realizar. Como primer paso tenemos que arreglar eso.
 
-## About the pipe (`%>%`) operator
+## Acerca del operador de pipe (tubo; `%>%`)
 
-Before we jump into learning `tidyr` and `dplyr`, we first need to explain the `%>%`.
+Antes de comenzar a aprender sobre `tidyr` y `dplyr` es necesarios que explique de que se trata el `%>%`.
 
-Both the `tidyr` and the `dplyr` packages use the pipe operator - `%>%`, which may look unfamiliar. The pipe is a powerful way to efficiently chain together operations. The pipe will take the output of a previous statement, and use it as the input to the next statement.
+Tanto el paquete `tidyr` como `dplyr` usa el operador `%>%`. Este operador es una forma muy 
+eficiente para encadenar operaciones. Esta tubería toma la salida de una operación anterior y la
+entrega como una entrada a la siguiente.
 
-Say you want to both `filter` out rows of a dataset, and `select` certain columns. Instead of writing
+Digamoas que quiere filtrar `filter` unas filas y seleccionar `select` una columnas de la misma tabla
+de datos. Para esto se puede usar
 
 ```
 df_filtered <- filter(df, ...)
 df_selected <- select(df_filtered, ...)
 ```
 
-You can write
+Sin embargo, su código será más simple y eficiente (más rápido con set de datos grandes!)
 
 ```
 df_cleaned <- df %>% 
@@ -172,20 +180,28 @@ df_cleaned <- df %>%
               select(...)
 ```
 
-If you think of the assignment operator (`<-`) as reading like "gets", then the pipe operator would read like "then."
+Si usted pensa en el operador de asignación (`<-`) como "recibe", entonces el operador _pipe_
+se puede leer como "entonces".
 
-So you might think of the above chunk being translated as:
+Entonces, el fragmento de código anterior se puede traducir como:
 
-The cleaned dataframe gets the original data, and then a filter (of the original data), and then a select (of the filtered data).
+El dataframere limpio recive los datos originales, _entonces_ realiza un filtro (de los datos 
+originales) y _entonces_ selecciona (sobre los datos filtrados).
 
-The benefits to using pipes are that you don't have to keep track of (or overwrite) intermediate data frames. The drawbacks are that it can be more difficult to explain the reasoning behind each step, especially when many operations are chained together. It is good to strike a balance between writing efficient code (chaining operations), while ensuring that you are still clearly explaining, both to your future self and others, what you are doing and why you are doing it.
+El beneficio de usar _pipes_ es que no es necesario seguir el rastro (o de sobre-escribir) de 
+set de datos intermedios. El costo es que se hace un poco mas dificil de explicar el razonamiento
+de cada paso, espcialmente cuando existen muchas operaciones encadenadas. Lo ideal es tener un 
+balance entre escribir códigos eficientes (operaciones encadenadas) y que sean legibles e 
+interpretables, tanta para uno en el futuro, como para que otros puedan entender la lógica de
+que y por qué se hizo lo que se hizo.
 
-RStudio has a keyboard shortcut for `%>%` : Ctrl + Shift + M (Windows), Cmd + Shift + M (Mac).
+RStudio tiene una combinación de teclas para `%>%` : Ctrl + Shift + M (Windows), Cmd + Shift + M (Mac).
 
-## Selecting/removing columns: `select()`
+## Seleccionar/remover columnas: `select()`
 
-The first issue is the extra columns `All` and `notesRegCode`.
-Let's select only the columns we want, and assign this to a variable called `catch_data`.
+El primer problemas con los datos son las columnas `All` y `notesRegCode`.
+Vamos a seleccionar sólo las columnas con las que queremos trabajar y las vamos a asignar 
+a la variable llamada `catch_data`.
 
 ```{r}
 catch_data <- catch_original %>% 
@@ -194,9 +210,10 @@ catch_data <- catch_original %>%
 head(catch_data)
 ```
 
-Much better!
+Esto está mucho mejor.
 
-`select` also allows you to say which columns you *don't* want, by passing unquoted column names preceded by minus (-) signs:
+`select` nos permite indicar las columnas que **no** queremos, para esto solo tenemos que
+pasar las columnas (sin comillas) con un signo menos (-):
 
 ```{r}
 catch_data <- catch_original %>% 
@@ -205,10 +222,11 @@ catch_data <- catch_original %>%
 head(catch_data)
 ```
 
-## Changing shape: `gather()` and `spread()`
+## Cambiar el formato: `gather()` y `spread()`
 
-The next issue is that the data are in a wide format and, we want the data in a tall format instead.
-`gather()` from the `tidyr` package helps us do just this conversion:
+El siguiente punto problema con los datos es que están en un formato ancho y que para
+trabajar lo necesitamos en uno largo.
+`gather()` del parquete `tidyr` nos ayuda a hacer esta conversión:
 
 ```{r}
 catch_long <- catch_data %>% 
@@ -217,12 +235,17 @@ catch_long <- catch_data %>%
 head(catch_long)
 ```
 
-The syntax we used above for `gather()` might be a bit confusing so let's look at an annotated diagram:
+La sintaxis que usarmos para `gather()` puede ser un poco confusa, asi que vamos a explicarlo con el 
+diagrama rotulado de la figura \@ref(fig:annotatedGather):
 
-![annotated gather code](images/gather_annotated.png)
 
-The first two arguments to `gather()` are the names of new columns that will be created and the other arguments with `-` symbols in front of them are columns to keep around in this process.
-The opposite of `gather()`, `spread()`, works in a similar declarative fashion:
+```{r annotatedGather, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Diagrama rotulado donde se explica cada uno de los inputs a la función gather.'}
+knitr::include_graphics("images/8.2_gather_annotated.png")
+```
+
+Los primeros dos argumentos de la función `gather()` son los nombres de las columnas unevas que 
+serán creados y los otros argumentos con el símbolo `-` son las columnas que se deben mantener
+en el proceso. La función opuesta a `gather()` es `spread()`, funciona la misma forma declarativa:
 
 ```{r}
 catch_wide <- catch_long %>% 
@@ -231,7 +254,7 @@ catch_wide <- catch_long %>%
 head(catch_wide)
 ```
 
-## Renaming columns with `rename()`
+## Renombrando columnas con `rename()`
 
 If you scan through the data, you may notice the values in the `catch` column are very small (these are supposed to be annual catches).
 If we look at [the metadata](https://knb.ecoinformatics.org/#view/df35b.304.2) we can see that the `catch` column is in thousands of fish so let's convert it before moving on.
