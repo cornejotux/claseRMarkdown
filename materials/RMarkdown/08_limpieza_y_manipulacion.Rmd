@@ -301,7 +301,7 @@ tabla de datos relativamente grande:
 summary(catch_clean)
 ```
 
-- **Ejercicio:** ¿Qué otras formas (funciones) se podrían haber usado para identificar
+- **Actividad:** ¿Qué otras formas (funciones) se podrían haber usado para identificar
 cual era el problema?
 
 Vea que en la salida de más arriba la columna `catch_thousands` se ve como `Class :character`.
@@ -382,7 +382,8 @@ Ahora estamos listos para comenzar con los análisis de los datos.
 
 ## `group_by` y `summarise`
 
-As I outlined in the Introduction, `dplyr` lets us employ the Split-Apply-Combine strategy and this is exemplified through the use of the `group_by()` and `summarise()` functions:
+Como se dijo en la introducción del presente capítulo, `dplyr` nos deja utilizar la estrategia 
+Divida-Aplique-Combine, que se ejemplifica con el uso de las funciones `group_by()` y `summarise()`:
 
 ```{r}
 mean_region <- catch_clean %>% 
@@ -392,11 +393,11 @@ mean_region <- catch_clean %>%
 head(mean_region)
 ```
 
-- **Exercise:** Find another grouping and statistic to calculate for each group.
-- **Exercise:** Find out if you can group by multiple variables.
+- **Actividad:** Encuentre otra función para agrupar y calcular estadísticas para cada grupo.
+- **Ejercicio:** Encuentre si es posible agrupar múltiples variables.
 
-Another common use of `group_by()` followed by `summarize()` is to count the number of rows in each group.
-We have to use a special function from `dplyr`, `n()`.
+Otro uso común de la función `group_by()` seguida de `summarize()` es para contar el número de filas en 
+cada grupo. Para esto usamos la función `n()` del paquete `dplyr`.
 
 ```{r}
 n_region <- catch_clean %>% 
@@ -406,12 +407,12 @@ n_region <- catch_clean %>%
 head(n_region)
 ```
 
-## Filtering rows: `filter()`
+## Filtrando columnas: `filter()`
 
-`filter()` is the verb we use to filter our `data.frame` to rows matching some condition.
-It's similar to `subset()` from base R.
+`filter()` es un verbo (en inglés) que se usar para filtrar las filas de un `data.frame` que cumplen
+con alguna condición. Es smilar a la función `subset()` del R base.
 
-Let's go back to our original `data.frame` and do some `filter()`ing:
+Vamos a nuestro `data.frame` original y filtremos (`filter()`) algunos datos:
 
 ```{r}
 SSE_catch <- catch_clean %>% 
@@ -420,18 +421,18 @@ SSE_catch <- catch_clean %>%
 head(SSE_catch)
 ```
 
-- **Exercise:** Filter to just catches of over one million fish.
-- **Exercise:** Filter to just SSE Chinook
+- **Actividad:** Filtre las capturas que sean mayores a 1 millón de pescados.
+- **Actividad:** Filtre solo los salmones Chinook en la Región SSE.
 
-## Sorting your data: `arrange()`
+## Ordenando sus datos: `arrange()`
 
-`arrange()` is how we sort the rows of a `data.frame`.
-In my experience, I use `arrange()` in two common cases:
+`arrange()` es como se ordenan las filas de un `data.frame`.
+En mi experiencia, `arrange()` se usa comúnmente en dos casos:
 
-- When I want to calculate a cumulative sum (with `cumsum()`) so row order matters
-- When I want to display a table (like in an `.Rmd` document) in sorted order
+- Cuando se necesita calcular una suma cumulativa (con `cumsum()`), de esta forma el orden importa
+- Cuando se necesita mostratr una tabla (por ejemplo en un documento `.Rmd`) ordenada
 
-Let's re-calculate mean catch by region, and then `arrange()` the output by mean catch:
+Re-calculemos el promedio de captura por región y luego ordenemos la salida, usando `arrange()`, por captura promedio:
 
 ```{r}
 mean_region <- catch_clean %>% 
@@ -442,8 +443,8 @@ mean_region <- catch_clean %>%
 head(mean_region)
 ```
 
-The default sorting order of `arrange()` is to sort in ascending order.
-To reverse the sort order, wrap the column name inside the `desc()` function:
+La función `arrange()` ordena por defecto en orden creciente.
+La invertir este orden, hay que usar la función `desc()` en la columna que se quiera ordenar:
 
 ```{r}
 mean_region <- catch_clean %>% 
@@ -454,28 +455,33 @@ mean_region <- catch_clean %>%
 head(mean_region)
 ```
 
-## Joins in dplyr
+## Joins en dplyr
 
-So now that we're awesome at manipulating a single `data.frame`, where do we go from here?
-Manipulating **more than one** `data.frame`.
+Ahora que ya somos expertos en manipular un `data.frame` único ¿Qué podemos hacer?
+La respuesta es obvia, manipular **más de un** `data.frame`.
 
-If you've ever used a database, you may have heard of or used what's called a "join", which allows us to to intelligently merge two tables together into a single table based upon a shared column between the two.
-We've already covered joins in [Data Modeling & Tidy Data] so let's see how it's done with `dplyr`.
+Si usted a utilisado bases de datos anteriormente, es probable que sea familiar con lo que llamamos 
+un "_join_", estas funciones nos permiten unir, en forma inteligente, dos tablas para formar una sola, 
+esto se hace utilizando alguna columna que tengan en común. Ya hemos hablado sobre _joins_ en
+la seccion sobre uniones de tablas [\@ref(joins)] del capítulo [\@ref(cap7)]. Aquí vamos a ver 
+como se hace dentro del entorno `dplyr`.
 
-The dataset we're working with, https://knb.ecoinformatics.org/#view/df35b.304.2, contains a second CSV which has the definition of each `Region` code.
-This is a really common way of storing auxiliary information about our dataset of interest (catch) but, for analylitcal purposes, we often want them in the same `data.frame`.
-Joins let us do that easily. 
+El set de datos con el que hemos estado trabajando, https://knb.ecoinformatics.org/#view/df35b.304.2,
+contiene un segundo documento CSV con las definiciones de los códigos de cada `Region`. Esto es 
+una forma muy común de almacenar información auxiliar sobre nuestro set de datos de interés (capturas)
+pero que, para fines analíticos, a menudo las queremos en el mismo `data.frame`.
+Join (unión), nos permite hacer esto fácilmente. 
 
-Let's look at a preview of what our join will do by looking at a simplified version of our data:
+Veamos que es lo que hará nuestra unión utilizando una version simplificada de los datos:
 
-![Visualisation of our `left_join`](images/left_join_catchdata.png)
 
 ```{r leftJoin, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Uso de _leftjoin_ para combinar dos tablas utilizando la columna **Region** como clave.'}
 knitr::include_graphics("images/8.3_left_join_catchdata.png")
 ```
 
-First, let's read in the region definitions data table and select only the columns we want. Note that I have piped my `read.csv` result into a select call, creating a tidy chunk that reads and selects the data that we need.
-
+Primero, leamos la tabla con la definición de los nombres de la ergiones y seleccionemos solo las columnas
+de interés. Note que he usado el operador `%>%` para pasar los resultados de la función `read.csv`, creando de
+esta forma an fragmento de código que lee y selecciona los datos que queremos.
 
 ```{r, cache=TRUE}
 region_defs <- read.csv(url("https://knb.ecoinformatics.org/knb/d1/mn/v2/object/df35b.303.1",
@@ -487,7 +493,10 @@ head(region_defs)
 ```
 
 
-If you examine the `region_defs` `data.frame`, you'll see that the column names don't exactly match the image above. If the names of the key columns are not the same, you can explicitly specify which are the key columns in the left and right side as shown below:
+Si examina la columna `region_defs` del `data.frame`, puede ver que los nombres de columnas no 
+son iguales a las presentadas en la figura \@ref(fig:leftJoin). Si los nombres de las columnas _clave_
+no son iguales, es posible definir explicitamente cual es la columna de cada tabla que se deben usar 
+en la tabla de la derecha y de la izquierda, tal como se muestra en el código siguiente:
 
 ```{r}
 catch_joined <- left_join(catch_clean, region_defs, by = c("Region" = "code"))
@@ -495,9 +504,12 @@ catch_joined <- left_join(catch_clean, region_defs, by = c("Region" = "code"))
 head(catch_joined)
 ```
 
-Notice that I have deviated from our usual pipe syntax (although it does work here!) because I prefer to see the `data.frames` that I am joining side by side in the syntax.
+Note que me he desviadp de la sintaxis usando pipes (a pesar de que igualmente funciona aquí) porque 
+prefiero ver los `data.frames` que estoy uniendo uno al lado del otro.
 
-Another way you can do this join is to use `rename` to change the column name `code` to `Region` in the `region_defs` `data.frame`, and run the `left_join` this way:
+Otra forma de hacer esta unión es cambiendo los nombres de las columnas usando la función `rename`,
+de esta forma se puede cambiar el nombre de la columna `code` a `Region` el `data.frame` `region_defs`,
+y ejecutar el `left_join` de la siguiente forma:
 
 ```{r, eval = F}
 region_defs <- region_defs %>% 
@@ -508,16 +520,16 @@ catch_joined <- left_join(catch_clean, region_defs, by = c("Region"))
 head(catch_joined)
 ```
 
+Ahora las capturas tienen la información auxiliar con la definición de las regiones a su lado.
+Nota: `dplyr` entrega un set completo de uniones: _inner_, _left_, _right_, _full_, _semi_, 
+_anti_ y no solo _left_join_.
 
+## `separate()` y `unite()`
 
-Now our catches have the auxiliary information from the region definitions file alongside them.
-Note: `dplyr` provides a complete set of joins: inner, left, right, full, semi, anti, not just left_join.
-
-## `separate()` and `unite()`
-
-`separate()` and its complement, `unite()` allow us to easily split a single column into numerous (or numerous into a single).
-This can come in really handle when we have a date column and we want to group by year or month.
-Let's make a new `data.frame` with fake data to illustrate this:
+`separate()` y su complemento `unite()`, nos permiten separar fácilmente una columna en varias 
+(o varias en una sola). Esto puede ser realmente útil cuando tenemos una columna con fechas y 
+necesitamos agrupar los datos por año o mes. 
+Creemos un nuevo `data.frame` con datos ficticios para ilustrar esto:
 
 ```{r}
 dates_df <- data.frame(date = c("5/24/1930",
@@ -531,7 +543,7 @@ dates_df %>%
   separate(date, c("month", "day", "year"), "/")
 ```
 
-- **Exercise:** Split the `city` column in the following `data.frame` into `city` and `state_code` columns:
+- **Actividad:** Separe la columna `city` del siguiente `data.frame` en las columnas `city` y `state_code`:
 
 ```{r}
 cities_df <- data.frame(city = c("Juneau AK", 
@@ -539,10 +551,11 @@ cities_df <- data.frame(city = c("Juneau AK",
                                  "Anchorage AK"),
                         stringsAsFactors = FALSE)
 
-# Write your solution here
+# Escriba su solucipón aquí:
+#
 ```
 
-`unite()` does just the reverse of `separate()`:
+`unite()` hace exactamente lo inverso a la función `separate()`:
 
 ```{r}
 dates_df %>% 
@@ -550,16 +563,19 @@ dates_df %>%
   unite(date, month, day, year, sep = "/")
 ```
 
-- **Exercise:** Use `unite()` on your solution above to combine the `cities_df` back to its original form with just one column, `city`:
+- **Actividad:** Use `unite()` en su solución a la actividad antior para combinar las columnas que acaba de
+separar y dejelas en una única columna que incluya la cuidad y el estado, `city`:
 
 ```{r}
-# Write your solution here
+# Escriba su solución aquí.
+
 ```
 
-## Summary
+## Resumen
 
-We just ran through the various things we can do with `dplyr` and `tidyr` but if you're wondering how this might look in a real analysis.
-Let's look at that now:
+Acabamos de aprender varias cosas que se pueden hacer con los paquetes `dplyr` y `tidyr`, pero si se pregunta
+como se vería esto en un análisis real...
+Veamos eso a continuación:
 
 ```{r, catch=TRUE}
 catch_original <- read.csv(url("https://knb.ecoinformatics.org/knb/d1/mn/v2/object/df35b.302.1", method = "libcurl"),

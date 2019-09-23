@@ -1,4 +1,4 @@
-# Modelamiento de datos y datos ordenados
+# Modelamiento de datos y datos ordenados{#cap7}
 
 ## Objetivos
 
@@ -130,7 +130,7 @@ En el modelo presentado en la figura \@ref(fig:modeloRE), se puede ver que cada
 sitio en la tabla `SITES` **debe** tener uno o más observaciones en la tabla 
 `PLOTOBS`, donde cada `PLOTOBS` tiene un y **solo un** `SITE`.
 
-## Combinando datos
+## Combinando datos {#joins}
 
 Frecuentemente, lo análisis de datos van a requiere que se combinen estas
 tablas que se manejan en forma separada. Esto se puede hacer de múltiples
