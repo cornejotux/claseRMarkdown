@@ -199,7 +199,7 @@ RStudio tiene una combinación de teclas para `%>%` : Ctrl + Shift + M (Windows)
 
 ## Seleccionar/remover columnas: `select()`
 
-El primer problemas con los datos son las columnas `All` y `notesRegCode`.
+El primer problema con los datos son las columnas `All` y `notesRegCode`.
 Vamos a seleccionar sólo las columnas con las que queremos trabajar y las vamos a asignar 
 a la variable llamada `catch_data`.
 
@@ -256,10 +256,13 @@ head(catch_wide)
 
 ## Renombrando columnas con `rename()`
 
-If you scan through the data, you may notice the values in the `catch` column are very small (these are supposed to be annual catches).
-If we look at [the metadata](https://knb.ecoinformatics.org/#view/df35b.304.2) we can see that the `catch` column is in thousands of fish so let's convert it before moving on.
+Si le da una mirada a los datos, va a notar que existen valores en la columna `catch`
+que son muy pequeños (se suponen que son valores de capturas anuales). Si vemos los
+[metadata](https://knb.ecoinformatics.org/#view/df35b.304.2) vamos a ver que la 
+columna `catch` está en miles de pescados, asi que la vamos a convertir antes de 
+seguir con los análisis.
 
-Let's first rename the `catch` column to be called `catch_thousands`:
+Primero cambiemos el nombre de `catch` a `catch_thousands`:
 
 ```{r}
 catch_clean <- catch_long %>% 
@@ -268,9 +271,12 @@ catch_clean <- catch_long %>%
 head(catch_clean)
 ```
 
-## Adding columns: `mutate()`
+## Agregando columnas: `mutate()`
 
-Now let's create a new column called `catch` with units of fish (instead of thousands of fish). Note that here we have added to the expression we wrote above by adding another function call (`mutate`) to our expression. This takes advantage of the pipe operator by grouping together a similar set of statements, which all aim to clean up the `catch_long` `data.frame`.
+Ahora vamos a crear una columna Now llamada `catch` con individuos como unidad (en vez de 
+miles de pescados). Nótece que hemos agregado, a la expresión que creamos mas arriba, la 
+llamda a la función (`mutate`). Esto aprovecha el operador pipe agrupando un set de 
+comandos, que todos tienen como objetivos limpiar el `data.frame` `catch_long`.
 
 ```{r, eval=FALSE}
 catch_clean <- catch_long %>% 
@@ -280,48 +286,58 @@ catch_clean <- catch_long %>%
 head(catch_clean)
 ```
 
-You'll notice that we get an error:
+Aquí va a ver el siguiente error:
 
 > Error in mutate_impl(.data, dots) : Evaluation error: non-numeric argument to binary operator.
 
-This is an extremely cryptic error -- what is it telling us?
-These kinds of errors can be very hard to diagnose, but maybe the `catch` column isn't quite what we are expecting.
-How could we find out?
-R provides a number of handy utility functions for quickly summarizing a large table:
+Este mensaje de error es extremadamente críptico -- ¿Qué es lo que está diciendo?
+Este tipo de errores pueden ser muy dificiles de diagnosticar, pero tal vez la 
+columna `catch` no es exactamente lo que estabamos esperando.
+¿Cómo podemos ver esto?
+R le entrega una variedad de funciones que le permiten hacer resúmenes rápidos de una
+tabla de datos relativamente grande:
 
 ```{r}
 summary(catch_clean)
 ```
 
-- **Exercise:** What are some other ways (functions) we could've found out what our problem was?
+- **Ejercicio:** ¿Qué otras formas (funciones) se podrían haber usado para identificar
+cual era el problema?
 
-Notice in the above output that the `catch_thousands` column shows up as `Class :character`.
-That seems wrong since catch should be whole numbers (in R, these show up as integers).
+Vea que en la salida de más arriba la columna `catch_thousands` se ve como `Class :character`.
+Esto quiere decir que la columna contiene caracteres de texto y no números, esto parece
+incorrecto ya que las capturas deberian ser números enteros (R muestra esto como enteros o 
+_integers_ en inglés).
 
-Let's try to convert the values to integers and see what happens:
+Vamos a convertir esta columna a enteros y veamos que sucede:
 
 ```{r}
 catch_integers <- as.integer(catch_clean$catch_thousands)
 ```
 
-We get an error "NAs introduced by coercion" which is R telling us that it couldn't convert every value to an integer and, for those values it couldn't convert, it put an `NA` in its place.
-This is behavior we commonly experience when cleaning datasets and it's important to have the skills to deal with it when it crops up.
-We can find out which values are NAs with a combination of `is.na()` and `which()`, and save that to a variable called `i`.
+Aquí se muestra el mensaje de error "_NAs introduced by coercion_" donde R nos está diciendo que 
+no le fue posible convertir cada uno de los valoes a enteros (_integers_) y que, para esos valores
+que no pudo convertir, puse `NA` en su lugar.
+Este es un comportamiento común y lo podemos esperar cuando realicemos limpieza de datos, sin 
+embargo es importante que tengamos las capacidades para manejar estas situaciones. Podemos 
+encontrar cuales son los valores con NAs combinando las funciones `is.na()` y `which()`, y 
+guardando el resultado en una variable, por ejemplo `i`.
 
 ```{r}
 i <- which(is.na(catch_integers))
 i
 ```
 
-It looks like there is only one problem row, lets have a look at it:
+Se ve que existe solo una fila con problemas, veámosla:
 
 ```{r}
 catch_clean[i,]
 ```
 
-Well that's odd: The value in `catch_thousands` is `I` which is isn't even a number.
-It turns out that this dataset is from a PDF which was automatically converted into a CSV and this value of `I` is actually a 1.
-Let's fix it:
+Bueno, esto es raro: El valor en `catch_thousands` es `I` lo que claramente no es un número. Resulta
+que este set de datos viene de un archivo PDF que fue convertido automáticamente a CSV (formato de
+texto separado por comas) y este valor `I` corresponde a un 1.
+Arreglemoslo:
 
 ```{r}
 catch_clean <- catch_long %>% 
@@ -332,10 +348,11 @@ catch_clean <- catch_long %>%
 head(catch_clean)
 ```
 
-Note that, in the above pipeline call to `mutate()`, we mutate `catch_thousands` twice.
-This works because `mutate()` processes each of the mutations in a step-wise fashion so the results of one mutation are available for the next.
+Vea que en esta serie de comento, se hace una doble llamada a la función `mutate()`, se transforma
+la variable `catch_thousands` dos veces. Esto ocurre porque el proceso de `mutate()` lo hace
+paso a paso, de esta forma los resultados de un  `mutate()` estarán disponibles para el siguiente.
 
-Now let's try our conversion again by adding it as another function call in our expression.
+Ahora realicemos la conversión nuevamente, agregando un nuevo llamado a la función.
 
 ```{r}
 catch_clean <- catch_long %>% 
@@ -347,8 +364,8 @@ catch_clean <- catch_long %>%
 head(catch_clean)
 ```
 
-Looks good, no warnings!
-Now let's remove the `catch_thousands` column for now since we don't need it:
+Ahora no se ve ningun mensaje de error.
+Ahora vamos a eliminar la columna `catch_thousands` ya que no la necesitamos:
 
 ```{r}
 catch_clean <- catch_long %>% 
@@ -361,9 +378,9 @@ catch_clean <- catch_long %>%
 head(catch_clean)
 ```
 
-We're now ready to start analyzing the data.
+Ahora estamos listos para comenzar con los análisis de los datos.
 
-## `group_by` and `summarise`
+## `group_by` y `summarise`
 
 As I outlined in the Introduction, `dplyr` lets us employ the Split-Apply-Combine strategy and this is exemplified through the use of the `group_by()` and `summarise()` functions:
 
@@ -453,6 +470,9 @@ Let's look at a preview of what our join will do by looking at a simplified vers
 
 ![Visualisation of our `left_join`](images/left_join_catchdata.png)
 
+```{r leftJoin, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Uso de _leftjoin_ para combinar dos tablas utilizando la columna **Region** como clave.'}
+knitr::include_graphics("images/8.3_left_join_catchdata.png")
+```
 
 First, let's read in the region definitions data table and select only the columns we want. Note that I have piped my `read.csv` result into a select call, creating a tidy chunk that reads and selects the data that we need.
 
