@@ -4,35 +4,40 @@
 
 En esta lección aprenderemos:
 
-- Que es la estrategia Divida-Aplique-Combine y como se aplica a los datos
-- La diferencia entre los formatos de tablas anchas vs. largas y como convertilas entre ellas
-- Como usar `dplyr` y `tidyr` para limpaar y manipular datos para análisis
-- Como unir multiples `data.frame` usando `dplyr`
+- Que es la estrategia Divida-Aplique-Combine y como se utiliza con datos
+- La diferencia entre los formatos de tablas anchas vs. largas y como convertir de un formato al otro
+- Como usar `dplyr` y `tidyr` para limpiar y manipular datos para análisis
+- Como unir múltiples `data.frame` usando `dplyr`
 
 ## Introducción
 
-Los he data we get to work with are rarely, if ever, in the format we need to do our analyses.
-It's often the case that one package requires data in one format, while another package requires the data to be in another format.
-To be efficient analysts, we should have good tools for reformatting data for our needs so we can do our actual work like making plots and fitting models.
-The `dplyr` and `tidyr` R packages provide a fairly complete and extremely powerful set of functions for us to do this reformatting quickly and learning these tools well will greatly increase your efficiency as an analyst.
+Es muy raro que recibamos datos para trabajar que esten en el formato que los necesitamos para hacer 
+los análisis. Ocurre mucho que algunos paquetes de R requieren los datos en unformato, mientras otros
+paquetes lo queres en otro. De esta forma, para ser analistas efectivos, debemos tener buenas herramientas
+para re-formatear datos a las necesidades actuales del trabajo a realizar. Los paquetes de R `dplyr` y
+`tidyr` entregan funciones muy completas y potentes para realizar este reformates en forma 
+rápida y eficiente. Aprender a usar estas herramientas lo harán significativamente más eficiente.
 
-Analyses take many shapes, but they often conform to what is known as the Split-Apply-Combine strategy.
-This strategy follows a usual set of steps:
+Los análsis toman muchas formas, pero generlamente se pueden clasificar en lo que se conoce como la 
+estrategia Divida-Aplique-Combine (Split-Apply-Combine).
+Esta estrategoia sigue un set de pasos típicos:
 
-- **Split**: Split the data into logical groups (e.g., area, stock, year)
-- **Apply:** Calculate some summary statistic on each group (e.g. mean total length by year)
-- **Combine:** Combine the groups back together into a single table
+- **Divida**: Dividir los datos en grupos lógicos (ej. área, stock, año)
+- **Aplique:** Cálculo de estadísticas resumenes para cada grupo (ej. promedio del largo total por año)
+- **Combine:** Combinación de los grupos en una tabla única
 
-```{r splitApply, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Diagrama de la estragegia divida, aplique y combines.'}
+```{r splitApply, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Diagrama de la estragegia divida, aplique y combine.'}
 knitr::include_graphics("images/8.1_split-apply-combine-diagram.png")
 ```
 
-As shown above (Figure 1), our original table is split into groups by `year`, we calculate the mean length for each group, and finally combine the per-year means into a single table.
+Como se muestra mas arriba (Figura \@ref(fig:splitApply), la tabla original se dividió en grupos
+anuales (`year`), se calculó el largo promedio para cada grupoy finalmente se combinó en una
+tabla única que incluye los primedios aunales en ella.
 
 `dplyr` provides a fast and powerful way to express this.
 Let's look at a simple example of how this is done:
 
-Assuming our length data is already loaded in a `data.frame` called `length_data`:
+Asumiendo que nuestrdos datos de largo estan cargados en un `data.frame` llamdo `length_data`:
 
 | year| length_cm|
 |----:|---------:|
@@ -47,7 +52,7 @@ Assuming our length data is already loaded in a `data.frame` called `length_data
 | 1992|  5.905247|
 | 1992|  5.098922|
 
-We can do this calculation using `dplyr` like this:
+Podemo hacer el cálculo usando `dplyr` así:
 
 ```{r, eval = FALSE}
 length_data %>% 
@@ -55,8 +60,10 @@ length_data %>%
   summarise(mean_length_cm = mean(length_cm))
 ```
 
-Another exceedingly common thing we need to do is "reshape" our data.
-Let's look at an example table that is in what we will call "wide" format:
+Otra actividad muy común que es necesario hacer es cambiar la forma de las tablas con 
+datos ("_reshape_"). Vamos un ejemplo de una tabla en el formato, que de ahora en adelante
+llamaremos, "_ancho_":
+
 
 | site   | 1990 | 1991 | ... | 1993 |
 |--------|------|------|-----|------|
@@ -65,22 +72,27 @@ Let's look at an example table that is in what we will call "wide" format:
 | ...    | ...  | ...  | ... | ...  |
 | dredge | 100  | 118  | ... | 112  |
 
-You are probably quite familiar with data in the above format, where values of the variable being observed are spread out across columns (Here: columns for each year).
-Another way of describing this is that there is more than one measurement per row.
-This wide format works well for data entry and sometimes works well for analysis but we quickly outgrow it when using R.
-For example, how would you fit a model with year as a predictor variable?
-In an ideal world, we'd be able to just run:
+Es muy probable que usted esté familiarizado con datos en este tipo de formato, donde los valores de
+las variables obsercadas estan reparticos en mas de una columna (en este caso, columnas para cada 
+año). Otra forma de describir esto es qeue existe más de una medición por cada fila. Este formato
+anchivo funciona muy bien para la entrada de datos y a veces para algunos análisis, pero se hace
+rápidamente inutil en R. Por ejemplo, ¿cómo puede ajustar un modelo con el año como una variable
+predictora? en un mundo ideakm deberiamos poder ejecutar la siguiente línea de código:
 
 ```{r eval = FALSE}
 lm(length ~ year)
 ```
 
-But this won't work on our wide data because `lm` needs `length` and `year` to be columns in our table.
+Pero esto no va a funcionar en una tabla con formado ancho, `lm` necesita `length` y 
+`year` como columnas de la tabla para funcionar.
 
-Or how would we make a separate plot for each year?
-We could call `plot` one time for each year but this is tedious if we have many years of data and hard to maintain as we add more years of data to our dataset.
+¿Cómo podemos hacer un gráfico para cada año?
+Se puede llamar a la función `plot` una vez para cada año, pero esto es tedioso, especialmente 
+si hay muchos años en los datos, además se hace dificil mantener el código y agregar más años 
+a nuestro set de datos-.
 
-The `tidyr` package allows us to quickly switch between wide format and what is called tall format using the `gather` function:
+El paquete `tidyr` nos permite rápidamente cambiar entre formato ancho y formato largo utilizando
+la función `gather`:
 
 ```{r, eval=FALSE}
 site_data %>% 
@@ -95,7 +107,8 @@ site_data %>%
 | ...    | ...  |    ... |
 | dredge | 1993 |    145 |
 
-In this lesson we're going to walk through the functions you'll most commonly use from the `dplyr` and `tidyr` packages:
+En esta clase va mos a aprender a usar las funciones más comunes de los paquetes `dplyr`
+y `tidyr`:
 
 - `dplyr`
     - `mutate()`
@@ -112,7 +125,7 @@ In this lesson we're going to walk through the functions you'll most commonly us
     - `extract()`
     - `separate()`
 
-## Setup
+## Configurgación (Setup)
 
 Let's start going over the most common functions you'll use from the `dplyr` package.
 To demonstrate, we'll be working with a tidied up version of a dataset from ADF&G containing commercial catch data from 1878-1997.
