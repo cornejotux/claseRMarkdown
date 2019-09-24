@@ -1,38 +1,38 @@
-# Creating R Functions
+# Creando funciones de R
 
-Many people write R code as a single, continuous stream of commands, often drawn
-from the R Console itself and simply pasted into a script.  While any script 
-brings benefits over non-scripted solutions, there are advantages to breaking
-code into small, reusable modules.  This is the role of a `function` in R.  In
-this lesson, we will review the advantages of coding with functions, practice 
-by creating some functions and show how to call them, and then do some exercises
-to build other simple functions.
+Mucha gente escribe los código de R como un flujo simple y continuo de comandos, 
+incluso algunas veces sacado directamente de la consola de R y copiado a un 
+script con el texto. Si bien cualquier script tiene tremendos beneficios en
+por sobre soluciones basadas en el uso del mouse, existen ventajas de usar
+códigos en fragmentos pequeños o bien en módulos reusables. Este es el rol
+de las funciones (`function`) en R.  En esta clase, vamos a revisar las ventajas
+de escribir códigos usando funciones, practicaremos creando algunas funciones
+y mostraremos como llamarlas. Finalmente terminaremos con ejercicios donde 
+construiremos algunas funciones simples.
 
-## Leaning outcomes
+## Objetivos
 
-- Learn why we should write code in small functions
-- Write code for one or more functions
-- Document functions to improve understanding and code communication
+- Aprender por que debemos escribir códigos utilizando funciones pequeñas
+- Escribir código para una o más funciones
+- Documentar las funciones para explicar su funcionamiento y comunicación del código
 
-## Why functions?
+## ¿Por qué funciones?
 
-In a word:
+En inglés se usa el acronismo **DRY** que se traduce a _No Se Repita a Si Mismo_
+(Don't Repeat Yourself).
 
-- DRY: Don't Repeat Yourself
+Al crear funciones pequeñas y autocontenidas que desarrollan una sola función y 
+lo hacen bien, podemos rápidamente ganar:
 
-By creating small functions that only one logical task and do it well, we quickly 
-gain:
+- Mejoras en el entendimiento del código
+- Reuso del código a traves de la decomposición de tareas en fragmentos pequeños
+- Mejorar la revisión de erroresImproved error testing
 
-- Improved understanding
-- Reuse via decomposing tasks into bite-sized chunks
-- Improved error testing
+## Conversión de temperatura
 
-
-## Temperature conversion
-
-Imagine you have a bunch of data measured in Fahrenheit and you want to convert
-that for analytical purposes to Celsius.  You might have an R script
-that does this for you.
+Imagine que tiene unos datos de temperatura medidos en grados Fahrenheit y los quiere convertir
+a Celsius para realizar los análisis. Puede ser que para este fin usted escriba un código de R
+que haga precisamente esto.
 
 ```{r}
 airtemps <- c(212, 30.3, 78, 32)
@@ -41,15 +41,16 @@ celsius2 <- (airtemps[2]-32)*5/9
 celsius3 <- (airtemps[3]-32)*5/9
 ```
 
-Note the duplicated code, where the same formula is repeated three times.  This
-code would be both more compact and more reliable if we didn't repeat ourselves.
+Note que existe 3 lineas de código duplicado, donde se repime la formula. Este código se puede 
+acortar y hacer más confiable sin las repeticiones.
 
-## Creating a function
+## Creando una función
 
-Functions in R are a mechanism to process some input and return a value.  Similarly
-to other variables, functions can be assigned to a variable so that they can be used
-throughout code by reference.  To create a function in R, you use the `function` function (so meta!) and assign its result to a variable.  Let's create a function that calculates
-celsius temperature outputs from fahrenheit temperature inputs.
+Las funciones de R son un mecanismo donde se procesa una entrada y se devuelve un valor de salida.
+En forma similar a otras variables, las funciones pueden ser asignadaa una una variblae, de esta 
+forma puede ser utilizada en diferentes partes del código. Para crear una función en R, se usa la 
+función `function` y se asigna su resultado a una variable. Creemos de esta forma una funcón que 
+calcule la temperatura en grados celcius cuando se le pasan valores en fahrenheit.
 
 ```{r}
 fahr_to_celsius <- function(fahr) {
@@ -58,7 +59,11 @@ fahr_to_celsius <- function(fahr) {
 }
 ```
 
-By running this code, we have created a function and stored it in R's global environment.  The `fahr` argument to the `function` function indicates that the function we are creating takes a single parameter (the temperature in fahrenheit), and the `return` statement indicates that the function should return the value in the `celsius` variable that was calculated inside the function.  Let's use it, and check if we got the same value as before:
+Al ejecutar este código, hemos creado una función y la hemos almacenado en el ambiente global de R.
+El arugmento `fahr` de la función `function` indica que la función que hemos creado toma un único
+parámetro (la temperatura en fahrenheit) y la declaración `return` indica que la función debe
+devolver el valor almacenado en la variable `celsius` que fue calculado dentro de la función.
+Usemoa ahora la función y veamos si obtenemos los mismos valores:
 
 ```{r}
 celsius4 <- fahr_to_celsius(airtemps[1])
@@ -66,17 +71,19 @@ celsius4
 celsius1 == celsius4
 ```
 
-Excellent.  So now we have a conversion function we can use.  Note that, because 
-most operations in R can take multiple types as inputs, we can also pass the original vector of `airtemps`, and calculate all of the results at once:
+¡Excelente!.  Entonces ahora tenemos una función que convierte los grados que podemos usar. Note que, 
+porque la mayoría de las operaciones en R pueden tomar múltiples tipos de entradas, podemos pasarle
+el vector original de `airtemps` y calcular todos los resultados al mismo tiempo:
 
 ```{r}
 celsius <- fahr_to_celsius(airtemps)
 celsius
 ```
 
-This takes a vector of temperatures in fahrenheit, and returns a vector of temperatures in celsius.
+De esta forma, toma el vector de temperaturas en fahrenheit y devuelve el vector de temperaturas en grados 
+celsius.
 
-## Exercise
+## Actividad
 
 Now, create a function named `celsius_to_fahr` that does the reverse, it takes temperature data in celsius as input, and returns the data converted to fahrenheit.  Then use that formula to convert the `celsius` vector back into a vector of fahrenheit values, and compare it to the original `airtemps` vector to ensure that your answers are correct.
 
