@@ -25,8 +25,8 @@ Al crear funciones pequeñas y autocontenidas que desarrollan una sola función 
 lo hacen bien, podemos rápidamente ganar:
 
 - Mejoras en el entendimiento del código
-- Reuso del código a traves de la decomposición de tareas en fragmentos pequeños
-- Mejorar la revisión de erroresImproved error testing
+- Re-uso del código a través de la descomposición de tareas en fragmentos pequeños
+- Mejorar la revisión de errores
 
 ## Conversión de temperatura
 
@@ -41,16 +41,16 @@ celsius2 <- (airtemps[2]-32)*5/9
 celsius3 <- (airtemps[3]-32)*5/9
 ```
 
-Note que existe 3 lineas de código duplicado, donde se repime la formula. Este código se puede 
+Note que existe 3 lineas de código duplicado, donde se repite la fórmula. Este código se puede 
 acortar y hacer más confiable sin las repeticiones.
 
 ## Creando una función
 
 Las funciones de R son un mecanismo donde se procesa una entrada y se devuelve un valor de salida.
-En forma similar a otras variables, las funciones pueden ser asignadaa una una variblae, de esta 
+En forma similar a otras variables, las funciones pueden ser asignadas una una variable, de esta 
 forma puede ser utilizada en diferentes partes del código. Para crear una función en R, se usa la 
-función `function` y se asigna su resultado a una variable. Creemos de esta forma una funcón que 
-calcule la temperatura en grados celcius cuando se le pasan valores en fahrenheit.
+función `function` y se asigna su resultado a una variable. Creemos de esta forma una función que 
+calcule la temperatura en grados celsius cuando se le pasan valores en fahrenheit.
 
 ```{r}
 fahr_to_celsius <- function(fahr) {
@@ -60,10 +60,10 @@ fahr_to_celsius <- function(fahr) {
 ```
 
 Al ejecutar este código, hemos creado una función y la hemos almacenado en el ambiente global de R.
-El arugmento `fahr` de la función `function` indica que la función que hemos creado toma un único
+El argumento `fahr` de la función `function` indica que la función que hemos creado toma un único
 parámetro (la temperatura en fahrenheit) y la declaración `return` indica que la función debe
 devolver el valor almacenado en la variable `celsius` que fue calculado dentro de la función.
-Usemoa ahora la función y veamos si obtenemos los mismos valores:
+Usemos ahora la función y veamos si obtenemos los mismos valores:
 
 ```{r}
 celsius4 <- fahr_to_celsius(airtemps[1])
@@ -85,28 +85,37 @@ celsius.
 
 ## Actividad
 
-Now, create a function named `celsius_to_fahr` that does the reverse, it takes temperature data in celsius as input, and returns the data converted to fahrenheit.  Then use that formula to convert the `celsius` vector back into a vector of fahrenheit values, and compare it to the original `airtemps` vector to ensure that your answers are correct.
+Cree una función que transforme los datos de grados celsius a fahrenheit (`celsius_to_fahr`), toma los datos en
+en celsius y los devuelve convertidos a fahrenheit. Luego use esta forma para convertir el vector `celsius` a
+un vector de temperaturas fahrenheit y compare los resultados al vector original `airtemps` para verificar
+que están correctos.
 
 ```{r}
-# Your code goes here
+# Escriba aquí su código
+
 ```
 
-Did you encounter any issues with rounding or precision?
+¿Encontró problemas con el redondeo de valores o precisión?
 
-## Documenting R functions
+## Documentando funciones de R
 
-Functions need documentation so that we can communicate what they do, and why.  The `roxygen2` package provides a simple means to document your functions so that you can explain what the function does, the assumptions about the input values, a description of the value that is returned, and the rationale for decisions made about implementation.
+Las funciones necesitan ser documentadas para que se pueda comunicar que es lo que hacen y por qué. El 
+paquete `roxygen2` provee una forma simple de documentar sus funciones, explicar que es lo que hacen, los
+supuestos, descripciones sobre los valores que se devuelves y la racionalidad para las
+decisiones que se hicieron para la implementación de la función.
 
-Documentation in ROxygen is placed immediately before the function definition, and is indicated by a special comment line that always starts with the characters `#'`.  Here's a documented version of a function:
+La documentación en ROxygen se incluye inmediatamente antes de la definición de la función. Para esto se 
+indica que es parte de la documentación inicial la linea con los caracteres `#'`.  Aquí hay una
+versión documentada de una función:
 
 ```{r}
-#' Convert temperature data from Fahrenheit to Celsius
+#' Convierte los datos de temperatura de Fahrenheit a Celsius
 #'
-#' @param fahr Temperature data in degrees Fahrenheit to be converted
-#' @return temperature value in degrees Celsius
+#' @parametros fahr Datos de temperatura en grados Fahrenheit que serán convertidos
+#' @return Valores de temperatura en grados Celsius
 #' @keywords conversion
 #' @export
-#' @examples
+#' @ejemplos
 #' fahr_to_celsius(32)
 #' fahr_to_celsius(c(32, 212, 72))
 fahr_to_celsius <- function(fahr) {
@@ -115,10 +124,14 @@ fahr_to_celsius <- function(fahr) {
 }
 ```
 
-Note the use of the `@param` keyword to define the expectations of input data, and the `@return` keyword for defining the value that is returned from the function.  The `@examples` function is useful as a reminder as to how to use the function.  Finally, the `@export` keyword indicates that, if this function were added to a package, then the function should be available to other code and packages to utilize.
+Note el uso de las palabras claves `@param` para definir los datos de entrada esperados y `@return` para 
+definir los valores que serán devueltos por la función. La función de `@examples` es útil como un recordatorio
+de como se debe usar la función. Finalmente, la palabra clave `@export` indica que, si esta función fuera 
+agregada a un paquete, entonces la función estará disponible para ser usado por otros códigos o 
+paquetes.
 
-## Summary
+## Resumen
 
-- Functions are useful to reduce redundancy, reuse code, and reduce errors
-- Build functions with the `function` function
-- Document functions with `roxygen2` comments
+- Las funciones son útiles para reducir la redundancia, reusar código y reducir los errores
+- Construir funciones con la función `function`
+- Documentar las funciones con comentarios `roxygen2`
