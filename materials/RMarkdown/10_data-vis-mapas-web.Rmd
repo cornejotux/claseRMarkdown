@@ -61,21 +61,27 @@ opciones por defecto.
 
 ## Un ejemplo ya no tan básico
 
-Now that we've seen how to create a web page from RMarkdown, let's create a website that uses some of the cool functionality available to us.
-We'll use the same git repository and RStudio Project as above, but we'll be adding some files to the repository and modifying `index.Rmd`.
+Ahora que ha hemos visto como crear una página web desde RMarkdown, vamos a crear un sitio web que usa
+algunas funcionalidad geniales que estan disponibles en R. Vamos a seguir usando el mismo repositorio 
+git y RStudio Project de arriba, pero vamos a agregar algunos archivos al repositorio y a modificar el 
+documento `index.Rmd`.
 
-First, let's get some data. We'll re-use the salmon escapement data from the ADF&G OceanAK database:
+Primero tenemos que obtener datos. Vamos a re-usar los datos sobre el retorno para desove de salmones 
+de Alaska disponible desde la base de datos OceanAK del Departamente de Pesca y Casa de Alaska (ADF&G):
 
-- Navigate to [Escapement Counts](https://doi.org/10.5063/F1S46Q6M) (or visit the KNB and search for 'oceanak') and copy the Download URL for the `ADFG_firstAttempt_reformatted.csv` file
-- Download that file into R using `read.csv` to make the script portable
-- Calculate annual escapement by species and region using the `dplyr` package
-- Make a bar plot of the annual escapement by species using the `ggplot2` package
-- Display it in an interactive table with the `datatable` function from the `DT` package
-- And lastly, let's make an interactive, Google Maps-like map of the escapement sampling locations.
+- Navegue a [Escapement Counts](https://doi.org/10.5063/F1S46Q6M) (o visite el sitio KNB y busque por 
+'oceanak') y copie el Download URL para el archivo `ADFG_firstAttempt_reformatted.csv`
+- Descargue el archivo en R usando `read.csv` para hacer portable el código
+- Calcule el escape anual (se refiere al numero de peces que no son capturados por la pesquería) por
+especie y región usando el paquete `dplyr`
+- Haga un gráfico de barrar para el escape anual por especie usando el paquete `ggplot2`
+- Muestre los datos en una tabla interactica usando la función `datatable` diponible en el parquete `DT`
+- Haga un mapa interactivo, tipo Google Maps, de los lugars donde se muestreó el escape
 
-To do this, we'll use the [`leaflet`](https://rstudio.github.io/leaflet/) package to create an interactive map with markers for all the sampling locations:
+Para hacer esto, vamos a usar el paquete [`leaflet`](https://rstudio.github.io/leaflet/) para crea un 
+mapa interactivo con marcadores en cada lugar de muestro:
 
-First, let's load the packages we'll need:
+Primero, cargams todos los paquetes que vamos a usar:
 
 ```{r load_packages, message = F, warning = F}
   library(leaflet)
@@ -87,10 +93,10 @@ First, let's load the packages we'll need:
   library(ggmap) # devtools::install_github("dkahle/ggmap")
 ```
 
-### Carga de datos sobre retorno de salmones
+### Carga de datos sobre escape de salmones
 
-You can load the data table directly from the KNB Data Repository, if it isn't
-already present on your local computer.  This technique 
+Puede leer los datos en forma directa desde el repositorio de datos de [KNB](https://knb.ecoinformatics.org/),
+si es que no la tiene ya en su computador:
 
 ```{r read_data}
 data_url <- "https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3Af119a05b-bbe7-4aea-93c6-85434dcb1c5e"
@@ -98,7 +104,7 @@ data_url <- "https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3Af11
 esc <- tryCatch(
     read.csv("data/escapement.csv", stringsAsFactors = FALSE),
     error=function(cond) {
-        message(paste("Escapement file does not seem to exist, so get it from the KNB."))
+        message(paste("Archivo de escape de salmos no existe, descarguelo desde KNB."))
         esc <- read.csv(url(data_url, method = "libcurl"), stringsAsFactors = FALSE)
         return(esc)
     }
@@ -107,9 +113,9 @@ esc <- tryCatch(
 head(esc)
 ```
 
-### Static Plots
+### Gráficos estáticos
 
-Now that we have the data loaded, let's calculate annual escapement by species and region:
+Ahora que ya tenemos los datos, calculemos el escape anual por especie y región:
 
 ```{r mean_esc}
 annual_esc <- esc %>% 
@@ -122,40 +128,49 @@ annual_esc <- esc %>%
 head(annual_esc)
 ```
 
-That command used a lot of the dplyr commands that we've used, and some that are new.
-The `separate` function is used to divide the sampleDate column up into Year, Month, and Day columns,
-and then we use `group_by` to indicate that we want to calculate our results for
-the unique combinations of species, region, and year.  We next use `summarize`
-to calculate an escapement value for each of these groups. Finally, we use a filter and the `%in%` operator to select only the salmon species.
+Este fragmento de código usa varios de los comandos de `dplyr` que ya hemos visto y algunos otrs nuevos. 
+La función `separate` es usada para dividir la columna _sampleDate_ en las columnas Year, Month y Day,
+las que luego usamos en `group_by` para indicar que queremos calcular nuestros resultados para las
+combinaciones únicas de _species_, _region_ y _year_.  A continuación usamos `summarize` para calcular 
+los valores de escape para cada uno de estos grupos. Finalmente, usamos un filtro y el operador `%in%`
+para seleccionar solo las especies de salmones.
 
-Now, let's plot our results using `ggplot`. `ggplot` uses a mapping *aesthetic* (set using `aes()`) and a *geometry* to create your plot. Additional geometries/aesthetics and theme elements can be added to a `ggplot` object using `+`.
+Ahora vamos a hacer un gráficos con los resultados usando `ggplot`. `ggplot` usa _estéticas_ de mapeo 
+(definidas usando `aes()`) y _geometrías_ para crear el gráfico. Adicionalmente a geometrías/estéticas
+se pueden agregar a `ggplot` elementos de temas usando el operador `+`.
 
 ```{r plot_esc}
 ggplot(annual_esc, aes(x = Species, y = escapement)) +
   geom_col()
 ```
 
-What if we want our bars to be blue instad of gray? You might think we could run this:
+¿Qué pasa si queremos que las barras sean azules en vez de grises? Se podría pensan que se puede hacer 
+lo siguiente:
 
 ```{r}
 ggplot(annual_esc, aes(x = Species, y = escapement, fill = "blue")) +
   geom_col()
 ```
 
-Why did that happen?
+¿Qué pasó en este gráfico?
 
-Notice that we tried to set the fill color of the plot inside the mapping aesthetic call. What we have done, behind the scenes, is create a column filled with the word "blue" in our dataframe, and then mapped it to the `fill` aesthetic, which then chose the default fill color of red. 
+Se puede ver que tratamos de definir el color del gráfido dentro del llamado a la estética del mapeo. 
+Lo que hemos hecho, detras de la escea, es crar una columna llena con la palana "blue" en el `data.frame`
+que usar `ggplot` y posteriormente fue mapeado a la estetica `fill`, que finalmente seleccionó el color
+por defecto rojo para llenar las columnas. 
 
-What we really wanted to do was just change the color of the bars. If we want do do that, we can call the color option in the `geom_bar` function, **outside** of the mapping aesthetics function call.
+Lo que realmente querimoas hacer era cambiar el color de las barras. Para hacer esto debemos llamar
+la opción del color dentro de la función `geom_bar` **fuera** de la llamada a la función estética del 
+mapeo.
 
 ```{r}
 ggplot(annual_esc, aes(x = Species, y = escapement)) +
   geom_col(fill = "blue")
 ```
 
-What if we did want to map the color of the bars to a variable, such as region.
+¿Y si ahora queremos mapear el color de la barras basado en una variable, por ejemplo región?
 
-`ggplot` is really powerful because we can easily get this plot to visualize more aspects of our data.
+`ggplot` es muy poderoso porque permite hacer facilmnet un gráfico que muestre estos aspectos de los datos.
 
 ```{r}
 ggplot(annual_esc, aes(x = Species, y = escapement, fill = SASAP.Region)) +
