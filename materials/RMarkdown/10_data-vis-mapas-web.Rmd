@@ -1,56 +1,65 @@
-# Data visualization for web-based maps
+# Visualización de mapas basados en la web
 
-## Learning Objectives
+## Objetivos
 
-In this lesson, you will learn:
+En esta clase:
 
-- How to use RMarkdown to build a web site
-- A quick overview of producing nice visualizations in R with `ggplot`
-- How to create interactive maps with `leaflet`
-- Publishing interactive maps using RMarkdown to make a GitHub web site
+- Como usar RMarkdown para crear un sitio web
+- Una revisión rápida de como producir visualizaciones con R y el paquete `ggplot`
+- Como creat mapas interactivos usando el paquete `leaflet`
+- Piblicar mapas interactivos usando RMarkdown para hacer un sitio web en GitHub
 
-## Introduction
+## Introducción
 
-Sharing your work with others in engaging ways is an important part of the scientific process.
-So far in this course, we've introduced a small set of powerful tools for doing open science:
+Compartir el trabajo científico de una manera interativa y entertenida es fundamental para el 
+desarrollo del proceso científico. Hasta este punto hemos hablado en este curso sobre un set
+}de herramientas que nos ayudan a hacer ciencia abierta (_open science_):
 
-- R and its many packages
+- R y muchos de sus paquetes
 - RStudio
 - git
 - GitHub
 - RMarkdown
 
-RMarkdown, in particular, is amazingly powerful for creating scientific reports but, so far, we haven't tapped its full potential for sharing our work with others.
+RMarkdown, en particular, es increiblemente potente para crear reportes científicos, sin embargo
+hasta ahora no hemos llegado ni a rozar en su verdaro potencial para compartir nuetro trabajo
+con colaboradores.
 
-In this lesson, we're going to take an existing GitHub repository and turn it into a beautiful and easy to read web page using the tools listed above.
+En esta leccion, vamos a tomar un repositorio ya existente en GitHub y lo transformaremos en un 
+sitio web elegante y simple de leer usando algunas de las herramientas que hemos aprendido en este 
+curso.
 
-## A Minimal Example
+## Un ejemplo básico
 
-- In RStudio, create a new file at the top level of your git repository called `index.Rmd`. The easiest way to do this is through the RStudio menu. Choose File -> New File -> RMarkdown...  This will bring up a dialog box. You should create a "Document" in "HTML" format. These are the default options.
-- Open `index.Rmd` (if it isn't already open)
-- Press Knit
-    - Observe the rendered output
-    - Notice the new file in the same directory `index.html`. This is our RMarkdown file rendered as HTML (a web page)
-- Commit your changes (to both index.Rmd and index.html)
-- Open your web browser to the GitHub.com page for your repository
-- Go to Settings > GitHub Pages and turn on GitHub Pages for the `master` branch
+- En RStudio, cree im archivo nuevo al nivel tope se su repositorio **git** llamado `index.Rmd`. 
+La forma más simple de hacer esto es a través del menú de RStudio. Elija File -> New File -> RMarkdown...
+Esto abrirá una caja de dialogo. Usted debe crear un "Document" en formato "HTML". Estas son las 
+opciones por defecto.
+- Abra `index.Rmd` (si es que no está y abierto)
+- Haga clic en _Knit_
+    - Vea la salida que se genera
+    - Note que se ha creado un nuevo archivo `index.html` en el mismo directorio. Este es el resultado
+    en HTML (página web) creado a partir del documento RMarkdown 
+- Commit sus cambios (ambos archivos, index.Rmd e index.html)
+- Abra su navegador web en la página www.GitHub.com de su repositorio
+- Vaya a Settings > GitHub Pages y active _GitHub Pages_ para la rama (branch) `master`
 
-    Now, the rendered website version of your repo will show up at a special URL.
+    Ahora la versión del sitio web rendered de su repositorio se va a mostrar en un URL special.
     
-    GitHub Pages follows a convention like this:
+    GitHub Pages sigue una convensión como esta:
     
      ```
      https://{username}.github.io/{repository}/
-     https://mbjones.github.io/arctic-training-repo/
+     https://cornejotux.github.io/claseRMarkdown/
      ```
      
-    Note that it will no longer be at github.com but github.io. 
+    Ponga atención que ahora sitio no está en github.com si no que en github.io. 
      
-- Go to https://{username}.github.io/{repo_name}/ (Note the trailing `/`)
-    Observe the awesome rendered output
+- Vaya a https://{username}.github.io/{repo_name}/ (Hay que poner el `/` al final!)
+    Y vea la versión generada de su sitio web.
     
 
-## A Less Minimal Example
+## Un ejemplo ya no tan básico
 
 Now that we've seen how to create a web page from RMarkdown, let's create a website that uses some of the cool functionality available to us.
 We'll use the same git repository and RStudio Project as above, but we'll be adding some files to the repository and modifying `index.Rmd`.
@@ -78,7 +87,7 @@ First, let's load the packages we'll need:
   library(ggmap) # devtools::install_github("dkahle/ggmap")
 ```
 
-### Load salmon escapement data
+### Carga de datos sobre retorno de salmones
 
 You can load the data table directly from the KNB Data Repository, if it isn't
 already present on your local computer.  This technique 
