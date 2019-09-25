@@ -170,14 +170,15 @@ ggplot(annual_esc, aes(x = Species, y = escapement)) +
 
 ¿Y si ahora queremos mapear el color de la barras basado en una variable, por ejemplo región?
 
-`ggplot` es muy poderoso porque permite hacer facilmnet un gráfico que muestre estos aspectos de los datos.
+`ggplot` es muy poderoso porque permite hacer facilmente un gráfico que muestre estos aspectos de los datos.
 
 ```{r}
 ggplot(annual_esc, aes(x = Species, y = escapement, fill = SASAP.Region)) +
   geom_col()
 ```
 
-Here is an example of a different aesthetic and geometry mapping we can create with this data. You can also add a title, adjust labels, and include a built in theme.
+Aquí hay un ejemplo con una estética y geometría de mapeo diferente que podemos usar con estos datos. Se
+puede ademas agregar un título, ajustar las etiquetas e incluis un tema.
 
 ```{r}
 ggplot(filter(annual_esc, SASAP.Region == "Kodiak"), aes(x = Year, y = escapement, color = Species)) + 
@@ -186,10 +187,10 @@ ggplot(filter(annual_esc, SASAP.Region == "Kodiak"), aes(x = Year, y = escapemen
     ylab("Escapement") +
     ggtitle("Kodiak Salmon Escapement") +
     theme_bw()
-
 ```
 
-Note how I added a filter call in my `ggplot` function call to only plot data from Kodiak. You can easily create plots like this for every region using `facet_wrap`
+Fíjese que agregé un filto a la llamada de la función `ggplot` ára solo graficar los datos de la 
+isla Kodiak. Se puede facilmente creat fráficos como este para cada región usando `facet_wrap`.
 
 ```{r}
 ggplot(annual_esc, aes(x = Year, y = escapement, color = Species)) + 
@@ -201,9 +202,10 @@ ggplot(annual_esc, aes(x = Year, y = escapement, color = Species)) +
 
 ```
 
-### Interactive Maps
+### Mapas interactivos
 
-Now let's convert the escapement data into a table of just the unique locations:
+Ahora vamos a convertir los datos de espae en una tabla donde tengamos una única fila para
+cada lugar de muestro:
 
 ```{r uniq_locations}
 locations <- esc %>% 
@@ -211,13 +213,13 @@ locations <- esc %>%
   drop_na()
 ```
 
-And display it as an interactive table:
+Ahora lo desplegamos en una tabla interactiva:
 
 ```{r display_locations}
 datatable(locations)
 ```
 
-Then making a leaflet map is (generally) only a couple of lines of code:
+Y luego hacer una mapa _leaflet_ el que requiere (generalmente) sólo un par de lineas de código:
 
 ```{r simple_map}
 leaflet(locations) %>% 
@@ -225,17 +227,22 @@ leaflet(locations) %>%
   addMarkers(~ Longitude, ~ Latitude, popup = ~ Location)
 ```
 
-The `addTiles()` function gets a base layer of tiles from [OpenStreetMap](https://www.openstreetmap.org/) which is an open alternative to Google Maps.
-`addMarkers` use a bit of an odd syntax in that it looks kind of like `ggplot2` code but uses `~` before the column names.
-This is similar to how the `lm` function (and others) work but you'll have to make sure you type the `~` for your map to work.
+La función `addTiles()` obtene la capa base desde [OpenStreetMap](https://www.openstreetmap.org/) 
+que es una altenativa de código abiert a Google Maps. 
+`addMarkers` usa una sintaxis un poco rara en comparción a la que acabamos de ver con `ggplot2`, usar 
+`~` antes de los nombers de columnas.
+Esto es similar a como tabaja la función `lm` (y agunas otras), es necesario que usted se asegure 
+de usar `~` para que su mapa funcione.
 
-You can also use `leaflet` to import Web Map Service (WMS) tiles. Here is an example that utilizes the General Bathymetric Map of the Oceans [(GEBCO)](https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/#getcapabilities) WMS tiles. In this example, we also demonstrate how to create a more simple circle marker.
+También es posible usar `leaflet` para important capas desde Web Map Service (WMS). Aquí hay un ejemplo
+que utiliza una capa del mapa batimétrico general de los oceanos [(GEBCO)](https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/#getcapabilities) WMS.
+En este ejemplo ademas demostramos como crear un marcados circular más simple.
 
 ```{r}
 leaflet(locations) %>% 
   addWMSTiles("https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",
               layers = 'GEBCO_LATEST',
-              attribution = "Imagery reproduced from the GEBCO_2014 Grid, version 20150318, www.gebco.net") %>%
+              attribution = "Imagen producida desde la grilla GEBCO_2014, versión 20150318, www.gebco.net") %>%
   addCircleMarkers(lng = ~Longitude,
                    lat = ~Latitude,
                    popup = ~ Location,
@@ -250,10 +257,13 @@ leaflet(locations) %>%
                    opacity = 1)
 ```
 
-Leaflet has a ton of functionality that can enable you to create some beautiful, functional maps with relative ease. [Here](https://pages.github.nceas.ucsb.edu/NCEAS/sasap-data/language_vis.html) is an example of some we created as part of the SASAP project, created using the same tools we showed you here. This map hopefully gives you an idea of how powerful the combination of RMarkdown and GitHub pages can be. 
+Leaflet tiene una tonelada de funcionalidades que permites crear mapas muy elegantes y funcionales con facilidad.
+[Aquí](https://pages.github.nceas.ucsb.edu/NCEAS/sasap-data/language_vis.html) hay un ejemplo de algunos mapas
+que fueron creados como parte del proyecto SASAP (Estado del Salmon de Alaska y Su Gente) usando las mismas
+herramientas que acabamos de aprender. Este mapa idealmente le da una idea de cuan poderosa puede ser la 
+combinación de RMarkdown y las páginas de GitHub. 
 
-
-## Static maps with geom_sf
+## Mapas estáticos con `ggplot` y `geom_sf`
 
 We can also create a similar static map using `ggplot` with the `geom_sf` geometry. To
 do so, first we need to transform our locations data frame into an `sf` object by
