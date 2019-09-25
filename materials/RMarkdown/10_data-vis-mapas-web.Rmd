@@ -2,7 +2,7 @@
 
 ## Objetivos
 
-En esta clase:
+En este capítulo:
 
 - Como usar RMarkdown para crear un sitio web
 - Una revisión rápida de como producir visualizaciones con R y el paquete `ggplot`
