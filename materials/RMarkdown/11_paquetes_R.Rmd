@@ -25,7 +25,7 @@ facil de mantes y usar las herramientas que pueden servir en más de un proyecto
 Los paquetes `usethis`, `devtools` y `roxygen2` hacen que la creación y mantención de paquetes de R 
 sea un experiencia sencilla.
 
-## Insltación y carga de los paquetes
+## Instalación y carga de los paquetes
 
 ```{r, eval=FALSE}
 library(devtools)
@@ -34,7 +34,7 @@ library(usethis)
 library(roxygen2)
 ```
 
-## Creación ed un paquete básico
+## Creación de un paquete básico
 
 Gracias al excelente paquete [usethis](https://github.com/r-lib/usethis), solo toma una llamada a una 
 función para crear el esqueleto necesario para un paquete de R, basta con usar `create_package()`.  
@@ -56,37 +56,41 @@ create_package("mytools")
     ✔ Adding '^mytools\\.Rproj$', '^\\.Rproj\\.user$' to '.Rbuildignore'
     ✔ Opening new project 'mytools' in RStudio
 
-This will create a top-level directory structure, including a number of critical files under the [standard R package structure](http://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-structure).  The most important of which is the `DESCRIPTION` file, which provides metadata about your package. Edit the `DESCRIPTION` file to provide reasonable values for each of the fields,
-including your own contact information. 
+Esto va a crear una estructura de directorios, inclueyndo los archivos críticos bajo la [Estructura
+Estandard de Paquetes de R](http://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-structure).
+Lo más importantes de los cuales es el archivo `DESCRIPTION`. Este documento provee los metadatos 
+sobre el su paquete. Edite el archivo `DESCRIPTION` para entregarle valores que sean razonables para cada 
+campo, incluyendo su información de contacto. 
 
-Information about choosing a LICENSE is provided in the [Extending R](http://cran.r-project.org/doc/manuals/r-release/R-exts.html#Licensing) documentation.
-The DESCRIPTION file expects the license to be chose from a predefined list, but
-you can use it's various utility methods for setting a specific license file, such
-as the `Apacxhe 2` license:
+Informacion sobre elegir una licencia (LICENSE) se puede encontrar en la documentos (en inglés) 
+[Extending R](http://cran.r-project.org/doc/manuals/r-release/R-exts.html#Licensing). El archivo DESCRIPTION
+espera que eliga una licencia desde una lista predefinida, puede usar varias metodos para definir 
+un archivo de licencia, como es por ejemplo la licencia `Apache 2`:
 
 ```{r, eval=FALSE}
-use_apl2_license(name="Matthew Jones")
+use_apl2_license(name="Jorge Cornejo")
 ```
 
     ✔ Setting License field in DESCRIPTION to 'Apache License (>= 2.0)'
     ✔ Writing 'LICENSE.md'
     ✔ Adding '^LICENSE\\.md$' to '.Rbuildignore'
 
-Once your license has been chosen, and you've edited your DESCRIPTION file with your contact information, a title, and a description, it will look like this:
+Una vez que la licencia ya fue elegida y ha editado el archivo DESCRIPTION con su información de contacto, 
+un título y una descriccpion, se verá algo como esto:
 
 ```{r, eval=FALSE}
 Package: mytools
-Title: Utility functions created by Matt Jones
+Title: Funciones de utilidad creadas por Jorge Cornejo
 Version: 0.1
-Authors@R: "Matthew Jones <jones@nceas.ucsb.edu> [aut, cre]"
-Description: Package mytools contains a suite of utility functions useful whenever I need stuff to get done.
-Depends: R (>= 3.5.0)
+Authors@R: "Jorge Cornejo <jorge.cornejo@ifop.cl> [aut, cre]"
+Description: El paquete mytools containe funciones utilitarias para cuando necesito hacer cosas.
+Depends: R (>= 3.6.0)
 License: Apache License (>= 2.0)
 LazyData: true
 ```
 
 
-## Add your code
+## Agregando su código
 
 The skeleton package created contains a directory `R` which should contain your source files.  Add your functions and classes in files to this directory, attempting to choose names that don't conflict with existing packages.  For example, you might add a file `environemnt_info.R` that contains a function `environment_info()` that you might want to reuse. This one might leave something to be desired..., but you get the point... The
 `usethis::use_r()` function will help set up you files in the right places.  For example, running:
