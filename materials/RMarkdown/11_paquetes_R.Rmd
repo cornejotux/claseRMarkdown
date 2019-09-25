@@ -1,26 +1,31 @@
-# Creating R Packages
+# Creando Paquetes de R
 
-## Learning Objectives
+## Objectivos
 
-In this lesson, you will learn:
+En este capítulo:
 
-- The advantages of using R packages for organizing code
-- Simple techniques for creating R packages
-- Approaches to documenting code in packages
+- Las ventajas de usar paquetes de R para organizar el código
+- Tecnicas simples para crear paquetes de R
+- Aproximaciones para documentar el código en los paquetes
 
-## Why packages?
+## ¿Por qué usar paquetes?
 
-Most R users are familiar with loading and utilizing packages in their work. And they know how rich CRAN is in providing for many conceivable needs.  Most people have never created a package for their own work, and most think the process is too complicated.  Really it's pretty straighforward and super useful in your personal work.  Creating packages serves two main use cases:
+La mayoría de los uruarios de R estan acostumbrado a cargar y utilizar paquetes en su trabajo. Además, 
+sabe cuan rico es CRAN para preoveer para mucha de sus necesidades. Sin embargo, la mayoria de la gente
+nunca ha creato sus propios paquetes y piensa que el proceso es muy complicado. Realmente es batante
+simple, directo y extremadamente útil para el trabajo personal. La creación de paquetes sirve principalmente
+en dos casos:
 
-- Mechanism to redistribute reusable code (even if just for yourself)
-- Mechanism to reproducibly document analysis and models and their results
+- Como mecanismo para compartir/distribuir códigos que son reusables (incluso si solo es para uno mismo)
+- Como mecanismo para reproducir documentos de análisis, modelos y resultados
 
-At a minimum, you can easily produce a package for just your own useful code functions,
-which makes it easy to maintain and use utilities that span your own projects.
+A lo menos, nos se puede crean un paquete por nuestras propias funciones de código más útiles, haciendolo más
+facil de mantes y usar las herramientas que pueden servir en más de un proyecto en el que trabaje.
 
-The `usethis`, `devtools` and `roxygen2` packages make creating and maintining a package to be a straightforward experience.
+Los paquetes `usethis`, `devtools` y `roxygen2` hacen que la creación y mantención de paquetes de R 
+sea un experiencia sencilla.
 
-## Install and load packages
+## Insltación y carga de los paquetes
 
 ```{r, eval=FALSE}
 library(devtools)
@@ -29,10 +34,12 @@ library(usethis)
 library(roxygen2)
 ```
 
-## Create a basic package
+## Creación ed un paquete básico
 
-Thanks to the great [usethis](https://github.com/r-lib/usethis) package, it only takes one function call to create the skeleton of an R package using `create_package()`.  Which eliminates pretty much all reasons for procrastination.  To create a package called
-`mytools`, all you do is:
+Gracias al excelente paquete [usethis](https://github.com/r-lib/usethis), solo toma una llamada a una 
+función para crear el esqueleto necesario para un paquete de R, basta con usar `create_package()`.  
+Esto elimina la mayor parte de las razones de procastinación. Entonecs, para crear el paquete llamado
+`mytools` solo es necesario hacer lo siguiente:
 
 ```{r, eval=FALSE}
 setwd('..')
