@@ -269,7 +269,7 @@ dentro de la carpeta `archivos_clase_R` que se llama `datos`, su función `read.
 puede ser llamada de la siguiente forma:
 
 ```{r, eval = F}
-bg_chem <- read.csv("datos/BGchem2008data.csv")
+bg_chem <- read.csv("datos/5.1_BGchem2008data.csv")
 ```
 
 Ahora debería tener un objeto llamado `bg_chem` de la clase `data.frame` en su ambiente
@@ -297,7 +297,7 @@ Muchos usuarios de R (incluyéndome) sobrescriben el argumento por defecto de `s
 usando la siguiente llamada:
 
 ```{r}
-bg_chem <- read.csv("data/BGchem2008data.csv", stringsAsFactors = FALSE)
+bg_chem <- read.csv("data/5.1_BGchem2008data.csv", stringsAsFactors = FALSE)
 ```
 
 ## Usando `data.frames`
