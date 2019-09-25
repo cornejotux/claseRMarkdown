@@ -274,7 +274,7 @@ usado para hacer los mapas en Google Maps, Stamen y OpenStreetMap, entre otros.
 
 ```{r}
 locations_sf <- locations %>%
-  st_as_sf(coords = c("Longitud", "Latitud"), crs = 4326)
+  st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326)
 locations_sf_3857 <- st_transform(locations_sf, 3857)
 ```
 
