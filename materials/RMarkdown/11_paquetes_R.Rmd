@@ -126,27 +126,32 @@ usethis::use_package("devtools")
     ✔ Adding 'devtools' to Imports field in DESCRIPTION
     ● Refer to functions with `devtools::fun()`
 
-## Agregando documentación
+## Agregando la documentación
 
-You should provide documentation for each of your functions and classes.  This is done in the `roxygen2` approach of providing embedded comments in the source code files, which are in turn converted into manual pages and other R documentation artifacts.    Be sure to define the overall purpose of the function, and each of its parameters.
+Es necesario incluir documentación para cada una de las funciones y clases que se incluyan en el 
+paquete. Esto se hacer usando la aproximacion de `roxygen2` que provee comentarios envevido en los
+archivos con el código fuente, que a su vez son convertido a paginal de manual y otros artefactos
+de la documentación de R. Asegúrse de definiri el proposito general de la función y cada uno de sus
+parámetros.
 
 ```{r}
-#' A function to print information about the current environment.
+#' Una función para imprimir información sobre el ambiente de trabajo de R.
 #'
-#' This function prints current environment information, and a message.
-#' @param msg The message that should be printed
+#' Esta función imprime el ambiente de trabajo actual y un mensaje.
+#' @param msg El mensaje que quiere imprimir
 #' @keywords debugging
 #' @import devtools
 #' @export
 #' @examples
-#' environment_info("This is an important message from your sponsor.")
+#' environment_info("Este es un mensaje importante de su auspiciador.")
 environment_info <- function(msg) {
     print(devtools::session_info())
-    print(paste("Also print the incoming message: ", msg))
+    print(paste("Además imprimire el mensaje entrante: ", msg))
 }
 ```
 
-Once your files are documented, you can then process the documentation using the `document()` function to generate the appropriate .Rd files that your package needs.
+Una vez que sus archivos estan documentados, entonces se puede proceder a generar la documentación usando
+usando la función `document()` para genenrar los archivos .Rd que el paquete necesita.
 
 ```{r, eval = F}
 document()
@@ -159,14 +164,16 @@ document()
     Writing NAMESPACE
     Writing environment_info.Rd
 
-That's really it.  You now have a package that you can `check()` and `install()` and `release()`.  See below for these helper utilities.
+Y eso es realmente. Ahora tiene un paquete que puede `check()` (verificar), `install()` (instalar) y 
+`release()` (publiacación). Mas abajo se pueden ver estas utilidades de ayuda.
 
-## Test your package
+## Verifique su paquete
 
-You can tests your code using the `tetsthat` testing framework.  The `ussethis::use_testthat()` 
-function will set up your package for testing, and then you can use the `use_test()` function
-to setup individual test files.  For example, if you want to create tests of our
-environment_info functions, set it up like this:
+Ahora que ya tiene todo listo, puede verificar sus código usando el marco de referencia de verificaciones 
+`tetsthat`. La función `ussethis::use_testthat()` va a preparar su paquete de R para verificar su 
+funcionaimento y luego puede usar la función `use_test()` para configurar archuvis individuales de 
+verificación. Por ejemplo, si quiere crear un test de las funciones en environment_info, puede 
+jacer algo como esto:
 
 ```{r eval = FALSE}
 usethis::use_testthat()
@@ -181,17 +188,18 @@ usethis::use_test("environment_info")
     ✔ Writing 'tests/testthat/test-environment_info.R'
     ● Modify 'tests/testthat/test-environment_info.R'
 
-You can now add tests to the `test-environment_info.R`, and you can run all of the
-tests using `devtools::test()`.  For example, if you add a test to the `test-environment_info.R` file:
+Ahora puede agregar los test a `test-environment_info.R` y ejecutar todos los test usando 
+`devtools::test()`. Por ejemplo, si quiere agregar un test al archivo `test-environment_info.R`:
 
 ```{r eval=FALSE}
-test_that("A message is present", {
-    capture.output(result <- environment_info("A unique message"))
-    expect_match(result, "A unique message")
+test_that("Un mensaje está presente", {
+    capture.output(result <- environment_info("Un mensaje único"))
+    expect_match(result, "Un mensaje único")
 })
 ```
 
-Then you can run the tests to be sure all of your functions are working using `devtools::test()`:
+Entonce puede ejecutar estos test para estar seguro que todas sus funnciones estas trabajando
+usando la función `devtools::test()`:
 
 ```{r eval=FALSE}
 devtools::test()
@@ -210,9 +218,9 @@ devtools::test()
     Warnings: 0
     Skipped:  0
 
-Yay, all tests passed!
+Si, todo funciona!!
 
-## Checking and installing your package
+## Verificando e instlando el paquete R creado
 
 Now that your package is built, you can check it for consistency and completeness using `check()`, and then you can install it locally using `install()`, which needs to be run from the parent directory of your module.
 
