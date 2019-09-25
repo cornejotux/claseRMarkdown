@@ -89,11 +89,14 @@ License: Apache License (>= 2.0)
 LazyData: true
 ```
 
-
 ## Agregando su código
 
-The skeleton package created contains a directory `R` which should contain your source files.  Add your functions and classes in files to this directory, attempting to choose names that don't conflict with existing packages.  For example, you might add a file `environemnt_info.R` that contains a function `environment_info()` that you might want to reuse. This one might leave something to be desired..., but you get the point... The
-`usethis::use_r()` function will help set up you files in the right places.  For example, running:
+El paquete esqueleto creado contiene un direction `R` que es donde se deben dejar los archivos fuentes. Agrege
+sus funciones y clases en los archivos de este directorio. Trate de elegir nombres que no existan en otros paquetes
+para que no entren en conflictos. Por ejemplo, se puede agregar un archivo `environemnt_info.R` que contiene la
+función `environment_info()` que podría querer re-usar. Esto puede dejar mucho que desear..., pero se entiende.
+La función `usethis::use_r()` le va a ayudar a dejar los archivos en los direcorios adecuados, para eso use por
+ejemplo:
 
 ```{r eval=FALSE}
 use_r("environment_info")
@@ -101,19 +104,20 @@ use_r("environment_info")
 
     ● Modify 'R/environment_info.R'
 
-creates the file `R/environment_info.R`, which you can then modify to add the implementation fo the following function:
+esto crea el archivo `R/environment_info.R`, que ahora puede modificar para agregar la implementación de la 
+siguiente función:
 
 ```{r eval=FALSE}
 environment_info <- function(msg) {
     print(devtools::session_info())
-    print(paste("Also print the incoming message: ", msg))
+    print(paste("También imprime el mensaje entrante: ", msg))
 }
 ```
 
-If your R code depends on functions from another package, then you must declare so
-in the `Imports` list in the `DESCRIPTION` file for your package.  In our example
-above, we depend on the `devtools` package, and so we need to list it as a dependency.
-Once again, `usethis` provides a handy helper method:
+Si su código R depende de funciones de otro paquete, entonces tiene que declararlo en la lista `Imports`
+del archivo `DESCRIPTION` de su paquete de R. El ejemplo de arriba depende del paquete `devtools`, por
+consiguiente debemos pornelo en el listado de dependencias. Nuevamente, `usethis` entrega un método de 
+ayuda muy útil:
 
 ```{r eval=FALSE}
 usethis::use_package("devtools")
@@ -122,7 +126,7 @@ usethis::use_package("devtools")
     ✔ Adding 'devtools' to Imports field in DESCRIPTION
     ● Refer to functions with `devtools::fun()`
 
-## Add documentation
+## Agregando documentación
 
 You should provide documentation for each of your functions and classes.  This is done in the `roxygen2` approach of providing embedded comments in the source code files, which are in turn converted into manual pages and other R documentation artifacts.    Be sure to define the overall purpose of the function, and each of its parameters.
 
