@@ -6,12 +6,12 @@ En esta clase:
 
 - Como usar RMarkdown para crear un sitio web
 - Una revisión rápida de como producir visualizaciones con R y el paquete `ggplot`
-- Como creat mapas interactivos usando el paquete `leaflet`
-- Piblicar mapas interactivos usando RMarkdown para hacer un sitio web en GitHub
+- Como crear mapas interactivos usando el paquete `leaflet`
+- Publicar mapas interactivos usando RMarkdown para hacer un sitio web en GitHub
 
 ## Introducción
 
-Compartir el trabajo científico de una manera interativa y entertenida es fundamental para el 
+Compartir el trabajo científico de una manera interactiva y entretenida es fundamental para el 
 desarrollo del proceso científico. Hasta este punto hemos hablado en este curso sobre un set
 }de herramientas que nos ayudan a hacer ciencia abierta (_open science_):
 
@@ -21,17 +21,17 @@ desarrollo del proceso científico. Hasta este punto hemos hablado en este curso
 - GitHub
 - RMarkdown
 
-RMarkdown, en particular, es increiblemente potente para crear reportes científicos, sin embargo
-hasta ahora no hemos llegado ni a rozar en su verdaro potencial para compartir nuetro trabajo
+RMarkdown, en particular, es increíblemente potente para crear reportes científicos, sin embargo
+hasta ahora no hemos llegado ni a rozar en su verdadero potencial para compartir nuestro trabajo
 con colaboradores.
 
-En esta leccion, vamos a tomar un repositorio ya existente en GitHub y lo transformaremos en un 
+En esta lección, vamos a tomar un repositorio ya existente en GitHub y lo transformaremos en un 
 sitio web elegante y simple de leer usando algunas de las herramientas que hemos aprendido en este 
 curso.
 
 ## Un ejemplo básico
 
-- En RStudio, cree im archivo nuevo al nivel tope se su repositorio **git** llamado `index.Rmd`. 
+- En RStudio, cree un archivo nuevo al nivel tope se su repositorio **git** llamado `index.Rmd`. 
 La forma más simple de hacer esto es a través del menú de RStudio. Elija File -> New File -> RMarkdown...
 Esto abrirá una caja de dialogo. Usted debe crear un "Document" en formato "HTML". Estas son las 
 opciones por defecto.
@@ -44,7 +44,7 @@ opciones por defecto.
 - Abra su navegador web en la página www.GitHub.com de su repositorio
 - Vaya a Settings > GitHub Pages y active _GitHub Pages_ para la rama (branch) `master`
 
-    Ahora la versión del sitio web rendered de su repositorio se va a mostrar en un URL special.
+    Ahora la versión del sitio web rendered de su repositorio se va a mostrar en un URL especial.
     
     GitHub Pages sigue una convensión como esta:
     
@@ -62,12 +62,12 @@ opciones por defecto.
 ## Un ejemplo ya no tan básico
 
 Ahora que ha hemos visto como crear una página web desde RMarkdown, vamos a crear un sitio web que usa
-algunas funcionalidad geniales que estan disponibles en R. Vamos a seguir usando el mismo repositorio 
+algunas funcionalidad geniales que están disponibles en R. Vamos a seguir usando el mismo repositorio 
 git y RStudio Project de arriba, pero vamos a agregar algunos archivos al repositorio y a modificar el 
 documento `index.Rmd`.
 
 Primero tenemos que obtener datos. Vamos a re-usar los datos sobre el retorno para desove de salmones 
-de Alaska disponible desde la base de datos OceanAK del Departamente de Pesca y Casa de Alaska (ADF&G):
+de Alaska disponible desde la base de datos OceanAK del Departamento de Pesca y Casa de Alaska (ADF&G):
 
 - Navegue a [Escapement Counts](https://doi.org/10.5063/F1S46Q6M) (o visite el sitio KNB y busque por 
 'oceanak') y copie el Download URL para el archivo `ADFG_firstAttempt_reformatted.csv`
@@ -75,13 +75,13 @@ de Alaska disponible desde la base de datos OceanAK del Departamente de Pesca y 
 - Calcule el escape anual (se refiere al numero de peces que no son capturados por la pesquería) por
 especie y región usando el paquete `dplyr`
 - Haga un gráfico de barrar para el escape anual por especie usando el paquete `ggplot2`
-- Muestre los datos en una tabla interactica usando la función `datatable` diponible en el parquete `DT`
-- Haga un mapa interactivo, tipo Google Maps, de los lugars donde se muestreó el escape
+- Muestre los datos en una tabla interactiva usando la función `datatable` disponible en el paquete `DT`
+- Haga un mapa interactivo, tipo Google Maps, de los lugares donde se muestreo el escape
 
 Para hacer esto, vamos a usar el paquete [`leaflet`](https://rstudio.github.io/leaflet/) para crea un 
 mapa interactivo con marcadores en cada lugar de muestro:
 
-Primero, cargams todos los paquetes que vamos a usar:
+Primero, cargamos todos los paquetes que vamos a usar:
 
 ```{r load_packages, message = F, warning = F}
   library(leaflet)
@@ -128,14 +128,14 @@ annual_esc <- esc %>%
 head(annual_esc)
 ```
 
-Este fragmento de código usa varios de los comandos de `dplyr` que ya hemos visto y algunos otrs nuevos. 
+Este fragmento de código usa varios de los comandos de `dplyr` que ya hemos visto y algunos otros nuevos. 
 La función `separate` es usada para dividir la columna _sampleDate_ en las columnas Year, Month y Day,
 las que luego usamos en `group_by` para indicar que queremos calcular nuestros resultados para las
 combinaciones únicas de _species_, _region_ y _year_.  A continuación usamos `summarize` para calcular 
 los valores de escape para cada uno de estos grupos. Finalmente, usamos un filtro y el operador `%in%`
 para seleccionar solo las especies de salmones.
 
-Ahora vamos a hacer un gráficos con los resultados usando `ggplot`. `ggplot` usa _estéticas_ de mapeo 
+Ahora vamos a hacer un gráficos con los resultados usando `ggplot`. `ggplot` usa _estéticas_ de mapas 
 (definidas usando `aes()`) y _geometrías_ para crear el gráfico. Adicionalmente a geometrías/estéticas
 se pueden agregar a `ggplot` elementos de temas usando el operador `+`.
 
@@ -144,7 +144,7 @@ ggplot(annual_esc, aes(x = Species, y = escapement)) +
   geom_col()
 ```
 
-¿Qué pasa si queremos que las barras sean azules en vez de grises? Se podría pensan que se puede hacer 
+¿Qué pasa si queremos que las barras sean azules en vez de grises? Se podría pensar que se puede hacer 
 lo siguiente:
 
 ```{r}
@@ -154,14 +154,14 @@ ggplot(annual_esc, aes(x = Species, y = escapement, fill = "blue")) +
 
 ¿Qué pasó en este gráfico?
 
-Se puede ver que tratamos de definir el color del gráfido dentro del llamado a la estética del mapeo. 
-Lo que hemos hecho, detras de la escea, es crar una columna llena con la palana "blue" en el `data.frame`
-que usar `ggplot` y posteriormente fue mapeado a la estetica `fill`, que finalmente seleccionó el color
+Se puede ver que tratamos de definir el color del gráfico dentro del llamado a la estética del mapa. 
+Lo que hemos hecho, detrás de la escena, es crear una columna llena con la palabra "blue" en el `data.frame`
+que usar `ggplot` y posteriormente fue mapeado a la estética `fill`, que finalmente seleccionó el color
 por defecto rojo para llenar las columnas. 
 
-Lo que realmente querimoas hacer era cambiar el color de las barras. Para hacer esto debemos llamar
+Lo que realmente queríamos hacer era cambiar el color de las barras. Para hacer esto debemos llamar
 la opción del color dentro de la función `geom_bar` **fuera** de la llamada a la función estética del 
-mapeo.
+mapa.
 
 ```{r}
 ggplot(annual_esc, aes(x = Species, y = escapement)) +
@@ -170,15 +170,15 @@ ggplot(annual_esc, aes(x = Species, y = escapement)) +
 
 ¿Y si ahora queremos mapear el color de la barras basado en una variable, por ejemplo región?
 
-`ggplot` es muy poderoso porque permite hacer facilmente un gráfico que muestre estos aspectos de los datos.
+`ggplot` es muy poderoso porque permite hacer fácilmente un gráfico que muestre estos aspectos de los datos.
 
 ```{r}
 ggplot(annual_esc, aes(x = Species, y = escapement, fill = SASAP.Region)) +
   geom_col()
 ```
 
-Aquí hay un ejemplo con una estética y geometría de mapeo diferente que podemos usar con estos datos. Se
-puede ademas agregar un título, ajustar las etiquetas e incluis un tema.
+Aquí hay un ejemplo con una estética y geometría de mapas diferente que podemos usar con estos datos. Se
+puede ademas agregar un título, ajustar las etiquetas e incluir un tema.
 
 ```{r}
 ggplot(filter(annual_esc, SASAP.Region == "Kodiak"), aes(x = Year, y = escapement, color = Species)) + 
@@ -189,8 +189,9 @@ ggplot(filter(annual_esc, SASAP.Region == "Kodiak"), aes(x = Year, y = escapemen
     theme_bw()
 ```
 
-Fíjese que agregé un filto a la llamada de la función `ggplot` ára solo graficar los datos de la 
-isla Kodiak. Se puede facilmente creat fráficos como este para cada región usando `facet_wrap`.
+Fíjese que agregué un filtro a la llamada de la función `ggplot` para dejar en el gráfico solo los 
+datos de salmones en la isla Kodiak. Ademas, se puede crear fácilmente gráficos como este para cada 
+región usando `facet_wrap`.
 
 ```{r}
 ggplot(annual_esc, aes(x = Year, y = escapement, color = Species)) + 
@@ -204,7 +205,7 @@ ggplot(annual_esc, aes(x = Year, y = escapement, color = Species)) +
 
 ### Mapas interactivos
 
-Ahora vamos a convertir los datos de espae en una tabla donde tengamos una única fila para
+Ahora vamos a convertir los datos de escape en una tabla donde tengamos una única fila para
 cada lugar de muestro:
 
 ```{r uniq_locations}
@@ -227,15 +228,15 @@ leaflet(locations) %>%
   addMarkers(~ Longitude, ~ Latitude, popup = ~ Location)
 ```
 
-La función `addTiles()` obtene la capa base desde [OpenStreetMap](https://www.openstreetmap.org/) 
-que es una altenativa de código abiert a Google Maps. 
-`addMarkers` usa una sintaxis un poco rara en comparción a la que acabamos de ver con `ggplot2`, usar 
-`~` antes de los nombers de columnas.
-Esto es similar a como tabaja la función `lm` (y agunas otras), es necesario que usted se asegure 
+La función `addTiles()` obtiene la capa base desde [OpenStreetMap](https://www.openstreetmap.org/) 
+que es una alternativa de código abierto a Google Maps. 
+`addMarkers` usa una sintaxis un poco rara en comparación a la que acabamos de ver con `ggplot2`, usar 
+`~` antes de los nombres de columnas.
+Esto es similar a como trabaja la función `lm` (y algunas otras), es necesario que usted se asegure 
 de usar `~` para que su mapa funcione.
 
-También es posible usar `leaflet` para important capas desde Web Map Service (WMS). Aquí hay un ejemplo
-que utiliza una capa del mapa batimétrico general de los oceanos [(GEBCO)](https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/#getcapabilities) WMS.
+También es posible usar `leaflet` para importante capas desde Web Map Service (WMS). Aquí hay un ejemplo
+que utiliza una capa del mapa batimétrico general de los océanos [(GEBCO)](https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/#getcapabilities) WMS.
 En este ejemplo ademas demostramos como crear un marcados circular más simple.
 
 ```{r}
@@ -265,38 +266,38 @@ combinación de RMarkdown y las páginas de GitHub.
 
 ## Mapas estáticos con `ggplot` y `geom_sf`
 
-We can also create a similar static map using `ggplot` with the `geom_sf` geometry. To
-do so, first we need to transform our locations data frame into an `sf` object by
-providing the coordinate reference system (EPSG:4326 is the CRS for geocoordinates in WGS84).
-We also transform the points to `EPSG:3857` which is the CRS used for rendering 
-maps in Google Maps, Stamen, and OpenStreetMap, among others.
+También es posible crear mapas similares usando `ggplot` y la geometría `geom_sf`. Para hacer esto, lo 
+primero que se debe hacer es transformar el `data.frame` con los datos de los lugares a un objeto `sf`
+entregando el sistema de coordenadas de referencia (EPSG:4326 es el sistema para geocoordenada en WGS84).
+También es necesario transformar los puntos a `EPSG:3857` que es el sistema de coordenadas de referencia
+usado para hacer los mapas en Google Maps, Stamen y OpenStreetMap, entre otros.
 
 ```{r}
 locations_sf <- locations %>%
-  st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326)
+  st_as_sf(coords = c("Longitud", "Latitud"), crs = 4326)
 locations_sf_3857 <- st_transform(locations_sf, 3857)
 ```
 
-Next, let's grab a base map from the Stamen map tile server covering the region of interest.
-This includes a fix to transform the bounding box (which starts in `EPSSG:326`) to also be in the `EPSG:3857` CRS,
-which is the projection that the map raster is returned in from Stamen.
+Después, tomamos un mapa base desde una capa en _Stamen_ map server que cubra la región de interés. Esto 
+incluye una transformación del polígono del área que están en `EPSSG:326` para dejarla en el mismo
+sistema de coordenadas `EPSG:3857`, que es la proyección que el mapa raster entregará desde _Stamen_.
 
 
 ```{r message=FALSE}
-# Define a function to fix the bbox to be in EPSG:3857
+# Define una función para correrir el poligono a EPSG:3857
 # See https://github.com/dkahle/ggmap/issues/160#issuecomment-397055208
 ggmap_bbox_to_3857 <- function(map) {
   if (!inherits(map, "ggmap")) stop("map must be a ggmap object")
-  # Extract the bounding box (in lat/lon) from the ggmap to a numeric vector, 
-  # and set the names to what sf::st_bbox expects:
+  # Extraer el polígono de contorno (en lat/lon) desde ggmap a un vector numérico, 
+  # y define los nombre que esperar sf::st_bbox:
   map_bbox <- setNames(unlist(attr(map, "bb")), 
                        c("ymin", "xmin", "ymax", "xmax"))
   
-  # Coonvert the bbox to an sf polygon, transform it to 3857, 
-  # and convert back to a bbox (convoluted, but it works)
+  # Converte el polígino de contorno (bbox) a un poligono tipo sf, tranformandolo a 3857 y 
+  # lo convierte de regreso a un bbox (complicado, pero funciona!!)
   bbox_3857 <- st_bbox(st_transform(st_as_sfc(st_bbox(map_bbox, crs = 4326)), 3857))
   
-  # Overwrite the bbox of the ggmap object with the transformed coordinates 
+  # Sobre-escribe el bbox del objeto ggmap con las coordenadas transformadas
   attr(map, "bb")$ll.lat <- bbox_3857["ymin"]
   attr(map, "bb")$ll.lon <- bbox_3857["xmin"]
   attr(map, "bb")$ur.lat <- bbox_3857["ymax"]
@@ -304,19 +305,19 @@ ggmap_bbox_to_3857 <- function(map) {
   map
 }
 
-bbox <- c(-170, 52, -130, 64)   # This is roughly southern Alaska
+bbox <- c(-170, 52, -130, 64)   # Esto es bascamenete el sur de Alaska
 ak_map <- get_stamenmap(bbox, zoom = 4)
 ak_map_3857 <- ggmap_bbox_to_3857(ak_map)
 ```
 
- Finally, plot both the base raster map with the points overlayed, which is easy now
- that everything is in the same projection (3857):
+ Finalmente se grafica el mapa raster base con los puntos sobrepuestos, esto es fácil de hacer ahora
+ que todo esta en la misma proyección (3857):
 
 ```{r message=FALSE}
 ggmap(ak_map_3857) + 
   geom_sf(data = locations_sf_3857, inherit.aes = FALSE)
 ```
 
-## Resources
+## Recursos
 
 - Lisa Charlotte Rost. (2018) [Why not to use two axes, and what to use instead: The case against dual axis charts](https://blog.datawrapper.de/dualaxis/)
