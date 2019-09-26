@@ -3,6 +3,7 @@
 ## Objetivos
 
 En este capítulo veremos:
+
 - Como Orientarse dentro de la interfase de RStudio.
 - Como trabajar en la consola de R.
 

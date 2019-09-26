@@ -1,13 +1,12 @@
-
 # Control de versiones con git y GitHub
 
 ## Objetivos
 
-En esta lección usted aprenderá:
+En este capítulo veremos:
 
 - ¿Por qué __git__ es útil para análisis reproducibles?
-- ¿Cómo usar __git__ para controlar los cambios que se hacen en el tiempo?
-- ¿Cómo usar __GitHub__ para colaboración?
+- ¿Cómo usar __git__ para registrar los cambios que se hacen en el tiempo?
+- ¿Cómo usar __GitHub__ para colaborar?
 - ¿Cómo estructurar los "_commits_" para que los cambios sean claros para otros?
 - ¿Cómo escribir mensajes de "_commits_" que sean efectivos?
 

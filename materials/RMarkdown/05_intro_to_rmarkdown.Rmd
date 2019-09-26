@@ -3,6 +3,7 @@
 ## Objetivos
 
 En este capítulo veremos:
+
 - RMarkdown.
 - Introducción a las funciones básicas incluidas en RStudio
 - Como usar las páginas de ayuda.
