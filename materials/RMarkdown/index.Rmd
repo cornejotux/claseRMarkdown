@@ -36,7 +36,11 @@ incluyendo genética [@ioannidis_repeatability_2009], ecología [@fraser_questio
 [@open_science_collaboration_estimating_2015], entre otras. Por ejemplo, el efecto del tamaño de muestra en la psicología
 se ha mostrado que decrece significativamente cuando se repiten los experimentos (\@ref(fig:effectsize)).
 
-#### Reconocimientos
+```{r effectsize, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Efecto del tamaño de muestra descrese en experimentos repetidos (Open Sieze Collaboration 2015).'}
+knitr::include_graphics("images/1.1_effect-size.png")
+```
+
+## Reconocimientos
 
 Este curso está basado en una desarrollado por el [_Arctic Data Center_](https://arcticdata.io/) en 
 [_NCEAS_](http://www.nceas.ucsb.edu) y ha sido modificado y traducido con el apoyo del 
