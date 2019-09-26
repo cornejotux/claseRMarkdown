@@ -109,22 +109,24 @@ reemplazando "_Su Nombre_" por su nombre real y luego presione enter:
 git config --global user.name "Su Nombre"
 ```
 
-Luego escriba la siguiente linea, con la dirección de correo electrónico que usó cuando creó la cuenta en github.com:
+Luego escriba la siguiente línea de comandos, con la dirección de correo electrónico que usó en la 
+creación de su cuenta en github.com:
 
 ```
 git config --global user.email "SuEmail@DominioEmail.cl"
 ```
 
-Por favor note que estas lineas DEBEN ser ejecutada una a la vez.
+Por favor note que estas lineas **DEBEN** ser ejecutada una a la vez.
 
-Finalmente, para asegurarse que todo está correcto, escriba esta linea, que entrega las
-opciones que acaba de definir.
+Finalmente, para asegurarse que todo está correcto, escriba este comando que le mostrará las opciones
+que acaba de definir.
 
 ```
 git config --global --list
 ```
 
-### Nota para Usuario de Windows
+### Nota para Usuarios de Windows
 
-Si obtienen el mensaje "comando no encontrado" ("command not found" o similar) cuando trate estos pasos en la pestaña del terminar de RStudio, puede ser que necesite definir  el tipo de terminal
+Si obtienen el mensaje que dice "_comando no encontrado_" o en inglés "_command not found_" (o similar)
+cuando ejecute estos pasos en la pestaña del terminal de RStudio, puede ser que necesite definir  el tipo de terminal
 que abre RStudio. Bajo algunas instalaciones de git, puede darse que el ejecutable de git no funcione base el terminal que se abre por defecto.
