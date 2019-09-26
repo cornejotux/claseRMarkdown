@@ -104,7 +104,7 @@ subtítulos. Use la Referencia de Uso Rápido de Markdown (en barra del menú: H
 Reference). 
 1. Haga clic en Knit para general el archivo html. 
 
-### Secciones del código
+### Secciones del código {#ejecutarCodEnRmd}
 
 OK. Ahora practiquemos con algunos comandos de R.
 
@@ -127,7 +127,7 @@ Note que al apretar la tecla Enter el comando no se ejecuta; recuerde que esto e
 de texto. Para ejecutar las secciones de código R (secciones en plomo) se deben enviar a la consola.
 ¿Cómo se hace eso?
 
-Hay varias formas de hacerlo:
+Hay varias formas de hacerlo: 
 
 1. Copiar y pegar los comandos en la consola.
 1. Seleccionar la línea (o poner el curso en ella) y hacer clic en 'Run'. Esto está 
@@ -237,7 +237,7 @@ embargo el primero de ellos es el más importante - tenemos que decirle que arch
 
 ### Descargue un archivo desde el Arctic Data Center
 
-Navegue al set de datos de Craig Tweedie  @tweedie_2009 que está publicado en el Arctic Data Centery 
+Navegue al set de datos de Craig Tweedie  @tweedie_2009 que está publicado en el Arctic Data Center y 
 descargue el primer archivo _csv_ llamado "BGchem2008data.csv". Mueva este archivo desde su carpeta de 
 Descargas a un directorio de fácil acceso. Yo recomiendo crear un directorio llamado `datos` en el 
 directorio que creó anteriormente para las otras actividades de esta clase.
@@ -266,45 +266,46 @@ particular, la función asume el valor por defecto (ejemplo: `header = TRUE` par
 argumentos requeridos sólo muestran el nombre del argumento, sin un valor asociado. Fíjese que el 
 único argumento requerido para `read.csv` es `file`.
 
-Siempre se puede especificar un argumento de la forma `nombre = valor`. Pero si no lo hace, 
-R intentará identificarlos basado en el orden en que fueron entregados. De esta forma, en el 
-comando de mas arriba, se asume que queremos `file = "data/BGchem2008data.csv"`, ya que _file_
-es el primer argumento. Si queremos agregar algún otro argumento, por ejemplo 
-`stringsAsFactors`, vamos a necesitar especificarlos usando `nombre = valor`, ya que el 
-segundo argumento es `header`. Para las funciones que llamo comúnmente, 
+Siempre se puede especificar un argumento de la forma `nombre = valor`. Pero si no lo hace, R intentará
+identificarlos basado en el orden en que fueron entregados. De esta forma, en el comando de más arriba,
+se asume que queremos `file = "data/5.1_BGchem2008data.csv"`, ya que _file_ es el primer argumento. 
+Si queremos agregar algún otro argumento, por ejemplo `stringsAsFactors`, vamos a necesitar especificarlos 
+usando `nombre = valor`, ya que el segundo argumento es `header`. Para las funciones que llamo comúnmente, 
 uso esto sólo para los primeros 2 argumentos, para los que están en la 3a posición 
-o posterior siempre uso el par `nombre = valor`.
+o más alla siempre uso el par `nombre = valor`.
 
-Muchos usuarios de R (incluyéndome) sobrescriben el argumento por defecto de `stringsAsFactors`
-usando la siguiente llamada:
+Muchos usuarios de R (incluyéndome) sobrescriben el argumento por defecto de `stringsAsFactors` usando
+la siguiente llamada:
 
 ```{r}
 bg_chem <- read.csv("data/5.1_BGchem2008data.csv", stringsAsFactors = FALSE)
 ```
 
+Esto muy útil, ya que de otra forma las columnas que contiene datos tipo strings son transformados a 
+factores, pudiendo generar esto problemas y confusiones.
+
 ## Usando `data.frames`
 
-Un `data.frame` es una estructura de datos de dos dimensiones en R, es similar a como se comporta 
-como una hoja de cálculo. Un `data.frame` es una colección de filas y columnas de datos, donde cada 
-columna tiene un nombre y representa una variable y que cada fila corresponde a una medición
-de esa variable. De esta forma, cuando ejecutamos `read.csv`, el objeto `bg_chem` que fue creado
-es un `data.frame`. Hay muchas formas para explorar data.frames en R y RStudio. A continuación
-mostraremos algunos:
+Un `data.frame` en R es una estructura de datos de dos dimensiones, es similar a como se comporta una
+hoja de cálculos. Un `data.frame` es una colección de filas y columnas de datos, donde cada columna 
+tiene un nombre y representa una variable, siendo cada fila a una medición de esa variable. De esta 
+forma, cuando ejecutamos `read.csv`, el objeto `bg_chem` fue creado como un objeto tipo `data.frame`. 
+Hay muchas formas para explorar un `data.frame` en R y RStudio. A continuación mostramos algunos:
 
-- clic en la palabra `bg_chem` en el ´panel _environment_
-- clic en la flecha junto a `bg_chem` en el panel de _environment_
-- ejecute `head(bg_chem)` en la consola
-- ejecute `View(bg_chem)` en la consola
+- Clic en la palabra `bg_chem` en el panel _Environment_.
+- Clic en la flecha junto a `bg_chem` en el panel de _Environment_
+- Ejecute `head(bg_chem)` en la consola.
+- Ejecute `View(bg_chem)` en la consola.
 
 Usualmente las funciones se ejecutan en columnas individuales de un `data.frame`. Para llamar a una
-columna específica se usa el operador `$`. Por ejemplo, digamos que se quiere mirar las primeras
-filas solo de la columna `Date`. Para esto se debe ejecutar en la consola:
+columna específica se usa el operador `$`. Por ejemplo, digamos que se quiere mirar las primeras filas 
+sólo de la columna `Date`. Para esto se debe ejecutar en la consola:
 
 ```{r}
 head(bg_chem$Date)
 ```
 
-¿Como calculamos la temperatura promedio de las muestras tomadas por el CTD?
+¿Cómo se puede calcular la temperatura promedio de las muestras tomadas por el CTD?
 
 ```{r}
 mean(bg_chem$CTD_Temperature)
@@ -322,34 +323,33 @@ También es posible crear algunos gráficos simples utilizando este operador (`$
 plot(bg_chem$CTD_Depth, bg_chem$CTD_Temperature)
 ```
 
-Existen muchas herramientas y funciones más avanzadas para crear mejores gráficos 
-(incluso con una sintaxis más simple) en R. Veremos algunas de estos mas adelante.
+En R existen muchas herramientas y funciones más avanzadas para crear mejores gráficos 
+(incluso con una sintaxis más simple). Veremos algunas de ellas en capitulos posteriores.
 
 ### Actividad
 
 > Ejercicio: Tome algunos minutos en explorar este set de datos. Pruebe algunas 
-funciones en las columnas utilizando el operador para seleccionar una columna
-única, experimente haciendo gráficos y generando resúmenes de los datos. 
+funciones en las columnas utilizando el operador `$` para seleccionar una columna
+única. Experimente haciendo gráficos y generando resúmenes de los datos. 
 
 ## Solución de problemas
 
-### Mi RMarkdown no general (knit) el PDF
+### Mi RMarkdown no genera (knit) el PDF
 
-Si se obtiene un error cuando se trata de general el PDF, donde dice que su computador
-no tiene la instalación de LaTeX, existen dos posibles problemas:
+Si se obtiene un error cuando se trata de generrl el PDF, donde dice que su computador no tiene la 
+instalación de LaTeX, existen dos posibles problemas:
 
-1. Su computador no tiene LaTeX instalado
-1. Su computados si tiene LaTeX instalado, pero RStudio no lo puede encontrar (no está
-definida la ruta o path)
+1. Su computador no tiene LaTeX instalado.
+1. Su computador si tiene LaTeX instalado, pero RStudio no lo puede encontrar (no está definida la ruta
+o path).
 
-Si usted ya usa LaTeX (para escribir papers por ejemplo), seguro que su problema esté en la
-segunda categoría. Arreglar esto sólo requiere redireccionar RStudio a donde este instalado
-el LaTeX, pero esto no lo explicaremos acá.
+Si usted ya usa LaTeX (para escribir papers por ejemplo), seguro que su problema esté en la segunda
+categoría. Arreglar esto sólo requiere redireccionar RStudio a donde este instalado LaTeX, pero esto
+no lo explicaremos acá.
 
-Si su problema es que no tiene instalado LaTeX y está seguro que no lo tiene!! puse usar 
-el paquete de R `tinytex`, este se instala muy fácilmente y es reconocido automáticamente
-por RStudio. Para hacer esto solo necesita tener los derechos de administrador del 
-computador.
+Si su problema es que no tiene instalado LaTeX y **está seguro que no lo tiene**! puede usar el paquete
+de R `tinytex`, este se instala muy fácilmente y es reconocido automáticamente por RStudio. Para hacer
+esto sólo necesita tener derechos de administrador del computador.
 
 Para instalar `tinytex` ejecute en la consola:
 
@@ -369,38 +369,36 @@ and then try the above install instructions again. More information about `tinyt
 
 --> 
 
-### Acabo de ejecutar un comando para nada pasa
+### Acabo de ejecutar un comando pera no pasa nada
 
 Esto puede ocurrir porque no completó el comando: ¿Se muestra un pequeño signo `+` en su consola?
-R le esta diciendo que está esperando a que termine. En el ejemplo de más abajo falta cerrar el 
-paréntesis.
+R le esta diciendo que está esperando a que termine de entregar los comandos. En el ejemplo de más
+abajo falta cerrar el paréntesis.
 
 ```{r, eval=FALSE}
 > x <- seq(1, 10
 + 
 ```
 
-Se puede simplemente cerrar el paréntesis y apretar enter, o `esc` dos veces, lo que 
-cancela la ejecución del comando.
+Se puede simplemente cerrar el paréntesis y apretar enter, o `esc` dos veces, lo que va a cancelar cancelar
+la ejecución del comando.
 
 ### R dice que mi objeto no puede ser encontrado
 
-Este error es muy común en usuario nuevos: `Error in mean(myobject) : object 'myobject' not found`
+Este error es muy común en usuarios nuevos: `Error in mean(myobject) : object 'myobject' not found`
 
-Esto significa que el objeto llamado `myobject` no existe en el ambiente de trabajo. Las razones
-más comunes para este error son:
+Esto significa que el objeto llamado `myobject` no existe en el ambiente de trabajo. Las razones más 
+comunes para este error son:
 
 - **Error de tipeo**: asegúrese que el nombre de su objeto esta bien escrito, R hace diferencias
 entre mayúsculas y minúsculas. Debe estar escrito _exactamente_ como fue creado.
-- **No fue asignado a una variable**: note que los objetos solo son guardados en el 
-ambiente de trabajo si fueron asignado con el operador de asignación, ej: 
-`myobject <- read.csv(...)`
-- **No ejecute la linea en RMarkdown**: recuerde que escribir una linea de código en RMarkdown no 
-es lo mismo que escribir en la consola, usted tiene que ejecutar la linea de código usando 
-_control + enter_, ejecutando la sección de código o por alguna de las otras formas que fueron
-descritas en la sección de RMarkdown de este libro.
+- **No fue asignado a una variable**: note que los objetos sólo son guardados en el ambiente de trabajo
+si fueron asignado con el operador de asignación, ej: `myobject <- read.csv(...)`.
+- **No ejecute la linea en RMarkdown**: recuerde que escribir una línea de código en RMarkdown no es lo
+mismo que escribirla en la consola, usted tiene que ejecutar la línea de código usando _control + enter_,
+ejecutando la sección de código o por alguna de las otras formas que fueron descritas en la sección \@ref(ejecutarCodEnRmd) de este mismo capítulo.
 
 ## Análisis literal
 
-RMarkdown es una excelente forma de general análisis literales y flujos de trabajo reproducibles. [Aquí](https://nceas.github.io/sasap-training/materials/reproducible_research_in_r_fairbanks/example-brood-table-analysis.html) hay un ejemplo en inglés de un flujo de trabajo real escrito utilizando RMarkdown.
+RMarkdown es una excelente forma de generar análisis literales y flujos de trabajo reproducibles. [Aquí](https://nceas.github.io/sasap-training/materials/reproducible_research_in_r_fairbanks/example-brood-table-analysis.html) hay un ejemplo en inglés de un flujo de trabajo real escrito utilizando RMarkdown.
 
