@@ -91,15 +91,19 @@ paquetes requeridos. Haga clic en _Yes_.
 
 ## Configurando git
 
-Si no lo ha hecho ya, vaya a [github.com](http://github.com) y cree una cuenta. Si aun no ha bajado
+Si aun no lo ha hecho, vaya a [github.com](http://github.com) y cree una cuenta. Si aun no ha bajado
 e instalado el software de git, descárgelo [aquí](https://git-scm.com/downloads) y proceda a su 
 instalación.
 
-Antes de usar _git_, tiene que decirle quien es Ud., para eso debemos establecer la opciones de 
+Antes de usar _git_, tiene que decirle quien es usted, para eso se debe establecer las opciones de 
 configuración globales (setting the global options). Lamentablemente, la única forma de hacer 
-esto es por medio de la linea de comando. La versión RStudio que tiene instalada (si es que siguió las instrucciones de este curso) tiene una característica muy útil, que le permite abrir una ventana de terminal en su sesión de RStudio. Haga esto seleccionando Tools -> Terminal -> New Terminal.
+esto es por medio de la línea de comando. La versión RStudio que tiene instalada (si es que siguió 
+las instrucciones que le dimos) permite abrir una ventana de terminal en su sesión de RStudio. Para
+hacer esto seleccione Tools -> Terminal -> New Terminal.
 
-Una pestaña de terminal debería abrirse donde se encuentra normalmente la consola de R. Para estableces las opciones de configuración global, escriba los siguiente comando en la pestaña del terminal, reemplazando "_Su Nombre_" por su nombre real y luego presione enter:
+Una pestaña de terminal debería abrirse donde se encuentra normalmente la consola de R. Para establecer
+las opciones de configuración globales, escriba los siguientes comandos en la pestaña del terminal,
+reemplazando "_Su Nombre_" por su nombre real y luego presione enter:
 
 ```
 git config --global user.name "Su Nombre"
