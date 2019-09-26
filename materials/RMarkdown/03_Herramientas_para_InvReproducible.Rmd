@@ -62,7 +62,7 @@ de RStudio:
 RStudio.Version()$version
 ```
 
-Si el resultado no dice `r RStudio.Version()$version` (o es una version anterior), por favor actualice
+Si el resultado no dice 1.2.1335 (o es una versión anterior), por favor actualice
 su _RStudio_ haciendo clic en "Help -> Check for Updates" y siguiendo las instrucciones.
 
 ### Instalación de Paquetes de R
