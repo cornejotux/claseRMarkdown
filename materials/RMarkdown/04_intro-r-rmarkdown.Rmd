@@ -159,7 +159,7 @@ Voy a escribir ahora en la consola con el símbolo gato o hash `#`, que es la fo
 que R reconoce un texto como comentario y no lo evalúa.
 
 ```{r eval = FALSE}
-## nombreBbjecto <- valor
+## nombreObjecto <- valor
 
 ## Esta es la forma en que se escriben textos en el código para explicar que es lo que 
 ## se está haciendo.

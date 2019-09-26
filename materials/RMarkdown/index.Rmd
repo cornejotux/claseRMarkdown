@@ -34,7 +34,7 @@ el proceso de investigación a inflado los efectos de los tamaños muestrales y 
 sesgos existentes. Investigación posteriores han confirmado que la reproducibilidad es baja a través de muchos campos, 
 incluyendo genética [@ioannidis_repeatability_2009], ecología [@fraser_questionable_2018], y psicología
 [@open_science_collaboration_estimating_2015], entre otras. Por ejemplo, el efecto del tamaño de muestra en la psicología
-se ha mostrado que decrece significativamente cuando se repiten los experimentos (\@ref(fig:effectsize)).
+se ha mostrado que decrece significativamente cuando se repiten los experimentos (fig. \@ref(fig:effectsize)).
 
 ```{r effectsize, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Efecto del tamaño de muestra descrese en experimentos repetidos (Open Sieze Collaboration 2015).'}
 knitr::include_graphics("images/1.1_effect-size.png")
