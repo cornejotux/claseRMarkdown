@@ -52,7 +52,7 @@ R.version$version.string
 
 ### Versión de RStudio
 
-Vamos a usar la versión de RStudio `r RStudio.Version()$version` o posterior, la que se puede descargar 
+Vamos a usar la versión de RStudio 1.2.1335 o posterior, la que se puede descargar 
 e instalar desde [aquí](https://www.rstudio.com/products/rstudio/download/). 
 
 Para verificar que versión de RStudio tiene instalada, ejecute el siguiente comando en la consola 
