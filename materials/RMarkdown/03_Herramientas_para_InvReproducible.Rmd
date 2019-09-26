@@ -128,5 +128,6 @@ git config --global --list
 ### Nota para Usuarios de Windows
 
 Si obtienen el mensaje que dice "_comando no encontrado_" o en inglés "_command not found_" (o similar)
-cuando ejecute estos pasos en la pestaña del terminal de RStudio, puede ser que necesite definir  el tipo de terminal
-que abre RStudio. Bajo algunas instalaciones de git, puede darse que el ejecutable de git no funcione base el terminal que se abre por defecto.
+cuando ejecute estos pasos en la pestaña del terminal de RStudio, puede ser que necesite definir  el 
+tipo de terminal que abre RStudio. Bajo algunas instalaciones de git, puede darse que el ejecutable 
+de git no funcione en el terminal que se abre por defecto.
