@@ -99,80 +99,75 @@ Más sobre esto en: http://rmarkdown.rstudio.com/
 
 ### Actividad
 
-1. En Markdown, escriba un texto en cursiva (Itálica) y haga una lista numerada. Luego 
-agregue algunos subtítulos. Use la Referencia de Uso Rápido de Markdown (en barra del menú: 
-Help > Markdown Quick Reference). 
-1. Haga clic en Knit para crear su archivo html. 
+1. En Markdown, escriba un texto en cursiva (Itálica) y haga una lista numerada. Luego agregue algunos
+subtítulos. Use la Referencia de Uso Rápido de Markdown (en barra del menú: Help > Markdown Quick 
+Reference). 
+1. Haga clic en Knit para general el archivo html. 
 
-
-### Secciones de código
+### Secciones del código
 
 OK. Ahora practiquemos con algunos comandos de R.
 
 Cree una nueva sección en en su RMarkdown siguiendo alguno de estos pasos:
 
-- clic "Insert > R" en la parte superior del panel de edición.
+- Clic "Insert > R" en la parte superior del panel de edición.
 - Escriba a mano 
    \```{r}
    \```
-- si no ha borrado una sección de las que venían con el archivo creado por defecto, 
-edite esa
+- Si no ha borrado las secciones por defecto que venían con el archivo, editelas!
 
-Ahora escribamos un poco de código de R. 
+Ahora escribamos un poco de código R. 
 
 ```
 x <- 4*3
 x
 ```
 
-Ahora al apretar la tecla enter el comando no se ejecuta; recuerde que esto
-es solo un archivo de texto. Para ejecutarlo, tenemos que ejecutar lo que escribimos
-dentro de la sección de R (el código R en plomo) en la consola. ¿Cómo se hace eso?
+Note que al apretar la tecla Enter el comando no se ejecuta; recuerde que esto es sólo un archivo
+de texto. Para ejecutar las secciones de código R (secciones en plomo) se deben enviar a la consola.
+¿Cómo se hace eso?
+
 Hay varias formas de hacerlo:
 
-1. Copiar y pegar los comando en la consola.
-1. Seleccionar la linea (o poner el curso en ella) y hacer clic en 'Run'. Esto está 
+1. Copiar y pegar los comandos en la consola.
+1. Seleccionar la línea (o poner el curso en ella) y hacer clic en 'Run'. Esto está 
 disponible desde:
-    a. la barra arriba del archivo (flecha verde)
-    b. la barra menú: Code > Run Selected Line(s)
+    a. la barra arriba del archivo (flecha verde).
+    b. la barra menú: Code > Run Selected Line(s).
     c. combinación de teclas: control-enter en Windows o command-enter en macOS.
 1. Clic en la flecha verde en el lado superior derecho de su sección de código.
 
 ### Actividad
 
-Agregue algunos otros comandos a su archivo. Ejecútelos de las tres formas indicadas
-más arriba. Finalmente, guarde su archivo RMarkdown. 
-
+Agregue otros comandos a su archivo. Ejecútelos de las tres formas indicadas más arriba. Finalmente,
+guarde su archivo RMarkdown. 
 
 ## Funciones de R
 
-Hasta ahora hemos aprendido alguna sintaxis básica y conceptos de programación en 
-R, como navegar en RStudio y RMarkdown, pero no hemos hecho nada complicado o 
-interesantes. Aquí es donde las _funciones_ son útiles.
+Hasta ahora hemos aprendido la sintaxis básica y conceptos de programación en  R, como navegar
+en RStudio y RMarkdown, pero no hemos hecho nada complicado o interesante aún. Aquí es donde las
+_funciones_ de R son útiles.
 
-Una función es una forma de agrupar una serie de comandos para desarrollar una
-tarea en una forma reusable. Cuando una función es ejecutada, se produce un valor
-de salida. Nosotros generalmente deciros que "llamamos" a una función cuando
-la ejecutamos. Lo interesante sobre las funciones es que pueden ser creadas por 
-los usuarios y guardadas como un objeto usando el operador de asignación ('<-'),
-de esta forma es posible escribir una función para lo que sea que se necesite. 
-Tenga en cuenta que R tiene una colección gigantesca de funciones pre-existentes.
-Para comenzar, vamos a usar algunas funciones de incluidas en R.
+Una función es una forma de agrupar una serie de comandos para desarrollar una tarea en una forma
+reusable. Cuando una función es ejecutada, se produce un valor de salida. Nosotros generalmente 
+decimos que "llamamos" una función cuando la ejecutamos. Lo interesante sobre las funciones es que
+pueden ser creadas por los usuarios y guardadas como un objeto usando el operador de asignación 
+('<-'), de esta forma es posible escribir una función para lo que sea que necesitemos. Tenga en 
+cuenta que R tiene una colección gigantesca de funciones pre-existentes, las que además son expandibles
+con paquetes o librerías. Para comenzar, vamos a usar algunas funciones de R básicas ya incluidas.
 
-Todas las funciones se llaman usando la misma sintaxis: nombre de la función 
-seguido de un paréntesis donde se entregan lo que necesita la función para hacer
-lo que fue creada para hacer. Las piezas de información que la función necesita 
-para hacer su trabajo se conocen como argumentos. De esta forma, la sintaxis 
-para usar una función se ve así: 
-`valor_resultante <- nombre_de_función(argumento1 = valor1, argumento2 = valor2, ...)`. 
+Todas las funciones se llaman usando la misma sintaxis: nombre de la función seguido de un paréntesis 
+donde se entrega lo que necesite la función para funcionar. Las piezas de información que la función
+necesita para hacer su trabajo se conocen como argumentos. De esta forma, la sintaxis para usar 
+una función se ve así: `valor_resultante <- nombre_de_función(argumento1 = valor1, argumento2 = valor2, 
+...)`. 
 
 ### Ejemplo simple
 
-Para tomar un ejemplo muy simple, vamos a utilizar la función para calcular el promedio
-`mean()`. Como se lo puede imaginar, esta función calcula el promedio de los números
-entregados como argumentos. Super útil!
+Para tomar un ejemplo muy simple, vamos a utilizar una función que calcula el promedio, `mean()`. 
+Como se puede imaginar, esta función calcula el promedio de los números entregados como argumentos. 
 
-Creemos un vector con los pesos:
+Creemos un vector con pesos:
 
 ```{r}
 peso_kg <- c(55, 25, 12)
@@ -188,9 +183,8 @@ mean(peso_kg)
 
 ### Obteniendo ayuda
 
-¿Qué pasaría ahora si sabe cual es la función que necesita pero no 
-sabe como funciona? Afortunadamente RStudio entrega una forma muy fácil para acceder
-a las páginas de documentación y ayuda.
+¿Qué pasa ahora si sabe cuál es la función que necesita pero no cómo funciona? Afortunadamente 
+RStudio entrega una forma muy fácil para acceder a las páginas de documentación y ayuda.
 
 Para acceder a la ayuda para la función `mean`, entre el siguiente comando en la consola:
 
@@ -198,85 +192,79 @@ Para acceder a la ayuda para la función `mean`, entre el siguiente comando en l
 ?mean
 ```
 
-Esto va a abrir el panel de ayuda en la sección inferior derecha de RStudio.
+Esto abrirá el panel de ayuda en la sección inferior derecha de RStudio.
 
 Las páginas de ayuda están dividas en secciones, la documentación está en inglés:
 
- - Description: Se entrega una descripción extendidas de lo que hace la función.
- - Usage: Los argumentos de la función(es) y sus valores por defecto.
- - Arguments: Una explicación de los datos que cada argumento está esperando.
- - Details: Cualquier detalle que sea relevante conocer.
- - Value: Los datos que la función devuelve.
- - See Also: Otras funciones que podrían resultar útiles en este contexto.
- - Examples: Algunos ejemplos de como usar la función.
+ - _Description_: Se entrega una descripción extendida de lo que hace la función.
+ - _Usage_: Los argumentos de la función y sus valores por defecto.
+ - _Arguments_: Una explicación de los datos que cada argumento espera.
+ - _Details_: Detalle que sean relevantes de conocer.
+ - _Value_: Los resultados devuelve la función.
+ - _See Also_: Otras funciones que podrían resultar útiles en este contexto.
+ - _Examples_: Algunos ejemplos de como usar la función.
 
 
 ### Actividad
 
-> Ejercicio: Hable con su vecino(s) y dele una mirada a las ayudas de algunas 
-funciones que usted estará que existan. Aquí les dejo algunas ideas: `?getwd()`,
-`?plot()`,  `min()`, `max()`, `?log()`.
+> Ejercicio: Hable con su(s) compañero(s) y dele una mirada a las ayudas de algunas  funciones 
+que usted espera que existan. Aquí les dejo algunas ideas: `?getwd()`, `?plot()`,  `min()`, 
+`max()`, `?log()`.
 
-También existe ayuda para cuando usted no está seguro del nombre de la función, 
-en esos casos de usar doble símbolo de pregunta:
+También existe ayuda para cuando usted no está seguro del nombre de la función, en esos casos 
+solo es necesaroio usar doble símbolo de pregunta:
 
 ```{r, eval=F}
 ??install 
 ```
 
 No todas las funciones tienen (o requieren) argumentos:
+
 ```{r}
 date()
 ```
 
-### Leyendo un archivo de datos a R
+## Leyendo un archivo de datos a R
 
-Hasta ahora hemos aprendido como asignar valores a objetos de R y lo que es una
-función, pero no hemos hecho nada aun con datos reales. Para hacer eso, es necesario
-introducir la función `read.csv`, la que usaremos generalmente en las primeras líneas
-del código que escribamos. Esta función hace exactamente lo que dice (en inglés!),
-lee un archivo _csv_ a R.
+Hasta ahora hemos aprendido como asignar valores a objetos de R y lo que es una función, pero no
+hemos hecho nada aún con datos reales. Ahora vamos a introducir la función `read.csv`, que nos permite
+cargar a R datos reales desde un archivo CSV. Esta función se usa generalmente en las primeras líneas
+del código que escribamos. 
 
-Ya que esta será nuestra primera vez usando esta función, primero leeremos la página de 
-ayuda de `read.csv`. La ayuda tiene mucha información y acepta muchos argumentos, sin 
-embargo el primero de ellos es el mas importante - tenemos que decirle que archivo
-es el que va a leer. 
+Ya que esta será nuestra primera vez usando esta función, primero leeremos la página de ayuda de 
+`read.csv`. La ayuda tiene mucha información, mostrando que la función acepta muchos argumentos, sin 
+embargo el primero de ellos es el más importante - tenemos que decirle que archivo es el que va a leer. 
 
-#### Descargue un archivo desde el Arctic Data Center
+### Descargue un archivo desde el Arctic Data Center
 
-Navegue al set de datos de Craig Tweedie que está publicado en el Arctic Data Center. 
-[Craig Tweedie. 2009. North Pole Environmental Observatory Bottle Chemistry. Arctic 
-Data Center. doi:10.18739/A25T3FZ8X.](http://doi.org/10.18739/A25T3FZ8X) y descargue 
-el primer archivo _csv_ llamado "BGchem2008data.csv"
+Navegue al set de datos de Craig Tweedie  @tweedie_2009 que está publicado en el Arctic Data Centery 
+descargue el primer archivo _csv_ llamado "BGchem2008data.csv". Mueva este archivo desde su carpeta de 
+Descargas a un directorio de fácil acceso. Yo recomiendo crear un directorio llamado `datos` en el 
+directorio que creó anteriormente para las otras actividades de esta clase.
 
-Mueva este archivo desde su carpeta de Descargas a un directorio de fácil acceso. 
-Yo recomiendo crear un directorio llamado `datos` en el directorio que creo anteriormente
-para para las otras actividades de esta clase.
-
-Ahora tenemos que decirle a la función `read.csv` como encontrar el archivo que queremos
-leer. Para esto se usa el argumento `file` (archivo) que se puede ver en la sección 
-usage (uso) de la página de ayuda. En RMarkdown, se puede usar path absolutos (que comienzan
-con su directorio `~/`) o path relativos, que son **relativos a la ubicación del archivo
-RMarkdown**. RStudio y RMarkdown tiene la capacidad de autocompletar cuando se usar paths
-relativos, por lo que usaremos ese sistema. Asumiendo que ya movió el archivo a el directorio
-dentro de la carpeta `archivos_clase_R` que se llama `datos`, su función `read.csv`
-puede ser llamada de la siguiente forma:
+Ahora tenemos que indicrle a la función `read.csv` como encontrar el archivo que queremos leer. Para 
+esto se usa el argumento `file` (archivo) que se puede ver en la sección usage (uso) de la página 
+de ayuda. En RMarkdown, se pueden usar path absolutos (que comienzan con su directorio `~/`) o path 
+relativos, que son **relativos a la ubicación del archivo RMarkdown**. RStudio y RMarkdown tiene la 
+capacidad de autocompletar cuando se usan paths relativos, por lo que usaremos ese sistema. Asumiendo 
+que ya movió el archivo a el directorio dentro de la carpeta `archivos_clase_R` llamada `datos`, su 
+función `read.csv` puede ser llamada de la siguiente forma:
 
 ```{r, eval = F}
-bg_chem <- read.csv("datos/5.1_BGchem2008data.csv")
+bg_chem <- read.csv("datos/5.1_BGchem2008data.csv") 
+## El nombre fue cambiado para hacer referencia que el archivo csv se usa en el capítulo 5.
 ```
 
-Ahora debería tener un objeto llamado `bg_chem` de la clase `data.frame` en su ambiente
-de trabajo. Verifique que esto es asta correcto.
+Ahora debería tener un objeto en R llamado `bg_chem` de la clase `data.frame` en su ambiente de 
+trabajo. Verifique `data.frame` existe y contiene los datos.
 
-Note que en las páginas de ayuda hay una gran cantidad de argumentos que no fue necesario 
-utilizar. Algunos argumento en las llamadas a funciones son opcionales y algunos otros
-son requeridos. Argumento opcionales serán mostrados en la sección de uso con un par de
-`nombre = valor`, donde se muestra el valor por defecto. Si usted no especifica un par
-`nombre = valor` para ese argumento cuando llame a la función, la función asumirá el valor
-por defecto (ejemplo: `header = TRUE` para `read.csv`). Los argumentos requeridos solo 
-mostrarán en nombre del argumento, sin un valor asociado. Fíjese que el único argumento
-requerido para `read.csv` es `file`.
+Note que en las páginas de ayuda hay una gran cantidad de argumentos que no fueron necesarios de 
+utilizar. Algunos argumento en las llamadas a funciones son opcionales y algunos otros son requeridos. 
+Los argumentos opcionales son  mostrados en la sección de uso como un par `nombre = valor`, donde se 
+muestra el valor que usa esa opción por defecto. Si usted no especifica el valor para la oción en 
+particular, la función asume el valor por defecto (ejemplo: `header = TRUE` para `read.csv`). Los 
+argumentos requeridos sólo muestran el nombre del argumento, sin un valor asociado. Fíjese que el 
+único argumento requerido para `read.csv` es `file`.
 
 Siempre se puede especificar un argumento de la forma `nombre = valor`. Pero si no lo hace, 
 R intentará identificarlos basado en el orden en que fueron entregados. De esta forma, en el 
