@@ -2,21 +2,22 @@
 
 ## Objetivos
 
-- Explorar RMarkdown
+En este capítulo veremos:
+- RMarkdown.
 - Introducción a las funciones básicas incluidas en RStudio
-- Aprender como usar las páginas de ayuda
+- Como usar las páginas de ayuda.
 
 ## Introducción
-Ahora que conocer un poco de la sintaxis básica de R, podemos comenzar a aprender sobre
-RMarkdown. La experiencia nos dice que te vas a volver loco y aun así a fallar en generar
-un flujo de trabajo reproducible, si tratas de desarrollar código directamente en la 
-consola de R. RMarkdown es realmente clave para la investigación colaborativa, es por 
-esto que vamos a comenzar con esto rápidamente y lo usaremos durante el resto de este 
-curso.
 
-Un archivo de RMarkdown no va a ayudar a tejer un texto _markdown_ con fragmentos de 
-código de R que es evaluado y cuyas salidas, como tables y gráficos, son incluidas en el 
-documento.
+Ahora que ya conoce un poco de la sintaxis básica de R, podemos comenzar a aprender sobre RMarkdown.
+La experiencia nos dice que te vas a volver loco haciendo los análsis o modelos en los cuales trabajes 
+y vas a fallar en generar un flujo de trabajo reproducible. Peor aún, si tratas de desarrollar código
+directamente en la consola de R. RMarkdown es realmente clave para la investigación colaborativa, 
+es por esto que vamos a comenzar rapidamente a aprender como usarlo y lo seguiremos uasndo durante
+el resto del curso.
+
+Un archivo de RMarkdown nos va a ayudar a _tejer_ un texto _markdown_ con fragmentos de código de R
+que es evaluado y cuyas salidas, como tablas y gráficos, son incluidas en el documento final.
 
 Para abrir un nuevo documento de RMarkdown siga los siguiente pasos:
 
@@ -29,77 +30,70 @@ knitr::include_graphics("images/5.1_rstudio_new-rmd-doc-html.png")
 
 Le puede dar un título como "Mi Proyecto". Luego clic en OK. 
 
-OK, primero que todo: Al abrir el archivo, vamos a ver un 4° panel de la consola de RStudio, 
-este panel es un editor de texto. Este panel editor nos permite abrir varios archivos en 
-un único panel.
+OK, primero que todo: Al abrir el archivo, vamos a ver un 4° panel de la consola de RStudio, este panel
+es un editor de texto que nos permite abrir varios archivos en un único panel.
 
-Ahora démosle una mira a este archivo - a primera vista se puede ver que no está en blanco;
-hay un texto inicial que se entrega por defecto. Hay algunas cosas que identificar en el texto: 
+Ahora démosle una mirada a este archivo que acabamos de crear - a primera vista se puede ver que no
+está en blanco; hay un texto inicial que se entrega por defecto. Hay algunas cosas que podemos
+identificar en el texto: 
 
-- Está en inglés (no se preocupe, lo vamos a reescribir!)
-- Hay secciones en blanco y otras en negro. El código R está en las secciones plomas, mientras
-que el texto está con fondo blando (por defecto, este color del fondo se puede cambiar). 
+- Está en inglés (no se preocupe, ¡lo vamos a reescribir!)
+- Hay secciones en con texto con el fondo blando y el código R está en secciones plomas (por defecto,
+estos colores del fondo se pueden cambiar). 
 
 ```{r rmarkdown, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Imagen con el código fuente de un archivo RMarkdown.'}
 knitr::include_graphics("images/5.2_rmarkdown.png")
 ```
 
 <br>
-
-Lo primero que vamos a hacer es hacer generar el código HTML (Knit HTML) haciendo clic 
-en la pelota de lana azul en la parte superior del panel con el archivo RMarkdown. 
-Cuando haga clic por primera vez en este botón, RStudio pedirá que guarde este archivo. 
-Cree un nuevo directorio en algún lugar que le sea fácil encontrarlo posteriormente
-(por ejemplo Escritorio o Mis Documentos) y dele un nombre que tenga sentido y le permita
-recordarlo después (ej: `clase_rmarkdown`).
-
+Lo primero que vamos a hacer es generar el código HTML (Knit HTML) haciendo clic en la pelota de lana
+azul en la parte superior del panel con el archivo RMarkdown. Cuando haga clic por primera vez en este 
+botón, RStudio pedirá que guarde el archivo. Cree un nuevo directorio en algún lugar que le sea fácil 
+encontrarlo posteriormente (por ejemplo Escritorio o Mis Documentos),  dele un nombre que tenga sentido
+y le permita recordarlo después (ej: `clase_rmarkdown`).
 <br>
 
 ```{r rmarkdownSideSide, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Imagen con el código fuente y pagina resultante de un archivo RMarkdown.'}
 knitr::include_graphics("images/5.3_rmarkdown_side_by_side.png")
 ```
 
-
 ¿Que cosas puede notar entre al comparar los dos archivos? 
 
-Las **secciones de código R** plomas están rodeadas de 3 tics y `{r LABEL}`.
-Estas secciones son evaluadas, generando una salida de texto en el caso de 
-`summary(cars)` y de un gráfico en el caso de `plot(pressure)`.
+Las **secciones de código R** plomas están rodeadas de 3 tics y `{r LABEL}`. Estas secciones son 
+evaluadas por R, generando una salida de texto en el caso de  `summary(cars)` y de un gráfico en el
+caso de `plot(pressure)`.
 
-Note como el código `plot(pressure)` no se muestra en la salida HTML porque 
-la sección de código R tiene la opción `echo=FALSE`.
+Note como el código `plot(pressure)` no se muestra en la salida HTML porque la sección de código 
+R tiene la opción `echo=FALSE`.
 
 Algunos otros detalles...
 
 Este archivo de RMarkdown tiene 2 lenguajes incluidos: **R** y **Markdown**. 
 
-Aun no sabemos mucho de R, pero ya puede ver que estamos tomando el 
-resumen de los datos llamados 'cars' y luego los graficamos. Hay mucho más
-para aprender sobre R y vamos a trabajar eso en las próximas clases.
+Aun no sabemos mucho de R, pero ya puede ver que estamos tomando el resumen de los datos llamados
+'cars' y luego los graficamos. Hay mucho más para aprender sobre R y vamos a trabajar eso en las
+próximas clases.
 
-El segundo lenguaje que incluyo el archivo es Markdown. Este es un lenguaje
-que para dar formato a texto plano y solo hay aproximadamente 15 reglas para 
-conocer.
+El segundo lenguaje que incluye el archivo es Markdown. Este es un lenguaje que para dar formato
+a texto plano y tiene aproximadamente 15 reglas para conocer.
 
 Vea la siguiente sintaxis:
 
-- **Títulos**: son procesador en múltiples niveles con: `#`, `##`
+- **Títulos**: son procesados en múltiples niveles con: `#`, `##`
 - **Negrita**: `**palabra**`
 
-Hay muchas tablas [cheatsheets](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
-que te puede ayudar a comenzar y una de esas está incluida en RStudio: para abrirla vaya a Help > Markdown Quick Reference
-<br />
-<br />
+Hay muchas tablas de consejos [cheatsheets](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
+que te puede utilizar para obtener ayuda, una de esas está incluida en RStudio: para abrirla vaya
+a Help > Markdown Quick Reference
 
 **Importante**: El símbolo de gato, número o para los milenials hashtag `#` tiene un 
-significado diferente si es usado en Markdown o en R: 
+significado diferente al que reconoce R cuando es usado en Markdown: 
 
-- en R, un gato indica que es un comentario y no será evaluado. Se pueden usar tantos como 
-se quiera: `#` es equivalente a `######`. Es sólo una cuestión de estilos.
-- en Markdown, un gato indica el nivel del título. Y cuantos use tienen un efecto:
-`#` es un "título nivel 1", lo que significa que es la fuente de mayor tamaño y que
-está al tope de la jerarquía. `###` es un título nivel 3 y se muestra anidado bajo el 
-título `#` y `##`.
+- en R, un gato indica que es un comentario y no será evaluado. Se pueden usar tantos como se quiera:
+`#` es equivalente a `######`. Es sólo una cuestión de estilos.
+- en Markdown, un gato indica el nivel del título. Y cuantos use tienen un efecto: `#` es un "título
+nivel 1", lo que significa que es la fuente de mayor tamaño y que está al tope de la jerarquía. 
+`###` es un título nivel 3 y se muestra anidado bajo el título `#` y `##`.
 
 Más sobre esto en: http://rmarkdown.rstudio.com/
 
