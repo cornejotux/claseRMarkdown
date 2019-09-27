@@ -12,6 +12,8 @@ construiremos algunas funciones simples.
 
 ## Objetivos
 
+En este capítulo veremos:
+
 - Aprender por que debemos escribir códigos utilizando funciones pequeñas
 - Escribir código para una o más funciones
 - Documentar las funciones para explicar su funcionamiento y comunicación del código

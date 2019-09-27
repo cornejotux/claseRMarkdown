@@ -2,7 +2,7 @@
 
 ## Objetivos
 
-En este capítulo:
+En este capítulo veremos:
 
 - Las ventajas de usar paquetes de R para organizar el código
 - Técnicas simples para crear paquetes de R

@@ -2,7 +2,7 @@
 
 ## Objetivos
 
-En esta lección aprenderemos:
+En este capítulo veremos:
 
 - Que es la estrategia Divida-Aplique-Combine y como se utiliza con datos
 - La diferencia entre los formatos de tablas anchas vs. largas y como convertir de un formato al otro
