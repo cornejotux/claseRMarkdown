@@ -167,18 +167,19 @@ datatable(catch)
 ```
 
 Y aquí la tabla que define las regiones (`region_defs`):
+
 ```{r regions, cache=TRUE, echo=FALSE}
 region_defs <- read.csv(url("https://knb.ecoinformatics.org/knb/d1/mn/v2/object/df35b.303.1", method = "libcurl"),
                         stringsAsFactors = FALSE)
 datatable(region_defs)
 ```
 
-- Dibuje un modelo RE para las tablas
-  - Indique cuales son las claves primarias y foráneas
-- ¿Está la tabla `catch` en una forma normalizada?
-  - Si es así ¿Cuál es la entidad (única) que fue observada?
-  - Si no ¿Como reestructuraría los datos para que queden normalizados?
-    - Dibuje un nuevo diagrama RE mostrando esta estructura de datos re-diseñada
+- Dibuje un modelo RE para las tablas.
+  - Indique cuales son las claves primarias y foráneas.
+  - ¿Está la tabla `catch` en una forma normalizada?
+    - Si es así ¿Cuál es la entidad (única) que fue observada?
+    - Si no ¿Como reestructuraría los datos para que queden normalizados?
+- Dibuje un nuevo diagrama RE mostrando esta estructura de datos re-diseñada
 
 ```{r modeloER, echo=FALSE, out.width = '80%', fig.align = 'center', fig.cap = 'Guí de nomenclatura para el direño de un modelo de Relación-Entidad (RE).'}
 knitr::include_graphics("images/7.11_ERD_Relationship_Symbols_Quick_Reference-1.png")
