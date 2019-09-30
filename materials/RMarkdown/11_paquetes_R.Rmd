@@ -6,24 +6,22 @@ En este capítulo veremos:
 
 - Las ventajas de usar paquetes de R para organizar el código
 - Técnicas simples para crear paquetes de R
-- Aproximaciones para documentar el código en los paquetes
+- Aproximaciones para documentar el código en los paquetes creados
 
 ## ¿Por qué usar paquetes?
 
-La mayoría de los usuarios de R están acostumbrado a cargar y utilizar paquetes en su trabajo. Además, 
-sabe cuan rico es CRAN para proveer para muchas de sus necesidades. Sin embargo, la mayoría de la gente
-nunca ha creado sus propios paquetes y piensa que el proceso es muy complicado. Realmente es bastante
-simple, directo y extremadamente útil para el trabajo personal. La creación de paquetes sirve principalmente
-en dos casos:
+La mayoría de los usuarios de R están acostumbrados a cargar y utilizar paquetes en su trabajo. Además, sabe cuan rico es
+CRAN para proveer soluciones para muchas de sus necesidades. Sin embargo, la mayoría de la gente nunca ha creado sus propios
+paquetes y piensa que el proceso es muy complicado. Realmente es bastante simple, directo y extremadamente útil para el
+trabajo personal. La creación de paquetes sirve principalmente en dos casos:
 
-- Como mecanismo para compartir/distribuir códigos que son reusables (incluso si sólo es para uso personal)
-- Como mecanismo para reproducir documentos de análisis, modelos y resultados
+- Como mecanismo para compartir/distribuir códigos reusables (incluso si sólo es para uso personal).
+- Como mecanismo para reproducir documentos de análisis, modelos y resultados.
 
-A lo menos, nos se puede crean un paquete por nuestras propias funciones de código más útiles, haciéndolo más
-fácil de mantener y usar las herramientas que pueden servir en más de un proyecto en el que trabaje.
+A lo menos se puede crear un paquete para nuestras propias funciones de código más útiles, haciéndolas más fáciles de mantener
+y usar, estas herramientas pueden servir para más de un proyecto en el que trabaje.
 
-Los paquetes `usethis`, `devtools` y `roxygen2` hacen que la creación y mantención de paquetes de R 
-sea un experiencia sencilla.
+Los paquetes `usethis`, `devtools` y `roxygen2` hacen que la creación y mantención de paquetes de R se experiencia sencilla.
 
 ## Instalación y carga de los paquetes
 
@@ -36,10 +34,9 @@ library(roxygen2)
 
 ## Creación de un paquete básico
 
-Gracias al excelente paquete [usethis](https://github.com/r-lib/usethis), solo toma una llamada a una 
-función para crear el esqueleto necesario para un paquete de R, basta con usar `create_package()`.  
-Esto elimina la mayor parte de las razones de procastinación. Entonces, para crear el paquete llamado
-`mytools` solo es necesario hacer lo siguiente:
+Gracias al excelente paquete [usethis](https://github.com/r-lib/usethis), solo toma llamar la función `create_package()` 
+para crear el esqueleto necesario de un paquete de R. Esto elimina la mayor parte de las razones de procastinación. 
+Entonces, para crear el paquete llamado `mytools` se hace:
 
 ```{r, eval=FALSE}
 setwd('..')
@@ -56,16 +53,15 @@ create_package("mytools")
     ✔ Adding '^mytools\\.Rproj$', '^\\.Rproj\\.user$' to '.Rbuildignore'
     ✔ Opening new project 'mytools' in RStudio
 
-Esto va a crear una estructura de directorios, incluyendo los archivos críticos bajo la [Estructura
-Estandard de Paquetes de R](http://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-structure).
-Lo más importantes de los cuales es el archivo `DESCRIPTION`. Este documento provee los metadatos 
-sobre el su paquete. Edite el archivo `DESCRIPTION` para entregarle valores que sean razonables para cada 
-campo, incluyendo su información de contacto. 
+Esto va a crear la estructura de directorios, incluyendo los archivos críticos bajo la [Estructura Estandard de Paquetes de
+R](http://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-structure). De los cuales el más importante es el 
+archivo `DESCRIPTION`. Este documento provee los metadatos sobre el su paquete. Edite este archivo `DESCRIPTION` para 
+entregar los valores que sean razonables para cada campo, incluyendo su información de contacto. 
 
-Información sobre elegir una licencia (LICENSE) se puede encontrar en la documentos (en inglés) 
-[Extending R](http://cran.r-project.org/doc/manuals/r-release/R-exts.html#Licensing). El archivo DESCRIPTION
-espera que elija una licencia desde una lista predefinida, puede usar varias métodos para definir 
-un archivo de licencia, como es por ejemplo la licencia `Apache 2`:
+La información necesaria para elegir una licencia (LICENSE) se puede encontrar en los documentos (en inglés) [Extending
+R](http://cran.r-project.org/doc/manuals/r-release/R-exts.html#Licensing). El archivo DESCRIPTION espera que elija una
+licencia desde una lista predefinida, puede usar varias métodos para definir el archivo de licencia, como es por ejemplo
+la licencia `Apache 2`:
 
 ```{r, eval=FALSE}
 use_apl2_license(name="Jorge Cornejo")
@@ -75,8 +71,8 @@ use_apl2_license(name="Jorge Cornejo")
     ✔ Writing 'LICENSE.md'
     ✔ Adding '^LICENSE\\.md$' to '.Rbuildignore'
 
-Una vez que la licencia ya fue elegida y ha editado el archivo DESCRIPTION con su información de contacto, 
-un título y una descripción, se verá algo como esto:
+Una vez que la licencia ya fue elegida y ha editado el archivo DESCRIPTION con su información de contacto, un título y una
+descripción, se verá algo como esto:
 
 ```{r, eval=FALSE}
 Package: mytools
@@ -91,12 +87,12 @@ LazyData: true
 
 ## Agregando su código
 
-El paquete esqueleto creado contiene un directorio `R` que es donde se deben dejar los archivos fuentes. Agregue
-sus funciones y clases en los archivos de este directorio. Trate de elegir nombres que no existan en otros paquetes
-para que no entren en conflictos. Por ejemplo, se puede agregar un archivo `environemnt_info.R` que contiene la
-función `environment_info()` que podría querer re-usar. Esto puede dejar mucho que desear..., pero se entiende.
-La función `usethis::use_r()` le va a ayudar a dejar los archivos en los directorios adecuados, para eso use por
-ejemplo:
+El paquete esqueleto creado contiene un directorio `R` que es donde se deben dejar los archivos fuentes. Agregue sus funciones
+y clases en los archivos de este directorio. Trate de elegir nombres que no existan en otros paquetes para que no entren en
+conflictos. Por ejemplo, se puede agregar un archivo `environemnt_info.R` que contiene la función `environment_info()` que
+podría querer re-usar. Esto puede dejar mucho que desear..., pero se entiende.
+
+La función `usethis::use_r()` le va a ayudar a dejar los archivos en los directorios adecuados, para eso use por ejemplo:
 
 ```{r eval=FALSE}
 use_r("environment_info")
@@ -104,8 +100,8 @@ use_r("environment_info")
 
     ● Modify 'R/environment_info.R'
 
-esto crea el archivo `R/environment_info.R`, que ahora puede modificar para agregar la implementación de la 
-siguiente función:
+esto crea el archivo `R/environment_info.R`, que ahora puede modificar para agregar la implementación de la siguiente 
+función:
 
 ```{r eval=FALSE}
 environment_info <- function(msg) {
@@ -114,10 +110,9 @@ environment_info <- function(msg) {
 }
 ```
 
-Si su código R depende de funciones de otro paquete, entonces tiene que declararlo en la lista `Imports`
-del archivo `DESCRIPTION` de su paquete de R. El ejemplo de arriba depende del paquete `devtools`, por
-consiguiente debemos ponerlo en el listado de dependencias. Nuevamente, `usethis` entrega un método de 
-ayuda muy útil:
+Si su código R depende de funciones de otro paquete, entonces tiene que declararlo en la lista `Imports` del archivo 
+`DESCRIPTION` de su paquete de R. El ejemplo de arriba depende del paquete `devtools`, por consiguiente debemos ponerlo
+en el listado de dependencias. Nuevamente, `usethis` entrega un método de ayuda muy útil:
 
 ```{r eval=FALSE}
 usethis::use_package("devtools")
@@ -128,11 +123,9 @@ usethis::use_package("devtools")
 
 ## Agregando la documentación
 
-Es necesario incluir documentación para cada una de las funciones y clases que se incluyan en el 
-paquete. Esto se hacer usando la aproximación de `roxygen2` que provee comentarios envevido en los
-archivos con el código fuente, que a su vez son convertidos a paginas de manuales y otros artefactos
-de la documentación de R. Asegúrese de definir el propósito general de la función y cada uno de sus
-parámetros.
+Es necesario incluir documentación para cada una de las funciones y clases que se incluyan en el paquete. Esto se puede hacer
+usando la aproximación de `roxygen2` que provee comentarios incorporados en los archivos con el código fuente, que a su vez son convertidos a páginas de manuales y otros para documentación de R. Es importante que siempre se asegure de definir el propósito
+general de la función y cada uno de sus parámetros.
 
 ```{r}
 #' Una función para imprimir información sobre el ambiente de trabajo de R.
@@ -150,8 +143,8 @@ environment_info <- function(msg) {
 }
 ```
 
-Una vez que sus archivos están documentados, entonces se puede proceder a generar la documentación usando
-usando la función `document()` para generar los archivos .Rd que el paquete necesita.
+Una vez que sus archivos están documentados se puede proceder a generar la documentación usando usando la función `document()`
+para generar los archivos .Rd que el paquete necesita.
 
 ```{r, eval = F}
 document()
@@ -164,16 +157,14 @@ document()
     Writing NAMESPACE
     Writing environment_info.Rd
 
-Y eso es realmente. Ahora tiene un paquete que puede `check()` (verificar), `install()` (instalar) y 
-`release()` (publicación). Mas abajo se pueden ver estas utilidades de ayuda.
+Y eso es realmente. Ahora tiene un paquete que puede `check()` (verificar), `install()` (instalar) y `release()` (publicación).
 
 ## Verifique su paquete
 
-Ahora que ya tiene todo listo, puede verificar sus código usando el marco de referencia de verificaciones 
-`tetsthat`. La función `ussethis::use_testthat()` va a preparar su paquete de R para verificar su 
-funcionamiento y luego puede usar la función `use_test()` para configurar archivos individuales de 
-verificación. Por ejemplo, si quiere crear un test de las funciones en environment_info, puede 
-jacer algo como esto:
+Ahora que ya tiene todo listo, puede verificar su código usando el marco de referencia de verificaciones `tetsthat`. La
+función `ussethis::use_testthat()` va a preparar su paquete de R para verificar su funcionamiento y luego puede usar la
+función `use_test()` para configurar archivos individuales de verificación. Por ejemplo, si quiere crear un test de las
+funciones en environment_info, puede hacer:
 
 ```{r eval = FALSE}
 usethis::use_testthat()
@@ -188,8 +179,8 @@ usethis::use_test("environment_info")
     ✔ Writing 'tests/testthat/test-environment_info.R'
     ● Modify 'tests/testthat/test-environment_info.R'
 
-Ahora puede agregar los test a `test-environment_info.R` y ejecutar todos los test usando 
-`devtools::test()`. Por ejemplo, si quiere agregar un test al archivo `test-environment_info.R`:
+Ahora puede agregar los test a `test-environment_info.R` y ejecutarlos usando `devtools::test()`. Por ejemplo, si quiere 
+agregar un test al archivo `test-environment_info.R`:
 
 ```{r eval=FALSE}
 test_that("Un mensaje está presente", {
@@ -198,8 +189,7 @@ test_that("Un mensaje está presente", {
 })
 ```
 
-Entonce puede ejecutar estos test para estar seguro que todas sus funciones estas trabajando
-usando la función `devtools::test()`:
+Ejecutelos para estar seguro que todas sus funciones estan trabajando como se espera usando la función `devtools::test()`:
 
 ```{r eval=FALSE}
 devtools::test()
@@ -222,30 +212,29 @@ Si, todo funciona!!
 
 ## Verificando e instalando el paquete R creado
 
-Ahora que ya tenemos el paquete listo, podemos verificar sus consistencia y que este completa usando la 
-función `check()` y entonces se puede instalar localmente usando `install()`, lo que debe ejecutarse desde
-el directorio padre del modulo..
+Ahora que ya tenemos el paquete listo, podemos verificar su consistencia y que este completo usando la función `check()`.
+Haciendo pasado esta verificación se puede instalar localmente usando `install()`. Recuerde que esta instalación **debe**
+ejecutarse desde el directorio padre del módulo.
 
 ```{r, eval = FALSE}
 check()
 install()
 ```
 
-El paquete que usted creó esta ahora disponible para ser usado en el ambiente local de R.
+El paquete que usted creó está ahora disponible para ser usado en el ambiente local de R.
 
 ## Compartiendo y publicando su paquete de R
 
-La forma mas simple de compartir el paquete R con otros es subiéndolo a un [repositorio GitHub](https://github.com), 
-esto permite que sea instalado por otros usando la función `install_github('mytools','github_username')` incluida 
-en el paquete `devtools`.
+La forma más simple de compartir el paquete R con otros es subiéndolo a un [repositorio GitHub](https://github.com), esto
+permite que sea instalado por otros usando la función `install_github('mytools','github_username')` incluida en el paquete
+`devtools`.
 
-Si su paquete podría ser útil para una mayor cantidad de gente, debería considerar publicando en el 
-CRAN, para esto se puede usar el método `release()` presente en `devtools(). Publicar (releasing) un paquete al
-CRAN requiere un trabajo bastante arduo para asegurarse que sigue los estándares definidos por la comunidad
-R, pero es totalmente posible y una valiosa contribución a la comunidad científica. Si está considerando 
-publicar un paquete en forma más amplia, puede encontrar que el apoyo de la comunidad en 
-[ROpenSci](https://ropensci.org) entrega una valiosa ayuda y retroalimentación a través de su proceso de 
-inducción.
+Si su paquete puede ser útil para una mayor cantidad de gente, debería considerar publicardo en el sitio CRAN, para esto se
+puede usar el método `release()` presente en `devtools(). Publicar (releasing) un paquete al CRAN requiere un trabajo bastante
+arduo para asegurarse que sigue los estándares definidos por la comunidad R, pero es totalmente posible y una valiosa 
+contribución a la comunidad científica. Si está considerando publicar un paquete en forma más amplia, puede encontrar que
+el apoyo de la comunidad en [ROpenSci](https://ropensci.org), ellos entregan una valiosa ayuda y retroalimentación a través
+de su proceso de inducción.
 
 ## Más lecturas
 
