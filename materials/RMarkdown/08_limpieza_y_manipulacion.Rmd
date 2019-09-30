@@ -213,9 +213,8 @@ head(catch_data)
 
 ### Cambiar el formato: `gather()` y `spread()`
 
-El siguiente punto problema con los datos es que están en un formato ancho y que para
-trabajar lo necesitamos en uno largo.
-`gather()` del paquete `tidyr` nos ayuda a hacer esta conversión:
+El siguiente problema con los datos es que están en un formato ancho y que para trabajar los necesitamos en uno largo.
+`gather()` del paquete `tidyr` nos ayuda a hacer este cambio en el formato:
 
 ```{r}
 catch_long <- catch_data %>% 
@@ -224,17 +223,17 @@ catch_long <- catch_data %>%
 head(catch_long)
 ```
 
-La sintaxis que usamos para `gather()` puede ser un poco confusa, así que vamos a explicarlo con el 
-diagrama rotulado de la figura \@ref(fig:annotatedGather):
+La sintaxis que usamos para `gather()` puede ser un poco confusa, así que la explicaremos con el diagrama rotulado que se
+presenta en la figura \@ref(fig:annotatedGather):
 
 
 ```{r annotatedGather, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Diagrama rotulado donde se explica cada uno de los inputs a la función gather.'}
 knitr::include_graphics("images/8.2_gather_annotated.png")
 ```
 
-Los primeros dos argumentos de la función `gather()` son los nombres de las columnas nuevas que 
-serán creados y los otros argumentos con el símbolo `-` son las columnas que se deben mantener
-en el proceso. La función opuesta a `gather()` es `spread()`, funciona la misma forma declarativa:
+Los primeros dos argumentos de la función `gather()` son los nombres de las columnas nuevas que serán creadas y los otros
+argumentos con el símbolo `-` son las columnas que se deben mantener en el proceso. La función opuesta a `gather()` es 
+`spread()`, funciona la misma forma declarativa:
 
 ```{r}
 catch_wide <- catch_long %>% 
@@ -245,11 +244,9 @@ head(catch_wide)
 
 ### Renombrando columnas con `rename()`
 
-Si le da una mirada a los datos, va a notar que existen valores en la columna `catch`
-que son muy pequeños (se suponen que son valores de capturas anuales). Si vemos los
-[metadata](https://knb.ecoinformatics.org/#view/df35b.304.2) vamos a ver que la 
-columna `catch` está en miles de pescados, así que la vamos a convertir antes de 
-seguir con los análisis.
+Si le da una mirada a los datos, va a notar que existen valores en la columna `catch` que son muy pequeños (se supone que
+son valores de capturas anuales). Si analizamos los [metadata](https://knb.ecoinformatics.org/#view/df35b.304.2) veremos 
+que la columna `catch` está en miles de pescados, así que la vamos a convertir antes de seguir con los análisis.
 
 Primero cambiemos el nombre de `catch` a `catch_thousands`:
 
@@ -262,10 +259,9 @@ head(catch_clean)
 
 ### Agregando columnas: `mutate()`
 
-Ahora vamos a crear una columna llamada `catch` con individuos como unidad (en vez de 
-miles de pescados). Note que hemos agregado, a la expresión que creamos mas arriba, la 
-llamada a la función (`mutate`). Esto aprovecha el operador pipe agrupando un set de 
-comandos, que todos tienen como objetivos limpiar el `data.frame` `catch_long`.
+Ahora vamos a crear una columna llamada `catch` con individuos como unidad (en vez de miles de pescados). Note que hemos 
+agregado, a la expresión que creamos mas arriba, la llamada a la función `mutate`. Esto aprovecha el operador pipe agrupando
+un set de comandos, todos relacionados con el objetivo de limpiar el `data.frame` `catch_long`.
 
 ```{r, eval=FALSE}
 catch_clean <- catch_long %>% 
@@ -279,53 +275,51 @@ Aquí va a ver el siguiente mensaje:
 
 > Error in mutate_impl(.data, dots) : Evaluation error: non-numeric argument to binary operator.
 
-Este mensaje de error es extremadamente críptico -- ¿Qué es lo que está diciendo?
-Este tipo de errores pueden ser muy difíciles de diagnosticar, pero tal vez la 
-columna `catch` no es exactamente lo que estábamos esperando.
-¿Cómo podemos ver esto?
-R le entrega una variedad de funciones que le permiten hacer resúmenes rápidos de una
-tabla de datos relativamente grande:
+Este mensaje de error es críptico -- ¿Qué es lo que está diciendo? 
+Este tipo de errores pueden ser difíciles de diagnosticar, lo que está sugiriendo es que la columna `catch` no es exactamente
+lo que estábamos esperando.
+¿Cómo podemos ver esto? R le entrega una variedad de funciones que le permiten hacer resúmenes rápidos de una tabla de 
+datos relativamente grande:
 
 ```{r}
 summary(catch_clean)
 ```
 
-- **Actividad:** ¿Qué otras formas (funciones) se podrían haber usado para identificar
-cual era el problema?
+- **Actividad:** ¿Qué otras formas (funciones) se podrían haber usado para identificar el problema?
 
-Vea que en la salida de más arriba la columna `catch_thousands` se ve como `Class :character`.
-Esto quiere decir que la columna contiene caracteres de texto y no números, esto parece
-incorrecto ya que las capturas deberían ser números enteros (R muestra esto como enteros o 
-_integers_ en inglés).
+Vea que en la salida de más arriba la columna `catch_thousands` se ve como `Class :character`. Esto quiere decir que 
+contiene caracteres de texto y no números, esto parece incorrecto ya que las capturas deberían ser números enteros (R 
+muestra esto como enteros o _integers_ en inglés).
 
-Vamos a convertir esta columna a enteros y veamos que sucede:
+Vamos a convertir esta columna a enteros y veremos que sucede:
 
 ```{r}
 catch_integers <- as.integer(catch_clean$catch_thousands)
 ```
 
-Aquí se muestra el mensaje de error "_NAs introduced by coercion_" donde R nos está diciendo que 
-no le fue posible convertir cada uno de los valores a enteros (_integers_) y que, para esos valores
-que no pudo convertir, puse `NA` en su lugar.
-Este es un comportamiento común y lo podemos esperar cuando realicemos limpieza de datos, sin 
-embargo es importante que tengamos las capacidades para manejar estas situaciones. Podemos 
-encontrar cuales son los valores con NAs combinando las funciones `is.na()` y `which()`, y 
-guardando el resultado en una variable, por ejemplo `i`.
+Aquí se muestra el mensaje de error "_NAs introduced by coercion_" donde R dice que no fue posible convertir cada uno
+de los valores a enteros (_integers_) y que, para esos valores que no pudo convertir, pusa `NA` en su lugar. Este es 
+común y lo podemos esperar cuando realicemos limpieza de datos, sin embargo es importante que tengamos las capacidades
+para manejar estas situaciones. 
+
+Podemos encontrar cuales son los valores con NAs combinando las funciones `is.na()` y `which()`, y guardando el resultado
+en una variable, por ejemplo `i`.
 
 ```{r}
 i <- which(is.na(catch_integers))
 i
 ```
 
-Se ve que existe solo una fila con problemas, veamosla:
+Se ve que existe sólo una fila con problemas, veamosla:
 
 ```{r}
 catch_clean[i,]
 ```
 
-Bueno, esto es raro: El valor en `catch_thousands` es `I` lo que claramente no es un número. Resulta
-que este set de datos viene de un archivo PDF que fue convertido automáticamente a CSV (formato de
-texto separado por comas) y este valor `I` corresponde a un 1.
+Bueno, esto es raro: El valor en `catch_thousands` es `I` lo que claramente no es un número. Resulta que este set de datos
+viene de un archivo PDF que fue convertido automáticamente a CSV (formato de texto separado por comas) y este valor `I` 
+corresponde a un 1. 
+
 Ahora procedemos a arreglarlo:
 
 ```{r}
@@ -337,11 +331,10 @@ catch_clean <- catch_long %>%
 head(catch_clean)
 ```
 
-Vea que en esta serie de comento, se hace una doble llamada a la función `mutate()`, se transforma
-la variable `catch_thousands` dos veces. Esto ocurre porque el proceso de `mutate()` lo hace
-paso a paso, de esta forma los resultados de un  `mutate()` estarán disponibles para el siguiente.
+Vea que en esta serie de comandos se hace una doble llamada a la función `mutate()`. Esto ocurre porque el proceso de
+`mutate()` es secuencial, los resultados de un  `mutate()` estarán disponibles para el siguiente.
 
-Ahora realicemos la conversión nuevamente, agregando un nuevo llamado a la función.
+Ahora realicemos la conversión nuevamente, agregando un nuevo llamado a la misma función.
 
 ```{r}
 catch_clean <- catch_long %>% 
@@ -353,8 +346,7 @@ catch_clean <- catch_long %>%
 head(catch_clean)
 ```
 
-Ahora no se ve ningún mensaje de error.
-Ahora vamos a eliminar la columna `catch_thousands` ya que no la necesitamos:
+Ahora no se ve ningún mensaje de error y podemos eliminar la columna `catch_thousands` que ya no necesitamos:
 
 ```{r}
 catch_clean <- catch_long %>% 
@@ -367,7 +359,7 @@ catch_clean <- catch_long %>%
 head(catch_clean)
 ```
 
-Ahora estamos listos para comenzar con los análisis de los datos.
+En este punto los datos estan limpios y ordenados para inicial el análisis.
 
 ### `group_by` y `summarise`
 
@@ -385,8 +377,8 @@ head(mean_region)
 - **Actividad:** Encuentre otra función para agrupar y calcular estadísticas para cada grupo.
 - **Ejercicio:** Encuentre si es posible agrupar múltiples variables.
 
-Otro uso común de la función `group_by()` seguida de `summarize()` es para contar el número de filas en 
-cada grupo. Para esto usamos la función `n()` del paquete `dplyr`.
+Otro uso común de la función `group_by()` seguida de `summarize()` es para contar el número de filas en cada grupo. Para
+esto usamos la función `n()` del paquete `dplyr`.
 
 ```{r}
 n_region <- catch_clean %>% 
@@ -398,10 +390,10 @@ head(n_region)
 
 ### Filtrando columnas: `filter()`
 
-`filter()` es un verbo (en inglés) que se usar para filtrar las filas de un `data.frame` que cumplen
-con alguna condición. Es similar a la función `subset()` del R base.
+`filter()` es una función que se usa para filtrar las filas de un `data.frame` que cumplen con alguna condición. Es similar
+a la función `subset()` de R base.
 
-Vamos a nuestro `data.frame` original y filtremos (`filter()`) algunos datos:
+Vamos a nuestro `data.frame` original y filtremos con la función `filter()` algunos datos:
 
 ```{r}
 SSE_catch <- catch_clean %>% 
@@ -410,16 +402,16 @@ SSE_catch <- catch_clean %>%
 head(SSE_catch)
 ```
 
-- **Actividad:** Filtre las capturas que sean mayores a 1 millón de pescados.
-- **Actividad:** Filtre solo los salmones Chinook en la Región SSE.
+- **Actividad:** Filtre las capturas que sean mayores a 1 millón de salmones.
+- **Actividad:** Filtre sólo los salmones Chinook en la Región SSE.
 
 ### Ordenando sus datos: `arrange()`
 
-`arrange()` es como se ordenan las filas de un `data.frame`.
-En mi experiencia, `arrange()` se usa comúnmente en dos casos:
+`arrange()` es la función que se usar para ordenar filas de un `data.frame`. En mi experiencia, `arrange()` se usa comúnmente
+en dos casos:
 
-- Cuando se necesita calcular una suma acumulada (con `cumsum()`), de esta forma el orden importa
-- Cuando se necesita mostrar una tabla (por ejemplo en un documento `.Rmd`) ordenada
+- Cuando se necesita calcular una suma acumulada (con `cumsum()`).
+- Cuando se necesita mostrar una tabla (por ejemplo en un documento `.Rmd`) ordenada.
 
 Re-calculemos el promedio de captura por región y luego ordenemos la salida, usando `arrange()`, por captura promedio:
 
@@ -432,8 +424,8 @@ mean_region <- catch_clean %>%
 head(mean_region)
 ```
 
-La función `arrange()` ordena por defecto en orden creciente.
-La invertir este orden, hay que usar la función `desc()` en la columna que se quiera ordenar:
+La función `arrange()` ordena por defecto en orden creciente. Para invertir este orden se usa la función `desc()` en la columna
+que se quiera ordenar:
 
 ```{r}
 mean_region <- catch_clean %>% 
@@ -446,31 +438,29 @@ head(mean_region)
 
 ### Joins en dplyr
 
-Ahora que ya somos expertos en manipular un `data.frame` único ¿Qué podemos hacer?
+Ahora que ya somos expertos en manipular un `data.frame` único ¿Qué podemos hacer? 
+
 La respuesta es obvia, manipular **más de un** `data.frame`.
 
-Si usted a utilizado bases de datos anteriormente, es probable que sea familiar con lo que llamamos 
-un "_join_", estas funciones nos permiten unir, en forma inteligente, dos tablas para formar una sola, 
-esto se hace utilizando alguna columna que tengan en común. Ya hemos hablado sobre _joins_ en
-la sección sobre uniones de tablas [\@ref(joins)] del capítulo [\@ref(cap7)]. Aquí vamos a ver 
-como se hace dentro del entorno `dplyr`.
+Si usted a utilizado bases de datos anteriormente, es probable que sea familiar con las funciones "_join_". Estas funciones
+nos permiten unir, en forma inteligente, dos tablas para formar una sola, esto se hace utilizando alguna columna que tengan
+en común. Ya hemos hablado sobre _joins_ en la sección sobre uniones de tablas [\@ref(joins)] del capítulo [\@ref(cap7)].
+Aquí vamos a ver como se hace dentro del entorno `dplyr`.
 
-El set de datos con el que hemos estado trabajando, https://knb.ecoinformatics.org/#view/df35b.304.2,
-contiene un segundo documento CSV con las definiciones de los códigos de cada `Region`. Esto es 
-una forma muy común de almacenar información auxiliar sobre nuestro set de datos de interés (capturas)
-pero que, para fines analíticos, a menudo las queremos en el mismo `data.frame`.
-Join (unión), nos permite hacer esto fácilmente. 
+El set de datos con el que hemos estado trabajando, https://knb.ecoinformatics.org/#view/df35b.304.2, contiene un segundo
+documento con datos en formato CSV que contiene las definiciones de los códigos para cada `Region` de Alaska. Esto es una 
+forma muy común de almacenar información auxiliar sobre nuestro set de datos de interés (capturas) pero que, para fines 
+analíticos, a menudo las queremos en el mismo `data.frame`. Join (unión), nos permite hacer esto fácilmente. 
 
 Veamos que es lo que hará nuestra unión utilizando una versión simplificada de los datos:
-
 
 ```{r leftJoin, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Uso de _leftjoin_ para combinar dos tablas utilizando la columna **Region** como clave.'}
 knitr::include_graphics("images/8.3_left_join_catchdata.png")
 ```
 
-Primero, leamos la tabla con la definición de los nombres de la regiones y seleccionemos solo las columnas
-de interés. Note que he usado el operador `%>%` para pasar los resultados de la función `read.csv`, creando de
-esta forma un fragmento de código que lee y selecciona los datos que queremos.
+Primero, leamos la tabla con la definición de los nombres de la regiones y seleccionemos sólo las columnas de interés. Note 
+que he usado el operador `%>%` para pasar los resultados de la función `read.csv`, creando de esta forma un fragmento de código
+que lee y selecciona los datos de interés.
 
 ```{r, cache=TRUE}
 region_defs <- read.csv(url("https://knb.ecoinformatics.org/knb/d1/mn/v2/object/df35b.303.1",
@@ -482,10 +472,9 @@ head(region_defs)
 ```
 
 
-Si examina la columna `region_defs` del `data.frame`, puede ver que los nombres de columnas no 
-son iguales a las presentadas en la figura \@ref(fig:leftJoin). Si los nombres de las columnas _clave_
-no son iguales, es posible definir implícitamente cual es la columna de cada tabla que se deben usar 
-en la tabla de la derecha y de la izquierda, tal como se muestra en el código siguiente:
+Si examina la columna `region_defs` del `data.frame`, puede ver que los nombres de columnas no son iguales a las presentadas
+en la figura \@ref(fig:leftJoin). Si los nombres de las columnas _clave_ no son iguales, es posible definir implícitamente
+cuales son las columnas de la tabla a la derecha y a la izquierda que se deben usar, tal como se muestra en el código siguiente:
 
 ```{r}
 catch_joined <- left_join(catch_clean, region_defs, by = c("Region" = "code"))
@@ -493,12 +482,12 @@ catch_joined <- left_join(catch_clean, region_defs, by = c("Region" = "code"))
 head(catch_joined)
 ```
 
-Note que me he desviado de la sintaxis usando pipes (a pesar de que igualmente funciona aquí) porque 
-prefiero ver los `data.frames` que estoy uniendo uno al lado del otro.
+Note que me he desviado de la sintaxis que usa los pipes (a pesar de que igualmente funciona aquí) porque prefiero ver los 
+`data.frames` que estoy uniendo uno al lado del otro.
 
-Otra forma de hacer esta unión es cambiando los nombres de las columnas usando la función `rename`,
-de esta forma se puede cambiar el nombre de la columna `code` a `Region` el `data.frame` `region_defs`,
-y ejecutar el `left_join` de la siguiente forma:
+Otra forma de hacer esta unión es cambiando los nombres de las columnas usando la función `rename`, de esta forma se puede 
+cambiar el nombre de la columna `code` a `Region` el `data.frame` `region_defs`, y ejecutar el `left_join` de la siguiente 
+forma:
 
 ```{r, eval = F}
 region_defs <- region_defs %>% 
@@ -509,16 +498,14 @@ catch_joined <- left_join(catch_clean, region_defs, by = c("Region"))
 head(catch_joined)
 ```
 
-Ahora las capturas tienen la información auxiliar con la definición de las regiones a su lado.
-Nota: `dplyr` entrega un set completo de uniones: _inner_, _left_, _right_, _full_, _semi_, 
-_anti_ y no solo _left_join_.
+Ahora las capturas tienen la información auxiliar con la definición de las regiones a su lado. 
+Nota: `dplyr` entrega un set completo de uniones: _inner_, _left_, _right_, _full_, _semi_, _anti_ y no solo _left_join_.
 
 ### `separate()` y `unite()`
 
-`separate()` y su complemento `unite()`, nos permiten separar fácilmente una columna en varias 
-(o varias en una sola). Esto puede ser realmente útil cuando tenemos una columna con fechas y 
-necesitamos agrupar los datos por año o mes. 
-Creemos un nuevo `data.frame` con datos ficticios para ilustrar esto:
+`separate()` y su complemento `unite()`, nos permiten separar fácilmente una columna en varias (o varias en una sola). Esto
+puede ser realmente útil cuando tenemos una columna con fechas y necesitamos agrupar los datos por año o mes. Creemos un 
+nuevo `data.frame` con datos ficticios para ilustrar esto:
 
 ```{r}
 dates_df <- data.frame(date = c("5/24/1930",
@@ -552,8 +539,8 @@ dates_df %>%
   unite(date, month, day, year, sep = "/")
 ```
 
-- **Actividad:** Use `unite()` en su solución a la actividad anterior para combinar las columnas que acaba de
-separar y déjelas en una única columna que incluya la cuidad y el estado, `city`:
+- **Actividad:** Use `unite()` en su solución a la actividad anterior para combinar las columnas que acaba de separar y 
+déjelas en una única columna que incluya la cuidad y el estado, `city`:
 
 ```{r}
 # Escriba su solución aquí.
@@ -562,8 +549,9 @@ separar y déjelas en una única columna que incluya la cuidad y el estado, `cit
 
 ## Resumen
 
-Acabamos de aprender varias cosas que se pueden hacer con los paquetes `dplyr` y `tidyr`, pero si se pregunta
-como se vería esto en un análisis real...
+Acabamos de aprender varias cosas que se pueden hacer con los paquetes `dplyr` y `tidyr`, pero si se pregunta como se vería
+esto en un análisis real...
+
 Veamos eso a continuación:
 
 ```{r, catch=TRUE}
