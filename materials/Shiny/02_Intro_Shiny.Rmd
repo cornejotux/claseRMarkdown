@@ -29,17 +29,15 @@ _**Reconocimiento**_: Esta libro esta desarrollado utilizando blogdown y bookdow
  [https://shiny.rstudio.com/](https://shiny.rstudio.com/){target="_blank"}[@shinyL01].
  
  
-
 ## Objetivos
 
-En esta sección Ud. aprenderá:
+En este capítulo veremos:
 
-- Que es Shiny
-- Que cosas se pueden hacer con Shiny
-- Instalar Shiny en su computador
-- Crear su primera aplicación Shiny
-- Compartir su aplicación en la red
-
+- ¿Qué es Shiny?
+- Que se puede hacer con Shiny.
+- Instalar Shiny en su computador.
+- Crear su primera aplicación Shiny.
+- Compartir su aplicación en la red.
 
 ## Bienvenido a Shiny
 

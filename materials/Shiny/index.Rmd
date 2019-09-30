@@ -1,6 +1,6 @@
 --- 
 title: "Introducción a las aplicaciones web interactivas"
-date: "Por definir, 2019"
+date: "Por definir"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -14,33 +14,49 @@ always_allow_html: yes
 
 # Introducción
 
-R es es un lenguage de programación gratuito, descarga e instalación muy sencilla. Solo hay que ir al sitio [CRAN](ttp://cran.r-project.org){taget=_new} (**C**omprehensive **R** **A**rchive **N**erwork) y descargarglo. Está siponible para Windows, MacOS y Linux. 
+R es es un lenguage de programación gratuito, descarga e instalación muy sencilla. Solo hay que ir al sitio
+[CRAN](ttp://cran.r-project.org){taget=_new} (**C**omprehensive **R** **A**rchive **N**erwork) y descargarglo. Está disponible
+para Windows, MacOS y Linux. 
 
-R es un lenguaje ampliamente utilizado por la comunidad científica gracias a por su capacidad para realizar análisis estadísticos
-complejos, gráficas potentes y de calidad profesional (ej. [ggplot](https://ggplot2.tidyverse.org/){target=_new}) y a la 
+R es ampliamente utilizado por la comunidad científica gracias a que nos entrega una plataforma para realizar análisis 
+estadísticos complejos, gráficas potentes y de calidad profesional (ej. [ggplot](https://ggplot2.tidyverse.org/){target=_new}) y a la 
 versatilidad para el manejo de datos, lo que en conjunto de ser una plataforma de software abierto, lo hacen especialmente 
-atractivo para la ciencia de datos y a la investigación reproducible, ya que no tiene formatos privados que podrian dejar de 
+atractivo para la ciencia de datos y a la investigación reproducible, ya que no tiene formatos privados que podrían dejar de 
 ser soportados en el futuro. 
 
-Ahora, si ud. no conoce **R**, le sugiero que cierre este curso, porque aqui se parte de la base que tiene familiaridad con R, 
-puede realizar análisis, gráficos y manipulación de datos. 
+Ahora, si ud. no conoce **R**, le sugiero que cierre este curso y use este [libro](https://es.r4ds.hadley.nz/?fbclid=IwAR1DDPfhmrCdxkca5OqQa1D7hA5BBzzJVpKTjB62KbgtEFcxweJAmGPlKeY#) que es una excelente 
+edición en espñol para aprender a usar R.
+
+Este curso parte de la base que tiene familiaridad con R, puede realizar análisis, gráficos y manipulación de datos. 
 
 
 ## Consola R
 
-![Figura 1.1: R es como trabajar con una rueda cuadrada.](imagenes/1.1_rueda.jpg)
+```{r rueda, echo=FALSE, out.width = '80%', fig.align = 'center', fig.cap = 'Trabajar en la consola de R es como usar una rueda cuadrada..'}
+knitr::include_graphics("imagenes/1.1_rueda.jpg")
+```
 
-Uno de los principales con el trabajo en R es su complejidad, lo que a vez lo hace tan flexible, y lo poco amigable de su consola de trabajo. Sin embargo, la compañía [RStudio](http://www.rstudio.com){target=_new} ha hecho disniple un excelente entorno de desarrollo integrado (IDE) que hace su uso significativamente mas simple.
+Uno de los principales problemas para aprender a trabajar en R es su complejidad y lo poco amigable de su consola
+de trabajo. Sin embargo esto es tambien su mayor virtud ya que lo hace en extremo flexible. Afortunadamente la compañía
+[RStudio](http://www.rstudio.com){target=_new} ha hecho disponible un entorno de desarrollo integrado (IDE) que facilita
+trabajar en R ya que tiene herramientas muy útiles para el manejo de librerías, visualización de datos, etc.
 
 ## RStudio
 
-![Logo de RStudio](https://www.rstudio.com/wp-content/uploads/2019/03/RStudio-Logo-Blue-Gray-125.png) 
+```{r rstudioLogo, echo=FALSE, out.width = '30%', fig.align = 'center', fig.cap = 'Logo de RStudio.'}
+knitr::include_graphics("https://www.rstudio.com/wp-content/uploads/2019/03/RStudio-Logo-Blue-Gray-125.png")
+```
 
-RStudio (IDE para R; Fig. 1.2), es un software libre con licencia GPLv3 que también puede ser ejecutado sobre distintos sistemas operativos (Windows, Mac, o Linux). 
+RStudio (IDE para R; Fig. \@ref(fig:rstudioLogo)), es un software libre con licencia GPLv3 que también puede ser ejecutado
+en distintos sistemas operativos (Windows, Mac, o Linux). 
 
-La figura 1.2 muestra la vista típica del IDE Rstudio y sus cuatro paneles, donde se destaca en panel del editor de texto ( superior izquierdo), la consola R (panel inferior izquierdo), panel con las variables (superior derecho) y el navegador de archivos (panel inferior derecho).
+La figura \@ref(fig:rstudioIDE) muestra la vista típica del IDE Rstudio y sus cuatro paneles, donde se destaca en panel del 
+editor de texto ( superior izquierdo), la consola R (panel inferior izquierdo), panel con las variables (superior derecho) y 
+el navegador de archivos (panel inferior derecho).
 
-![Figura 1.2: RStudio, IDE de R. Es la rueda que le faltaba a R para hacer el trabajo mas sencillo](imagenes/1.2_RStudio.png)
+```{r rstudioIDE, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'RStudio, IDE de R. Es la rueda que le faltaba a R para hacer el trabajo más sencillo.'}
+knitr::include_graphics("imagenes/1.2_RStudio.png")
+```
 
 Entre las muchas ventajas que tiene trabajar con _RStudio_ podemos destacar:
 
@@ -60,13 +76,16 @@ Entre las muchas ventajas que tiene trabajar con _RStudio_ podemos destacar:
 
 ## Instalación de packetes en RStudio
 
-Para instalar un nuevo paquete de R se pueden descargar desde CRAN utilizando la linea de comando (como se hace en R) o utiliznado la intergase gráfico que entrega RStudio.
+Para instalar un nuevo paquete de R se pueden descargar desde CRAN utilizando la linea de comando (como se hace en R) o utilizando la intergase gráfico que entrega RStudio.
 
-En el panel inferior derecho de la pantalla de Rstudio se encuentra la pestaña _Packages_ se da clic en esa pestaña y luego en Install y aparecerá una ventana donde podemos escribir las librerías que necesitamos. En el ejemplo en la figura 1.3 se va a instalar la libreria de Shiny, que es la que usarmes en el presente libro.
+En el panel inferior derecho de la pantalla de Rstudio se encuentra la pestaña _Packages_ se da clic en esa pestaña y luego en Install y aparecerá una ventana donde podemos escribir las librerías que necesitamos. En el ejemplo en la figura \@ref(fig:rstudioPaquetes) se va a instalar la libreria de Shiny, que es la que usarmes en el presente libro.
 
-![Figura 1.3: Administrador de instlacion de packetes de RStudio](imagenes/1.3_InstallPackages.png)
 
-## Proyecto en RStudio
+```{r rstudioPaquetes, echo=FALSE, out.width = '50%', fig.align = 'center', fig.cap = 'Administrador de instalación de paqueetes de RStudio.'}
+knitr::include_graphics("imagenes/1.3_InstallPackages.png")
+```
+
+## Proyectos en RStudio
 
 Una de los aspectos más útiles que a mi pareces tiene RStudio son los _Proyectos_ (Project en inglés). Esto es un conjutos de
 archivos, datos, variables, que quedan autocontenidos en el proyecto y hacen más fácil su administración y uso. 
@@ -75,9 +94,11 @@ Cada vez que ud. inicia el trabajo en un nuevo tema, tópico o proyecto, es una 
 
 Uno da los aspectos mas útiles que tiene la creación de un proyecto es que deja el directorio de trabajo (equivalente a
 a la funcion _setwd_) relativo a donde fue creado el proyecto. De esta forma se puede ahorrar escribir esos path largos antes
-de leer/escribir cada archivo. Además, los archivos de código que se generen en el proyecto, estarán siempre disponibles para consultarlos en cualquier momento que el usuario así lo desee. Para crear un proyecto, vamos a la pestaña superior derecha de Rstudio y damos clic en crear un proyecto (fig. 1.4).
+de leer/escribir cada archivo. Además, los archivos de código que se generen en el proyecto, estarán siempre disponibles para consultarlos en cualquier momento que el usuario así lo desee. Para crear un proyecto, vamos a la pestaña superior derecha de Rstudio y damos clic en crear un proyecto (fig. \@ref(fig:rstudioNewProject)).
 
-![Figura 1.4: Menú desplegable para la creación de un nuevo proyecto de RStudio.](imagenes/1.4_NewProject.png)
+```{r rstudioNewProject, echo=FALSE, out.width = '80%', fig.align = 'center', fig.cap = 'Menú desplegable para la creación de un nuevo proyecto de RStudio.'}
+knitr::include_graphics("imagenes/1.4_NewProject.png")
+```
 
 ## Editor de código
 
