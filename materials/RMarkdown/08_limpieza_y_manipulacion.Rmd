@@ -4,40 +4,38 @@
 
 En este capítulo veremos:
 
-- Que es la estrategia Divida-Aplique-Combine y como se utiliza con datos
+- Que es la estrategia Divida-Aplique-Combine y como se utiliza 
 - La diferencia entre los formatos de tablas anchas vs. largas y como convertir de un formato al otro
 - Como usar `dplyr` y `tidyr` para limpiar y manipular datos para análisis
 - Como unir múltiples `data.frame` usando `dplyr`
 
 ## Introducción
 
-Es muy raro que recibamos datos para trabajar que estén en el formato que los necesitamos para hacer 
-los análisis. Ocurre mucho que algunos paquetes de R requieren los datos en un formato, mientras otros
-paquetes lo requieren en otro. De esta forma, para ser analistas efectivos, debemos tener buenas herramientas
-para re-formatear datos a las necesidades actuales del trabajo a realizar. Los paquetes de R `dplyr` y
-`tidyr` entregan funciones muy completas y potentes para realizar este formateo en forma 
-rápida y eficiente. Aprender a usar estas herramientas lo harán significativamente más eficiente.
+Es muy raro que recibamos datos en un formato que nos permita trabajar o hacer los análisis, además es
+común que algunos paquetes de R requieran los datos en un formato, mientras otros paquetes los 
+requieren en otro. Es por esto, que para hacer nuestro trabajo en forma eficiente, es necesario que 
+podamos re-formatear los datos de acuerdo a las necesaidades del trabajo a realizar. Los paquetes de 
+R `dplyr` y `tidyr` entregan funciones muy completas, útiles y potentes para realizar estos cambios
+de formato. 
 
 Los análisis toman muchas formas, pero generalmente se pueden clasificar en lo que se conoce como la 
 estrategia Divida-Aplique-Combine (Split-Apply-Combine).
 Esta estrategia sigue un set de pasos típicos:
 
-- **Divida**: Dividir los datos en grupos lógicos (ej. área, stock, año)
-- **Aplique:** Cálculo de estadísticas resúmenes para cada grupo (ej. promedio del largo total por año)
-- **Combine:** Combinación de los grupos en una tabla única
+- **Divida**: Dividir los datos en grupos lógicos (ej. área, stock, año).
+- **Aplique:** Cálcular las estadísticas resúmenes para cada grupo (ej. promedio del largo total por año).
+- **Combine:** Combinar los grupos en una tabla única.
 
 ```{r splitApply, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Diagrama de la estragegia divida, aplique y combine.'}
 knitr::include_graphics("images/8.1_split-apply-combine-diagram.png")
 ```
 
-Como se muestra mas arriba (Figura \@ref(fig:splitApply), la tabla original se dividió en grupos
-anuales (`year`), se calculó el largo promedio para cada grupo y finalmente se combinó en una
-tabla única que incluye los promedios anuales en ella.
+Como se muestra en la fFigura \@ref(fig:splitApply), la tabla original se dividió en grupos anuales 
+(`year`) para calcular el largo promedio de cada grupo y posteriormente combinar en una tabla única
+que incluye los promedios anuales.
 
-`dplyr` entrega una forma rápida y potente para expresar eso.
-Veamos un ejemplo simple de como esto se puede hacer:
-
-Asumiendo que nuestros datos de largo están cargados en un `data.frame` llamado `length_data`:
+`dplyr` permite hacer eso en forma muy simple. Asumiendo que nuestros datos de largo están cargados
+en un `data.frame` llamado `length_data`, esto se puede hacer de la siguiente forma:
 
 | year| length_cm|
 |----:|---------:|
@@ -52,7 +50,6 @@ Asumiendo que nuestros datos de largo están cargados en un `data.frame` llamado
 | 1992|  5.905247|
 | 1992|  5.098922|
 
-Podemos hacer el cálculo usando `dplyr` así:
 
 ```{r, eval = FALSE}
 length_data %>% 
@@ -60,9 +57,8 @@ length_data %>%
   summarise(mean_length_cm = mean(length_cm))
 ```
 
-Otra actividad muy común que es necesario hacer es cambiar la forma de las tablas con 
-datos ("_reshape_"). Vamos un ejemplo de una tabla en el formato, que de ahora en adelante
-llamaremos, "_ancho_":
+Es muy común también que se deba cambiar el formato de las tablas de datos ("_reshape_"). Veamos un
+ejemplo de una tabla en el formato, que de ahora en adelante llamaremos, "_ancho_":
 
 
 | site   | 1990 | 1991 | ... | 1993 |
@@ -72,26 +68,26 @@ llamaremos, "_ancho_":
 | ...    | ...  | ...  | ... | ...  |
 | dredge | 100  | 118  | ... | 112  |
 
-Es muy probable que usted esté familiarizado con datos en este tipo de formato, donde los valores de
-las variables observadas están repartidos en más de una columna (en este caso, columnas para cada 
-año). Otra forma de describir esto es que existe más de una medición por cada fila. Este formato
-archivo funciona muy bien para la entrada de datos y a veces para algunos análisis, pero se hace
-rápidamente inútil en R. Por ejemplo, ¿cómo puede ajustar un modelo con el año como una variable
+Es muy probable que usted esté familiarizado con datos en este formato, donde los valores de las 
+variables observadas están repartidos en más de una columna (en este caso, columnas para cada año).
+Otra forma de describir esto es que existe más de una medición por cada fila. Este formato funciona
+muy bien para la entrada de datos (en excel) y a veces para algunos análisis, pero se hace rápidamente
+inútil para usarlos en R. Por ejemplo, ¿cómo puede ajustar un modelo con el año como una variable 
 predictora? en un mundo ideal deberíamos poder ejecutar la siguiente línea de código:
 
 ```{r eval = FALSE}
 lm(length ~ year)
 ```
 
-Pero esto no va a funcionar en una tabla con formado ancho, `lm` necesita `length` y 
+Esto no va a funcionar en una tabla con formado ancho ya que la función `lm` necesita `length` y 
 `year` como columnas de la tabla para funcionar.
 
-¿Cómo podemos hacer un gráfico para cada año?
-Se puede llamar a la función `plot` una vez para cada año, pero esto es tedioso, especialmente 
-si hay muchos años en los datos, además se hace difícil mantener el código y agregar más años 
-a nuestro set de datos-.
+Otra situación son los gráficos, por ejmeplo ¿Cómo podemos hacer un gráfico para cada año? Para esto es 
+posible llamar la función `plot` una vez para cada año, sin embargo esto esto resulta tedioso,
+especialmente si hay muchos años en los datos, es difícil mantener el código y agregar más años al set
+de datos.
 
-El paquete `tidyr` nos permite rápidamente cambiar entre formato ancho y formato largo utilizando
+El paquete `tidyr` tiene funciones que nos permiten cambiar entre el formato ancho y largo utilizando
 la función `gather`:
 
 ```{r, eval=FALSE}
@@ -127,12 +123,10 @@ y `tidyr`:
 
 ## Configuración (Setup)
 
-Vamos a comenzar con las funciones más comunes del paquete `dplyr`.
-Para demostrar como se usan, vamos a trabajar con una versión de un set de datos ya 
-pre-ordenado del Departamento de Pesca y Caza de Alaska (ADF&G) que contiene los datos 
-de capturas comerciales de 1878 a 1997.
-El set de datos y su referencia a la fuente original se puede encontrar en el siguiente 
-archivo público: https://knb.ecoinformatics.org/#view/df35b.304.2.
+Vamos a comenzar con las funciones más comunes del paquete `dplyr`. Para demostrar como se usan,
+vamos a trabajar con una versión de un set de datos ya pre-ordenado del Departamento de Pesca y
+Caza de Alaska (ADF&G) que contiene los datos de capturas comerciales de 1878 a 1997 (@byerly). El set de
+datos y su referencia a la fuente original se puede encontrar en el siguiente archivo público: https://knb.ecoinformatics.org/#view/df35b.304.2.
 
 Primero, vamos a leer los paquetes `dplyr` y `tidyr`:
 
