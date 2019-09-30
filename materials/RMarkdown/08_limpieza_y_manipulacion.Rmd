@@ -11,16 +11,14 @@ En este capítulo veremos:
 
 ## Introducción
 
-Es muy raro que recibamos datos en un formato que nos permita trabajar o hacer los análisis, además es
-común que algunos paquetes de R requieran los datos en un formato, mientras otros paquetes los 
-requieren en otro. Es por esto, que para hacer nuestro trabajo en forma eficiente, es necesario que 
-podamos re-formatear los datos de acuerdo a las necesaidades del trabajo a realizar. Los paquetes de 
-R `dplyr` y `tidyr` entregan funciones muy completas, útiles y potentes para realizar estos cambios
-de formato. 
+Es muy raro que recibamos datos en un formato que nos permita trabajar o hacer los análisis, además es común que algunos 
+paquetes de R requieran los datos en un formato, mientras otros paquetes los requieren en otro. Es por esto, que para
+hacer nuestro trabajo en forma eficiente, es necesario que podamos re-formatear los datos de acuerdo a las necesidades
+del trabajo a realizar. Los paquetes de R `dplyr` y `tidyr` entregan funciones muy completas, útiles y potentes para
+realizar estos cambios de formato. 
 
-Los análisis toman muchas formas, pero generalmente se pueden clasificar en lo que se conoce como la 
-estrategia Divida-Aplique-Combine (Split-Apply-Combine).
-Esta estrategia sigue un set de pasos típicos:
+Los análisis toman muchas formas, pero generalmente se pueden clasificar en lo que se conoce como la estrategia 
+Divida-Aplique-Combine (Split-Apply-Combine). Esta estrategia sigue un set de pasos típicos:
 
 - **Divida**: Dividir los datos en grupos lógicos (ej. área, stock, año).
 - **Aplique:** Cálcular las estadísticas resúmenes para cada grupo (ej. promedio del largo total por año).
@@ -30,12 +28,11 @@ Esta estrategia sigue un set de pasos típicos:
 knitr::include_graphics("images/8.1_split-apply-combine-diagram.png")
 ```
 
-Como se muestra en la fFigura \@ref(fig:splitApply), la tabla original se dividió en grupos anuales 
-(`year`) para calcular el largo promedio de cada grupo y posteriormente combinar en una tabla única
-que incluye los promedios anuales.
+Como se muestra en la figura \@ref(fig:splitApply), la tabla original se dividió en grupos anuales (`year`) para calcular
+el largo promedio de cada grupo y posteriormente combinar en una tabla única que incluye los promedios anuales.
 
-`dplyr` permite hacer eso en forma muy simple. Asumiendo que nuestros datos de largo están cargados
-en un `data.frame` llamado `length_data`, esto se puede hacer de la siguiente forma:
+`dplyr` permite hacer eso en forma muy simple. Asumiendo que nuestros datos de largo están cargados en un `data.frame`
+llamado `length_data`, esto se puede hacer de la siguiente forma:
 
 | year| length_cm|
 |----:|---------:|
@@ -57,8 +54,8 @@ length_data %>%
   summarise(mean_length_cm = mean(length_cm))
 ```
 
-Es muy común también que se deba cambiar el formato de las tablas de datos ("_reshape_"). Veamos un
-ejemplo de una tabla en el formato, que de ahora en adelante llamaremos, "_ancho_":
+Es muy común también que se deba cambiar el formato de las tablas de datos ("_reshape_"). Veamos un ejemplo de una tabla en
+el formato, que de ahora en adelante llamaremos, "_ancho_":
 
 
 | site   | 1990 | 1991 | ... | 1993 |
@@ -123,19 +120,19 @@ y `tidyr`:
 
 ## Configuración (Setup)
 
-Vamos a comenzar con las funciones más comunes del paquete `dplyr`. Para demostrar como se usan,
-vamos a trabajar con una versión de un set de datos ya pre-ordenado del Departamento de Pesca y
-Caza de Alaska (ADF&G) que contiene los datos de capturas comerciales de 1878 a 1997 (@byerly). El set de
-datos y su referencia a la fuente original se puede encontrar en el siguiente archivo público: https://knb.ecoinformatics.org/#view/df35b.304.2.
+Vamos a comenzar con las funciones más comunes del paquete `dplyr`. Para demostrar como se usan, vamos a trabajar con una
+versión de un set de datos ya pre-ordenado del Departamento de Pesca y Caza de Alaska (ADF&G) que contiene los datos de 
+capturas comerciales de 1878 a 1997 (@byerly). El set de datos y su referencia a la fuente original se puede encontrar 
+en el siguiente archivo público: https://knb.ecoinformatics.org/#view/df35b.304.2.
 
-Primero, vamos a leer los paquetes `dplyr` y `tidyr`:
+Primero, vamos a cargar los paquetes `dplyr` y `tidyr`:
 
 ```{r, message = F, warning = F}
 library(dplyr)
 library(tidyr)
 ```
 
-Ahora tenemos que lees los datos y darle una mirada:
+Ahora se leen los datos y les daremos una mirada:
 
 ```{r, cache=TRUE}
 catch_original <- read.csv(url("https://knb.ecoinformatics.org/knb/d1/mn/v2/object/df35b.302.1", method = "libcurl"),
@@ -146,20 +143,20 @@ head(catch_original)
 Nota: para descargar los datos, copié el URL desde el botón de descarga (Download) en 
 https://knb.ecoinformatics.org/#view/df35b.304.2
 
-Este dataset está relativamente limpio y es de fácil interpretación.
-Si bien estos datos están limpios, el formato de la tabla hace que sea difícil usarlos 
-para alguno de los análisis que debemos realizar. Como primer paso tenemos que arreglar eso.
+Este dataset está relativamente limpio y es de fácil interpretación. Si bien estos datos están limpios, el formato de la 
+tabla hace que sea difícil usarlos para alguno de los análisis que debemos realizar. Como primer paso tenemos que arreglar
+eso.
 
 ## Acerca del operador de pipe (tubo; `%>%`)
 
-Antes de comenzar a aprender sobre `tidyr` y `dplyr` es necesarios que explique de que se trata el `%>%`.
+Antes de comenzar a aprender sobre `tidyr` y `dplyr` es necesarios que se explique de que se trata el `%>%`.
 
-Tanto el paquete `tidyr` como `dplyr` usa el operador `%>%`. Este operador es una forma muy 
-eficiente para encadenar operaciones. Esta tubería toma la salida de una operación anterior y la
-entrega como una entrada a la siguiente.
+Tanto el paquete `tidyr` como `dplyr` usa el operador `%>%`. Este operador es una forma muy eficiente para encadenar 
+operaciones. Esta "tubería" (como se le conoce en inglés) toma la salida de una operación anterior y la entrega como 
+una entrada a la siguiente.
 
-Digamos que quiere filtrar `filter` unas filas y seleccionar `select` una columnas de la misma tabla
-de datos. Para esto se puede usar
+Digamos que quiere filtrar usando la función `filter` unas filas y seleccionar usando `select` una columna de la misma 
+tabla de datos. Para esto se puede usar
 
 ```
 df_filtered <- filter(df, ...)
@@ -174,28 +171,26 @@ df_cleaned <- df %>%
               select(...)
 ```
 
-Si usted piensa en el operador de asignación (`<-`) como "recibe", entonces el operador _pipe_
-se puede leer como "entonces".
+Si usted piensa en el operador de asignación (`<-`) como "recibe", entonces el operador _pipe_ se puede leer como "entonces".
 
-Entonces, el fragmento de código anterior se puede traducir como:
+De esta forma, el fragmento de código anterior se puede traducir como:
 
-El `data.frame` limpio recibe los datos originales, _entonces_ realiza un filtro (de los datos 
-originales) y _entonces_ selecciona (sobre los datos filtrados).
+El `data.frame` limpio recibe los datos originales, _entonces_ realiza un filtro (de los datos  originales) y _entonces_ 
+selecciona (sobre los datos filtrados).
 
-El beneficio de usar _pipes_ es que no es necesario seguir el rastro (o de sobre-escribir) de 
-set de datos intermedios. El costo es que se hace un poco mas difícil de explicar el razonamiento
-de cada paso, especialmente cuando existen muchas operaciones encadenadas. Lo ideal es tener un 
-balance entre escribir códigos eficientes (operaciones encadenadas) y que sean legibles e 
-interpretables, tanta para uno en el futuro, como para que otros puedan entender la lógica de
-que y por qué se hizo lo que se hizo.
+El beneficio de usar _pipes_ es que no es necesario seguir el rastro (o de sobre-escribir) de sets de datos intermedios. 
+El costo es que se hace un poco mas difícil de explicar el razonamiento de cada paso, especialmente cuando existen muchas
+operaciones encadenadas. Lo ideal es tener un balance entre escribir códigos eficientes (operaciones encadenadas) y que
+sean legibles e interpretables, para entender la lógica de que y por qué se hizo lo que se hizo.
 
 RStudio tiene una combinación de teclas para `%>%` : Ctrl + Shift + M (Windows), Cmd + Shift + M (Mac).
 
-## Seleccionar/remover columnas: `select()`
+## Funciones 
 
-El primer problema con los datos son las columnas `All` y `notesRegCode`.
-Vamos a seleccionar sólo las columnas con las que queremos trabajar y las vamos a asignar 
-a la variable llamada `catch_data`.
+### Seleccionar/remover columnas: `select()`
+
+El primer problema con los datos con los que vamos a trabajar son las columnas `All` y `notesRegCode`. Vamos a seleccionar
+sólo las columnas que necesitamos y las asignaremos a la variable llamada `catch_data`.
 
 ```{r}
 catch_data <- catch_original %>% 
@@ -206,8 +201,8 @@ head(catch_data)
 
 Esto está mucho mejor.
 
-`select` nos permite indicar las columnas que **no** queremos, para esto solo tenemos que
-pasar las columnas (sin comillas) con un signo menos (-):
+`select` nos permite indicar las columnas que **no** queremos, para esto sólo tenemos que pasar los nombres de las columnas
+(sin comillas) con un signo menos (-):
 
 ```{r}
 catch_data <- catch_original %>% 
@@ -216,7 +211,7 @@ catch_data <- catch_original %>%
 head(catch_data)
 ```
 
-## Cambiar el formato: `gather()` y `spread()`
+### Cambiar el formato: `gather()` y `spread()`
 
 El siguiente punto problema con los datos es que están en un formato ancho y que para
 trabajar lo necesitamos en uno largo.
@@ -248,7 +243,7 @@ catch_wide <- catch_long %>%
 head(catch_wide)
 ```
 
-## Renombrando columnas con `rename()`
+### Renombrando columnas con `rename()`
 
 Si le da una mirada a los datos, va a notar que existen valores en la columna `catch`
 que son muy pequeños (se suponen que son valores de capturas anuales). Si vemos los
@@ -265,7 +260,7 @@ catch_clean <- catch_long %>%
 head(catch_clean)
 ```
 
-## Agregando columnas: `mutate()`
+### Agregando columnas: `mutate()`
 
 Ahora vamos a crear una columna llamada `catch` con individuos como unidad (en vez de 
 miles de pescados). Note que hemos agregado, a la expresión que creamos mas arriba, la 
@@ -374,7 +369,7 @@ head(catch_clean)
 
 Ahora estamos listos para comenzar con los análisis de los datos.
 
-## `group_by` y `summarise`
+### `group_by` y `summarise`
 
 Como se dijo en la introducción del presente capítulo, `dplyr` nos deja utilizar la estrategia 
 Divida-Aplique-Combine, que se ejemplifica con el uso de las funciones `group_by()` y `summarise()`:
@@ -401,7 +396,7 @@ n_region <- catch_clean %>%
 head(n_region)
 ```
 
-## Filtrando columnas: `filter()`
+### Filtrando columnas: `filter()`
 
 `filter()` es un verbo (en inglés) que se usar para filtrar las filas de un `data.frame` que cumplen
 con alguna condición. Es similar a la función `subset()` del R base.
@@ -418,7 +413,7 @@ head(SSE_catch)
 - **Actividad:** Filtre las capturas que sean mayores a 1 millón de pescados.
 - **Actividad:** Filtre solo los salmones Chinook en la Región SSE.
 
-## Ordenando sus datos: `arrange()`
+### Ordenando sus datos: `arrange()`
 
 `arrange()` es como se ordenan las filas de un `data.frame`.
 En mi experiencia, `arrange()` se usa comúnmente en dos casos:
@@ -449,7 +444,7 @@ mean_region <- catch_clean %>%
 head(mean_region)
 ```
 
-## Joins en dplyr
+### Joins en dplyr
 
 Ahora que ya somos expertos en manipular un `data.frame` único ¿Qué podemos hacer?
 La respuesta es obvia, manipular **más de un** `data.frame`.
@@ -518,7 +513,7 @@ Ahora las capturas tienen la información auxiliar con la definición de las reg
 Nota: `dplyr` entrega un set completo de uniones: _inner_, _left_, _right_, _full_, _semi_, 
 _anti_ y no solo _left_join_.
 
-## `separate()` y `unite()`
+### `separate()` y `unite()`
 
 `separate()` y su complemento `unite()`, nos permiten separar fácilmente una columna en varias 
 (o varias en una sola). Esto puede ser realmente útil cuando tenemos una columna con fechas y 

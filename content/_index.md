@@ -18,6 +18,8 @@ Los tallesres están orientados a investigadores, evaluadores de stocks, estudia
 
 Comentarios y sugerencias son bienvenidos y me ayudarán a mejorar este proyecto de curso.
 
+Este [libro](https://es.r4ds.hadley.nz/) es un muy buen material para ponerse al día antes de este curso sobre investigación reproducible.
+
 
 ### Clase: Introducción a aplicaciones web interactivas
 
@@ -28,3 +30,5 @@ El curso cubre tópicos sobre manipulación de datos, análisis básicos y visua
 Este taller esta orientado a investigadores, evaluadores de stocks, estudiantes y la comunidad IFOP en general, *SIN CONOCIMIENTOS PREVIOS* de Shiny.
 
 Comentarios y sugerencias son bienvenidos y me ayudarán a mejorar este proyecto de curso.
+
+Este [libro](https://es.r4ds.hadley.nz/) es un muy buen material para ponerse al día antes de este curso sobre aplicaciones shiny.
