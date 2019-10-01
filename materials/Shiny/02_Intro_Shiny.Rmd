@@ -5,26 +5,31 @@ En la página principal del paquete `Shiny` se puede leer "*Interactúa.* *Anali
 fresca e interactiva para contar tu historia de datos con Shiny. Deja a los usuarios interactuar con tus datos y
 análisis. Y hazlo todo con R".
 
-  ![Figura 2.1: Imagen de la página principal de shiny.rstudio.com.](imagenes/2.1_Shiny_Main.jpg)
+```{r shinyWebsite, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Imagen de la página principal de shiny.rstudio.com.'}
+knitr::include_graphics("imagenes/2.1_Shiny_Main.jpg")
+```
 
-El principal atractivo del paquete `Shiny` que es hace muy fácil construir aplicaciones web interactivas, utilizando
-código R en forma simple y directa. Estas aplicaciones se pueden hospedar en servidores web en forma independiente
-o bien como parte de documentos generados con RMarkdown (esa es otra clase en la que estoy trabajando).
+El principal atractivo del paquete `Shiny` que es hace muy fácil construir aplicaciones web interactivas, utilizando código
+R en forma simple y directa. Estas aplicaciones se pueden hospedar en servidores web en forma independiente o bien como 
+parte de documentos generados con RMarkdown [clase sobre investigación reproducible con RMarkdown](https://cornejotux.github.io/claseRMarkdown/materials/RMarkdown/).
 
-Algunos ejemplos que yo he desarrollado son:
+Algunos ejemplos de aplicacion shiny que he creado:
 
 1. Períodos de retorno de salmones de Alaska [Aquí](https://cornejo.shinyapps.io/ggjoy_Escapement/){target="_blank"} 
 1. Distribución de frecuencias de talla y edad de salmones de Alaska [Aquí](https://cornejo.shinyapps.io/shiny_asl-AgeLength/){target="_blank"} 
-1. Capturas artesanales en Chile (Aun en desarrollo) [Aquí](https://cornejo.shinyapps.io/CapturasArtesanales/){target="_blank"} 
+1. Capturas artesanales en Chile (Aun en desarrollo) [Aquí](https://cornejo.shinyapps.io/CapturasArtesanales/){target="_blank"}
+1. Tablas de resumenes mensuales [Aquí](https://cornejo.shinyapps.io/shinyTablasMensuales/)
 
-Existen muchas posibilidades y la [galeria](https://shiny.rstudio.com/gallery/see-more.html){target="_blank"}  en la página de Shiny es la mejor fuente de inspiración posible.
+Existen muchas posibilidades, navege por esta [galeria](https://shiny.rstudio.com/gallery/see-more.html){target="_blank"}
+de aplicaciones Shiny para buscar inspiración.
 
-En resumen, Shiny combina el poder computacional y simpleza de R con las capacidades interactivas de las páginas web modernas.
+En resumen, Shiny combina el poder computacional y simpleza de R, con las capacidades interactivas de las páginas web 
+modernas.
 
 
 _**Reconocimiento**_: Esta libro esta desarrollado utilizando blogdown y bookdown. Sigue el estilo del 
- trabajo realizado para los talleres del [SASAP](https://alaskasalmonandpeople.org/){target="_blank"}  y 
- [Arctic Data  Center](https://arcticdata.io/){target="_blank"}  de [NCEAS](https://www.nceas.ucsb.edu/){target="_blank"} . 
+ trabajo realizado para los talleres de [SASAP](https://alaskasalmonandpeople.org/){target="_blank"}  y 
+ [Arctic Data  Center](https://arcticdata.io/){target="_blank"} de [NCEAS](https://www.nceas.ucsb.edu/){target="_blank"}. 
  Aquí traduzco, compilo e integro materiales de múltiples fuentes, principalmente la página 
  [https://shiny.rstudio.com/](https://shiny.rstudio.com/){target="_blank"}[@shinyL01].
  
@@ -35,25 +40,27 @@ En este capítulo veremos:
 
 - ¿Qué es Shiny?
 - Que se puede hacer con Shiny.
-- Instalar Shiny en su computador.
-- Crear su primera aplicación Shiny.
-- Compartir su aplicación en la red.
+- Instalación de lsa librerías Shiny en su computador.
+- Creación de su primera aplicación Shiny.
+- Como compartir su aplicación en la red.
 
 ## Bienvenido a Shiny
 
-Como ya se dijo, Shiny es un paquete de R que hacer muy fácil la implementación de aplicaciones web interactivas
-(apps) utilizando el lenguaje al que estamos acostumbrados en R. En esta sección vamos a comenzar a mostrar en que consisten estas aplicaciones, construiremos una y la pondremos en la red para que otras personas puedan verla y jugar con ella.
+Como ya se dijo, Shiny es un paquete de R que hace muy fácil la implementación de aplicaciones web interactivas (apps) 
+utilizando el lenguaje al que estamos acostumbrados en R. En esta sección vamos a comenzar a mostrar en que consisten
+estas aplicaciones, construiremos una y la pondremos en la red para que otras personas puedan verla y jugar con ella.
 
-Si por alguna razón aun no instalar el paquete **Shiny**, abra RStudio, conéctese a Internet y corra el código
+Si por alguna razón aun no ha instalado el paquete **Shiny**, abra RStudio, conéctese a Internet y corra el código
 
 ```
 install.packages("shiny")
 ```
 
-Ejemplo de una aplicación básica.
+La figura \@ref(fig:shinyBasicApp) presenta un ejemplo de una aplicación básica.
 
- ![Figura 2.2: Shiny Hello World app.](imagenes/2.2_hello.png)
- 
+```{r shinyBasicApp, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Shiny Hello World app.'}
+knitr::include_graphics("imagenes/2.2_hello.png")
+```
 
 El paquete Shiny contiene 11 ejemplos pre-construidos que demuestran como trabaja Shiny y son auto-contenidos.
 

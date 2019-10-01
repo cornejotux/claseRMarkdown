@@ -82,7 +82,7 @@ En el panel inferior derecho de la pantalla de Rstudio se encuentra la pestaña 
 en Install, esto abre una ventana donde se puede escribir las librerías que necesitamos. En el ejemplo en la figura
 \@ref(fig:rstudioPaquetes) se va a instalar la libreria `Shiny`, que es la que usaremos en esta clase.
 
-```{r rstudioPaquetes, echo=FALSE, out.width = '50%', fig.align = 'center', fig.cap = 'Administrador de instalación de paqueetes de RStudio.'}
+```{r rstudioPaquetes, echo=FALSE, out.width = '80%', fig.align = 'center', fig.cap = 'Administrador de instalación de paqueetes de RStudio.'}
 knitr::include_graphics("imagenes/1.3_InstallPackages.png")
 ```
 
@@ -113,7 +113,7 @@ realizar análisis estadísticos, crear gráficos, tablas, leer o exportar datos
 
 Nose que en IDE RStudio se puede trabajar con muchos otros lenguajes y convenciones (Fig. \@ref(fig:rstudioNewFile)).
 
-```{r rstudioNewFile, echo=FALSE, out.width = '80%', fig.align = 'center', fig.cap = 'Creación de un archivo nuevo en RStudio.'}
+```{r rstudioNewFile, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Creación de un archivo nuevo en RStudio.'}
 knitr::include_graphics("imagenes/1.5_NewFile.png")
 ```
 
