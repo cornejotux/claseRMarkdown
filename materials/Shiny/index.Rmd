@@ -75,31 +75,33 @@ Entre las muchas ventajas que tiene trabajar con _RStudio_ podemos destacar:
 
 ## Instalación de packetes en RStudio
 
-Para instalar un nuevo paquete de R se pueden descargar desde CRAN utilizando la línea de comandos (como se hace en R)
+Para instalar un paquete o librería nueva de R se puede descargar desde CRAN utilizando la línea de comandos (como se hace en R)
 o utilizando la interfase gráfica que entrega RStudio.
 
 En el panel inferior derecho de la pantalla de Rstudio se encuentra la pestaña _Packages_, se da clic en esa pestaña y luego 
-en Install, esto abre una ventana donde se puede escribir las librerías que necesitamos. En el ejemplo en la figura
+en Install, esto abre una ventana donde se pueden escribir las librerías que necesitamos. En el ejemplo en la figura
 \@ref(fig:rstudioPaquetes) se va a instalar la libreria `Shiny`, que es la que usaremos en esta clase.
 
-```{r rstudioPaquetes, echo=FALSE, out.width = '80%', fig.align = 'center', fig.cap = 'Administrador de instalación de paqueetes de RStudio.'}
+```{r rstudioPaquetes, echo=FALSE, out.width = '50%', fig.align = 'center', fig.cap = 'Administrador de instalación de paquetes de RStudio.'}
 knitr::include_graphics("imagenes/1.3_InstallPackages.png")
 ```
 
 ## Proyectos de RStudio
 
-Una de los aspectos más útiles que a mi parecer tiene RStudio son los _Proyectos_ (Project en inglés). Esto es un conjuto de
-archivos, datos, variables, que quedan autocontenidos (en el proyecto) y hacen más fácil su administración y uso. 
+Uno de los aspectos más útiles que tiene RStudio son los _Proyectos_ (Project en inglés). Esto es un conjuto de
+archivos, datos y variables, que quedan autocontenidos (en el proyecto) y hacen más fácil su administración y uso. 
 
 Cada vez que usted inicia el trabajo en un nuevo tema, tópico o proyecto, es una muy buena práctica comenzar con la 
-creación de un nuevo proyecto, donde trabajará con sus archivos de código. Estos códigos son los que luego se usan para 
-cargar datos, crear gráficos, producir tablas, exportar datos, etc.
+creación de un nuevo proyecto donde trabajará con sus archivos de código. Estos archivos con códigos son los que luego
+se usan para cargar datos, crear gráficos, producir tablas, exportar datos, etc.
 
-Uno de los aspectos más útiles que tiene la creación de un proyecto es que deja el directorio de trabajo (equivalente a
-a la funcion _setwd_) relativo a donde fue creado el proyecto. De esta forma, se puede ahorrar escribir esos path largos
-antes de leer/escribir cada archivo. Además, los archivos de código que se generen en el proyecto, estarán siempre 
-disponibles para consultarlos en cualquier momento que el usuario así lo desee. Para crear un proyecto, vamos a la pestaña
-superior derecha de Rstudio y damos clic en crear un proyecto (fig. \@ref(fig:rstudioNewProject)).
+Un proyecto define el directorio de trabajo (equivalente a a la funcion _setwd_) relativo a donde fue creado el proyecto.
+De esta forma, se puede ahorrar escribir esos path largos antes de leer/escribir cada archivo. Además, los archivos de 
+código que se generen en el proyecto, estarán siempre disponibles para consultarlos en cualquier momento que el usuario
+así lo desee. 
+
+Para crear un proyecto, vamos a la pestaña superior derecha de Rstudio y damos clic en crear un proyecto (fig.
+\@ref(fig:rstudioNewProject)).
 
 ```{r rstudioNewProject, echo=FALSE, out.width = '80%', fig.align = 'center', fig.cap = 'Menú desplegable para la creación de un nuevo proyecto de RStudio.'}
 knitr::include_graphics("imagenes/1.4_NewProject.png")
@@ -109,9 +111,9 @@ knitr::include_graphics("imagenes/1.4_NewProject.png")
 
 Para iniciar el editor de texto, donde vamos a escribir el código de nuestra aplicación Shiny más adelante, o
 realizar análisis estadísticos, crear gráficos, tablas, leer o exportar datos, se debe ir a Archivo (File) -> Nuevo Archivo
-(New File) -> R Script (RScrit). 
+(New File) -> R Script (RScript). 
 
-Nose que en IDE RStudio se puede trabajar con muchos otros lenguajes y convenciones (Fig. \@ref(fig:rstudioNewFile)).
+Note que en IDE RStudio se puede trabajar con muchos otros lenguajes y convenciones (Fig. \@ref(fig:rstudioNewFile)).
 
 ```{r rstudioNewFile, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Creación de un archivo nuevo en RStudio.'}
 knitr::include_graphics("imagenes/1.5_NewFile.png")
@@ -123,7 +125,7 @@ knitr::include_graphics("imagenes/1.5_NewFile.png")
 - Dentro de este proyecto cree un nuevo archivo que se llame _test.R_.
 - Escriba un código para definir una matriz de 4x4 con datos al azar.
 - Ejecute este código línea por línea.
-- Guarde estos datos en un directio llamado datos.
+- Guarde estos datos en un directorio llamado datos.
 - Vea donde fueron creados estos datos utilizando el explorador de archivos de RStudio.
 - Revise el historial de RStudio
 
