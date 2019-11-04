@@ -254,8 +254,9 @@ la figura \@ref(fig:shinyBasicAppMod).
 knitr::include_graphics("imagenes/2.3_MiAplicacion_modificada.png")
 ```
 
-Por defecto, las aplicaciones Shiny se muestran en un modo *normal*, como la imagen que se muestra en \@ref(fig:shinyBasicAppMod).
-Sin embargo es posible ejecutar las aplicaciones en un panel junto al del código, para esto hay que definir “showcase mode”.
+Por defecto, las aplicaciones Shiny se muestran en un modo *normal*, como la imagen que se muestra en la figura 
+\@ref(fig:shinyBasicAppMod). Sin embargo es posible ejecutar las aplicaciones en un panel junto al del código, para esto
+hay que definir “showcase mode”.
 
 Si quieres utilizar el mode *showcase*, hay que incluir el argumendo *display.mode* indicando que sea showcase, de esta forma 
 la linea de código queda asi `runApp("MiAplicacion", display.mode = "showcase")`.

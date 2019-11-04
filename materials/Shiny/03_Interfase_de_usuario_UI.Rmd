@@ -1,21 +1,22 @@
 
 # Interfase de Usuario: Como construirla
 
-Ahora que ya entiende la estructura de una Shiny app, es tiempo de construir la primera desde cero.
-
+Ahora que ya entiende la estructura de una aplicación Shiny, es tiempo de construir la primera desde cero.
 
 ## Objetivos
 
 - Crear una Shiny app desde cero.
-- Entender los principio básico del diseño de la aplicación.
+- Entender los principios básicos del diseño de la aplicación.
 - Aprender y utilizar las diferentes opciones para el formato de texto.
-- Incluir imagenes en la interfase de usuario.
+- Incluir imágenes en la interfase de usuario.
 
-En este capítulo vamos a ver como construir una interfase de usuario para la aplicación. Aprenderá como diseñar la interfase, para luego agregar texto, imágenes y otros elementos HTML.
+En este capítulo vamos a ver como construir una interfase de usuario para la aplicación. Aprenderá como diseñar la 
+interfase, para luego agregar texto, imágenes y otros elementos HTML.
 
 ## Manos a la obra
 
-Usaremos la app `MiAplicacion` del capítulo anterior. Para comenzar abra el archivo `app.R` y modifique el código para que se vea de la siguiente forma:
+Usaremos la app `MiAplicacion` del capítulo anterior. Para comenzar abra el archivo `app.R` y modifique el código
+para que se vea de la siguiente forma:
 
 ```
 library(shiny)
@@ -32,13 +33,20 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-Esto código representa el mínimo posible necesario para crear un Shiny app. El resultado es bastante poco útil, es una aplicación vacía, sin contenido, con un espacio blanco donde debería estar la interfase de usuario y las salidas como tablas o gráficos. Es por esto que es un excelente punto de partida para el trabajo que vamos a realizar en este capítulo.
+Este código representa el mínimo posible necesario para crear un Shiny app. El resultado es bastante poco útil, 
+es una aplicación vacía, sin contenido, con un espacio en blanco donde debería estar la interfase de usuario y las
+salidas como tablas o gráficos. Es por esto que es un excelente punto de partida para el trabajo que vamos a 
+realizar en este capítulo.
 
 ### Diseño (Layout)
 
-Shiny usa la función `fluidPage` para crear el espacio que se ajusta automáticamente las dimensiones de la ventana del navegador del usuario.  Es en esta función donde se introducen los elemento necesarios para diseñar la interfase de usuario.
+Shiny usa la función `fluidPage` para crear el espacio que se ajusta automáticamente a las dimensiones de la ventana
+del navegador del usuario. Es en esta función donde se introducen los elementos necesarios para diseñar la interfase
+de usuario.
 
-Por ejemplo, la función `ui` que se ve abajo, crea una interfase de usuario que tiene un panel con un título (`titlePanel`) y un diseño de barra lateral (`sidebarLayout`); incluye un panel lateral (`sidebarPanel`) y un panel principal (`mainPanel`). Hay que hacer notar que estos elemento son incluidos **dentro** de la función `fluidPage`.
+Por ejemplo, la función `ui` que se ve abajo, crea una interfase de usuario que tiene un panel con un título 
+(`titlePanel`) y un diseño de barra lateral (`sidebarLayout`); incluye un panel lateral (`sidebarPanel`) y un panel
+principal (`mainPanel`). Hay que hacer notar que estos elementos son incluidos **dentro** de la función `fluidPage`.
 
 ```
 ui <- fluidPage(
@@ -49,19 +57,22 @@ ui <- fluidPage(
                )
   )
 ```
-La Shiny app creada con esta interfase de usuario resultante se puede ver la Figura 3.1.
+La Shiny app creada con esta interfase de usuario resultante se puede ver la Figura \@ref(fig:shinyBlank).
 
+```{r shinyBlank, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Interfase de Usuario (UI) limpia y sin contenido..'}
+knitr::include_graphics("imagenes/3.1_Shiny_Clear.png")
+```
 
-![Figura 3.1: Interfase de Usuario (UI) limpia y sin contenido.](imagenes/3.1_Shiny_Clear.png)
-
-`titlePanel` y `sidebarLayout` son dos de los elemento mas populares para agregar a `fluidPage`^[Recuerde que esta es la función que crea el espacio de la UI que se ajusta al tamaño del navegados del usuario.]. Esto crea la Shiny app básica con una barra lateral.
+`titlePanel` y `sidebarLayout` son dos de los elemento más populares para agregar a `fluidPage`^[Recuerde que esta es la función que crea el espacio de la UI que se ajusta al tamaño del navegador del usuario.]. Esto crea la Shiny app básica con una barra lateral.
 
 `sidebarLayout` siempre usa dos argumentos:
 
 - Función `sidebarPanel` que define el espacio para la barra lateral.
 - Función `mainPanel` que define el espacio del panel principal. 
 
-La barra lateral aparecerá por defecto en el lago izquierdo de la aplicación. Esta se puede mover al lado derecho agregando a la función `sidebarLayout` el argumento `position = "right"`. Este código se puede ver a continuación y el resultado en la Figura 3.2.
+La barra lateral aparecerá por defecto en el lado izquierdo de la aplicación. Esta se puede mover al lado derecho 
+agregando a la función `sidebarLayout` el argumento `position = "right"`. Este código se puede ver a continuación 
+y el resultado en la Figura \@ref(fig:shinyRight).
 
 ```
 ui <- fluidPage(
@@ -74,13 +85,16 @@ ui <- fluidPage(
   )
 ```
 
-![Figura 3.2: Interfase de Usuario (UI) limpia y sin contenido, con la barra lateral a la derecha, usando el argumento `position = "right"`.](imagenes/3.2_Shiny_ClearRight.png)
+```{r shinyRight, echo=FALSE, out.width = '100%', fig.align = 'center', fig.cap = 'Interfase de Usuario (UI) limpia y sin contenido, con la barra lateral a la derecha, usando el argumento `position = "right"`.'}
+knitr::include_graphics("imagenes/3.2_Shiny_ClearRight.png")
+```
 
 `titlePanel` y `sidebarLayout` crea un diseño básico para la Shiny app, pero además se puede crear un diseño más avanzado. 
 Para esto es posible usar `navbarPage` para crear en la app una interfase de usuarios multi-páginas que incluye una barra 
 de navegación. Otra opción es usar `fluidRow` y `column` para construir un diseño basado en un sistema de grillas. 
 
-Si ud. quiere aprender más sobre estas opciones avanzadas, puede encontrar la información en en la guía [Shiny Application] Layout(https://shiny.rstudio.com/articles/layout-guide.html). En este libro usaremos `sidebarLayout`.
+Si ud. quiere aprender más sobre estas opciones avanzadas, puede encontrar la información en en la guía 
+[Shiny Application Layout](https://shiny.rstudio.com/articles/layout-guide.html). En este libro usaremos `sidebarLayout`.
 
 ### Contenidos HTML
 
