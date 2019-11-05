@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Introducción a R | Introducción a la Investigación Reproducible con RStudio y RMarkdown</title>
+  <meta name="description" content="4 Introducción a R | Introducción a la Investigación Reproducible con RStudio y RMarkdown" />
+  <meta name="generator" content="bookdown 0.14.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Introducción a R | Introducción a la Investigación Reproducible con RStudio y RMarkdown" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Introducción a R | Introducción a la Investigación Reproducible con RStudio y RMarkdown" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="herramientas-rstudio-gitgithub-configuración-y-motivación.html"/>
+<link rel="next" href="rmarkdown.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.9/datatables.js"></script>
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.19/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RMarkdown IFOP</a></li>
+<li><a href="../">← Página Pricipal</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#la-crisis-de-reproducibilidad"><i class="fa fa-check"></i><b>1.1</b> La crisis de reproducibilidad</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#reconocimientos"><i class="fa fa-check"></i><b>1.2</b> Reconocimientos</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html"><i class="fa fa-check"></i><b>2</b> Investigación reproducible: ¿De qué estamos hablando?</a><ul>
+<li class="chapter" data-level="2.1" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#objetivos"><i class="fa fa-check"></i><b>2.1</b> Objetivos</a></li>
+<li class="chapter" data-level="2.2" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#investigación-reproducible"><i class="fa fa-check"></i><b>2.2</b> Investigación reproducible</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#qué-es-necesario-para-la-reproducibilidad-computacional"><i class="fa fa-check"></i><b>2.2.1</b> ¿Qué es necesario para la reproducibilidad computacional?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#conceptualizando-los-flujos-de-trabajo-workflows"><i class="fa fa-check"></i><b>2.2.2</b> Conceptualizando los flujos de trabajo (workflows)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><i class="fa fa-check"></i><b>3</b> Herramientas: RStudio - Git/GitHub Configuración y Motivación</a><ul>
+<li class="chapter" data-level="3.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#por-que-usar-git"><i class="fa fa-check"></i><b>3.1</b> Por que usar git?</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#el-problema-con-los-nombres-de-archivos"><i class="fa fa-check"></i><b>3.1.1</b> El problema con los nombres de archivos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#revisando-el-ambiente-de-rstudio"><i class="fa fa-check"></i><b>3.2</b> Revisando el ambiente de RStudio</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#versión-de-r"><i class="fa fa-check"></i><b>3.2.1</b> Versión de R</a></li>
+<li class="chapter" data-level="3.2.2" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#versión-de-rstudio"><i class="fa fa-check"></i><b>3.2.2</b> Versión de RStudio</a></li>
+<li class="chapter" data-level="3.2.3" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#instalación-de-paquetes-de-r"><i class="fa fa-check"></i><b>3.2.3</b> Instalación de Paquetes de R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#configurando-git"><i class="fa fa-check"></i><b>3.3</b> Configurando git</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#nota-para-usuarios-de-windows"><i class="fa fa-check"></i><b>3.3.1</b> Nota para Usuarios de Windows</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introducción-a-r.html"><a href="introducción-a-r.html"><i class="fa fa-check"></i><b>4</b> Introducción a R</a><ul>
+<li class="chapter" data-level="4.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#objetivos-1"><i class="fa fa-check"></i><b>4.1</b> Objetivos</a></li>
+<li class="chapter" data-level="4.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#introducción-y-motivación"><i class="fa fa-check"></i><b>4.2</b> Introducción y Motivación</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#recursos"><i class="fa fa-check"></i><b>4.2.1</b> Recursos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#r-en-la-consola"><i class="fa fa-check"></i><b>4.3</b> R en la consola</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#los-mensajes-de-error-son-sus-amigos"><i class="fa fa-check"></i><b>4.3.1</b> Los mensajes de error son sus amigos</a></li>
+<li class="chapter" data-level="4.3.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#operadores-y-expresiones-lógicas"><i class="fa fa-check"></i><b>4.3.2</b> Operadores y expresiones lógicas</a></li>
+<li class="chapter" data-level="4.3.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#limpiando-el-ambiente-de-trabajo"><i class="fa fa-check"></i><b>4.3.3</b> Limpiando el ambiente de trabajo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>5</b> RMarkdown</a><ul>
+<li class="chapter" data-level="5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#objetivos-2"><i class="fa fa-check"></i><b>5.1</b> Objetivos</a></li>
+<li class="chapter" data-level="5.2" data-path="rmarkdown.html"><a href="rmarkdown.html#introducción-1"><i class="fa fa-check"></i><b>5.2</b> Introducción</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad"><i class="fa fa-check"></i><b>5.2.1</b> Actividad</a></li>
+<li class="chapter" data-level="5.2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#ejecutarCodEnRmd"><i class="fa fa-check"></i><b>5.2.2</b> Secciones del código</a></li>
+<li class="chapter" data-level="5.2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad-1"><i class="fa fa-check"></i><b>5.2.3</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="rmarkdown.html"><a href="rmarkdown.html#funciones-de-r"><i class="fa fa-check"></i><b>5.3</b> Funciones de R</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#ejemplo-simple"><i class="fa fa-check"></i><b>5.3.1</b> Ejemplo simple</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="rmarkdown.html"><a href="rmarkdown.html#páginas-de-ayuda"><i class="fa fa-check"></i><b>5.4</b> Páginas de ayuda</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#obteniendo-ayuda"><i class="fa fa-check"></i><b>5.4.1</b> Obteniendo ayuda</a></li>
+<li class="chapter" data-level="5.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad-2"><i class="fa fa-check"></i><b>5.4.2</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="rmarkdown.html"><a href="rmarkdown.html#leyendo-un-archivo-de-datos-a-r"><i class="fa fa-check"></i><b>5.5</b> Leyendo un archivo de datos a R</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#descargue-un-archivo-desde-el-arctic-data-center"><i class="fa fa-check"></i><b>5.5.1</b> Descargue un archivo desde el Arctic Data Center</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="rmarkdown.html"><a href="rmarkdown.html#usando-data.frames"><i class="fa fa-check"></i><b>5.6</b> Usando <code>data.frames</code></a><ul>
+<li class="chapter" data-level="5.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad-3"><i class="fa fa-check"></i><b>5.6.1</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="rmarkdown.html"><a href="rmarkdown.html#solución-de-problemas"><i class="fa fa-check"></i><b>5.7</b> Solución de problemas</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="rmarkdown.html"><a href="rmarkdown.html#mi-rmarkdown-no-genera-knit-el-pdf"><i class="fa fa-check"></i><b>5.7.1</b> Mi RMarkdown no genera (knit) el PDF</a></li>
+<li class="chapter" data-level="5.7.2" data-path="rmarkdown.html"><a href="rmarkdown.html#acabo-de-ejecutar-un-comando-pera-no-pasa-nada"><i class="fa fa-check"></i><b>5.7.2</b> Acabo de ejecutar un comando pera no pasa nada</a></li>
+<li class="chapter" data-level="5.7.3" data-path="rmarkdown.html"><a href="rmarkdown.html#r-dice-que-mi-objeto-no-puede-ser-encontrado"><i class="fa fa-check"></i><b>5.7.3</b> R dice que mi objeto no puede ser encontrado</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="rmarkdown.html"><a href="rmarkdown.html#análisis-literal"><i class="fa fa-check"></i><b>5.8</b> Análisis literal</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html"><i class="fa fa-check"></i><b>6</b> Control de versiones con git y GitHub</a><ul>
+<li class="chapter" data-level="6.1" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#objetivos-3"><i class="fa fa-check"></i><b>6.1</b> Objetivos</a></li>
+<li class="chapter" data-level="6.2" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#el-problema-con-los-nombres-de-archivo"><i class="fa fa-check"></i><b>6.2</b> El problema con los nombres de archivo</a></li>
+<li class="chapter" data-level="6.3" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#control-de-versiones-y-colaboración-usando-git-and-github"><i class="fa fa-check"></i><b>6.3</b> Control de versiones y colaboración usando Git and GitHub</a></li>
+<li class="chapter" data-level="6.4" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#veamos-un-repositorio-de-github"><i class="fa fa-check"></i><b>6.4</b> Veamos un repositorio de GitHub</a></li>
+<li class="chapter" data-level="6.5" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#el-ciclo-de-vida-de-git"><i class="fa fa-check"></i><b>6.5</b> El ciclo de vida de Git</a></li>
+<li class="chapter" data-level="6.6" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#cree-un-repositorio-remoto-en-github"><i class="fa fa-check"></i><b>6.6</b> Cree un repositorio remoto en GitHub</a></li>
+<li class="chapter" data-level="6.7" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#trabajando-localmente-con-git-en-rstudio"><i class="fa fa-check"></i><b>6.7</b> Trabajando localmente con Git en RStudio</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#crear-nuevo-proyecto-create-a-new-project"><i class="fa fa-check"></i><b>6.7.1</b> Crear nuevo Proyecto (Create a New Project)</a></li>
+<li class="chapter" data-level="6.7.2" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#inspeccionar-el-historial-history"><i class="fa fa-check"></i><b>6.7.2</b> Inspeccionar el historial (history)</a></li>
+<li class="chapter" data-level="6.7.3" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#confirme-cambios-haciendo-clic-en-commit-al-archivo-readme.md-commit-a-readme.md-change"><i class="fa fa-check"></i><b>6.7.3</b> Confirme cambios haciendo clic en <em>commit</em> al archivo README.md (Commit a README.md change)</a></li>
+<li class="chapter" data-level="6.7.4" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#commit-los-cambios-hechos-en-rstudio"><i class="fa fa-check"></i><b>6.7.4</b> Commit los cambios hechos en Rstudio</a></li>
+<li class="chapter" data-level="6.7.5" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#inspeccionando-el-historial"><i class="fa fa-check"></i><b>6.7.5</b> Inspeccionando el historial</a></li>
+<li class="chapter" data-level="6.7.6" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#enviar-push-cambios-a-github"><i class="fa fa-check"></i><b>6.7.6</b> Enviar (Push) cambios a GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#sobre-buenos-mensajes-de-confirmación-commit"><i class="fa fa-check"></i><b>6.8</b> Sobre (buenos) mensajes de confirmación (commit)</a></li>
+<li class="chapter" data-level="6.9" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#flujos-de-trabajo-colaborativos-y-libres-de-conflictos-relacionados-con-git"><i class="fa fa-check"></i><b>6.9</b> Flujos de trabajo colaborativos y libres de conflictos (relacionados con Git)</a></li>
+<li class="chapter" data-level="6.10" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#actividad-4"><i class="fa fa-check"></i><b>6.10</b> Actividad</a></li>
+<li class="chapter" data-level="6.11" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#tópicos-avanzados"><i class="fa fa-check"></i><b>6.11</b> Tópicos avanzados</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="cap7.html"><a href="cap7.html"><i class="fa fa-check"></i><b>7</b> Modelamiento de datos y datos ordenados</a><ul>
+<li class="chapter" data-level="7.1" data-path="cap7.html"><a href="cap7.html#objetivos-4"><i class="fa fa-check"></i><b>7.1</b> Objetivos</a></li>
+<li class="chapter" data-level="7.2" data-path="cap7.html"><a href="cap7.html#beneficios-de-los-sistemas-de-datos-relacionales"><i class="fa fa-check"></i><b>7.2</b> Beneficios de los sistemas de datos relacionales</a></li>
+<li class="chapter" data-level="7.3" data-path="cap7.html"><a href="cap7.html#organización-de-datos"><i class="fa fa-check"></i><b>7.3</b> Organización de datos</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="cap7.html"><a href="cap7.html#inconsistencia-en-las-variables"><i class="fa fa-check"></i><b>7.3.1</b> Inconsistencia en las variables</a></li>
+<li class="chapter" data-level="7.3.2" data-path="cap7.html"><a href="cap7.html#estadísticas-y-sumas-al-margen"><i class="fa fa-check"></i><b>7.3.2</b> Estadísticas y sumas al margen</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="cap7.html"><a href="cap7.html#modelamiento-de-datos-adecuado"><i class="fa fa-check"></i><b>7.4</b> Modelamiento de datos adecuado</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="cap7.html"><a href="cap7.html#datos-de-normalizados"><i class="fa fa-check"></i><b>7.4.1</b> Datos De-normalizados</a></li>
+<li class="chapter" data-level="7.4.2" data-path="cap7.html"><a href="cap7.html#datos-tabulares"><i class="fa fa-check"></i><b>7.4.2</b> Datos tabulares</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="cap7.html"><a href="cap7.html#claves-primarias-y-foráneas"><i class="fa fa-check"></i><b>7.5</b> Claves primarias y foráneas</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="cap7.html"><a href="cap7.html#modelo-de-relación-entidad"><i class="fa fa-check"></i><b>7.5.1</b> Modelo de Relación-Entidad</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="cap7.html"><a href="cap7.html#joins"><i class="fa fa-check"></i><b>7.6</b> Combinando datos</a></li>
+<li class="chapter" data-level="7.7" data-path="cap7.html"><a href="cap7.html#guía-simple-para-datos-efectivos"><i class="fa fa-check"></i><b>7.7</b> Guía simple para datos efectivos</a></li>
+<li class="chapter" data-level="7.8" data-path="cap7.html"><a href="cap7.html#ejercicio-de-modelamiento-de-datos"><i class="fa fa-check"></i><b>7.8</b> Ejercicio de modelamiento de datos</a></li>
+<li class="chapter" data-level="7.9" data-path="cap7.html"><a href="cap7.html#recursos-relacionados"><i class="fa fa-check"></i><b>7.9</b> Recursos relacionados</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html"><i class="fa fa-check"></i><b>8</b> Limpieza y manipulación de datos</a><ul>
+<li class="chapter" data-level="8.1" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#objetivos-5"><i class="fa fa-check"></i><b>8.1</b> Objetivos</a></li>
+<li class="chapter" data-level="8.2" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#introducción-2"><i class="fa fa-check"></i><b>8.2</b> Introducción</a></li>
+<li class="chapter" data-level="8.3" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#configuración-setup"><i class="fa fa-check"></i><b>8.3</b> Configuración (Setup)</a></li>
+<li class="chapter" data-level="8.4" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#acerca-del-operador-de-pipe-tubo"><i class="fa fa-check"></i><b>8.4</b> Acerca del operador de pipe (tubo; <code>%&gt;%</code>)</a></li>
+<li class="chapter" data-level="8.5" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#funciones"><i class="fa fa-check"></i><b>8.5</b> Funciones</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#seleccionarremover-columnas-select"><i class="fa fa-check"></i><b>8.5.1</b> Seleccionar/remover columnas: <code>select()</code></a></li>
+<li class="chapter" data-level="8.5.2" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#cambiar-el-formato-gather-y-spread"><i class="fa fa-check"></i><b>8.5.2</b> Cambiar el formato: <code>gather()</code> y <code>spread()</code></a></li>
+<li class="chapter" data-level="8.5.3" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#renombrando-columnas-con-rename"><i class="fa fa-check"></i><b>8.5.3</b> Renombrando columnas con <code>rename()</code></a></li>
+<li class="chapter" data-level="8.5.4" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#agregando-columnas-mutate"><i class="fa fa-check"></i><b>8.5.4</b> Agregando columnas: <code>mutate()</code></a></li>
+<li class="chapter" data-level="8.5.5" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#group_by-y-summarise"><i class="fa fa-check"></i><b>8.5.5</b> <code>group_by</code> y <code>summarise</code></a></li>
+<li class="chapter" data-level="8.5.6" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#filtrando-columnas-filter"><i class="fa fa-check"></i><b>8.5.6</b> Filtrando columnas: <code>filter()</code></a></li>
+<li class="chapter" data-level="8.5.7" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#ordenando-sus-datos-arrange"><i class="fa fa-check"></i><b>8.5.7</b> Ordenando sus datos: <code>arrange()</code></a></li>
+<li class="chapter" data-level="8.5.8" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#joins-en-dplyr"><i class="fa fa-check"></i><b>8.5.8</b> Joins en dplyr</a></li>
+<li class="chapter" data-level="8.5.9" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#separate-y-unite"><i class="fa fa-check"></i><b>8.5.9</b> <code>separate()</code> y <code>unite()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#resumen"><i class="fa fa-check"></i><b>8.6</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html"><i class="fa fa-check"></i><b>9</b> Creando funciones de R</a><ul>
+<li class="chapter" data-level="9.1" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#objetivos-6"><i class="fa fa-check"></i><b>9.1</b> Objetivos</a></li>
+<li class="chapter" data-level="9.2" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#por-qué-usar-funciones"><i class="fa fa-check"></i><b>9.2</b> ¿Por qué usar funciones?</a></li>
+<li class="chapter" data-level="9.3" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#ejemplo-conversión-de-temperatura"><i class="fa fa-check"></i><b>9.3</b> Ejemplo: Conversión de temperatura</a></li>
+<li class="chapter" data-level="9.4" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#creando-una-función"><i class="fa fa-check"></i><b>9.4</b> Creando una función</a></li>
+<li class="chapter" data-level="9.5" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#actividad-5"><i class="fa fa-check"></i><b>9.5</b> Actividad</a></li>
+<li class="chapter" data-level="9.6" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#documentando-funciones-de-r"><i class="fa fa-check"></i><b>9.6</b> Documentando funciones de R</a></li>
+<li class="chapter" data-level="9.7" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#resumen-1"><i class="fa fa-check"></i><b>9.7</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html"><i class="fa fa-check"></i><b>10</b> Visualización de mapas basados en la web</a><ul>
+<li class="chapter" data-level="10.1" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#objetivos-7"><i class="fa fa-check"></i><b>10.1</b> Objetivos</a></li>
+<li class="chapter" data-level="10.2" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#introducción-3"><i class="fa fa-check"></i><b>10.2</b> Introducción</a></li>
+<li class="chapter" data-level="10.3" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#un-ejemplo-básico"><i class="fa fa-check"></i><b>10.3</b> Un ejemplo básico</a></li>
+<li class="chapter" data-level="10.4" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#un-ejemplo-ya-no-tan-básico"><i class="fa fa-check"></i><b>10.4</b> Un ejemplo ya no tan básico</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#carga-de-datos-escape-de-salmones"><i class="fa fa-check"></i><b>10.4.1</b> Carga de datos: escape de salmones</a></li>
+<li class="chapter" data-level="10.4.2" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#gráficos-estáticos"><i class="fa fa-check"></i><b>10.4.2</b> Gráficos estáticos</a></li>
+<li class="chapter" data-level="10.4.3" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#mapas-interactivos"><i class="fa fa-check"></i><b>10.4.3</b> Mapas interactivos</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#mapas-estáticos-con-ggplot-y-geom_sf"><i class="fa fa-check"></i><b>10.5</b> Mapas estáticos con <code>ggplot</code> y <code>geom_sf</code></a></li>
+<li class="chapter" data-level="10.6" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#recursos-1"><i class="fa fa-check"></i><b>10.6</b> Recursos</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html"><i class="fa fa-check"></i><b>11</b> Creando Paquetes de R</a><ul>
+<li class="chapter" data-level="11.1" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#objetivos-8"><i class="fa fa-check"></i><b>11.1</b> Objetivos</a></li>
+<li class="chapter" data-level="11.2" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#por-qué-usar-paquetes"><i class="fa fa-check"></i><b>11.2</b> ¿Por qué usar paquetes?</a></li>
+<li class="chapter" data-level="11.3" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#instalación-y-carga-de-los-paquetes"><i class="fa fa-check"></i><b>11.3</b> Instalación y carga de los paquetes</a></li>
+<li class="chapter" data-level="11.4" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#creación-de-un-paquete-básico"><i class="fa fa-check"></i><b>11.4</b> Creación de un paquete básico</a></li>
+<li class="chapter" data-level="11.5" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#agregando-su-código"><i class="fa fa-check"></i><b>11.5</b> Agregando su código</a></li>
+<li class="chapter" data-level="11.6" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#agregando-la-documentación"><i class="fa fa-check"></i><b>11.6</b> Agregando la documentación</a></li>
+<li class="chapter" data-level="11.7" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#verifique-su-paquete"><i class="fa fa-check"></i><b>11.7</b> Verifique su paquete</a></li>
+<li class="chapter" data-level="11.8" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#verificando-e-instalando-el-paquete-r-creado"><i class="fa fa-check"></i><b>11.8</b> Verificando e instalando el paquete R creado</a></li>
+<li class="chapter" data-level="11.9" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#compartiendo-y-publicando-su-paquete-de-r"><i class="fa fa-check"></i><b>11.9</b> Compartiendo y publicando su paquete de R</a></li>
+<li class="chapter" data-level="11.10" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#más-lecturas"><i class="fa fa-check"></i><b>11.10</b> Más lecturas</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>12</b> Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introducción a la Investigación Reproducible con RStudio y RMarkdown</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introducción-a-r" class="section level1">
+<h1><span class="header-section-number">4</span> Introducción a R</h1>
+<div id="objetivos-1" class="section level2">
+<h2><span class="header-section-number">4.1</span> Objetivos</h2>
+<p>En este capítulo veremos:</p>
+<ul>
+<li>Como Orientarse dentro de la interfase de RStudio.</li>
+<li>Como trabajar en la consola de R.</li>
+</ul>
+</div>
+<div id="introducción-y-motivación" class="section level2">
+<h2><span class="header-section-number">4.2</span> Introducción y Motivación</h2>
+<p>Existe una comunidad muy activa que colectivamente desarrolla herramientas de programación potentes,
+de código abierto y cada vez más fáciles de usar. El progreso actual en relación a las herramientas
+de programación permiten que aprender a escribir códigos computacionales sea cada vez más fácil.
+Esto hace posible que se incorpore la programación a los procesos de análisis, haciendo a la ciencia
+más eficiente y computacionalmente reproducible.</p>
+<p>En este curso vamos a usar el lenguaje de programación R y con el Ambiente de Programación Integrada
+o IDE por sus siglas en inglés (Integrated Development Environment) <strong>RStudio</strong>. R es un lenguaje
+ideal para aprender programación orientada a los datos ya que ampliamente utilizada por la comunidad
+científica, es amigable con el usuario (user-friendly) y lo más importante, <em>es de código abierto</em>
+(open source).</p>
+<p>Entonces, ¿cuáles son las diferencias entre <em>R</em> y <em>RStudio</em>? Aquí les presento una analogía como punto
+de partida. <strong>Si usted fuera un chef, <em>R</em> es un cuchillo.</strong> Usted tiene comida para preparar y el
+cuchillo es una de las herramientas que va a usar para realizar esta tarea.</p>
+<p>Y <strong>si <em>R</em> es un cuchillo, entonces <em>RStudio</em> es la cocina</strong>. ¡<em>RStudio</em> le entrega el lugar donde puede
+realizar todo su trabajo! Como pueden ser otras herramientas, comunicaciones, acceso a la comunidad y así
+hace de su vida como chef más fácil. Ahora, como científico, RStudio hace su vida más fácil poniendo
+todas las herramienta que usted necesita en un mismo lugar, de esta forma puede trabajar en forma
+más eficiente. Algunas de las herramientas que puede encontrar son un navegador de archivos, visor
+de datos, páginas de ayuda, terminal, comunidad de usuairos, soporte y la lista suma y sigue. De esta
+forma, es fácil ver que RStudio es mucho más que sólo una infraestructura (la interfase del usuario o
+IDE). Entonces, si bien es posible preparar comida sin una cocina, es totalmente posible aprender y
+trabajar en R sin usar RStudio, sin embargo eso no es lo que vamos hacer. Nosotros vamos a aprovechar los
+beneficios de usar RStudio y aprenderemos R y RStudio al mismo tiempo.</p>
+<div class="figure" style="text-align: center"><span id="fig:rueda"></span>
+<img src="images/4.1_rueda.jpg" alt="Usar R sin RStudio es como tener una rueda cuadrada. No tiene sentido." width="50%" />
+<p class="caption">
+Figure 4.1: Usar R sin RStudio es como tener una rueda cuadrada. No tiene sentido.
+</p>
+</div>
+<p>Para tener en cuenta: Vamos a aprender un nuevo lenguaje (de programación). Este es un proceso que toma
+tiempo, se cometerán errores, puede resultar frustrante, pero a largo plazo va a ser genial. Todos
+hablamos a lo menos un lenguaje; aprender un leguaje de programación es un proceso similar, de verdad.
+No importa cuán fluido sea en su lengua materna, siempre se puede aprender algo nuevo, se tratan cosas
+en un nuevo contexto, se aprenden sinónimos o el significado nuevo que se le da a una palabra en otro
+país, etc. Y como cualquier otra forma de comunicación, se producirán malos entendidos que pueden ser
+frustrantes, pero a la larga, todos terminaremos siendo mejores si aprendemos de ellos.</p>
+<p>Así como un lenguaje es un concepto familiar, lenguajes de programación existen en un contexto diferente
+de los lenguajes hablados, pero vamos a llegar a conocer este contexto con el tiempo. Por ejemplo:
+tenemos un concepto que es la primera comida del día y tenemos un nombre para describirla: en español
+esa palabra es “<em>desayuno</em>”. Si usted aprende inglés, puede esperar que exista una palabra para expresar
+este concepto de la primera comida del día (esa palabra es “breakfast”). <strong>Vamos a llegar al punto en
+que usted va a esperar la existencia de ciertas palabras en un lenguaje de programación (llamados
+funciones en R) que representen conceptos</strong>. Pronto, usted va a esperar que exista una forma de ordenar
+valores en forma numérica o alfabética, para buscar patrones en un texto, calcular la media o mediana,
+reorganizar columnas en una fila, extraer un subset de datos, etc. Paso a paso, vamos a ir incrementando
+sus expectativas y aprenderán como preguntarle a R y RStudio ára encontrar las <em>palabras</em> que están
+buscando.</p>
+<div id="recursos" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Recursos</h3>
+<p>Este curso es una traducción libre, modificada y adaptada de una grupo de excelentes clases y materiales
+desarrollados por otros autores. Muchas gracias al Data Task Force de <a href="http://www.nceas.ucsb.edu">NCEAS</a>,
+en especial a Jeannette Clark, Jared Kibele, Matt Jones, del cual también fui parte, quienes desarrollaron
+la versión original de este curso en Inglés. A Julie Lowndes por escribir la mayoría del contenido y
+compartilo para ser usado de base al contenido desarrollado por el Data task Force. El material de Julie
+esta a su vez está basado en el de Jenny Bryan.</p>
+<p>Todo el material original sobre el cual está basado este curso está en inglés, sin embargo les recomiendo
+darle una mirada y usarlos como referencias:</p>
+<p><a href="http://ohi-science.org/data-science-training/">Julie Lowndes’ Data Science Training for the Ocean Health Index</a></p>
+<ul>
+<li><a href="http://ohi-science.org/data-science-training/rstudio.html">R, RStudio, RMarkdown</a></li>
+<li><a href="http://ohi-science.org/data-science-training/programming.html">Programming in R</a></li>
+</ul>
+<p><a href="https://stat545-ubc.github.io/">Jenny Bryan’s lectures from STAT545 at UBC</a></p>
+<ul>
+<li><a href="http://stat545-ubc.github.io/block002_hello-r-workspace-wd-project.html">R basics, workspace and working directory, RStudio projects</a></li>
+<li><a href="http://stat545-ubc.github.io/block006_care-feeding-data.html">Basic care and feeding of data in R</a></li>
+</ul>
+<p>RStudio (también en inglés):</p>
+<ul>
+<li><a href="https://www.rstudio.com/resources/webinars/">webinars</a></li>
+<li><a href="https://www.rstudio.com/resources/cheatsheets/">cheatsheets</a></li>
+</ul>
+<p>Finalmente, el libro <em>R for Data Science</em> por Hadley Wickham es un recurso genial para profundizar en estos temas.</p>
+<ul>
+<li><a href="http://r4ds.had.co.nz/">R for Data Science</a></li>
+</ul>
+<p>Otros recursos relacionados:</p>
+<ul>
+<li><a href="https://www.caam.rice.edu/~heinken/latex/symbols.pdf">Formate de ecuaciones en LaTeX</a></li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2016/05/base-r.pdf">Base R Cheatsheet</a></li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">RMarkdown Reference Guide</a></li>
+<li><a href="http://mathesaurus.sourceforge.net/octave-r.html">MATLAB/R Translation Cheat Sheet</a></li>
+</ul>
+</div>
+</div>
+<div id="r-en-la-consola" class="section level2">
+<h2><span class="header-section-number">4.3</span> R en la consola</h2>
+<p>Y ahora manos a la obra.</p>
+<p>Inicie RStudio/R.</p>
+<div class="figure" style="text-align: center"><span id="fig:RStudioIDE"></span>
+<img src="images/4.2_RStudio_IDE.png" alt="Captura de pantalla de la interfase de desarrollo de RStudio." width="100%" />
+<p class="caption">
+Figure 4.2: Captura de pantalla de la interfase de desarrollo de RStudio.
+</p>
+</div>
+<p>Identifique los paneles que se abren por defecto:</p>
+<ul>
+<li>Consola (Todo el espacio a la izquierda)</li>
+<li>Ambiente/Historial (Pestañas al lado superior derecho)</li>
+<li>Archivos/Gráficos/Paquetes/Ayuda (Pestañas al lado inferior derecho)</li>
+</ul>
+<blockquote>
+<p>Es posible cambiar la ubicación por defecto de los paneles, entre otra muchas
+cosas: <a href="https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio">Configurando RStudio</a>
+(En inglés).</p>
+</blockquote>
+<p>Una primera pregunta importante: <strong>¿Dónde estamos?</strong></p>
+<p>Si usted abre RStudio por primera vez, se va a encontrar en el directorio Home. Esto se denota por como
+<code>~/</code> en la barra superior de la consola (destacado en rojo en la figura <a href="introducción-a-r.html#fig:RStudioIDEhomeDir">4.3</a>).
+Es esta figura es posible ver también el panel de archivos en el lado inferior derecho, donde se muestra
+que está en el directorio Home. Usted puede navegar con el explorador de archivos, pero note que
+no es posible cambiar donde está trabajando: incluso cuando haga clic el otros directorios, la consola
+seguirá estando en el directorio Home: <code>~/</code>.</p>
+<div class="figure" style="text-align: center"><span id="fig:RStudioIDEhomeDir"></span>
+<img src="images/4.3_RStudio_IDE_homedir.png" alt="Consola de R en la interfase de usuario de RStudio." width="100%" />
+<p class="caption">
+Figure 4.3: Consola de R en la interfase de usuario de RStudio.
+</p>
+</div>
+<p>OK vamos ahora a la consola, aquí se puede interactuar con el proceso de R en forma interactiva.</p>
+<p>Vamos a usar R para calcular hacer algunos cálculos matemáticos simples.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="dv">3</span><span class="op">*</span><span class="dv">4</span></a></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<p>Usted puede asignar un valor de una operación matemática a una variable u objeto en R. Para esto se
+utiliza el operador de asignación <code>&lt;-</code>.</p>
+<p>Haga una asignación y luego inspeccione el objeto que acaba de crear.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">3</span> <span class="op">*</span><span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">x</a></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<p>Esas operaciones yo las leo como ’asigne el valor resultante de la operación 3*4 a <strong>x</strong>’.</p>
+<p>Todas las declaraciones en R donde usted crea objetos – “asignaciones” – tienen esta forma:
+<code>nombreObjeto &lt;- valor</code>.</p>
+<p>Ahora voy a incluir en la consola el símbolo gato o hash <code>#</code> seguido de un texto, esta es la forma
+en que R reconoce que esa línea corresponde a un comentario y no lo evalúa.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">## nombreObjecto &lt;- valor</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">## Esta es la forma en que se escriben textos en el código para explicar que es lo que </a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">## se está haciendo.</a></code></pre></div>
+<p>Los nombres de objetos en R no pueden comenzar con números o contener algunos caracteres reservados
+como son la coma “,” o espacios en blanco. Es útil adoptar la [estándares de nomenclatura]
+(<a href="http://programacion.jias.es/2017/09/estandares-de-nomenclatura-snake-case-kebab-case-camel-case/" class="uri">http://programacion.jias.es/2017/09/estandares-de-nomenclatura-snake-case-kebab-case-camel-case/</a>)
+en los nombres de variables.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># yo_uso_snake_case</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co"># otra.gente.usa.puntos</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co"># yOtrosUsanCamelCase</span></a></code></pre></div>
+<p>Asignando un valor a una variable</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">este_es_un_nombre_muy_largo &lt;-<span class="st"> </span><span class="fl">2.5</span></a></code></pre></div>
+<p>Para inspeccionar esta variable, en vez que escribirla completa, podemos apretar la flecha hacia
+arriba y llamar al historial de comandos, apareciendo los comandos más recientes primero. Ahora
+intente hacer eso y luego borre la asignación (<code>&lt;- 2.5</code>):</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">este_es_un_nombre_muy_largo</a></code></pre></div>
+<pre><code>## [1] 2.5</code></pre>
+<p>Otra forma de inspeccionar esta variable es escribiendo el inicio <code>este_</code>… y luego presionando la
+techa <em>Tab</em>, de esta forma RStudio le va a ofrecer los objetos cuyor nombre comienzan de esa forma,
+entre las que puede seleccionar apretando return.</p>
+<p>Y una más</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">la_ciencia_es_genial &lt;-<span class="st"> &quot;Si lo es!!!&quot;</span></a></code></pre></div>
+<p>Aquí se puede ver que es posible hacer asignaciones de palabras y no únicamente números. En R, un
+objeto compuesto por palabras se conoce como “string” y R los reconoce como una palabra y no un
+número porque están en comillas <code>&quot; &quot;</code>. En R se puede trabajar con datos basados en texto (strings)
+en forma muy simple gracias a los paquetes <a href="http://stringr.tidyverse.org/"><code>stringr</code></a> y <a href="https://github.com/juliasilge/tidytext#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools"><code>tidytext</code></a>.
+No vamos a hablar mucho de este tipo de datos, por ahora sólo recuerde que R puede manejar texto y
+con números en forma combinada.</p>
+<p>El hablar de strings y números nos lleva a abordar un concepto muy importante en programación:
+las diferentes <em>clases</em> o <em>tipos de objetos</em>. Un objeto puede ser muchas cosas, por ejemplo una
+variable, una función, una estructura de datos, un método que haya escrito en un ambiente de
+desarrollo. Usted puede ver que objetos están cargados en el panel Environment (ambiente) en RStudio.
+Las operaciones que se pueden hacer con un objeto van a depender del tipo de objeto que es. ¡¡Esto
+tiene mucho sentido!! Por ejemplo, no es posible hacer operaciones matemáticas con un objeto de
+caracteres (string).</p>
+<p>Trate de ejecutar lo siguiente en la línea de comandos de su consola:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="st">&quot;Hola mundo!&quot;</span> <span class="op">*</span><span class="st"> </span><span class="dv">3</span></a></code></pre></div>
+<p>¿Qué pasó? ¿Por qué?</p>
+<p>Usted debería haber notado que cuando se asigna un valor a un objeto, R no imprime el valor por
+pantalla. Se puede forzar a R a imprimir por pantalla poniendo un paréntesis en la asignación del
+valor o escribiendo el nombre del objeto:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">peso_kg &lt;-<span class="st"> </span><span class="dv">55</span>    <span class="co"># Esto no imprime nada</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">(peso_kg &lt;-<span class="st"> </span><span class="dv">55</span>)  <span class="co"># pero al poner parentesis alrededore se imprime el valor de `peso_kg`</span></a></code></pre></div>
+<pre><code>## [1] 55</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">peso_kg          <span class="co"># y tambien esto lo hace al escribir el nombre del objeto</span></a></code></pre></div>
+<pre><code>## [1] 55</code></pre>
+<p>Ahora que R tiene <code>peso_kg</code> en la memoria, podemos utilizar esta variable para hacer operaciones
+aritméticas. Por ejemplo, podemos querer convertir este peso a libras (libras es 2.2 veces el peso
+en kilogramos):</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="fl">2.2</span> <span class="op">*</span><span class="st"> </span>peso_kg</a></code></pre></div>
+<pre><code>## [1] 121</code></pre>
+<p>También es posible cambiar el valor de la variable asignando una nueva:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">peso_kg &lt;-<span class="st"> </span><span class="fl">57.5</span></a>
+<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="fl">2.2</span> <span class="op">*</span><span class="st"> </span>peso_kg</a></code></pre></div>
+<pre><code>## [1] 126.5</code></pre>
+<p>Esto significa que al asignar el valor a una variable, no cambia el valor de la otras variables.
+Por ejemplo, asignemos el valor del peso del animal en libras a <code>peso_lb</code>:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">peso_lb &lt;-<span class="st"> </span><span class="fl">2.2</span> <span class="op">*</span><span class="st"> </span>peso_kg</a></code></pre></div>
+<p>y ahora cambiemos <code>peso_kg</code> a 100.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">peso_kg &lt;-<span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<p>¿Cuál cree que es el valor ahora del objeto <code>peso_lb</code>? ¿126.5 o 220? ¿Por qué?</p>
+<p>También es posible almacenar más de un valor en un único objeto. Almacenar una series de pesos en
+un sólo objeto es una forma muy conveniente de desarrollar un misma operación en múltiples valores
+al mismo tiempo. Para hacer esto se puede usar la función <code>c()</code>, que se refiere a la acción de
+<em>combinar</em> o <em>concatenar</em>.</p>
+<p>Aquí vamos a crear un <em>vector</em> de pesos en kilogramos y vamos a convertirlos todos a libras,
+asignando el peso en libras a un nuevo objeto.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">peso_kg &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">55</span>, <span class="dv">25</span>, <span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">peso_kg</a></code></pre></div>
+<pre><code>## [1] 55 25 12</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">peso_lb &lt;-<span class="st"> </span>peso_kg <span class="op">*</span><span class="st"> </span><span class="fl">2.2</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">peso_lb</a></code></pre></div>
+<pre><code>## [1] 121.0  55.0  26.4</code></pre>
+<div id="los-mensajes-de-error-son-sus-amigos" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Los mensajes de error son sus amigos</h3>
+<p><em>Contrato implícito con el lenguaje de computador/codificación</em>: Un computador hará todas las
+computaciones tediosas por usted. Usted tiene que ser completamente explícito y preciso son sus
+instrucciones. Errores ortográficos importan. Mayúsculas importan. ¡Tiene que poner atención a
+como escribe!</p>
+<p>Recuerde que este es un lenguaje ¡No demasiado distinto al español!. Hay tiempos en los que la
+gente no entiende lo que usted dice – Eso pasa y va a pasar nuevamente y hay diferentes formas
+en que esto puede pasar. Algunas veces se obtendrá un error. Esto es similar a cuando alguien
+le dice ¿Qué? o ¿Puede repetir por favor? No logro entenderlo. Los mensajes de error son muy
+útiles en este sentido, porque le indican cuales son las partes específicas en las que no le
+lograron entender. Este es el mejor tipo de errores que se pueden obtener. Los mensajes de error
+son sus amigos. Búsquelos en Google (¡Copiar y Pegar!) para descubrir que es lo que significan
+y como los puede corregir.</p>
+<div class="figure" style="text-align: center"><span id="fig:googleError"></span>
+<img src="images/4.4_practicalDev_googleErrorMessage.jpg" alt="." width="50%" />
+<p class="caption">
+Figure 4.4: .
+</p>
+</div>
+<p>Pero también hay que tener en cuenta que hay errores que pueden aparecen en forma mucho mas sutil,
+sin un mensaje de error que lo indique. Esto sucede cuando se le da información que el computador
+entiende, pero que no es exactamente lo que se quiso decir. Es como si yo contara un historia sobre
+tablas y usted se imagina una con la que va a construir una repisa, sin embargo yo estoy hablando
+de tablas de datos. Esto puede llevarme a pensar que logré transmitir la información que me
+interesaba a mi audiencia (o a R) sin embargo, lo que dije fue interpretado en una forma completamente
+distinta a lo que estaba tratando de decir. Y en la medida que yo sigo hablando se genera más y
+más confusión… Entonces, es muy importante que se escriban los códigos de una forma lo más limpia
+y clara, verificando que el código hace lo que quiere que haga, minimizando las confusiones y malos
+entendidos.</p>
+</div>
+<div id="operadores-y-expresiones-lógicas" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> Operadores y expresiones lógicas</h3>
+<p>Vamos a tomarnos un momento para hablar sobre <strong>operadores y expresiones lógicas</strong> ya que nos permiten
+hacer preguntas sobre los objetos que hemos creado.</p>
+<ul>
+<li><code>==</code> significa ‘es igual a’</li>
+<li><code>!=</code> significa ‘no es igual a’</li>
+<li><code>&lt;</code> significa ‘es menor a’</li>
+<li><code>&gt;</code> significa ‘es mayor a’</li>
+<li><code>&lt;=</code> significa ‘es menor o igual a’</li>
+<li><code>&gt;=</code> significa ‘es mayor o igual a’</li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">peso_kg <span class="op">==</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">peso_kg <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span></a></code></pre></div>
+<pre><code>## [1]  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">peso_kg <span class="op">!=</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code>## [1] TRUE TRUE TRUE</code></pre>
+<blockquote>
+<p>Atajos del teclado: En su vida como programador de R se van a realizar muchas asignaciones y
+el operador <code>&lt;-</code> es un dolor de cabeza para escribir. Sin embargo no sea flojo y <strong>NO</strong> se acostumbre
+a usar <code>=</code>, aunque esto funciona, porque sólo le va a generar confusión más tarde. Es mucho mejor
+utilizar los atajos con combinaciones de teclas para este fin, <strong>en RStudio se obtiene combinando
+Alt + - (signo menos)</strong>. Note que en RStudio los espacios alrededor de <code>&lt;-</code> ¡aparecen en forma
+automágica!, lo que demuestra una buena práctica para formatear el código. Los códigos (especialmente
+los ajenos) son miserables de leer en un buen día. Dele un descanso a sus ojos y SIEMPRE use los
+espacios. RStudio tiene muchos <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">atajos de teclado shortcuts</a>
+muy útiles. Uno importante de mencionar es Alt+Shift+K que muestra la tabla de referencias
+de las combinaciones de teclado.</p>
+</blockquote>
+</div>
+<div id="limpiando-el-ambiente-de-trabajo" class="section level3">
+<h3><span class="header-section-number">4.3.3</span> Limpiando el ambiente de trabajo</h3>
+<p>Ahora vamos a mirar los objetos que están en nuestro ambiente de trabajo (Environment) – en el costado
+superior derecho. El ambiente de trabajo es donde se acumulan los objetos definidos por el usuario.</p>
+<div class="figure" style="text-align: center"><span id="fig:RStudioIDEenv"></span>
+<img src="images/4.5_RStudio_IDE_env.png" alt="Captura de pantalla de la interfase de desarrollo de RStudio con comando ejecutados." width="100%" />
+<p class="caption">
+Figure 4.5: Captura de pantalla de la interfase de desarrollo de RStudio con comando ejecutados.
+</p>
+</div>
+<p>También se puede obtener una lista de los objetos creado usando los siguiente comandos en R:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">objects</span>()</a></code></pre></div>
+<pre><code>## [1] &quot;este_es_un_nombre_muy_largo&quot; &quot;la_ciencia_es_genial&quot;       
+## [3] &quot;peso_kg&quot;                     &quot;peso_lb&quot;                    
+## [5] &quot;x&quot;</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">ls</span>()</a></code></pre></div>
+<pre><code>## [1] &quot;este_es_un_nombre_muy_largo&quot; &quot;la_ciencia_es_genial&quot;       
+## [3] &quot;peso_kg&quot;                     &quot;peso_lb&quot;                    
+## [5] &quot;x&quot;</code></pre>
+<p>Si quiere eliminar el objeto llamado <code>peso_kg</code> puede hacer lo siguiente:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">rm</span>(peso_kg)</a></code></pre></div>
+<p>Para eliminar todo:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</a></code></pre></div>
+<p>o hacer clic en el icono de la la escoba en el panel <em>Environment</em> en RStudio.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rmarkdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>9 Creando funciones de R | Introducción a la Investigación Reproducible con RStudio y RMarkdown</title>
+  <meta name="description" content="9 Creando funciones de R | Introducción a la Investigación Reproducible con RStudio y RMarkdown" />
+  <meta name="generator" content="bookdown 0.14.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="9 Creando funciones de R | Introducción a la Investigación Reproducible con RStudio y RMarkdown" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="9 Creando funciones de R | Introducción a la Investigación Reproducible con RStudio y RMarkdown" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="limpieza-y-manipulación-de-datos.html"/>
+<link rel="next" href="visualización-de-mapas-basados-en-la-web.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.9/datatables.js"></script>
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.19/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RMarkdown IFOP</a></li>
+<li><a href="../">← Página Pricipal</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#la-crisis-de-reproducibilidad"><i class="fa fa-check"></i><b>1.1</b> La crisis de reproducibilidad</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#reconocimientos"><i class="fa fa-check"></i><b>1.2</b> Reconocimientos</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html"><i class="fa fa-check"></i><b>2</b> Investigación reproducible: ¿De qué estamos hablando?</a><ul>
+<li class="chapter" data-level="2.1" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#objetivos"><i class="fa fa-check"></i><b>2.1</b> Objetivos</a></li>
+<li class="chapter" data-level="2.2" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#investigación-reproducible"><i class="fa fa-check"></i><b>2.2</b> Investigación reproducible</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#qué-es-necesario-para-la-reproducibilidad-computacional"><i class="fa fa-check"></i><b>2.2.1</b> ¿Qué es necesario para la reproducibilidad computacional?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#conceptualizando-los-flujos-de-trabajo-workflows"><i class="fa fa-check"></i><b>2.2.2</b> Conceptualizando los flujos de trabajo (workflows)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><i class="fa fa-check"></i><b>3</b> Herramientas: RStudio - Git/GitHub Configuración y Motivación</a><ul>
+<li class="chapter" data-level="3.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#por-que-usar-git"><i class="fa fa-check"></i><b>3.1</b> Por que usar git?</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#el-problema-con-los-nombres-de-archivos"><i class="fa fa-check"></i><b>3.1.1</b> El problema con los nombres de archivos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#revisando-el-ambiente-de-rstudio"><i class="fa fa-check"></i><b>3.2</b> Revisando el ambiente de RStudio</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#versión-de-r"><i class="fa fa-check"></i><b>3.2.1</b> Versión de R</a></li>
+<li class="chapter" data-level="3.2.2" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#versión-de-rstudio"><i class="fa fa-check"></i><b>3.2.2</b> Versión de RStudio</a></li>
+<li class="chapter" data-level="3.2.3" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#instalación-de-paquetes-de-r"><i class="fa fa-check"></i><b>3.2.3</b> Instalación de Paquetes de R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#configurando-git"><i class="fa fa-check"></i><b>3.3</b> Configurando git</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#nota-para-usuarios-de-windows"><i class="fa fa-check"></i><b>3.3.1</b> Nota para Usuarios de Windows</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introducción-a-r.html"><a href="introducción-a-r.html"><i class="fa fa-check"></i><b>4</b> Introducción a R</a><ul>
+<li class="chapter" data-level="4.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#objetivos-1"><i class="fa fa-check"></i><b>4.1</b> Objetivos</a></li>
+<li class="chapter" data-level="4.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#introducción-y-motivación"><i class="fa fa-check"></i><b>4.2</b> Introducción y Motivación</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#recursos"><i class="fa fa-check"></i><b>4.2.1</b> Recursos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#r-en-la-consola"><i class="fa fa-check"></i><b>4.3</b> R en la consola</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#los-mensajes-de-error-son-sus-amigos"><i class="fa fa-check"></i><b>4.3.1</b> Los mensajes de error son sus amigos</a></li>
+<li class="chapter" data-level="4.3.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#operadores-y-expresiones-lógicas"><i class="fa fa-check"></i><b>4.3.2</b> Operadores y expresiones lógicas</a></li>
+<li class="chapter" data-level="4.3.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#limpiando-el-ambiente-de-trabajo"><i class="fa fa-check"></i><b>4.3.3</b> Limpiando el ambiente de trabajo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>5</b> RMarkdown</a><ul>
+<li class="chapter" data-level="5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#objetivos-2"><i class="fa fa-check"></i><b>5.1</b> Objetivos</a></li>
+<li class="chapter" data-level="5.2" data-path="rmarkdown.html"><a href="rmarkdown.html#introducción-1"><i class="fa fa-check"></i><b>5.2</b> Introducción</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad"><i class="fa fa-check"></i><b>5.2.1</b> Actividad</a></li>
+<li class="chapter" data-level="5.2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#ejecutarCodEnRmd"><i class="fa fa-check"></i><b>5.2.2</b> Secciones del código</a></li>
+<li class="chapter" data-level="5.2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad-1"><i class="fa fa-check"></i><b>5.2.3</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="rmarkdown.html"><a href="rmarkdown.html#funciones-de-r"><i class="fa fa-check"></i><b>5.3</b> Funciones de R</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#ejemplo-simple"><i class="fa fa-check"></i><b>5.3.1</b> Ejemplo simple</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="rmarkdown.html"><a href="rmarkdown.html#páginas-de-ayuda"><i class="fa fa-check"></i><b>5.4</b> Páginas de ayuda</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#obteniendo-ayuda"><i class="fa fa-check"></i><b>5.4.1</b> Obteniendo ayuda</a></li>
+<li class="chapter" data-level="5.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad-2"><i class="fa fa-check"></i><b>5.4.2</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="rmarkdown.html"><a href="rmarkdown.html#leyendo-un-archivo-de-datos-a-r"><i class="fa fa-check"></i><b>5.5</b> Leyendo un archivo de datos a R</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#descargue-un-archivo-desde-el-arctic-data-center"><i class="fa fa-check"></i><b>5.5.1</b> Descargue un archivo desde el Arctic Data Center</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="rmarkdown.html"><a href="rmarkdown.html#usando-data.frames"><i class="fa fa-check"></i><b>5.6</b> Usando <code>data.frames</code></a><ul>
+<li class="chapter" data-level="5.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad-3"><i class="fa fa-check"></i><b>5.6.1</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="rmarkdown.html"><a href="rmarkdown.html#solución-de-problemas"><i class="fa fa-check"></i><b>5.7</b> Solución de problemas</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="rmarkdown.html"><a href="rmarkdown.html#mi-rmarkdown-no-genera-knit-el-pdf"><i class="fa fa-check"></i><b>5.7.1</b> Mi RMarkdown no genera (knit) el PDF</a></li>
+<li class="chapter" data-level="5.7.2" data-path="rmarkdown.html"><a href="rmarkdown.html#acabo-de-ejecutar-un-comando-pera-no-pasa-nada"><i class="fa fa-check"></i><b>5.7.2</b> Acabo de ejecutar un comando pera no pasa nada</a></li>
+<li class="chapter" data-level="5.7.3" data-path="rmarkdown.html"><a href="rmarkdown.html#r-dice-que-mi-objeto-no-puede-ser-encontrado"><i class="fa fa-check"></i><b>5.7.3</b> R dice que mi objeto no puede ser encontrado</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="rmarkdown.html"><a href="rmarkdown.html#análisis-literal"><i class="fa fa-check"></i><b>5.8</b> Análisis literal</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html"><i class="fa fa-check"></i><b>6</b> Control de versiones con git y GitHub</a><ul>
+<li class="chapter" data-level="6.1" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#objetivos-3"><i class="fa fa-check"></i><b>6.1</b> Objetivos</a></li>
+<li class="chapter" data-level="6.2" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#el-problema-con-los-nombres-de-archivo"><i class="fa fa-check"></i><b>6.2</b> El problema con los nombres de archivo</a></li>
+<li class="chapter" data-level="6.3" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#control-de-versiones-y-colaboración-usando-git-and-github"><i class="fa fa-check"></i><b>6.3</b> Control de versiones y colaboración usando Git and GitHub</a></li>
+<li class="chapter" data-level="6.4" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#veamos-un-repositorio-de-github"><i class="fa fa-check"></i><b>6.4</b> Veamos un repositorio de GitHub</a></li>
+<li class="chapter" data-level="6.5" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#el-ciclo-de-vida-de-git"><i class="fa fa-check"></i><b>6.5</b> El ciclo de vida de Git</a></li>
+<li class="chapter" data-level="6.6" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#cree-un-repositorio-remoto-en-github"><i class="fa fa-check"></i><b>6.6</b> Cree un repositorio remoto en GitHub</a></li>
+<li class="chapter" data-level="6.7" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#trabajando-localmente-con-git-en-rstudio"><i class="fa fa-check"></i><b>6.7</b> Trabajando localmente con Git en RStudio</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#crear-nuevo-proyecto-create-a-new-project"><i class="fa fa-check"></i><b>6.7.1</b> Crear nuevo Proyecto (Create a New Project)</a></li>
+<li class="chapter" data-level="6.7.2" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#inspeccionar-el-historial-history"><i class="fa fa-check"></i><b>6.7.2</b> Inspeccionar el historial (history)</a></li>
+<li class="chapter" data-level="6.7.3" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#confirme-cambios-haciendo-clic-en-commit-al-archivo-readme.md-commit-a-readme.md-change"><i class="fa fa-check"></i><b>6.7.3</b> Confirme cambios haciendo clic en <em>commit</em> al archivo README.md (Commit a README.md change)</a></li>
+<li class="chapter" data-level="6.7.4" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#commit-los-cambios-hechos-en-rstudio"><i class="fa fa-check"></i><b>6.7.4</b> Commit los cambios hechos en Rstudio</a></li>
+<li class="chapter" data-level="6.7.5" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#inspeccionando-el-historial"><i class="fa fa-check"></i><b>6.7.5</b> Inspeccionando el historial</a></li>
+<li class="chapter" data-level="6.7.6" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#enviar-push-cambios-a-github"><i class="fa fa-check"></i><b>6.7.6</b> Enviar (Push) cambios a GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#sobre-buenos-mensajes-de-confirmación-commit"><i class="fa fa-check"></i><b>6.8</b> Sobre (buenos) mensajes de confirmación (commit)</a></li>
+<li class="chapter" data-level="6.9" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#flujos-de-trabajo-colaborativos-y-libres-de-conflictos-relacionados-con-git"><i class="fa fa-check"></i><b>6.9</b> Flujos de trabajo colaborativos y libres de conflictos (relacionados con Git)</a></li>
+<li class="chapter" data-level="6.10" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#actividad-4"><i class="fa fa-check"></i><b>6.10</b> Actividad</a></li>
+<li class="chapter" data-level="6.11" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#tópicos-avanzados"><i class="fa fa-check"></i><b>6.11</b> Tópicos avanzados</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="cap7.html"><a href="cap7.html"><i class="fa fa-check"></i><b>7</b> Modelamiento de datos y datos ordenados</a><ul>
+<li class="chapter" data-level="7.1" data-path="cap7.html"><a href="cap7.html#objetivos-4"><i class="fa fa-check"></i><b>7.1</b> Objetivos</a></li>
+<li class="chapter" data-level="7.2" data-path="cap7.html"><a href="cap7.html#beneficios-de-los-sistemas-de-datos-relacionales"><i class="fa fa-check"></i><b>7.2</b> Beneficios de los sistemas de datos relacionales</a></li>
+<li class="chapter" data-level="7.3" data-path="cap7.html"><a href="cap7.html#organización-de-datos"><i class="fa fa-check"></i><b>7.3</b> Organización de datos</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="cap7.html"><a href="cap7.html#inconsistencia-en-las-variables"><i class="fa fa-check"></i><b>7.3.1</b> Inconsistencia en las variables</a></li>
+<li class="chapter" data-level="7.3.2" data-path="cap7.html"><a href="cap7.html#estadísticas-y-sumas-al-margen"><i class="fa fa-check"></i><b>7.3.2</b> Estadísticas y sumas al margen</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="cap7.html"><a href="cap7.html#modelamiento-de-datos-adecuado"><i class="fa fa-check"></i><b>7.4</b> Modelamiento de datos adecuado</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="cap7.html"><a href="cap7.html#datos-de-normalizados"><i class="fa fa-check"></i><b>7.4.1</b> Datos De-normalizados</a></li>
+<li class="chapter" data-level="7.4.2" data-path="cap7.html"><a href="cap7.html#datos-tabulares"><i class="fa fa-check"></i><b>7.4.2</b> Datos tabulares</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="cap7.html"><a href="cap7.html#claves-primarias-y-foráneas"><i class="fa fa-check"></i><b>7.5</b> Claves primarias y foráneas</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="cap7.html"><a href="cap7.html#modelo-de-relación-entidad"><i class="fa fa-check"></i><b>7.5.1</b> Modelo de Relación-Entidad</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="cap7.html"><a href="cap7.html#joins"><i class="fa fa-check"></i><b>7.6</b> Combinando datos</a></li>
+<li class="chapter" data-level="7.7" data-path="cap7.html"><a href="cap7.html#guía-simple-para-datos-efectivos"><i class="fa fa-check"></i><b>7.7</b> Guía simple para datos efectivos</a></li>
+<li class="chapter" data-level="7.8" data-path="cap7.html"><a href="cap7.html#ejercicio-de-modelamiento-de-datos"><i class="fa fa-check"></i><b>7.8</b> Ejercicio de modelamiento de datos</a></li>
+<li class="chapter" data-level="7.9" data-path="cap7.html"><a href="cap7.html#recursos-relacionados"><i class="fa fa-check"></i><b>7.9</b> Recursos relacionados</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html"><i class="fa fa-check"></i><b>8</b> Limpieza y manipulación de datos</a><ul>
+<li class="chapter" data-level="8.1" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#objetivos-5"><i class="fa fa-check"></i><b>8.1</b> Objetivos</a></li>
+<li class="chapter" data-level="8.2" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#introducción-2"><i class="fa fa-check"></i><b>8.2</b> Introducción</a></li>
+<li class="chapter" data-level="8.3" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#configuración-setup"><i class="fa fa-check"></i><b>8.3</b> Configuración (Setup)</a></li>
+<li class="chapter" data-level="8.4" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#acerca-del-operador-de-pipe-tubo"><i class="fa fa-check"></i><b>8.4</b> Acerca del operador de pipe (tubo; <code>%&gt;%</code>)</a></li>
+<li class="chapter" data-level="8.5" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#funciones"><i class="fa fa-check"></i><b>8.5</b> Funciones</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#seleccionarremover-columnas-select"><i class="fa fa-check"></i><b>8.5.1</b> Seleccionar/remover columnas: <code>select()</code></a></li>
+<li class="chapter" data-level="8.5.2" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#cambiar-el-formato-gather-y-spread"><i class="fa fa-check"></i><b>8.5.2</b> Cambiar el formato: <code>gather()</code> y <code>spread()</code></a></li>
+<li class="chapter" data-level="8.5.3" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#renombrando-columnas-con-rename"><i class="fa fa-check"></i><b>8.5.3</b> Renombrando columnas con <code>rename()</code></a></li>
+<li class="chapter" data-level="8.5.4" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#agregando-columnas-mutate"><i class="fa fa-check"></i><b>8.5.4</b> Agregando columnas: <code>mutate()</code></a></li>
+<li class="chapter" data-level="8.5.5" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#group_by-y-summarise"><i class="fa fa-check"></i><b>8.5.5</b> <code>group_by</code> y <code>summarise</code></a></li>
+<li class="chapter" data-level="8.5.6" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#filtrando-columnas-filter"><i class="fa fa-check"></i><b>8.5.6</b> Filtrando columnas: <code>filter()</code></a></li>
+<li class="chapter" data-level="8.5.7" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#ordenando-sus-datos-arrange"><i class="fa fa-check"></i><b>8.5.7</b> Ordenando sus datos: <code>arrange()</code></a></li>
+<li class="chapter" data-level="8.5.8" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#joins-en-dplyr"><i class="fa fa-check"></i><b>8.5.8</b> Joins en dplyr</a></li>
+<li class="chapter" data-level="8.5.9" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#separate-y-unite"><i class="fa fa-check"></i><b>8.5.9</b> <code>separate()</code> y <code>unite()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#resumen"><i class="fa fa-check"></i><b>8.6</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html"><i class="fa fa-check"></i><b>9</b> Creando funciones de R</a><ul>
+<li class="chapter" data-level="9.1" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#objetivos-6"><i class="fa fa-check"></i><b>9.1</b> Objetivos</a></li>
+<li class="chapter" data-level="9.2" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#por-qué-usar-funciones"><i class="fa fa-check"></i><b>9.2</b> ¿Por qué usar funciones?</a></li>
+<li class="chapter" data-level="9.3" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#ejemplo-conversión-de-temperatura"><i class="fa fa-check"></i><b>9.3</b> Ejemplo: Conversión de temperatura</a></li>
+<li class="chapter" data-level="9.4" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#creando-una-función"><i class="fa fa-check"></i><b>9.4</b> Creando una función</a></li>
+<li class="chapter" data-level="9.5" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#actividad-5"><i class="fa fa-check"></i><b>9.5</b> Actividad</a></li>
+<li class="chapter" data-level="9.6" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#documentando-funciones-de-r"><i class="fa fa-check"></i><b>9.6</b> Documentando funciones de R</a></li>
+<li class="chapter" data-level="9.7" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#resumen-1"><i class="fa fa-check"></i><b>9.7</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html"><i class="fa fa-check"></i><b>10</b> Visualización de mapas basados en la web</a><ul>
+<li class="chapter" data-level="10.1" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#objetivos-7"><i class="fa fa-check"></i><b>10.1</b> Objetivos</a></li>
+<li class="chapter" data-level="10.2" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#introducción-3"><i class="fa fa-check"></i><b>10.2</b> Introducción</a></li>
+<li class="chapter" data-level="10.3" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#un-ejemplo-básico"><i class="fa fa-check"></i><b>10.3</b> Un ejemplo básico</a></li>
+<li class="chapter" data-level="10.4" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#un-ejemplo-ya-no-tan-básico"><i class="fa fa-check"></i><b>10.4</b> Un ejemplo ya no tan básico</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#carga-de-datos-escape-de-salmones"><i class="fa fa-check"></i><b>10.4.1</b> Carga de datos: escape de salmones</a></li>
+<li class="chapter" data-level="10.4.2" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#gráficos-estáticos"><i class="fa fa-check"></i><b>10.4.2</b> Gráficos estáticos</a></li>
+<li class="chapter" data-level="10.4.3" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#mapas-interactivos"><i class="fa fa-check"></i><b>10.4.3</b> Mapas interactivos</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#mapas-estáticos-con-ggplot-y-geom_sf"><i class="fa fa-check"></i><b>10.5</b> Mapas estáticos con <code>ggplot</code> y <code>geom_sf</code></a></li>
+<li class="chapter" data-level="10.6" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#recursos-1"><i class="fa fa-check"></i><b>10.6</b> Recursos</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html"><i class="fa fa-check"></i><b>11</b> Creando Paquetes de R</a><ul>
+<li class="chapter" data-level="11.1" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#objetivos-8"><i class="fa fa-check"></i><b>11.1</b> Objetivos</a></li>
+<li class="chapter" data-level="11.2" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#por-qué-usar-paquetes"><i class="fa fa-check"></i><b>11.2</b> ¿Por qué usar paquetes?</a></li>
+<li class="chapter" data-level="11.3" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#instalación-y-carga-de-los-paquetes"><i class="fa fa-check"></i><b>11.3</b> Instalación y carga de los paquetes</a></li>
+<li class="chapter" data-level="11.4" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#creación-de-un-paquete-básico"><i class="fa fa-check"></i><b>11.4</b> Creación de un paquete básico</a></li>
+<li class="chapter" data-level="11.5" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#agregando-su-código"><i class="fa fa-check"></i><b>11.5</b> Agregando su código</a></li>
+<li class="chapter" data-level="11.6" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#agregando-la-documentación"><i class="fa fa-check"></i><b>11.6</b> Agregando la documentación</a></li>
+<li class="chapter" data-level="11.7" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#verifique-su-paquete"><i class="fa fa-check"></i><b>11.7</b> Verifique su paquete</a></li>
+<li class="chapter" data-level="11.8" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#verificando-e-instalando-el-paquete-r-creado"><i class="fa fa-check"></i><b>11.8</b> Verificando e instalando el paquete R creado</a></li>
+<li class="chapter" data-level="11.9" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#compartiendo-y-publicando-su-paquete-de-r"><i class="fa fa-check"></i><b>11.9</b> Compartiendo y publicando su paquete de R</a></li>
+<li class="chapter" data-level="11.10" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#más-lecturas"><i class="fa fa-check"></i><b>11.10</b> Más lecturas</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>12</b> Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introducción a la Investigación Reproducible con RStudio y RMarkdown</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="creando-funciones-de-r" class="section level1">
+<h1><span class="header-section-number">9</span> Creando funciones de R</h1>
+<p>Mucha gente escribe los código de R como un flujo simple y continuo de comandos, incluso algunas veces sacado directamente
+desde la consola de R y copiado a un script. Si bien cualquier script tiene tremendos beneficios por sobre soluciones basadas
+en el uso del mouse, existen ventajas de usar códigos autocontenidos o modulares. Este es el rol de las funciones (<code>function</code>)
+en R. En este capítulo vamos a revisar las ventajas de escribir funciones de R, practicaremos creando algunas y demostraremos
+como usarlas.</p>
+<div id="objetivos-6" class="section level2">
+<h2><span class="header-section-number">9.1</span> Objetivos</h2>
+<p>En este capítulo veremos:</p>
+<ul>
+<li>Por qué debemos escribir códigos utilizando funciones.</li>
+<li>Como escribir código para una o más funciones.</li>
+<li>Como documentar las funciones y explicanr su funcionamiento.</li>
+</ul>
+</div>
+<div id="por-qué-usar-funciones" class="section level2">
+<h2><span class="header-section-number">9.2</span> ¿Por qué usar funciones?</h2>
+<p>En inglés se usa el acronismo <strong>DRY</strong> que se traduce a <em>No Se Repita a Si Mismo</em> (Don’t Repeat Yourself).</p>
+<p>Al crear funciones pequeñas y autocontenidas, que desarrollan una única acción y lo hacen bien, podemos ganar:</p>
+<ul>
+<li>Mejoras en el entendimiento del código.</li>
+<li>Re-uso del código a través de la descomposición de tareas en fragmentos pequeños.</li>
+<li>Mejorar la revisión y corrección de errores.</li>
+</ul>
+</div>
+<div id="ejemplo-conversión-de-temperatura" class="section level2">
+<h2><span class="header-section-number">9.3</span> Ejemplo: Conversión de temperatura</h2>
+<p>Imagine que tiene datos de temperatura medidos en grados Fahrenheit y los quiere convertir a Celsius para ser analizados.
+Puede ser que para este fin usted escriba un código de R que lo siguiente.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1">airtemps &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">212</span>, <span class="fl">30.3</span>, <span class="dv">78</span>, <span class="dv">32</span>)</a>
+<a class="sourceLine" id="cb118-2" data-line-number="2">celsius1 &lt;-<span class="st"> </span>(airtemps[<span class="dv">1</span>]<span class="op">-</span><span class="dv">32</span>)<span class="op">*</span><span class="dv">5</span><span class="op">/</span><span class="dv">9</span></a>
+<a class="sourceLine" id="cb118-3" data-line-number="3">celsius2 &lt;-<span class="st"> </span>(airtemps[<span class="dv">2</span>]<span class="op">-</span><span class="dv">32</span>)<span class="op">*</span><span class="dv">5</span><span class="op">/</span><span class="dv">9</span></a>
+<a class="sourceLine" id="cb118-4" data-line-number="4">celsius3 &lt;-<span class="st"> </span>(airtemps[<span class="dv">3</span>]<span class="op">-</span><span class="dv">32</span>)<span class="op">*</span><span class="dv">5</span><span class="op">/</span><span class="dv">9</span></a></code></pre></div>
+<p>En este código existen 3 lineas de código que hacen lo mismo y repite la fórmula para convertir la temperatura. Este código
+se puede acortar y hacer más confiable aliminando las repeticiones.</p>
+</div>
+<div id="creando-una-función" class="section level2">
+<h2><span class="header-section-number">9.4</span> Creando una función</h2>
+<p>Las funciones de R son un mecanismo donde se procesa una entrada y se devuelve un valor de salida. En forma similar a otras
+variables en R, las funciones se asignan a una variable y pueden ser utilizadas en diferentes partes del código. Para crear
+una función en R, se usa la función <code>function</code> y se asigna su resultado a una variable.</p>
+<p>A continuación escribiremos una función que transforma la desde grados fahrenheit a grados celsius.</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">fahr_to_celsius &lt;-<span class="st"> </span><span class="cf">function</span>(fahr) {</a>
+<a class="sourceLine" id="cb119-2" data-line-number="2">  celsius &lt;-<span class="st"> </span>(fahr<span class="dv">-32</span>)<span class="op">*</span><span class="dv">5</span><span class="op">/</span><span class="dv">9</span></a>
+<a class="sourceLine" id="cb119-3" data-line-number="3">  <span class="kw">return</span>(celsius)</a>
+<a class="sourceLine" id="cb119-4" data-line-number="4">}</a></code></pre></div>
+<p>Al ejecutar este código, hemos creado una función y almacenado en el ambiente global de R. El argumento <code>fahr</code> de la función
+<code>function</code> indica que toma un único parámetro (la temperatura en fahrenheit) y la declaración <code>return</code> indica que la función
+devolve el valor almacenado en la variable <code>celsius</code>, que es calculada internamente.</p>
+<p>Usemos ahora la función y veamos si obtenemos los mismos valores:</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1">celsius4 &lt;-<span class="st"> </span><span class="kw">fahr_to_celsius</span>(airtemps[<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb120-2" data-line-number="2">celsius4</a></code></pre></div>
+<pre><code>## [1] 100</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">celsius1 <span class="op">==</span><span class="st"> </span>celsius4</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>¡Excelente! Ahora tenemos una función que para convertir gradpos que podemos usar. Ya que la mayoría de las operaciones en
+R pueden tomar múltiples tipos de entradas, es posible pasar el vector original de <code>airtemps</code> y calcular todos los resultados
+al mismo tiempo:</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">celsius &lt;-<span class="st"> </span><span class="kw">fahr_to_celsius</span>(airtemps)</a>
+<a class="sourceLine" id="cb124-2" data-line-number="2">celsius</a></code></pre></div>
+<pre><code>## [1] 100.0000000  -0.9444444  25.5555556   0.0000000</code></pre>
+<p>Ahora nuestra función tomó el vector de temperaturas en grados fahrenheit y fue devuelto como un en grados celsius.</p>
+</div>
+<div id="actividad-5" class="section level2">
+<h2><span class="header-section-number">9.5</span> Actividad</h2>
+<p>Cree una función que transforme los datos de grados celsius a fahrenheit (<code>celsius_to_fahr</code>). Luego use esta formula para
+convertir el vector <code>celsius</code> a un vector de temperaturas fahrenheit y compare los resultados al vector original <code>airtemps</code>
+para verificar si están correctos.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="co"># Escriba aquí su código</span></a></code></pre></div>
+<p>¿Encontró problemas con el redondeo de valores o precisión?</p>
+</div>
+<div id="documentando-funciones-de-r" class="section level2">
+<h2><span class="header-section-number">9.6</span> Documentando funciones de R</h2>
+<p>Las funciones necesitan ser documentadas para que se pueda comunicar que es lo que hacen y por qué. El paquete <code>roxygen2</code>
+provee una forma simple de documentar sus funciones, explicando que hacen, cuales son los supuestos, descripciones sobre
+los valores de entrada, de los que se devuelven y sobre la racionalidad para las decisiones utilizadas en la implementación
+de la función.</p>
+<p>La documentación en ROxygen se incluye inmediatamente antes de la definición de la función. Para hacer esto, se debe indicar
+que es parte de la documentación iniciando la línea con los caracteres <code>#'</code>. Aquí hay una versión documentada la función que
+transforma las temperaturas de fahrenheit a grados celcius:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1"><span class="co">#&#39; Convierte los datos de temperatura de Fahrenheit a Celsius</span></a>
+<a class="sourceLine" id="cb127-2" data-line-number="2"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb127-3" data-line-number="3"><span class="co">#&#39; @parametros fahr Datos de temperatura en grados Fahrenheit que serán convertidos</span></a>
+<a class="sourceLine" id="cb127-4" data-line-number="4"><span class="co">#&#39; @return Valores de temperatura en grados Celsius</span></a>
+<a class="sourceLine" id="cb127-5" data-line-number="5"><span class="co">#&#39; @keywords conversion</span></a>
+<a class="sourceLine" id="cb127-6" data-line-number="6"><span class="co">#&#39; @export</span></a>
+<a class="sourceLine" id="cb127-7" data-line-number="7"><span class="co">#&#39; @ejemplos</span></a>
+<a class="sourceLine" id="cb127-8" data-line-number="8"><span class="co">#&#39; fahr_to_celsius(32)</span></a>
+<a class="sourceLine" id="cb127-9" data-line-number="9"><span class="co">#&#39; fahr_to_celsius(c(32, 212, 72))</span></a>
+<a class="sourceLine" id="cb127-10" data-line-number="10">fahr_to_celsius &lt;-<span class="st"> </span><span class="cf">function</span>(fahr) {</a>
+<a class="sourceLine" id="cb127-11" data-line-number="11">  celsius &lt;-<span class="st"> </span>(fahr<span class="dv">-32</span>)<span class="op">*</span><span class="dv">5</span><span class="op">/</span><span class="dv">9</span></a>
+<a class="sourceLine" id="cb127-12" data-line-number="12">  <span class="kw">return</span>(celsius)</a>
+<a class="sourceLine" id="cb127-13" data-line-number="13">}</a></code></pre></div>
+<p>El uso de las palabras claves <code>@param</code> define los datos de entrada esperados y <code>@return</code> los valores que serán devueltos por
+la función. <code>@examples</code> es útil como un recordatorio de como se debe usar la función. Finalmente, la palabra clave <code>@export</code>
+indica que, si esta función fuera agregada a un paquete, la función estará disponible para ser usado por otros códigos o
+paquetes.</p>
+</div>
+<div id="resumen-1" class="section level2">
+<h2><span class="header-section-number">9.7</span> Resumen</h2>
+<ul>
+<li>Las funciones son útiles para reducir la redundancia, reusar el código y reducir los errores.</li>
+<li>Las funciones que contruyen con la función <code>function</code> (valga la redundancia).</li>
+<li>Es funamental una buena documentación de las funciones, el paquere <code>roxygen2</code> es una gran ayuda para esto.</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="limpieza-y-manipulación-de-datos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="visualización-de-mapas-basados-en-la-web.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

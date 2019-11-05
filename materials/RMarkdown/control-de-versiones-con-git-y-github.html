@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Control de versiones con git y GitHub | Introducción a la Investigación Reproducible con RStudio y RMarkdown</title>
+  <meta name="description" content="6 Control de versiones con git y GitHub | Introducción a la Investigación Reproducible con RStudio y RMarkdown" />
+  <meta name="generator" content="bookdown 0.14.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Control de versiones con git y GitHub | Introducción a la Investigación Reproducible con RStudio y RMarkdown" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Control de versiones con git y GitHub | Introducción a la Investigación Reproducible con RStudio y RMarkdown" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="rmarkdown.html"/>
+<link rel="next" href="cap7.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.9/datatables.js"></script>
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.19/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RMarkdown IFOP</a></li>
+<li><a href="../">← Página Pricipal</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#la-crisis-de-reproducibilidad"><i class="fa fa-check"></i><b>1.1</b> La crisis de reproducibilidad</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#reconocimientos"><i class="fa fa-check"></i><b>1.2</b> Reconocimientos</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html"><i class="fa fa-check"></i><b>2</b> Investigación reproducible: ¿De qué estamos hablando?</a><ul>
+<li class="chapter" data-level="2.1" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#objetivos"><i class="fa fa-check"></i><b>2.1</b> Objetivos</a></li>
+<li class="chapter" data-level="2.2" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#investigación-reproducible"><i class="fa fa-check"></i><b>2.2</b> Investigación reproducible</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#qué-es-necesario-para-la-reproducibilidad-computacional"><i class="fa fa-check"></i><b>2.2.1</b> ¿Qué es necesario para la reproducibilidad computacional?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#conceptualizando-los-flujos-de-trabajo-workflows"><i class="fa fa-check"></i><b>2.2.2</b> Conceptualizando los flujos de trabajo (workflows)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><i class="fa fa-check"></i><b>3</b> Herramientas: RStudio - Git/GitHub Configuración y Motivación</a><ul>
+<li class="chapter" data-level="3.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#por-que-usar-git"><i class="fa fa-check"></i><b>3.1</b> Por que usar git?</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#el-problema-con-los-nombres-de-archivos"><i class="fa fa-check"></i><b>3.1.1</b> El problema con los nombres de archivos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#revisando-el-ambiente-de-rstudio"><i class="fa fa-check"></i><b>3.2</b> Revisando el ambiente de RStudio</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#versión-de-r"><i class="fa fa-check"></i><b>3.2.1</b> Versión de R</a></li>
+<li class="chapter" data-level="3.2.2" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#versión-de-rstudio"><i class="fa fa-check"></i><b>3.2.2</b> Versión de RStudio</a></li>
+<li class="chapter" data-level="3.2.3" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#instalación-de-paquetes-de-r"><i class="fa fa-check"></i><b>3.2.3</b> Instalación de Paquetes de R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#configurando-git"><i class="fa fa-check"></i><b>3.3</b> Configurando git</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#nota-para-usuarios-de-windows"><i class="fa fa-check"></i><b>3.3.1</b> Nota para Usuarios de Windows</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introducción-a-r.html"><a href="introducción-a-r.html"><i class="fa fa-check"></i><b>4</b> Introducción a R</a><ul>
+<li class="chapter" data-level="4.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#objetivos-1"><i class="fa fa-check"></i><b>4.1</b> Objetivos</a></li>
+<li class="chapter" data-level="4.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#introducción-y-motivación"><i class="fa fa-check"></i><b>4.2</b> Introducción y Motivación</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#recursos"><i class="fa fa-check"></i><b>4.2.1</b> Recursos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#r-en-la-consola"><i class="fa fa-check"></i><b>4.3</b> R en la consola</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#los-mensajes-de-error-son-sus-amigos"><i class="fa fa-check"></i><b>4.3.1</b> Los mensajes de error son sus amigos</a></li>
+<li class="chapter" data-level="4.3.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#operadores-y-expresiones-lógicas"><i class="fa fa-check"></i><b>4.3.2</b> Operadores y expresiones lógicas</a></li>
+<li class="chapter" data-level="4.3.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#limpiando-el-ambiente-de-trabajo"><i class="fa fa-check"></i><b>4.3.3</b> Limpiando el ambiente de trabajo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>5</b> RMarkdown</a><ul>
+<li class="chapter" data-level="5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#objetivos-2"><i class="fa fa-check"></i><b>5.1</b> Objetivos</a></li>
+<li class="chapter" data-level="5.2" data-path="rmarkdown.html"><a href="rmarkdown.html#introducción-1"><i class="fa fa-check"></i><b>5.2</b> Introducción</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad"><i class="fa fa-check"></i><b>5.2.1</b> Actividad</a></li>
+<li class="chapter" data-level="5.2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#ejecutarCodEnRmd"><i class="fa fa-check"></i><b>5.2.2</b> Secciones del código</a></li>
+<li class="chapter" data-level="5.2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad-1"><i class="fa fa-check"></i><b>5.2.3</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="rmarkdown.html"><a href="rmarkdown.html#funciones-de-r"><i class="fa fa-check"></i><b>5.3</b> Funciones de R</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#ejemplo-simple"><i class="fa fa-check"></i><b>5.3.1</b> Ejemplo simple</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="rmarkdown.html"><a href="rmarkdown.html#páginas-de-ayuda"><i class="fa fa-check"></i><b>5.4</b> Páginas de ayuda</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#obteniendo-ayuda"><i class="fa fa-check"></i><b>5.4.1</b> Obteniendo ayuda</a></li>
+<li class="chapter" data-level="5.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad-2"><i class="fa fa-check"></i><b>5.4.2</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="rmarkdown.html"><a href="rmarkdown.html#leyendo-un-archivo-de-datos-a-r"><i class="fa fa-check"></i><b>5.5</b> Leyendo un archivo de datos a R</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#descargue-un-archivo-desde-el-arctic-data-center"><i class="fa fa-check"></i><b>5.5.1</b> Descargue un archivo desde el Arctic Data Center</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="rmarkdown.html"><a href="rmarkdown.html#usando-data.frames"><i class="fa fa-check"></i><b>5.6</b> Usando <code>data.frames</code></a><ul>
+<li class="chapter" data-level="5.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad-3"><i class="fa fa-check"></i><b>5.6.1</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="rmarkdown.html"><a href="rmarkdown.html#solución-de-problemas"><i class="fa fa-check"></i><b>5.7</b> Solución de problemas</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="rmarkdown.html"><a href="rmarkdown.html#mi-rmarkdown-no-genera-knit-el-pdf"><i class="fa fa-check"></i><b>5.7.1</b> Mi RMarkdown no genera (knit) el PDF</a></li>
+<li class="chapter" data-level="5.7.2" data-path="rmarkdown.html"><a href="rmarkdown.html#acabo-de-ejecutar-un-comando-pera-no-pasa-nada"><i class="fa fa-check"></i><b>5.7.2</b> Acabo de ejecutar un comando pera no pasa nada</a></li>
+<li class="chapter" data-level="5.7.3" data-path="rmarkdown.html"><a href="rmarkdown.html#r-dice-que-mi-objeto-no-puede-ser-encontrado"><i class="fa fa-check"></i><b>5.7.3</b> R dice que mi objeto no puede ser encontrado</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="rmarkdown.html"><a href="rmarkdown.html#análisis-literal"><i class="fa fa-check"></i><b>5.8</b> Análisis literal</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html"><i class="fa fa-check"></i><b>6</b> Control de versiones con git y GitHub</a><ul>
+<li class="chapter" data-level="6.1" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#objetivos-3"><i class="fa fa-check"></i><b>6.1</b> Objetivos</a></li>
+<li class="chapter" data-level="6.2" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#el-problema-con-los-nombres-de-archivo"><i class="fa fa-check"></i><b>6.2</b> El problema con los nombres de archivo</a></li>
+<li class="chapter" data-level="6.3" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#control-de-versiones-y-colaboración-usando-git-and-github"><i class="fa fa-check"></i><b>6.3</b> Control de versiones y colaboración usando Git and GitHub</a></li>
+<li class="chapter" data-level="6.4" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#veamos-un-repositorio-de-github"><i class="fa fa-check"></i><b>6.4</b> Veamos un repositorio de GitHub</a></li>
+<li class="chapter" data-level="6.5" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#el-ciclo-de-vida-de-git"><i class="fa fa-check"></i><b>6.5</b> El ciclo de vida de Git</a></li>
+<li class="chapter" data-level="6.6" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#cree-un-repositorio-remoto-en-github"><i class="fa fa-check"></i><b>6.6</b> Cree un repositorio remoto en GitHub</a></li>
+<li class="chapter" data-level="6.7" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#trabajando-localmente-con-git-en-rstudio"><i class="fa fa-check"></i><b>6.7</b> Trabajando localmente con Git en RStudio</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#crear-nuevo-proyecto-create-a-new-project"><i class="fa fa-check"></i><b>6.7.1</b> Crear nuevo Proyecto (Create a New Project)</a></li>
+<li class="chapter" data-level="6.7.2" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#inspeccionar-el-historial-history"><i class="fa fa-check"></i><b>6.7.2</b> Inspeccionar el historial (history)</a></li>
+<li class="chapter" data-level="6.7.3" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#confirme-cambios-haciendo-clic-en-commit-al-archivo-readme.md-commit-a-readme.md-change"><i class="fa fa-check"></i><b>6.7.3</b> Confirme cambios haciendo clic en <em>commit</em> al archivo README.md (Commit a README.md change)</a></li>
+<li class="chapter" data-level="6.7.4" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#commit-los-cambios-hechos-en-rstudio"><i class="fa fa-check"></i><b>6.7.4</b> Commit los cambios hechos en Rstudio</a></li>
+<li class="chapter" data-level="6.7.5" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#inspeccionando-el-historial"><i class="fa fa-check"></i><b>6.7.5</b> Inspeccionando el historial</a></li>
+<li class="chapter" data-level="6.7.6" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#enviar-push-cambios-a-github"><i class="fa fa-check"></i><b>6.7.6</b> Enviar (Push) cambios a GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#sobre-buenos-mensajes-de-confirmación-commit"><i class="fa fa-check"></i><b>6.8</b> Sobre (buenos) mensajes de confirmación (commit)</a></li>
+<li class="chapter" data-level="6.9" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#flujos-de-trabajo-colaborativos-y-libres-de-conflictos-relacionados-con-git"><i class="fa fa-check"></i><b>6.9</b> Flujos de trabajo colaborativos y libres de conflictos (relacionados con Git)</a></li>
+<li class="chapter" data-level="6.10" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#actividad-4"><i class="fa fa-check"></i><b>6.10</b> Actividad</a></li>
+<li class="chapter" data-level="6.11" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#tópicos-avanzados"><i class="fa fa-check"></i><b>6.11</b> Tópicos avanzados</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="cap7.html"><a href="cap7.html"><i class="fa fa-check"></i><b>7</b> Modelamiento de datos y datos ordenados</a><ul>
+<li class="chapter" data-level="7.1" data-path="cap7.html"><a href="cap7.html#objetivos-4"><i class="fa fa-check"></i><b>7.1</b> Objetivos</a></li>
+<li class="chapter" data-level="7.2" data-path="cap7.html"><a href="cap7.html#beneficios-de-los-sistemas-de-datos-relacionales"><i class="fa fa-check"></i><b>7.2</b> Beneficios de los sistemas de datos relacionales</a></li>
+<li class="chapter" data-level="7.3" data-path="cap7.html"><a href="cap7.html#organización-de-datos"><i class="fa fa-check"></i><b>7.3</b> Organización de datos</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="cap7.html"><a href="cap7.html#inconsistencia-en-las-variables"><i class="fa fa-check"></i><b>7.3.1</b> Inconsistencia en las variables</a></li>
+<li class="chapter" data-level="7.3.2" data-path="cap7.html"><a href="cap7.html#estadísticas-y-sumas-al-margen"><i class="fa fa-check"></i><b>7.3.2</b> Estadísticas y sumas al margen</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="cap7.html"><a href="cap7.html#modelamiento-de-datos-adecuado"><i class="fa fa-check"></i><b>7.4</b> Modelamiento de datos adecuado</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="cap7.html"><a href="cap7.html#datos-de-normalizados"><i class="fa fa-check"></i><b>7.4.1</b> Datos De-normalizados</a></li>
+<li class="chapter" data-level="7.4.2" data-path="cap7.html"><a href="cap7.html#datos-tabulares"><i class="fa fa-check"></i><b>7.4.2</b> Datos tabulares</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="cap7.html"><a href="cap7.html#claves-primarias-y-foráneas"><i class="fa fa-check"></i><b>7.5</b> Claves primarias y foráneas</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="cap7.html"><a href="cap7.html#modelo-de-relación-entidad"><i class="fa fa-check"></i><b>7.5.1</b> Modelo de Relación-Entidad</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="cap7.html"><a href="cap7.html#joins"><i class="fa fa-check"></i><b>7.6</b> Combinando datos</a></li>
+<li class="chapter" data-level="7.7" data-path="cap7.html"><a href="cap7.html#guía-simple-para-datos-efectivos"><i class="fa fa-check"></i><b>7.7</b> Guía simple para datos efectivos</a></li>
+<li class="chapter" data-level="7.8" data-path="cap7.html"><a href="cap7.html#ejercicio-de-modelamiento-de-datos"><i class="fa fa-check"></i><b>7.8</b> Ejercicio de modelamiento de datos</a></li>
+<li class="chapter" data-level="7.9" data-path="cap7.html"><a href="cap7.html#recursos-relacionados"><i class="fa fa-check"></i><b>7.9</b> Recursos relacionados</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html"><i class="fa fa-check"></i><b>8</b> Limpieza y manipulación de datos</a><ul>
+<li class="chapter" data-level="8.1" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#objetivos-5"><i class="fa fa-check"></i><b>8.1</b> Objetivos</a></li>
+<li class="chapter" data-level="8.2" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#introducción-2"><i class="fa fa-check"></i><b>8.2</b> Introducción</a></li>
+<li class="chapter" data-level="8.3" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#configuración-setup"><i class="fa fa-check"></i><b>8.3</b> Configuración (Setup)</a></li>
+<li class="chapter" data-level="8.4" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#acerca-del-operador-de-pipe-tubo"><i class="fa fa-check"></i><b>8.4</b> Acerca del operador de pipe (tubo; <code>%&gt;%</code>)</a></li>
+<li class="chapter" data-level="8.5" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#funciones"><i class="fa fa-check"></i><b>8.5</b> Funciones</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#seleccionarremover-columnas-select"><i class="fa fa-check"></i><b>8.5.1</b> Seleccionar/remover columnas: <code>select()</code></a></li>
+<li class="chapter" data-level="8.5.2" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#cambiar-el-formato-gather-y-spread"><i class="fa fa-check"></i><b>8.5.2</b> Cambiar el formato: <code>gather()</code> y <code>spread()</code></a></li>
+<li class="chapter" data-level="8.5.3" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#renombrando-columnas-con-rename"><i class="fa fa-check"></i><b>8.5.3</b> Renombrando columnas con <code>rename()</code></a></li>
+<li class="chapter" data-level="8.5.4" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#agregando-columnas-mutate"><i class="fa fa-check"></i><b>8.5.4</b> Agregando columnas: <code>mutate()</code></a></li>
+<li class="chapter" data-level="8.5.5" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#group_by-y-summarise"><i class="fa fa-check"></i><b>8.5.5</b> <code>group_by</code> y <code>summarise</code></a></li>
+<li class="chapter" data-level="8.5.6" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#filtrando-columnas-filter"><i class="fa fa-check"></i><b>8.5.6</b> Filtrando columnas: <code>filter()</code></a></li>
+<li class="chapter" data-level="8.5.7" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#ordenando-sus-datos-arrange"><i class="fa fa-check"></i><b>8.5.7</b> Ordenando sus datos: <code>arrange()</code></a></li>
+<li class="chapter" data-level="8.5.8" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#joins-en-dplyr"><i class="fa fa-check"></i><b>8.5.8</b> Joins en dplyr</a></li>
+<li class="chapter" data-level="8.5.9" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#separate-y-unite"><i class="fa fa-check"></i><b>8.5.9</b> <code>separate()</code> y <code>unite()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#resumen"><i class="fa fa-check"></i><b>8.6</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html"><i class="fa fa-check"></i><b>9</b> Creando funciones de R</a><ul>
+<li class="chapter" data-level="9.1" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#objetivos-6"><i class="fa fa-check"></i><b>9.1</b> Objetivos</a></li>
+<li class="chapter" data-level="9.2" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#por-qué-usar-funciones"><i class="fa fa-check"></i><b>9.2</b> ¿Por qué usar funciones?</a></li>
+<li class="chapter" data-level="9.3" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#ejemplo-conversión-de-temperatura"><i class="fa fa-check"></i><b>9.3</b> Ejemplo: Conversión de temperatura</a></li>
+<li class="chapter" data-level="9.4" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#creando-una-función"><i class="fa fa-check"></i><b>9.4</b> Creando una función</a></li>
+<li class="chapter" data-level="9.5" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#actividad-5"><i class="fa fa-check"></i><b>9.5</b> Actividad</a></li>
+<li class="chapter" data-level="9.6" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#documentando-funciones-de-r"><i class="fa fa-check"></i><b>9.6</b> Documentando funciones de R</a></li>
+<li class="chapter" data-level="9.7" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#resumen-1"><i class="fa fa-check"></i><b>9.7</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html"><i class="fa fa-check"></i><b>10</b> Visualización de mapas basados en la web</a><ul>
+<li class="chapter" data-level="10.1" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#objetivos-7"><i class="fa fa-check"></i><b>10.1</b> Objetivos</a></li>
+<li class="chapter" data-level="10.2" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#introducción-3"><i class="fa fa-check"></i><b>10.2</b> Introducción</a></li>
+<li class="chapter" data-level="10.3" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#un-ejemplo-básico"><i class="fa fa-check"></i><b>10.3</b> Un ejemplo básico</a></li>
+<li class="chapter" data-level="10.4" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#un-ejemplo-ya-no-tan-básico"><i class="fa fa-check"></i><b>10.4</b> Un ejemplo ya no tan básico</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#carga-de-datos-escape-de-salmones"><i class="fa fa-check"></i><b>10.4.1</b> Carga de datos: escape de salmones</a></li>
+<li class="chapter" data-level="10.4.2" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#gráficos-estáticos"><i class="fa fa-check"></i><b>10.4.2</b> Gráficos estáticos</a></li>
+<li class="chapter" data-level="10.4.3" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#mapas-interactivos"><i class="fa fa-check"></i><b>10.4.3</b> Mapas interactivos</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#mapas-estáticos-con-ggplot-y-geom_sf"><i class="fa fa-check"></i><b>10.5</b> Mapas estáticos con <code>ggplot</code> y <code>geom_sf</code></a></li>
+<li class="chapter" data-level="10.6" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#recursos-1"><i class="fa fa-check"></i><b>10.6</b> Recursos</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html"><i class="fa fa-check"></i><b>11</b> Creando Paquetes de R</a><ul>
+<li class="chapter" data-level="11.1" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#objetivos-8"><i class="fa fa-check"></i><b>11.1</b> Objetivos</a></li>
+<li class="chapter" data-level="11.2" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#por-qué-usar-paquetes"><i class="fa fa-check"></i><b>11.2</b> ¿Por qué usar paquetes?</a></li>
+<li class="chapter" data-level="11.3" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#instalación-y-carga-de-los-paquetes"><i class="fa fa-check"></i><b>11.3</b> Instalación y carga de los paquetes</a></li>
+<li class="chapter" data-level="11.4" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#creación-de-un-paquete-básico"><i class="fa fa-check"></i><b>11.4</b> Creación de un paquete básico</a></li>
+<li class="chapter" data-level="11.5" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#agregando-su-código"><i class="fa fa-check"></i><b>11.5</b> Agregando su código</a></li>
+<li class="chapter" data-level="11.6" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#agregando-la-documentación"><i class="fa fa-check"></i><b>11.6</b> Agregando la documentación</a></li>
+<li class="chapter" data-level="11.7" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#verifique-su-paquete"><i class="fa fa-check"></i><b>11.7</b> Verifique su paquete</a></li>
+<li class="chapter" data-level="11.8" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#verificando-e-instalando-el-paquete-r-creado"><i class="fa fa-check"></i><b>11.8</b> Verificando e instalando el paquete R creado</a></li>
+<li class="chapter" data-level="11.9" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#compartiendo-y-publicando-su-paquete-de-r"><i class="fa fa-check"></i><b>11.9</b> Compartiendo y publicando su paquete de R</a></li>
+<li class="chapter" data-level="11.10" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#más-lecturas"><i class="fa fa-check"></i><b>11.10</b> Más lecturas</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>12</b> Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introducción a la Investigación Reproducible con RStudio y RMarkdown</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="control-de-versiones-con-git-y-github" class="section level1">
+<h1><span class="header-section-number">6</span> Control de versiones con git y GitHub</h1>
+<div id="objetivos-3" class="section level2">
+<h2><span class="header-section-number">6.1</span> Objetivos</h2>
+<p>En este capítulo veremos:</p>
+<ul>
+<li>¿Por qué <strong>git</strong> es útil para análisis reproducibles?</li>
+<li>¿Cómo usar <strong>git</strong> para registrar los cambios que se hacen en el tiempo?</li>
+<li>¿Cómo usar <strong>GitHub</strong> para colaborar?</li>
+<li>¿Cómo estructurar los “<em>commits</em>” para que los cambios sean claros para otros?</li>
+<li>¿Cómo escribir mensajes de “<em>commits</em>” que sean efectivos?</li>
+</ul>
+</div>
+<div id="el-problema-con-los-nombres-de-archivo" class="section level2">
+<h2><span class="header-section-number">6.2</span> El problema con los nombres de archivo</h2>
+<div class="figure" style="text-align: center"><span id="fig:finalDoc2"></span>
+<img src="images/3.1_phd_comics_final.png" alt="El dilema de usar nombres como descriptor de versiones." width="100%" />
+<p class="caption">
+Figure 6.1: El dilema de usar nombres como descriptor de versiones.
+</p>
+</div>
+<p>Cada archivo en un proceso científico sufre de cambios. Los manuscritos son editados. Las figuras son revisadas. Los
+códigos se corrigen cuando se encuentran problemas. Los archivos de datos se combinan, los errores son corregidos, se
+dividen y combinan nuevamente. En el curso de un análisis simple, uno puede esperar miles de cambios en los archivos.
+Y aún así, todo lo que usamos para identificas este sinnúmero de cambios son los simples <strong>nombres de archivos</strong>
+(fig. <a href="control-de-versiones-con-git-y-github.html#fig:finalDoc2">6.1</a>). Teniendo esto en consideración, es lógico pensar que debe existir una forma mejor… Y si la
+hay, se conoce como <strong>Control de Versiones</strong>.</p>
+<p>Un <strong>sistema de control de versiones</strong> ayuda a seguir lso cambios que se realizan a nuestros archivos, sin el desastre
+que resulta de utilizar sólo el nombre de los archivos. En los sistemas de control de versiones como <code>git</code>, se registra
+no sólo el nombre del archivo, si no que además su contenido, de esta forma, cuando el contenido cambia, se puede
+identificar que partes estaban y donde. El registro además contiene la relaciones entre las versiones, de esta forma se
+tiene un historial de todos los cambios deribados de las cada una de las versiones y es fácil dibujar un gráfico que
+muestre los cambios que ha sufrido un archivo, con sus versiones previas y aquellas derivadas (Fig. <a href="control-de-versiones-con-git-y-github.html#fig:figVersiones2">6.2</a>)</p>
+<div class="figure" style="text-align: center"><span id="fig:figVersiones2"></span>
+<img src="images/3.2_version-graph.png" alt="Evolución de las versiones de un archivo." width="40%" />
+<p class="caption">
+Figure 6.2: Evolución de las versiones de un archivo.
+</p>
+</div>
+<p>Los sistemas de control de versiones asignan un identificador a cada versión de cada archivo, manteniendo un registro de
+como están relacionados entre ellos. Además, estos sistemas permiten generar ramas laterales a una versión, la que puede
+ser fusionada de regreso a la tronco principal. Es posible además tener <em>múltiples copias</em> en múltiples computadores como
+respaldos y para trabajar colaborativamente. Finalmente, se pueden incluir etiquetas (tags) a versiones particulares, de
+esta forma es fácil retornar la versión que tenían los archivos cuando fueron etiquetados. Esto es particulamente útil
+para identificar una versión exacta de los datos, código y texto, por ejemplo, de un manuscrito que fue enviado para
+ser publicado, este puede ser el caso de la etiqueda <code>R2</code> en la figura <a href="control-de-versiones-con-git-y-github.html#fig:figVersiones2">6.2</a>.</p>
+</div>
+<div id="control-de-versiones-y-colaboración-usando-git-and-github" class="section level2">
+<h2><span class="header-section-number">6.3</span> Control de versiones y colaboración usando Git and GitHub</h2>
+<p>Es importante hacer la distinción entre <strong>git</strong> y <strong>GitHub</strong>.</p>
+<ul>
+<li><strong>git</strong>: Software para el control de versiones que monitorea los archivos de un directorio (repositorio).
+<ul>
+<li>git crea el historial de versiones del repositorio.</li>
+</ul></li>
+<li><strong>GitHub</strong>: Sitio web que permite a los usuarios almacenar sus repositorios git y compartirlos con otros usuarios.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:gitExplicado"></span>
+<img src="images/6.3_vc-local-github.png" alt="Diferencia entre git y GitHub." width="60%" />
+<p class="caption">
+Figure 6.3: Diferencia entre git y GitHub.
+</p>
+</div>
+</div>
+<div id="veamos-un-repositorio-de-github" class="section level2">
+<h2><span class="header-section-number">6.4</span> Veamos un repositorio de GitHub</h2>
+<p>La captura de pantalla en la figura <a href="control-de-versiones-con-git-y-github.html#fig:webGitHub">6.4</a> muestra una copia de un repositorio almacenado en GitHub, con el
+listado de archivos y directorios, indicando cuando fueron modificados, incluyendo información acerca de quien hizo los
+cambios y una pequeña descripción de los cambios realizados.</p>
+<div class="figure" style="text-align: center"><span id="fig:webGitHub"></span>
+<img src="images/6.4_ss3sim-github.png" alt="Captura de pantalla de un repositorio en GitHub." width="100%" />
+<p class="caption">
+Figure 6.4: Captura de pantalla de un repositorio en GitHub.
+</p>
+</div>
+<p>Si nos metemos en los “commits” del repositorio (fig. <a href="control-de-versiones-con-git-y-github.html#fig:githubCommits">6.5</a>), podemos ver la historia de los cambios
+que se le han realizado. Por ejemplo, se ve que <code>kellijohnson</code> y <code>seananderson</code> hicieron algunos cambios durante junio y julio:</p>
+<div class="figure" style="text-align: center"><span id="fig:githubCommits"></span>
+<img src="images/6.5_ss3sim-commits.png" alt="Captura de pantalla de los Commits de un repositorio en GitHub." width="100%" />
+<p class="caption">
+Figure 6.5: Captura de pantalla de los Commits de un repositorio en GitHub.
+</p>
+</div>
+<p>Si entramos ahora a ver los cambios realizados el 13 de julio (fig. <a href="control-de-versiones-con-git-y-github.html#fig:githubDiferencias">6.6</a>), podemos saber exactamente
+cuales fueron los cambios realizados a cada archivo:</p>
+<div class="figure" style="text-align: center"><span id="fig:githubDiferencias"></span>
+<img src="images/6.6_ss3sim-diff.png" alt="Captura de pantalla donde se presentan las diferencias entre dos versiones alojadas en un repositorio de GitHub." width="100%" />
+<p class="caption">
+Figure 6.6: Captura de pantalla donde se presentan las diferencias entre dos versiones alojadas en un repositorio de GitHub.
+</p>
+</div>
+<p>Monitorear estas modificaciones, como se relacionan a cada una de las versiones de un software en particular y a los archivos
+es exactamente para lo que fueron diseñados git y GitHub. Vamos a mostrar como estos sistemas pueden ser realmente efectivos
+para monitorear las versiones de códigos científicos, figuras y manuscritos y de esta forma tener flujos de trabajo reproducibles.</p>
+</div>
+<div id="el-ciclo-de-vida-de-git" class="section level2">
+<h2><span class="header-section-number">6.5</span> El ciclo de vida de Git</h2>
+<p>Como usuario de git usted tiene que entender algunos conceptos básicos asociados a los sets de cambios con versiones y
+como estos son almacenados y se mueven a través del repositorio. Cualquier repositorio de git puede ser clonado, de esta
+forma existe en forma local y remota. Pero cada uno de estos repositorios clonados son una copia simple de todos los archivos
+y del historial de los cambios que se han realizado, lo que son almacenados en un forma repositio git particular. Para nuestros
+propósitos, tenemos que considerar un repositorio de git simplemente como un directorio que contiene adicionalmente un set de
+metadatos relacionado las versiones.</p>
+<p>En un directorio local donde git fue habilitado, el directorio contiene la versión actual de todos los archivos del repositorio.
+Estos archivos de trabajo están unidos a un directorio escondido que contiene el ‘Repositorio local’, el que a su vez contiene
+todos los otros cambios que se han realizado a los archivos y los metadatos sobre las versiones.</p>
+<p>De esta forma, cuando se está usando git para trabajar con archivos, se pueden usar los comandos de git para indicar
+específicamente que cambios a los archivos de trabajo deben ser definidos para las versiones (usando el comando <code>git add</code>)
+y cuando grabar estos cambios como una versión en el repositorio local (usando el comando <code>git commit</code>).</p>
+<p>Los demás conceptos se relacionan a la sincronización de los cambios en el repositorio local a un repositorio remoto.
+El comando <code>git push</code> se usar para enviar los cambios realizados en forma local a un repositorio remoto (posiblemente en
+GitHub) y el comando <code>git pull</code> es usado para traer los cambios del repositorio remoto y unirlos al repositorio local.</p>
+<div class="figure" style="text-align: center"><span id="fig:gitFlowChart"></span>
+<img src="images/6.7_git-flowchart.png" alt="Diagrama de flujo del ciclo de vida de git." width="70%" />
+<p class="caption">
+Figure 6.7: Diagrama de flujo del ciclo de vida de git.
+</p>
+</div>
+<ul>
+<li><code>git clone</code>: Copia todo el repositorio remoto a uno local.</li>
+<li><code>git add</code> (stage): Notifica a git de monitorear un set particular de cambios.</li>
+<li><code>git commit</code>: Almacena los cambios realizados como una versión.</li>
+<li><code>git pull</code>: Combina los cambios de un repositorio remoto a nuestro repositorio local.</li>
+<li><code>git push</code>: Copia los cambios de nuestro repositorio local al repositorio remoto.</li>
+<li><code>git status</code>: Determina el estado de los archivos en el repositorio local.</li>
+<li><code>git log</code>: Imprime el historial de cambios en el repositorio.</li>
+</ul>
+<p>Estos siete comandos son la mayoría de los comando que va a necesitar para utilizar git en forma exitosa. Pero todo esto
+es demasiado abstracto, mejor exploremos estos conceptos utilizando ejemplos reales.</p>
+</div>
+<div id="cree-un-repositorio-remoto-en-github" class="section level2">
+<h2><span class="header-section-number">6.6</span> Cree un repositorio remoto en GitHub</h2>
+<p>Empecemos creando un repositorio en GitHub, luego editaremos algunos archivos.</p>
+<ul>
+<li>Ingrese al sitio <a href="https://github.com">GitHub</a>.</li>
+<li>Clic en el botón de repositorio nuevo (New repository).</li>
+<li>Nómbrelo como <code>sasap-test</code>.</li>
+<li>Cree un archivo README.md.</li>
+<li>Defina la licencia a Apache 2.0.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:githubNewRepo"></span>
+<img src="images/6.8_new-repo-github.png" alt="Captura de pantalla de la creación de un repositorio nuevo en GitHub." width="100%" />
+<p class="caption">
+Figure 6.8: Captura de pantalla de la creación de un repositorio nuevo en GitHub.
+</p>
+</div>
+<p>¡Usted acaba de crear su primer repositorio! Este repositorio fue creado con un par de archivos que GitHub hace por usted,
+son los archivos README.md, LICENSE y .gitignore.</p>
+<div class="figure" style="text-align: center"><span id="fig:githubSasapRepo"></span>
+<img src="images/6.9_sasap-test-repo.png" alt="Captura de pantalla con el repositorio recién creado llamado sasap-test." width="100%" />
+<p class="caption">
+Figure 6.9: Captura de pantalla con el repositorio recién creado llamado sasap-test.
+</p>
+</div>
+<p>Para hacer cambios menores a archivos de texto se puede utilizar la interfase web de GitHub. Navegue al archivo <code>README.md</code>
+en el listado de archivos y habilite la edición haciendo clic en el icono del <em>lápiz</em>. Este es un archivo normal con el
+formado Markdown, ahora se puede editar, agregando o removiendo texto. Cuando haya terminado, incluya un mensaje de commit y
+luego haga clic en el botón <code>Commit changes</code>.</p>
+<div class="figure" style="text-align: center"><span id="fig:githubSasapEdit"></span>
+<img src="images/6.10_sasap-test-edit.png" alt="Captura de pantalla con la interfase web de GitHub para la edición de documentos de texto." width="100%" />
+<p class="caption">
+Figure 6.10: Captura de pantalla con la interfase web de GitHub para la edición de documentos de texto.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:githubSasapCommit"></span>
+<img src="images/6.11_sasap-test-commit.png" alt="Captura de pantalla con la interfase web de GitHub para la confirmar de los cambios realizados al documento de texto (commit changes)." width="100%" />
+<p class="caption">
+Figure 6.11: Captura de pantalla con la interfase web de GitHub para la confirmar de los cambios realizados al documento de texto (commit changes).
+</p>
+</div>
+<p>Felicitaciones, ahora usted acaba de confirmar (commit) los cambios, ahora es el autor de la primera versión de este archivo.
+Si navega de regreso a la página del repositorio GitHub, puede ver la lista de los cambios confirmados (commits) ahí, así como
+la visualización del documento generado a partir del archivo README.md.</p>
+<div class="figure" style="text-align: center"><span id="fig:githubSasapDisplayed"></span>
+<img src="images/6.12_sasap-test-displayed.png" alt="Captura de pantalla con la interfase web los cambios corfimados (commits) y de la visualización de la página README.md." width="100%" />
+<p class="caption">
+Figure 6.12: Captura de pantalla con la interfase web los cambios corfimados (commits) y de la visualización de la página README.md.
+</p>
+</div>
+<p>Expliquemos algunas cosas sobre esta ventana. Representa una vista del repositorio que acaba de crear, hasta ahora mostrando
+todos sus archivos. Para cada archivo, muestra la fecha de la última modificación y el mensaje asociado al <em>commit</em> que se
+utilizó para describir los cambios realizados. Esta es la razón por qué es tan importante escribir buenos mensajes, que
+contengan información relevante cuando se hace el <em>commit</em>. Además, el título azul sobre el listado de archivos muestra el
+<em>commit</em> más reciente, con su mensaje asociado y su identificados SHA. Ese identificador SHA es la clave para el set de
+versiones. Si hace clic en el identificador SHA (<em>810f314</em>), va a mostrar los cambios que se hicieron en ese <em>commit</em> en
+particular.</p>
+<p>En la siguiente sección vamos a usar el URL de GitHub del repositorio que acaba de crear y lo usaremos plara clonarlo
+(<code>clone</code>) a un repositorio en nuestra máquina local y así editar los archivos con RStudio. Para eso, primero tenemos que
+copiar el URL de GitHub, que representa la dirección del repositorio:</p>
+<div class="figure" style="text-align: center"><span id="fig:githubSasapClone"></span>
+<img src="images/6.13_sasap-test-clone-url.png" alt="Captura de pantalla para clonar un repositorio GitHub." width="100%" />
+<p class="caption">
+Figure 6.13: Captura de pantalla para clonar un repositorio GitHub.
+</p>
+</div>
+</div>
+<div id="trabajando-localmente-con-git-en-rstudio" class="section level2">
+<h2><span class="header-section-number">6.7</span> Trabajando localmente con Git en RStudio</h2>
+<p>RStudio incluye soporte para Git como sistema de control de versiones, pero esto <strong>sólo</strong> ocurre si estamos trabajando
+en un <em>Proyecto de RStudio</em> (RStudio project folder). En esta sección vamos a clonar el repositorio que se creó en GitHub
+y lo vamos a dejar un repositorio local de un proyecto de RStudio.</p>
+<p>Esto es lo que vamos a hacer:</p>
+<ol style="list-style-type: decimal">
+<li>Crear un proyecto nuevo.</li>
+<li>Inspeccionar el panel Git y el historial de versiones.</li>
+<li>Confirmar una modificación (commit) al archivo README.md.</li>
+<li>Commit las modificaciones que hicieron en RStudio.</li>
+<li>Inspeccionar el historial de versiones.</li>
+<li>Crear y commit un archivo Rmd.</li>
+<li>Enviar (<em>Push</em>) estos cambios a GitHub.</li>
+<li>Ver el historial de cambios en GitHub.</li>
+</ol>
+<div id="crear-nuevo-proyecto-create-a-new-project" class="section level3">
+<h3><span class="header-section-number">6.7.1</span> Crear nuevo Proyecto (Create a New Project)</h3>
+<p>Comience creando un <em>New Project…</em> en RStudio, seleccione la opción
+<em>Version Control</em> y pegue el URL de GitHub que copió en el espacio para repositorio remoto (<em>Repository URL</em>). Si bien
+usted puede darle el nombre que quiera al repositorio local, se usa típicamente el mismo nombre que el que se tiene en
+GitHub, de esta forma se mantiene un grado de correspondencia. Usted puede elegir cualquier directorio para su copia
+local, en mi caso use el directorio <code>development</code> (fig. <a href="control-de-versiones-con-git-y-github.html#fig:githubClone">6.14</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:githubClone"></span>
+<img src="images/6.14_rstudio-clone-repo.png" alt="Captura de pantalla para la creasción de un proyecto de RStudio clonando un repositorio remoto." width="100%" />
+<p class="caption">
+Figure 6.14: Captura de pantalla para la creasción de un proyecto de RStudio clonando un repositorio remoto.
+</p>
+</div>
+<p>Un vez que haga clic en <code>Create Project</code> (crear proyecto), una nueva página de RStudio se abrirá con todos los archivos
+copiados localmente desde el repositorio remoto. Dependiendo de como esté configurada la versión de RStudio, la posición
+y tamaño de los paneles puede cambiar, pero generalmente todos van a estar presentes, incluyendo los paneles <em>Git</em> y el
+listado de archivos (<em>Files</em>) que fueron creados en el repositorio remoto.</p>
+<div class="figure" style="text-align: center"><span id="fig:githubCloneLocal"></span>
+<img src="images/6.15_rstudio-sasap-test.png" alt="Captura de pantalla de la interfase del projecto de RStudio con el clon local de repositorio." width="100%" />
+<p class="caption">
+Figure 6.15: Captura de pantalla de la interfase del projecto de RStudio con el clon local de repositorio.
+</p>
+</div>
+<p>En la figura <a href="control-de-versiones-con-git-y-github.html#fig:githubCloneLocal">6.15</a> puede ver que apareció un archivo llamado <code>sasap-test.Rproj</code> y que están los
+otros 3 archivos que se crearon con el repositorio remoto de GitHub (<code>.gitignore</code>, <code>LICENSE</code> y <code>README.md</code>).</p>
+<p>En el panel <em>Git</em> en RStudio se pueden ver 2 archivos. Este es el panel de estatus donde se se muestran todos los archivos
+del repositorio en los cuales se han realizado modificaciones. En este caso, el archivo <code>.gitignore</code> se muestra con una <em>M</em> que
+significa <em>Modificado</em> y <code>sasap-test.Rproj</code> con un <em>? ?</em> para indicar que este archivo no está siendo monitoreado. Esto
+significa que git no tiene registro de ninguna version para este archivo y que no sabe nada acerca de el. A medida que
+usted vaya tomando decisiones sobre el control de versiones en RStudio, estos iconos van a ir cambiando para reflejar el
+estatus de la versión actual de cada uno de los archivos.</p>
+</div>
+<div id="inspeccionar-el-historial-history" class="section level3">
+<h3><span class="header-section-number">6.7.2</span> Inspeccionar el historial (history)</h3>
+<p>A continuación vamos a hacer clic en el botón <em>History</em> (historial, es el reloj
+que aparece en la primera fila al interior del panel ed Git), esto despliega una ventana con el registro de los cambios que
+se han realizado y, en este caso, deben ser idénticos a lo que usted vio en GitHub. Al hacer clic en cada fila del historial,
+podrá ir viendo exactamente que fue agregado y cambiado en cada uno de los commits en este repositorio.</p>
+<div class="figure" style="text-align: center"><span id="fig:rstudioHistory1"></span>
+<img src="images/6.16_rstudio-history-1.png" alt="Historial de los cambios realizados en el repositorio local." width="100%" />
+<p class="caption">
+Figure 6.16: Historial de los cambios realizados en el repositorio local.
+</p>
+</div>
+</div>
+<div id="confirme-cambios-haciendo-clic-en-commit-al-archivo-readme.md-commit-a-readme.md-change" class="section level3">
+<h3><span class="header-section-number">6.7.3</span> Confirme cambios haciendo clic en <em>commit</em> al archivo README.md (Commit a README.md change)</h3>
+<p>Ahora hagamos algunos cambios al archivo README.md en RStudio. Agregue una sección nueva con un block de <em>markdown</em> como este:</p>
+<pre><code>
+
+## Git desde RStudio
+
+Desde la interfase de RStudio, es posible hacer las mismas acciones con el sistema de versiones que se hicieron en  GitHub
+y mucho más. Además en RStudio se tienen las ventajas propias de programar en un IDE con completación de comandos y otras
+características que hacen nuestro trabajo más fácil.
+
+- Agregar archivos al control de versiones
+- Ccommit cambios
+- Push commits a GitHub
+
+</code></pre>
+<p>Una vez que los haya guardado, podrá ver en forma inmediata el archivo <em>README.md</em> en el panel Git
+(fig. <a href="control-de-versiones-con-git-y-github.html#fig:rstudioPanelStatus">6.17</a>), marcado con una <strong>M</strong> de modificación. Ahora usted puede seleccionar este archivo en el
+panel de Git y hacer clic en <em>Diff</em> para ver los cambios (comparando las diferencias) que guardó (note que estos cambios no
+se han confirmado (<em>commit</em>) aun a su repositorio local).</p>
+<div class="figure" style="text-align: center"><span id="fig:rstudioPanelStatus"></span>
+<img src="images/6.17_rstudio-status-pane.png" alt="Panel de estado de los cambios en los archivos." width="100%" />
+<p class="caption">
+Figure 6.17: Panel de estado de los cambios en los archivos.
+</p>
+</div>
+<p>En la figura <a href="control-de-versiones-con-git-y-github.html#fig:rstudioDiferencias">6.18</a> se muestra como se ven los cambios comparados con el archivo original. La líneas
+nuevas se destacan en color verde y en rojo las que fueron eliminadas.</p>
+<div class="figure" style="text-align: center"><span id="fig:rstudioDiferencias"></span>
+<img src="images/6.18_rstudio-diff.png" alt="Ventana que presenta las diferencias entre la versión almacenada en el repositorio y los últimos cambios realizados." width="100%" />
+<p class="caption">
+Figure 6.18: Ventana que presenta las diferencias entre la versión almacenada en el repositorio y los últimos cambios realizados.
+</p>
+</div>
+</div>
+<div id="commit-los-cambios-hechos-en-rstudio" class="section level3">
+<h3><span class="header-section-number">6.7.4</span> Commit los cambios hechos en Rstudio</h3>
+<p>Para confirmar los cambios que se acaban de hacer en el archivo README.md, selecciones la caja de selección <em>Staged</em> a lado del
+nombre del archivo, este le dice a Git cuales son los cambios que quiere sean incluidos en el commit, escriba un mensaje
+describiendo que cambios se hicieron y por qué y finalmente haga clic en boton <em>Commit</em> (fig. <a href="control-de-versiones-con-git-y-github.html#fig:rstudioCommit1">6.19</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:rstudioCommit1"></span>
+<img src="images/6.19_rstudio-commit-1.png" alt="Captura de pantalla con un mensaje describiendo la confirmación (commit) que se realizará." width="100%" />
+<p class="caption">
+Figure 6.19: Captura de pantalla con un mensaje describiendo la confirmación (commit) que se realizará.
+</p>
+</div>
+<p>Note que algunos de los cambios en el repositorio, <code>.gitignore</code> y <code>sasap-test.Rproj</code>, aun no se han confirmado y no serán
+parte del <em>commit</em>. En otras palabras, aun existen cambios pendientes para ser registrados en el repositorio. Usted vará una
+notificación que indica (en inglés):</p>
+<p><code>Your branch is ahead of ‘origin/master’ by 1 commit.</code></p>
+<p>Lo que se traduce a:
+<code>_Su rama esta más avanzadada que el ‘maestro/origen’ por una confirmación</code></p>
+<p>Esto significa que hemos commit <strong>1</strong> cambio en el repositorio local, pero que este no se está en el repositorio de origen
+(<code>origin</code>), no se ha hecho push, donde origen es el nombre que se usa típicamente para el repositorio en GitHub. Entonces,
+confirmemos los cambios pendientes, para esto seleccione la caja <em>staged</em> y luego escriba el mensaje describiendo el commit
+(fig. <a href="control-de-versiones-con-git-y-github.html#fig:rstudioCommit2">6.20</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:rstudioCommit2"></span>
+<img src="images/6.20_rstudio-commit-2.png" alt="Captura de pantalla con los archivos a confirmar sus cambios y el texto descriptivo de la confirmación." width="100%" />
+<p class="caption">
+Figure 6.20: Captura de pantalla con los archivos a confirmar sus cambios y el texto descriptivo de la confirmación.
+</p>
+</div>
+<p>Cuando haya terminado no habrán mas cambios pendientes en el panel <em>Git</em> y el repositorio estará completamente limpio.</p>
+</div>
+<div id="inspeccionando-el-historial" class="section level3">
+<h3><span class="header-section-number">6.7.5</span> Inspeccionando el historial</h3>
+<p>Fíjese que ahora el mensaje dice:</p>
+<p><code>Your branch is ahead of ‘origin/master’ by 2 commits.</code></p>
+<p><code>_Su rama esta más avanzadada que el ‘maestro/origen’ por 2 confirmación</code></p>
+<p>Estas 2 confirmaciones son las dos que acabamos de hacer y no se han empujado (push) aun a GitHub. Haciendo clic en el
+botón <em>History</em> (historial), podemos ver que hay un total de 4 commit en el repositorio local, mientras hay sólo 2 en GitHub
+(fig. <a href="control-de-versiones-con-git-y-github.html#fig:rstudioCommit3">6.21</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:rstudioCommit3"></span>
+<img src="images/6.21_rstudio-history-2.png" alt="Captura de pantalla con 4 commits." width="100%" />
+<p class="caption">
+Figure 6.21: Captura de pantalla con 4 commits.
+</p>
+</div>
+</div>
+<div id="enviar-push-cambios-a-github" class="section level3">
+<h3><span class="header-section-number">6.7.6</span> Enviar (Push) cambios a GitHub</h3>
+<p>Ahora que se han hecho todos los cambios deseados en el repositorio local, usted puede empujar (<em>push</em>) los cambios a GitHub
+usando el botón <em>Push</em>. Se abrirá una ventana donde se pregunta por su usuario y password de GitHub, luego los cambios serán
+enviados. Esto dejará su repositorio local en un estado totalmente limpio y sincronizado con el repositorio remoto. Terminado
+esto, en el historial (en GitHub) se muestran todos los commits, incluyendo los 2 que fueron hechos en GitHub y los 2 que se
+hicieron en forma local con RStudio.</p>
+<div class="figure" style="text-align: center"><span id="fig:rstudioCommit4"></span>
+<img src="images/6.22_rstudio-history-3.png" alt="Captura de pantalla con los 4 modificaciones confirmadas." width="100%" />
+<p class="caption">
+Figure 6.22: Captura de pantalla con los 4 modificaciones confirmadas.
+</p>
+</div>
+<p>Ahora puede ver que las etiquetas del repositorio local (<code>HEAD</code>) y del remoto (<code>origin/HEAD</code>) están apuntando a la misma
+versión en el historial. De esta forma, si miramos el historial de los commits en GitHub serán iguales a los que tenemos
+en forma local.</p>
+<div class="figure" style="text-align: center"><span id="fig:githubHistory"></span>
+<img src="images/6.23_github-history.png" alt="Captura de pantalla con el historial de cambios en github." width="100%" />
+<p class="caption">
+Figure 6.23: Captura de pantalla con el historial de cambios en github.
+</p>
+</div>
+</div>
+</div>
+<div id="sobre-buenos-mensajes-de-confirmación-commit" class="section level2">
+<h2><span class="header-section-number">6.8</span> Sobre (buenos) mensajes de confirmación (commit)</h2>
+<p>Es claro que una buena documentación es crítica para hacer del historial de versiones significativo y útil. Es tentador saltarse
+la escritura del mensaje asociado al commit o escribir algo por defecto como ‘Actualización!’. Sin embargo es importante
+escribir mensajes que sean para entender en el futuro que se hizo y por qué. Ademas, los mensajes que se usan en commits
+son en general más fáciles de entender si usan una convención de verbos activos. Por ejemplo, se puede ver que los mensajes
+de commit en las capturas de pantallas comienzan siempre con un verbo en pasado (en inglés!) y que explican que fue lo que
+se cambió.</p>
+<p>Si bien muchos de los cambios que aquí se hicieron son simples y se explican por si mismos, para cambios más complejos, es
+mejor entregar un mensaje completo y auto-contenido. La convención, sin embargo, es tratar de usar mensajes cortos, con una
+sentencia breve, seguido de una explicación más detallada y racional para el cambio. Esto permite que el nivel de detalles
+sea legible en el registro de las versiones (version log). No puedo contar el número de veces que he visto los registro d
+e commits de hace 2, 3 o 10 años y agradecido el nivel de diligencia de los colaboradores que se tomaron el tiempo de describir
+el trabajo que se realizó.</p>
+</div>
+<div id="flujos-de-trabajo-colaborativos-y-libres-de-conflictos-relacionados-con-git" class="section level2">
+<h2><span class="header-section-number">6.9</span> Flujos de trabajo colaborativos y libres de conflictos (relacionados con Git)</h2>
+<p>Hasta ahora nos hemos enfocado al uso de Git y GitHub para el uso personal, como ya se demostró esto es extremadamente útil.
+Sin embargo donde git y GitHua brilla es cuando se comparte un repositorio GitHub con colaboradores, de esta forma se pede
+trabajar en un código, análisis y modelos en forma colaborativa. Cuando se trabaja de esta manera con otros investigadores,
+es muy importante poner atención al estado del repositorio remoto para evitar potenciales conflictos al combinar el trabajo.
+Un <em>merge conflict</em> ocurre cuando dos colaboradores hacen 2 commits en forma separada donde se ha(n) cambiado(s) la(s) misma(s)
+línea(s) de código de un archivo. Cuando esto ocurre, git no puede combinar los cambios en forma automática y arroja un error
+preguntando como resolver el conflicto. Esto no es grave, no es necesario tenerle miedo a los <em>merge conflicts</em> ya que son
+muy fáciles resolver y aquí hay algunas <a href="https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/">guías</a> <a href="https://stackoverflow.com/questions/161813/how-to-resolve-merge-conflicts-in-git">geniales</a>.
+de como hacerlo (por ahora sólo en inglés).</p>
+<p>Dicho esto, es siempre mejor evadir este tipo de conflictos, lo que se pueden minimizar siguiendo las siguientes sugerencias:</p>
+<ul>
+<li>Asegúrese de traer (<em>pull down</em>) todos los cambios antes de confirmarlos (commit).
+<ul>
+<li>Asegurese que tiene los cambios más recientes.</li>
+<li>Pero puede ser que necesite arreglar su código si ocurren conflictos.</li>
+</ul></li>
+<li>Coordínese con con sus colaboradores con quien va a trabajar.
+<ul>
+<li>Usted <strong>tiene</strong> que comunicarse para colaborar.</li>
+</ul></li>
+</ul>
+</div>
+<div id="actividad-4" class="section level2">
+<h2><span class="header-section-number">6.10</span> Actividad</h2>
+<p>Use RStudio para agregar un nuevo archivo al repositorio <code>sasap-test</code>, desarrolle una estructura básica y guárdela.</p>
+<p>A continuación <em>stage</em> y <em>commit</em> el archivo en forma local y luego <em>push it</em> a GitHub.</p>
+</div>
+<div id="tópicos-avanzados" class="section level2">
+<h2><span class="header-section-number">6.11</span> Tópicos avanzados</h2>
+<p>Hay mucho que no hemos visto en este tutorial. Existen tutoriales muy completos que cubren tópicos mas avanzados. Algunos
+de estos temas son:</p>
+<ul>
+<li>Usando git en la linea de comándos.</li>
+<li>Resolviendo conflictos.</li>
+<li><em>Branching</em> y <em>merging</em>.</li>
+<li><em>Pull requests</em> versus contribuciones directas por colaboradores.</li>
+<li>Usando <em>.gitignore</em> para proteger datos sensitivos.</li>
+<li><em>GitHub Issues</em> y por que son útiles.</li>
+<li><p>y más, mucho más.</p></li>
+<li><a href="https://try.github.io">Try Git</a> es un tutorial interactivo muy bueno y completo.</li>
+<li>Software Carpentry <a href="http://swcarpentry.github.io/git-novice/">Version Control with Git</a></li>
+<li><p>Codecademy <a href="https://www.codecademy.com/learn/learn-git">Learn Git</a> (some paid)</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rmarkdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cap7.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

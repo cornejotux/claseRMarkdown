@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://cornejotux.github.io/claseRMarkdown/events/2019_08_shiny-valparaiso/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cornejotux.github.io/claseRMarkdown/events/2019_07_valparaiso/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cornejotux.github.io/claseRMarkdown/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cornejotux.github.io/claseRMarkdown/materials/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cornejotux.github.io/claseRMarkdown/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cornejotux.github.io/claseRMarkdown/events/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cornejotux.github.io/claseRMarkdown/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

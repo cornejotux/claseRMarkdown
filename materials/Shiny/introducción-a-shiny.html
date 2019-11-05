@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Introducción a Shiny | Introducción a las aplicaciones web interactivas</title>
+  <meta name="description" content="2 Introducción a Shiny | Introducción a las aplicaciones web interactivas" />
+  <meta name="generator" content="bookdown 0.14.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Introducción a Shiny | Introducción a las aplicaciones web interactivas" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Introducción a Shiny | Introducción a las aplicaciones web interactivas" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="interfase-de-usuario-como-construirla.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RMarkdown IFOP</a></li>
+<li><a href="../">← Página Pricipal</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#consola-r"><i class="fa fa-check"></i><b>1.1</b> Consola R</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#rstudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#instalación-de-packetes-en-rstudio"><i class="fa fa-check"></i><b>1.3</b> Instalación de packetes en RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#proyectos-de-rstudio"><i class="fa fa-check"></i><b>1.4</b> Proyectos de RStudio</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#editor-de-código"><i class="fa fa-check"></i><b>1.5</b> Editor de código</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#actividad"><i class="fa fa-check"></i><b>1.6</b> Actividad</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#resumen"><i class="fa fa-check"></i><b>1.7</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducción-a-shiny.html"><a href="introducción-a-shiny.html"><i class="fa fa-check"></i><b>2</b> Introducción a Shiny</a><ul>
+<li class="chapter" data-level="2.1" data-path="introducción-a-shiny.html"><a href="introducción-a-shiny.html#objetivos"><i class="fa fa-check"></i><b>2.1</b> Objetivos</a></li>
+<li class="chapter" data-level="2.2" data-path="introducción-a-shiny.html"><a href="introducción-a-shiny.html#bienvenido-a-shiny"><i class="fa fa-check"></i><b>2.2</b> Bienvenido a Shiny</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-shiny.html"><a href="introducción-a-shiny.html#primera-aplicación"><i class="fa fa-check"></i><b>2.3</b> Primera aplicación</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="introducción-a-shiny.html"><a href="introducción-a-shiny.html#ui"><i class="fa fa-check"></i><b>2.3.1</b> UI</a></li>
+<li class="chapter" data-level="2.3.2" data-path="introducción-a-shiny.html"><a href="introducción-a-shiny.html#server"><i class="fa fa-check"></i><b>2.3.2</b> Server</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="introducción-a-shiny.html"><a href="introducción-a-shiny.html#ejecutando-shinyapp"><i class="fa fa-check"></i><b>2.4</b> Ejecutando ShinyApp</a></li>
+<li class="chapter" data-level="2.5" data-path="introducción-a-shiny.html"><a href="introducción-a-shiny.html#actividad-1"><i class="fa fa-check"></i><b>2.5</b> Actividad</a></li>
+<li class="chapter" data-level="2.6" data-path="introducción-a-shiny.html"><a href="introducción-a-shiny.html#resumen-1"><i class="fa fa-check"></i><b>2.6</b> Resumen</a></li>
+<li class="chapter" data-level="2.7" data-path="introducción-a-shiny.html"><a href="introducción-a-shiny.html#aun-más"><i class="fa fa-check"></i><b>2.7</b> Aun más</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="interfase-de-usuario-como-construirla.html"><a href="interfase-de-usuario-como-construirla.html"><i class="fa fa-check"></i><b>3</b> Interfase de Usuario: Como construirla</a><ul>
+<li class="chapter" data-level="3.1" data-path="interfase-de-usuario-como-construirla.html"><a href="interfase-de-usuario-como-construirla.html#objetivos-1"><i class="fa fa-check"></i><b>3.1</b> Objetivos</a></li>
+<li class="chapter" data-level="3.2" data-path="interfase-de-usuario-como-construirla.html"><a href="interfase-de-usuario-como-construirla.html#manos-a-la-obra"><i class="fa fa-check"></i><b>3.2</b> Manos a la obra</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="interfase-de-usuario-como-construirla.html"><a href="interfase-de-usuario-como-construirla.html#diseño-layout"><i class="fa fa-check"></i><b>3.2.1</b> Diseño (Layout)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="interfase-de-usuario-como-construirla.html"><a href="interfase-de-usuario-como-construirla.html#contenidos-html"><i class="fa fa-check"></i><b>3.2.2</b> Contenidos HTML</a></li>
+<li class="chapter" data-level="3.2.3" data-path="interfase-de-usuario-como-construirla.html"><a href="interfase-de-usuario-como-construirla.html#títulos"><i class="fa fa-check"></i><b>3.2.3</b> Títulos</a></li>
+<li class="chapter" data-level="3.2.4" data-path="interfase-de-usuario-como-construirla.html"><a href="interfase-de-usuario-como-construirla.html#texto-con-formato"><i class="fa fa-check"></i><b>3.2.4</b> Texto con formato</a></li>
+<li class="chapter" data-level="3.2.5" data-path="interfase-de-usuario-como-construirla.html"><a href="interfase-de-usuario-como-construirla.html#imágenes"><i class="fa fa-check"></i><b>3.2.5</b> Imágenes</a></li>
+<li class="chapter" data-level="3.2.6" data-path="interfase-de-usuario-como-construirla.html"><a href="interfase-de-usuario-como-construirla.html#otros-identificadores-tags-de-funciones"><i class="fa fa-check"></i><b>3.2.6</b> Otros Identificadores (tags) de funciones</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="interfase-de-usuario-como-construirla.html"><a href="interfase-de-usuario-como-construirla.html#actividad-2"><i class="fa fa-check"></i><b>3.3</b> Actividad</a></li>
+<li class="chapter" data-level="3.4" data-path="interfase-de-usuario-como-construirla.html"><a href="interfase-de-usuario-como-construirla.html#resumen-2"><i class="fa fa-check"></i><b>3.4</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="controles.html"><a href="controles.html"><i class="fa fa-check"></i><b>4</b> Controles</a><ul>
+<li class="chapter" data-level="4.1" data-path="controles.html"><a href="controles.html#objetivos-2"><i class="fa fa-check"></i><b>4.1</b> Objetivos</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="desplique-de-las-salidas-interactivas.html"><a href="desplique-de-las-salidas-interactivas.html"><i class="fa fa-check"></i><b>5</b> Desplique de las salidas interactivas</a><ul>
+<li class="chapter" data-level="5.1" data-path="desplique-de-las-salidas-interactivas.html"><a href="desplique-de-las-salidas-interactivas.html#objetivos-3"><i class="fa fa-check"></i><b>5.1</b> Objetivos</a></li>
+<li class="chapter" data-level="5.2" data-path="desplique-de-las-salidas-interactivas.html"><a href="desplique-de-las-salidas-interactivas.html#reproducible-research"><i class="fa fa-check"></i><b>5.2</b> Reproducible Research</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="desplique-de-las-salidas-interactivas.html"><a href="desplique-de-las-salidas-interactivas.html#what-is-needed-for-computational-reproducibility"><i class="fa fa-check"></i><b>5.2.1</b> What is needed for computational reproducibility?</a></li>
+<li class="chapter" data-level="5.2.2" data-path="desplique-de-las-salidas-interactivas.html"><a href="desplique-de-las-salidas-interactivas.html#conceptualizing-workflows"><i class="fa fa-check"></i><b>5.2.2</b> Conceptualizing workflows</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="desplique-de-las-salidas-interactivas.html"><a href="desplique-de-las-salidas-interactivas.html#why-use-git"><i class="fa fa-check"></i><b>5.3</b> Why use git?</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="desplique-de-las-salidas-interactivas.html"><a href="desplique-de-las-salidas-interactivas.html#the-problem-with-filenames"><i class="fa fa-check"></i><b>5.3.1</b> The problem with filenames</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="desplique-de-las-salidas-interactivas.html"><a href="desplique-de-las-salidas-interactivas.html#checking-the-rstudio-environment"><i class="fa fa-check"></i><b>5.4</b> Checking the RStudio environment</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="desplique-de-las-salidas-interactivas.html"><a href="desplique-de-las-salidas-interactivas.html#r-version"><i class="fa fa-check"></i><b>5.4.1</b> R Version</a></li>
+<li class="chapter" data-level="5.4.2" data-path="desplique-de-las-salidas-interactivas.html"><a href="desplique-de-las-salidas-interactivas.html#rstudio-version"><i class="fa fa-check"></i><b>5.4.2</b> RStudio Version</a></li>
+<li class="chapter" data-level="5.4.3" data-path="desplique-de-las-salidas-interactivas.html"><a href="desplique-de-las-salidas-interactivas.html#package-installation"><i class="fa fa-check"></i><b>5.4.3</b> Package installation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="desplique-de-las-salidas-interactivas.html"><a href="desplique-de-las-salidas-interactivas.html#setting-up-git"><i class="fa fa-check"></i><b>5.5</b> Setting up git</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="desplique-de-las-salidas-interactivas.html"><a href="desplique-de-las-salidas-interactivas.html#note-for-windows-users"><i class="fa fa-check"></i><b>5.5.1</b> Note for Windows Users</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="preparacion-de-datos-para-la-aplicacion-web.html"><a href="preparacion-de-datos-para-la-aplicacion-web.html"><i class="fa fa-check"></i><b>6</b> Preparacion de datos para la aplicacion web</a><ul>
+<li class="chapter" data-level="6.1" data-path="preparacion-de-datos-para-la-aplicacion-web.html"><a href="preparacion-de-datos-para-la-aplicacion-web.html#learning-objectives"><i class="fa fa-check"></i><b>6.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="6.2" data-path="preparacion-de-datos-para-la-aplicacion-web.html"><a href="preparacion-de-datos-para-la-aplicacion-web.html#introduction"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6.3" data-path="preparacion-de-datos-para-la-aplicacion-web.html"><a href="preparacion-de-datos-para-la-aplicacion-web.html#setup"><i class="fa fa-check"></i><b>6.3</b> Setup</a></li>
+<li class="chapter" data-level="6.4" data-path="preparacion-de-datos-para-la-aplicacion-web.html"><a href="preparacion-de-datos-para-la-aplicacion-web.html#about-the-pipe-operator"><i class="fa fa-check"></i><b>6.4</b> About the pipe (<code>%&gt;%</code>) operator</a></li>
+<li class="chapter" data-level="6.5" data-path="preparacion-de-datos-para-la-aplicacion-web.html"><a href="preparacion-de-datos-para-la-aplicacion-web.html#selectingremoving-columns-select"><i class="fa fa-check"></i><b>6.5</b> Selecting/removing columns: <code>select()</code></a></li>
+<li class="chapter" data-level="6.6" data-path="preparacion-de-datos-para-la-aplicacion-web.html"><a href="preparacion-de-datos-para-la-aplicacion-web.html#changing-shape-gather-and-spread"><i class="fa fa-check"></i><b>6.6</b> Changing shape: <code>gather()</code> and <code>spread()</code></a></li>
+<li class="chapter" data-level="6.7" data-path="preparacion-de-datos-para-la-aplicacion-web.html"><a href="preparacion-de-datos-para-la-aplicacion-web.html#renaming-columns-with-rename"><i class="fa fa-check"></i><b>6.7</b> Renaming columns with <code>rename()</code></a></li>
+<li class="chapter" data-level="6.8" data-path="preparacion-de-datos-para-la-aplicacion-web.html"><a href="preparacion-de-datos-para-la-aplicacion-web.html#adding-columns-mutate"><i class="fa fa-check"></i><b>6.8</b> Adding columns: <code>mutate()</code></a></li>
+<li class="chapter" data-level="6.9" data-path="preparacion-de-datos-para-la-aplicacion-web.html"><a href="preparacion-de-datos-para-la-aplicacion-web.html#group_by-and-summarise"><i class="fa fa-check"></i><b>6.9</b> <code>group_by</code> and <code>summarise</code></a></li>
+<li class="chapter" data-level="6.10" data-path="preparacion-de-datos-para-la-aplicacion-web.html"><a href="preparacion-de-datos-para-la-aplicacion-web.html#filtering-rows-filter"><i class="fa fa-check"></i><b>6.10</b> Filtering rows: <code>filter()</code></a></li>
+<li class="chapter" data-level="6.11" data-path="preparacion-de-datos-para-la-aplicacion-web.html"><a href="preparacion-de-datos-para-la-aplicacion-web.html#sorting-your-data-arrange"><i class="fa fa-check"></i><b>6.11</b> Sorting your data: <code>arrange()</code></a></li>
+<li class="chapter" data-level="6.12" data-path="preparacion-de-datos-para-la-aplicacion-web.html"><a href="preparacion-de-datos-para-la-aplicacion-web.html#joins-in-dplyr"><i class="fa fa-check"></i><b>6.12</b> Joins in dplyr</a></li>
+<li class="chapter" data-level="6.13" data-path="preparacion-de-datos-para-la-aplicacion-web.html"><a href="preparacion-de-datos-para-la-aplicacion-web.html#separate-and-unite"><i class="fa fa-check"></i><b>6.13</b> <code>separate()</code> and <code>unite()</code></a></li>
+<li class="chapter" data-level="6.14" data-path="preparacion-de-datos-para-la-aplicacion-web.html"><a href="preparacion-de-datos-para-la-aplicacion-web.html#summary"><i class="fa fa-check"></i><b>6.14</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html"><i class="fa fa-check"></i><b>7</b> Control de versiones con git y GitHub</a><ul>
+<li class="chapter" data-level="7.1" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#learning-objectives-1"><i class="fa fa-check"></i><b>7.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#the-problem-with-filenames-1"><i class="fa fa-check"></i><b>7.2</b> The problem with filenames</a></li>
+<li class="chapter" data-level="7.3" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#version-control-and-collaboration-using-git-and-github"><i class="fa fa-check"></i><b>7.3</b> Version control and Collaboration using Git and GitHub</a></li>
+<li class="chapter" data-level="7.4" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#lets-look-at-a-github-repository"><i class="fa fa-check"></i><b>7.4</b> Let’s look at a GitHub repository</a></li>
+<li class="chapter" data-level="7.5" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#the-git-lifecycle"><i class="fa fa-check"></i><b>7.5</b> The Git lifecycle</a></li>
+<li class="chapter" data-level="7.6" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#create-a-remote-repository-on-github"><i class="fa fa-check"></i><b>7.6</b> Create a remote repository on GitHub</a></li>
+<li class="chapter" data-level="7.7" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#working-locally-with-git-via-rstudio"><i class="fa fa-check"></i><b>7.7</b> Working locally with Git via RStudio</a></li>
+<li class="chapter" data-level="7.8" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#on-good-commit-messages"><i class="fa fa-check"></i><b>7.8</b> On good commit messages</a></li>
+<li class="chapter" data-level="7.9" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#collaboration-and-conflict-free-workflows"><i class="fa fa-check"></i><b>7.9</b> Collaboration and conflict free workflows</a></li>
+<li class="chapter" data-level="7.10" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#exercise"><i class="fa fa-check"></i><b>7.10</b> Exercise</a></li>
+<li class="chapter" data-level="7.11" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#advanced-topics"><i class="fa fa-check"></i><b>7.11</b> Advanced topics</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Introducción a RMarkdown</a><ul>
+<li class="chapter" data-level="8.1" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#objectivos"><i class="fa fa-check"></i><b>8.1</b> Objectivos</a></li>
+<li class="chapter" data-level="8.2" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#introduction-and-motivation"><i class="fa fa-check"></i><b>8.2</b> Introduction and Motivation</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#resources"><i class="fa fa-check"></i><b>8.2.1</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#r-at-the-console"><i class="fa fa-check"></i><b>8.3</b> R at the console</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#error-messages-are-your-friends"><i class="fa fa-check"></i><b>8.3.1</b> Error messages are your friends</a></li>
+<li class="chapter" data-level="8.3.2" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#logical-operators-and-expressions"><i class="fa fa-check"></i><b>8.3.2</b> Logical operators and expressions</a></li>
+<li class="chapter" data-level="8.3.3" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#clearing-the-environment"><i class="fa fa-check"></i><b>8.3.3</b> Clearing the environment</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#rmarkdown"><i class="fa fa-check"></i><b>8.4</b> RMarkdown</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#your-turn"><i class="fa fa-check"></i><b>8.4.1</b> Your Turn</a></li>
+<li class="chapter" data-level="8.4.2" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>8.4.2</b> Code chunks</a></li>
+<li class="chapter" data-level="8.4.3" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#your-turn-1"><i class="fa fa-check"></i><b>8.4.3</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#r-functions-help-pages"><i class="fa fa-check"></i><b>8.5</b> R functions, help pages</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#a-simple-example"><i class="fa fa-check"></i><b>8.5.1</b> A simple example</a></li>
+<li class="chapter" data-level="8.5.2" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#getting-help"><i class="fa fa-check"></i><b>8.5.2</b> Getting help</a></li>
+<li class="chapter" data-level="8.5.3" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#your-turn-2"><i class="fa fa-check"></i><b>8.5.3</b> Your turn</a></li>
+<li class="chapter" data-level="8.5.4" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#use-a-function-to-read-a-file-into-r"><i class="fa fa-check"></i><b>8.5.4</b> Use a function to read a file into R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#using-data.frames"><i class="fa fa-check"></i><b>8.6</b> Using <code>data.frames</code></a><ul>
+<li class="chapter" data-level="8.6.1" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#your-turn-3"><i class="fa fa-check"></i><b>8.6.1</b> Your Turn</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#troubleshooting"><i class="fa fa-check"></i><b>8.7</b> Troubleshooting</a><ul>
+<li class="chapter" data-level="8.7.1" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#my-rmarkdown-wont-knit-to-pdf"><i class="fa fa-check"></i><b>8.7.1</b> My RMarkdown won’t knit to PDF</a></li>
+<li class="chapter" data-level="8.7.2" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#i-just-entered-a-command-and-nothing-is-happening"><i class="fa fa-check"></i><b>8.7.2</b> I just entered a command and nothing is happening</a></li>
+<li class="chapter" data-level="8.7.3" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#r-says-my-object-is-not-found"><i class="fa fa-check"></i><b>8.7.3</b> R says my object is not found</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="introducción-a-rmarkdown.html"><a href="introducción-a-rmarkdown.html#literate-analysis"><i class="fa fa-check"></i><b>8.8</b> Literate Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>9</b> Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introducción a las aplicaciones web interactivas</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introducción-a-shiny" class="section level1">
+<h1><span class="header-section-number">2</span> Introducción a Shiny</h1>
+<p>En la página principal del paquete <code>Shiny</code> se puede leer “<em>Interactúa.</em> <em>Analiza.</em> <em>Comunica.</em> Toma una aproximación
+fresca e interactiva para contar tu historia de datos con Shiny. Deja a los usuarios interactuar con tus datos y
+análisis. Y hazlo todo con R”.</p>
+<div class="figure" style="text-align: center"><span id="fig:shinyWebsite"></span>
+<img src="imagenes/2.1_Shiny_Main.jpg" alt="Imagen de la página principal de shiny.rstudio.com." width="100%" />
+<p class="caption">
+Figure 2.1: Imagen de la página principal de shiny.rstudio.com.
+</p>
+</div>
+<p>El principal atractivo del paquete <code>Shiny</code> que es hace muy fácil construir aplicaciones web interactivas, utilizando código
+R en forma simple y directa. Estas aplicaciones se pueden hospedar en servidores web en forma independiente o bien como
+parte de documentos generados con RMarkdown <a href="https://cornejotux.github.io/claseRMarkdown/materials/RMarkdown/">clase sobre investigación reproducible con RMarkdown</a>.</p>
+<p>Algunos ejemplos de aplicaciones shiny que he creado:</p>
+<ol style="list-style-type: decimal">
+<li>Períodos de retorno de salmones de Alaska <a href="https://cornejo.shinyapps.io/ggjoy_Escapement/" target="_blank">Aquí</a></li>
+<li>Distribución de frecuencias de talla y edad de salmones de Alaska <a href="https://cornejo.shinyapps.io/shiny_asl-AgeLength/" target="_blank">Aquí</a></li>
+<li>Capturas artesanales en Chile (Aún en desarrollo) <a href="https://cornejo.shinyapps.io/CapturasArtesanales/" target="_blank">Aquí</a></li>
+<li>Tablas de resumenes mensuales <a href="https://cornejo.shinyapps.io/shinyTablasMensuales/">Aquí</a></li>
+</ol>
+<p>Existen muchas posibilidades, navege por esta <a href="https://shiny.rstudio.com/gallery/see-more.html" target="_blank">galeria</a>
+de aplicaciones Shiny para buscar inspiración.</p>
+<p>En resumen, Shiny combina el poder computacional y simpleza de R, con las capacidades interactivas de las páginas web
+modernas.</p>
+<p><em><strong>Reconocimiento</strong></em>: Este libro esta desarrollado utilizando blogdown y bookdown. Sigue el estilo del
+trabajo realizado para los talleres de <a href="https://alaskasalmonandpeople.org/" target="_blank">SASAP</a> y
+<a href="https://arcticdata.io/" target="_blank">Arctic Data Center</a> de <a href="https://www.nceas.ucsb.edu/" target="_blank">NCEAS</a>.
+Aquí traduzco, compilo e integro materiales de múltiples fuentes, principalmente la página
+<a href="https://shiny.rstudio.com/" class="uri" target="_blank">https://shiny.rstudio.com/</a><span class="citation">(RStudio, Inc <a href="#ref-shinyL01">2014</a>)</span>.</p>
+<div id="objetivos" class="section level2">
+<h2><span class="header-section-number">2.1</span> Objetivos</h2>
+<p>En este capítulo veremos:</p>
+<ul>
+<li>¿Qué es Shiny?</li>
+<li>Que se puede hacer con Shiny.</li>
+<li>Instalación de las librerías Shiny en su computador.</li>
+<li>Creación de su primera aplicación Shiny.</li>
+<li>Como compartir su aplicación en la red.</li>
+</ul>
+</div>
+<div id="bienvenido-a-shiny" class="section level2">
+<h2><span class="header-section-number">2.2</span> Bienvenido a Shiny</h2>
+<p>Como ya se dijo, Shiny es un paquete de R que hace muy fácil la implementación de aplicaciones web interactivas (apps)
+utilizando el lenguaje al que estamos acostumbrados en R. En esta sección vamos a comenzar a mostrar en que consisten
+estas aplicaciones, construiremos una aplicación muy simple y la pondremos en la red para que otras personas puedan
+verla y jugar con ella.</p>
+<p>Si por alguna razón aun no ha instalado el paquete <strong>Shiny</strong>, abra RStudio, conéctese a Internet y corra el código:</p>
+<pre><code>install.packages(&quot;shiny&quot;)</code></pre>
+<p>La figura <a href="introducción-a-shiny.html#fig:shinyBasicApp">2.2</a> presenta un ejemplo de una aplicación básica.</p>
+<div class="figure" style="text-align: center"><span id="fig:shinyBasicApp"></span>
+<img src="imagenes/2.2_hello.png" alt="Shiny Hello World app." width="100%" />
+<p class="caption">
+Figure 2.2: Shiny Hello World app.
+</p>
+</div>
+<p>El paquete Shiny contiene 11 ejemplos pre-construidos que demuestran como trabaja Shiny y son auto-contenidos.</p>
+<p>El ejemplo “Hello Shiny” gráfica un histograma con el los datos de <strong>R</strong> del
+<a href="https://es.wikipedia.org/wiki/Old_Faithful">Viejo Fiel</a> e incluye una barra deslizable para definir el número de<br />
+intervalos para un histograma, de esta forma, al interaccionar con la aplicación, el usuario puede aumentar o disminuir
+el número de intervalos, moviendo con el puntero del mouse, la barra deslizable que se encuentra a la izquierda del
+gráfico y la aplicación responderá en forma inmediata a esta acción.</p>
+<p>Vamos a usar una aplicación muy similar a esta para explorar la estructura de un Shiny cuando creemos nuestra primera app.</p>
+<p>Para ejecutar en su computador la app <strong>Hello Shiny</strong>, escriba:</p>
+<pre><code>library(shiny)
+runExample(&quot;01_hello&quot;)</code></pre>
+</div>
+<div id="primera-aplicación" class="section level2">
+<h2><span class="header-section-number">2.3</span> Primera aplicación</h2>
+<p>Una aplicación <code>Shiny</code> básica puede estar contenida en un solo archivo llamado <em>app.R</em> en un <em>directorio</em>, si se crea la
+app en un directorio, debe contener lor archivos <strong>ui.R</strong> y <strong>server.R</strong>, ek qye se puede ejecutar con
+<strong>runApp(“NombreDirectorio”)</strong>.</p>
+<p>El código dentro de <em>app.R</em> contiene tres secciones:</p>
+<ol style="list-style-type: decimal">
+<li>El <em>objeto</em> Interfase de Usuario (UI): Este objeto contiene los controles sobre el diseño y apariencia de la aplicación.</li>
+<li>La función <em>Servidor</em>: Contiene las instrucciones que el computador necesita ejecutar para construir la aplicación.</li>
+<li>La llamada a la función <em>shinyApp</em>: Esta función crea los objetos <em>Shiny apps</em> desde el par UI/server.</li>
+</ol>
+<p>Para aplicaciones más complejas es recomendable crear archivos separados llamados <code>ui.R</code> y <code>server.R</code>. Además es posible
+incluir un archivo <code>global.R</code> donde se pueden incluir funciones creadas para la aplicación, manipular datos, etc.</p>
+<p>Una aspecto muy interesante de programar una aplicación en un archivo único, es la facilidad de este para ser compartido
+y ejecutado desde la consola R o líneas de comando.</p>
+<div id="ui" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> UI</h3>
+<p>Aquí esta el objeto <code>ui</code> del ejemplo <strong>Hello Shiny</strong>:</p>
+<pre><code>library(shiny)
+
+# Define UI for app that draws a histogram ----
+ui &lt;- fluidPage(
+  # App title ----
+  titlePanel(&quot;Hello Shiny!&quot;),
+
+  # Sidebar layout with input and output definitions ----
+  sidebarLayout(
+    # Sidebar panel for inputs ----
+    sidebarPanel(
+      # Input: Slider for the number of bins ----
+      sliderInput(inputId = &quot;bins&quot;,
+                  label = &quot;Number of bins:&quot;,
+                  min = 1,
+                  max = 50,
+                  value = 30)
+    ),
+
+    # Main panel for displaying outputs ----
+    mainPanel(
+      # Output: Histogram ----
+      plotOutput(outputId = &quot;distPlot&quot;)
+    )
+  )
+)</code></pre>
+<p>De este código es posible identificar los componentes:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>titlePanel</strong> donde se define el título de la aplicación.</p></li>
+<li><p><strong>sidebarLayout</strong> donde se definen los espacios que se utilizan para las entradas que hace el usuario y las generadas
+por la aplicación, en este caso un gráfico.</p></li>
+</ol>
+<p>2.1. <strong>sidebarPanel</strong>, está definido como un subcomponente de <strong>sideberLayout</strong> y define la sección donde el usuario
+puede interactuar con la aplicación.</p>
+<p>2.1.1. <strong>sliderInput</strong> es una barra con la que se pueden definir el número de “bins” que usa el gráfico (que se crea en la
+sección <strong>server</strong> de la aplicación).</p>
+<p>2.2 <strong>mainPanel</strong> es es espacio donde se desplegaran los resultados, gráficos, tablas, etc.</p>
+<p>2.2.1 <strong>plotOoutput</strong> es una subsección de <strong>mainPanel</strong> done se define que la salida es un gráfico.</p>
+</div>
+<div id="server" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Server</h3>
+<p>Aquí esta la función <code>server</code> del ejemplo <strong>Hello Shiny</strong> y es donde se define la lógica que se usará para generar, en este
+caso, un histograma, considerando la entrada de número de barras, definida por la barra con la interactúa el usuario.</p>
+<pre><code>server &lt;- function(input, output) {
+
+  # Histogram of the Old Faithful Geyser Data ----
+  # with requested number of bins
+  # This expression that generates a histogram is wrapped in a call
+  # to renderPlot to indicate that:
+  #
+  # 1. It is &quot;reactive&quot; and therefore should be automatically
+  #    re-executed when inputs (input$bins) change
+  # 2. Its output type is a plot
+  output$distPlot &lt;- renderPlot({
+
+    x    &lt;- faithful$waiting
+    bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)
+
+    hist(x, breaks = bins, col = &quot;#75AADB&quot;, border = &quot;white&quot;,
+         xlab = &quot;Waiting time to next eruption (in mins)&quot;,
+         main = &quot;Histogram of waiting times&quot;)
+
+    })
+}</code></pre>
+<p>Al crear esta función se definen dos variables de entrada, <em>inputs</em> y <em>outputs</em>. Estas son las variables con las
+que la función <strong>server</strong> interactúa con el resto de la aplicación.</p>
+<p>En este ejemplo podemos identificar que en <strong>output</strong> se almacena un gráfico en el objeto <em>disPlot</em> (que si ven
+en <em>ui</em> es lo que se despliega como resultado). Este gráfico fue construido definiendo:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>bins</strong>: Es el número de barras a desplegar y define su número con <em>length.out</em> que toma la entrada desde
+<code>input$bins</code>, que es definida en UI, en la sección <em>sidebarLayout</em>, donde la función sliderInput, tiene como primer
+argumento <em>inputId = “bins”</em>, que es el nombre al que se le da, para ser utilizado como una variable, la cual
+puede ser pasada en otras secciones de la shiny app cuando se usar <code>input$bins</code>.</p></li>
+<li><p><strong>hist</strong>: Aquí se genera el histograma, utilizando el número <strong>bins</strong> como un variable que se le entrega al
+argumento <em>breaks</em> de la función hist, que es la que hace el histograma.</p></li>
+</ol>
+<p>En resumen, la función <strong>server</strong> es muy simple, el código hace unos cálculos (i.e. bins) y luego hace un histograma
+con el número predefinido de barras y lo devuelve como un output llamado disPlot, que luego es desplegado en la sección
+mainPanel de la Interfase de Usuario (UI).</p>
+<p>Ahora que tiene una mejor comprensión del funcionamiento, manipule algunos argumentos y vea los resultados, trate
+de ir entendiendo como funciona y que pasa cuando hace los cambios.</p>
+<blockquote>
+<p>Una aplicación Shiny tiene que comenzar con la carga de la librería Shiny (library(shiny)) y terminar con
+la llamada a shinyApp.
+Recuerde que su sesión <code>R</code> estará ocupada mientras la aplicación Shiny esté corriendo, por lo que no podrá
+ejecutar comando <code>R</code> mientras esta dure. R en este periodo esta monitoriando la app y ejecutando las reacciones
+a los inputs del usuario.
+Para recuperar la sesión de <code>R</code>, aprete la tecla ‘Esc’ o haga click en el botón <strong>Stop</strong> (se encuentra en la
+esquina superior izquierda del panel de la consola RStudio).</p>
+</blockquote>
+<pre><code>library(shiny)
+
+ui &lt;- ... ## Definiciones d ela interfase de Usuario
+
+server &lt;- ... ## Que es lo que hace la plicacion
+
+shinyApp(ui = ui, server = server) ## La ejecución de la Aplicación Shiny.
+</code></pre>
+</div>
+</div>
+<div id="ejecutando-shinyapp" class="section level2">
+<h2><span class="header-section-number">2.4</span> Ejecutando ShinyApp</h2>
+<p>Todas las aplicaciones Shiny tienen la misma estructura: un archivo <strong>app.R</strong> que contiene la ui y el servidor. Ud.
+puede crear un aplicación Shiny haciendo un nuevo directorio y guardando un archivo app.R adentro. Es recomendado que
+cada aplicación este siempre en un directorio propio.</p>
+<p>Para ejecutar la aplicación, utilice la función <em>runApp</em> pasando el nombre del directorio donde esta contenido el
+archivo app.R, si el directorio se llama mi_aplicacion, entonces el código para ejecutarlo sería:</p>
+<pre><code>library(shiny)
+runApp(&quot;mi_aplicacion&quot;)</code></pre>
+<p>Fíjese que esto es muy similar a las funciones <em>read.csv</em>, <em>read.table</em> y muchas otras en <code>R</code>. El primer argumento de
+la función runApp es el path al archivo desde el directorio de trabajo de la aplicación. El código asume que el directorio
+de la aplicación está en su directorio de trabajo (generalmente definido con la función <em>setwd</em>). En este caso, el path
+es solo el nombre del directorio.</p>
+</div>
+<div id="actividad-1" class="section level2">
+<h2><span class="header-section-number">2.5</span> Actividad</h2>
+<p>Cree un directorio que se llame MiAplicacion. Luego copie y pegue el código de app.R que dejamos más arriba en archivo app.R
+en su directorio (el código de <em>Hello Shiny</em>).</p>
+<p>Inicie su Shiny App ejecutando <code>runApp(&quot;MiAplicacion&quot;)</code>, luego cierre la aplicación (aprete Esc) y haga algunos cambios:</p>
+<ul>
+<li>Cambien el título de “Hello Shiny!” a “Hola Shiny!”).</li>
+<li>Defina como el número mínimo para la barra deslizable (slider bar) a 5.</li>
+<li>Cambien el color del borde el histograma de <em>Banco</em> (white) a <em>naranjo</em> (orange) o cualquier otro color que ud. prefiera.</li>
+</ul>
+<p>Cuando esos 3 pasos esten listos, inicie su aplicación nuevamente. La nueva aplicación debería tener los cambios que ud.
+acaba de realizar, de otra forma por favor verifique su código y pruebe otra vez. El resultado deberia ser similar a
+la figura <a href="introducción-a-shiny.html#fig:shinyBasicAppMod">2.3</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:shinyBasicAppMod"></span>
+<img src="imagenes/2.3_MiAplicacion_modificada.png" alt="ShinyApp con modificaciones de formato. El color de los border es naranjo." width="100%" />
+<p class="caption">
+Figure 2.3: ShinyApp con modificaciones de formato. El color de los border es naranjo.
+</p>
+</div>
+<p>Por defecto, las aplicaciones Shiny se muestran en un modo <em>normal</em>, como la imagen que se muestra en la figura
+<a href="introducción-a-shiny.html#fig:shinyBasicAppMod">2.3</a>. Sin embargo es posible ejecutar las aplicaciones en un panel junto al del código, para esto
+hay que definir “showcase mode”.</p>
+<p>Si quieres utilizar el mode <em>showcase</em>, hay que incluir el argumendo <em>display.mode</em> indicando que sea showcase, de esta forma
+la linea de código queda asi <code>runApp(&quot;MiAplicacion&quot;, display.mode = &quot;showcase&quot;)</code>.</p>
+</div>
+<div id="resumen-1" class="section level2">
+<h2><span class="header-section-number">2.6</span> Resumen</h2>
+<p>Para crear una aplicación Shiny:</p>
+<ol style="list-style-type: decimal">
+<li>Haga un directorio llamado MiAplicacion/ para su app.</li>
+<li>Guarde su archivo app.R dentro del directorio.</li>
+<li>Inicie la app con <code>runApp</code> o con las combinaciones de teclas de RStudio.</li>
+<li>Salga de la Shiny app apretando la tecla Escape.</li>
+</ol>
+</div>
+<div id="aun-más" class="section level2">
+<h2><span class="header-section-number">2.7</span> Aun más</h2>
+<p>La forma más fácil de hacer sus propias Shiny App es basándose en otras que ya existentes y utilizarlas como punto
+de partida. La <a href="https://shiny.rstudio.com/gallery/">Galería de Shiny</a> tiene cientos de excelentes ejemplos. Además la
+librería Shiny trae 11 ejemplos incluidos que puede llamar ejecutando las siguiente líneas de código.</p>
+<pre><code>runExample(&quot;01_hello&quot;)      # Histograma
+runExample(&quot;02_text&quot;)       # Tablas y data frames
+runExample(&quot;03_reactivity&quot;) # Una expresión reactiva
+runExample(&quot;04_mpg&quot;)        # Variables globales
+runExample(&quot;05_sliders&quot;)    # Barras deslizables
+runExample(&quot;06_tabsets&quot;)    # Paneles tabulados
+runExample(&quot;07_widgets&quot;)    # Texto de ayuda y botones de envío
+runExample(&quot;08_html&quot;)       # Shiny app basada en HTML
+runExample(&quot;09_upload&quot;)     # Herramienta para subir un archivo
+runExample(&quot;10_download&quot;)   # Herramienta para la descarga de archivo
+runExample(&quot;11_timer&quot;)      # Timer automático</code></pre>
+<p>Cada uno de estos ejemplos muestra algunas de las characterísticas más útiles de Shiny y todas se despligan en el
+modo “<strong>showcase</strong>” para que pueda ver el código R.</p>
+
+</div>
+</div>
+<h3> Referencias</h3>
+<div id="refs" class="references">
+<div id="ref-shinyL01">
+<p>RStudio, Inc. 2014. <em>Lesson 1: Welcome to Shiny</em>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="interfase-de-usuario-como-construirla.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

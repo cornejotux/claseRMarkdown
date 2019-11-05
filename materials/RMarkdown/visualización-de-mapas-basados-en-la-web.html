@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 Visualización de mapas basados en la web | Introducción a la Investigación Reproducible con RStudio y RMarkdown</title>
+  <meta name="description" content="10 Visualización de mapas basados en la web | Introducción a la Investigación Reproducible con RStudio y RMarkdown" />
+  <meta name="generator" content="bookdown 0.14.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 Visualización de mapas basados en la web | Introducción a la Investigación Reproducible con RStudio y RMarkdown" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 Visualización de mapas basados en la web | Introducción a la Investigación Reproducible con RStudio y RMarkdown" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="creando-funciones-de-r.html"/>
+<link rel="next" href="creando-paquetes-de-r.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.9/datatables.js"></script>
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.19/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RMarkdown IFOP</a></li>
+<li><a href="../">← Página Pricipal</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#la-crisis-de-reproducibilidad"><i class="fa fa-check"></i><b>1.1</b> La crisis de reproducibilidad</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#reconocimientos"><i class="fa fa-check"></i><b>1.2</b> Reconocimientos</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html"><i class="fa fa-check"></i><b>2</b> Investigación reproducible: ¿De qué estamos hablando?</a><ul>
+<li class="chapter" data-level="2.1" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#objetivos"><i class="fa fa-check"></i><b>2.1</b> Objetivos</a></li>
+<li class="chapter" data-level="2.2" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#investigación-reproducible"><i class="fa fa-check"></i><b>2.2</b> Investigación reproducible</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#qué-es-necesario-para-la-reproducibilidad-computacional"><i class="fa fa-check"></i><b>2.2.1</b> ¿Qué es necesario para la reproducibilidad computacional?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="investigación-reproducible-de-qué-estamos-hablando.html"><a href="investigación-reproducible-de-qué-estamos-hablando.html#conceptualizando-los-flujos-de-trabajo-workflows"><i class="fa fa-check"></i><b>2.2.2</b> Conceptualizando los flujos de trabajo (workflows)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><i class="fa fa-check"></i><b>3</b> Herramientas: RStudio - Git/GitHub Configuración y Motivación</a><ul>
+<li class="chapter" data-level="3.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#por-que-usar-git"><i class="fa fa-check"></i><b>3.1</b> Por que usar git?</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#el-problema-con-los-nombres-de-archivos"><i class="fa fa-check"></i><b>3.1.1</b> El problema con los nombres de archivos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#revisando-el-ambiente-de-rstudio"><i class="fa fa-check"></i><b>3.2</b> Revisando el ambiente de RStudio</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#versión-de-r"><i class="fa fa-check"></i><b>3.2.1</b> Versión de R</a></li>
+<li class="chapter" data-level="3.2.2" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#versión-de-rstudio"><i class="fa fa-check"></i><b>3.2.2</b> Versión de RStudio</a></li>
+<li class="chapter" data-level="3.2.3" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#instalación-de-paquetes-de-r"><i class="fa fa-check"></i><b>3.2.3</b> Instalación de Paquetes de R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#configurando-git"><i class="fa fa-check"></i><b>3.3</b> Configurando git</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="herramientas-rstudio-gitgithub-configuración-y-motivación.html"><a href="herramientas-rstudio-gitgithub-configuración-y-motivación.html#nota-para-usuarios-de-windows"><i class="fa fa-check"></i><b>3.3.1</b> Nota para Usuarios de Windows</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introducción-a-r.html"><a href="introducción-a-r.html"><i class="fa fa-check"></i><b>4</b> Introducción a R</a><ul>
+<li class="chapter" data-level="4.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#objetivos-1"><i class="fa fa-check"></i><b>4.1</b> Objetivos</a></li>
+<li class="chapter" data-level="4.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#introducción-y-motivación"><i class="fa fa-check"></i><b>4.2</b> Introducción y Motivación</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#recursos"><i class="fa fa-check"></i><b>4.2.1</b> Recursos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#r-en-la-consola"><i class="fa fa-check"></i><b>4.3</b> R en la consola</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#los-mensajes-de-error-son-sus-amigos"><i class="fa fa-check"></i><b>4.3.1</b> Los mensajes de error son sus amigos</a></li>
+<li class="chapter" data-level="4.3.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#operadores-y-expresiones-lógicas"><i class="fa fa-check"></i><b>4.3.2</b> Operadores y expresiones lógicas</a></li>
+<li class="chapter" data-level="4.3.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#limpiando-el-ambiente-de-trabajo"><i class="fa fa-check"></i><b>4.3.3</b> Limpiando el ambiente de trabajo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>5</b> RMarkdown</a><ul>
+<li class="chapter" data-level="5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#objetivos-2"><i class="fa fa-check"></i><b>5.1</b> Objetivos</a></li>
+<li class="chapter" data-level="5.2" data-path="rmarkdown.html"><a href="rmarkdown.html#introducción-1"><i class="fa fa-check"></i><b>5.2</b> Introducción</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad"><i class="fa fa-check"></i><b>5.2.1</b> Actividad</a></li>
+<li class="chapter" data-level="5.2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#ejecutarCodEnRmd"><i class="fa fa-check"></i><b>5.2.2</b> Secciones del código</a></li>
+<li class="chapter" data-level="5.2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad-1"><i class="fa fa-check"></i><b>5.2.3</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="rmarkdown.html"><a href="rmarkdown.html#funciones-de-r"><i class="fa fa-check"></i><b>5.3</b> Funciones de R</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#ejemplo-simple"><i class="fa fa-check"></i><b>5.3.1</b> Ejemplo simple</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="rmarkdown.html"><a href="rmarkdown.html#páginas-de-ayuda"><i class="fa fa-check"></i><b>5.4</b> Páginas de ayuda</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#obteniendo-ayuda"><i class="fa fa-check"></i><b>5.4.1</b> Obteniendo ayuda</a></li>
+<li class="chapter" data-level="5.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad-2"><i class="fa fa-check"></i><b>5.4.2</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="rmarkdown.html"><a href="rmarkdown.html#leyendo-un-archivo-de-datos-a-r"><i class="fa fa-check"></i><b>5.5</b> Leyendo un archivo de datos a R</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#descargue-un-archivo-desde-el-arctic-data-center"><i class="fa fa-check"></i><b>5.5.1</b> Descargue un archivo desde el Arctic Data Center</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="rmarkdown.html"><a href="rmarkdown.html#usando-data.frames"><i class="fa fa-check"></i><b>5.6</b> Usando <code>data.frames</code></a><ul>
+<li class="chapter" data-level="5.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#actividad-3"><i class="fa fa-check"></i><b>5.6.1</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="rmarkdown.html"><a href="rmarkdown.html#solución-de-problemas"><i class="fa fa-check"></i><b>5.7</b> Solución de problemas</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="rmarkdown.html"><a href="rmarkdown.html#mi-rmarkdown-no-genera-knit-el-pdf"><i class="fa fa-check"></i><b>5.7.1</b> Mi RMarkdown no genera (knit) el PDF</a></li>
+<li class="chapter" data-level="5.7.2" data-path="rmarkdown.html"><a href="rmarkdown.html#acabo-de-ejecutar-un-comando-pera-no-pasa-nada"><i class="fa fa-check"></i><b>5.7.2</b> Acabo de ejecutar un comando pera no pasa nada</a></li>
+<li class="chapter" data-level="5.7.3" data-path="rmarkdown.html"><a href="rmarkdown.html#r-dice-que-mi-objeto-no-puede-ser-encontrado"><i class="fa fa-check"></i><b>5.7.3</b> R dice que mi objeto no puede ser encontrado</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="rmarkdown.html"><a href="rmarkdown.html#análisis-literal"><i class="fa fa-check"></i><b>5.8</b> Análisis literal</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html"><i class="fa fa-check"></i><b>6</b> Control de versiones con git y GitHub</a><ul>
+<li class="chapter" data-level="6.1" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#objetivos-3"><i class="fa fa-check"></i><b>6.1</b> Objetivos</a></li>
+<li class="chapter" data-level="6.2" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#el-problema-con-los-nombres-de-archivo"><i class="fa fa-check"></i><b>6.2</b> El problema con los nombres de archivo</a></li>
+<li class="chapter" data-level="6.3" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#control-de-versiones-y-colaboración-usando-git-and-github"><i class="fa fa-check"></i><b>6.3</b> Control de versiones y colaboración usando Git and GitHub</a></li>
+<li class="chapter" data-level="6.4" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#veamos-un-repositorio-de-github"><i class="fa fa-check"></i><b>6.4</b> Veamos un repositorio de GitHub</a></li>
+<li class="chapter" data-level="6.5" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#el-ciclo-de-vida-de-git"><i class="fa fa-check"></i><b>6.5</b> El ciclo de vida de Git</a></li>
+<li class="chapter" data-level="6.6" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#cree-un-repositorio-remoto-en-github"><i class="fa fa-check"></i><b>6.6</b> Cree un repositorio remoto en GitHub</a></li>
+<li class="chapter" data-level="6.7" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#trabajando-localmente-con-git-en-rstudio"><i class="fa fa-check"></i><b>6.7</b> Trabajando localmente con Git en RStudio</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#crear-nuevo-proyecto-create-a-new-project"><i class="fa fa-check"></i><b>6.7.1</b> Crear nuevo Proyecto (Create a New Project)</a></li>
+<li class="chapter" data-level="6.7.2" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#inspeccionar-el-historial-history"><i class="fa fa-check"></i><b>6.7.2</b> Inspeccionar el historial (history)</a></li>
+<li class="chapter" data-level="6.7.3" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#confirme-cambios-haciendo-clic-en-commit-al-archivo-readme.md-commit-a-readme.md-change"><i class="fa fa-check"></i><b>6.7.3</b> Confirme cambios haciendo clic en <em>commit</em> al archivo README.md (Commit a README.md change)</a></li>
+<li class="chapter" data-level="6.7.4" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#commit-los-cambios-hechos-en-rstudio"><i class="fa fa-check"></i><b>6.7.4</b> Commit los cambios hechos en Rstudio</a></li>
+<li class="chapter" data-level="6.7.5" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#inspeccionando-el-historial"><i class="fa fa-check"></i><b>6.7.5</b> Inspeccionando el historial</a></li>
+<li class="chapter" data-level="6.7.6" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#enviar-push-cambios-a-github"><i class="fa fa-check"></i><b>6.7.6</b> Enviar (Push) cambios a GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#sobre-buenos-mensajes-de-confirmación-commit"><i class="fa fa-check"></i><b>6.8</b> Sobre (buenos) mensajes de confirmación (commit)</a></li>
+<li class="chapter" data-level="6.9" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#flujos-de-trabajo-colaborativos-y-libres-de-conflictos-relacionados-con-git"><i class="fa fa-check"></i><b>6.9</b> Flujos de trabajo colaborativos y libres de conflictos (relacionados con Git)</a></li>
+<li class="chapter" data-level="6.10" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#actividad-4"><i class="fa fa-check"></i><b>6.10</b> Actividad</a></li>
+<li class="chapter" data-level="6.11" data-path="control-de-versiones-con-git-y-github.html"><a href="control-de-versiones-con-git-y-github.html#tópicos-avanzados"><i class="fa fa-check"></i><b>6.11</b> Tópicos avanzados</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="cap7.html"><a href="cap7.html"><i class="fa fa-check"></i><b>7</b> Modelamiento de datos y datos ordenados</a><ul>
+<li class="chapter" data-level="7.1" data-path="cap7.html"><a href="cap7.html#objetivos-4"><i class="fa fa-check"></i><b>7.1</b> Objetivos</a></li>
+<li class="chapter" data-level="7.2" data-path="cap7.html"><a href="cap7.html#beneficios-de-los-sistemas-de-datos-relacionales"><i class="fa fa-check"></i><b>7.2</b> Beneficios de los sistemas de datos relacionales</a></li>
+<li class="chapter" data-level="7.3" data-path="cap7.html"><a href="cap7.html#organización-de-datos"><i class="fa fa-check"></i><b>7.3</b> Organización de datos</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="cap7.html"><a href="cap7.html#inconsistencia-en-las-variables"><i class="fa fa-check"></i><b>7.3.1</b> Inconsistencia en las variables</a></li>
+<li class="chapter" data-level="7.3.2" data-path="cap7.html"><a href="cap7.html#estadísticas-y-sumas-al-margen"><i class="fa fa-check"></i><b>7.3.2</b> Estadísticas y sumas al margen</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="cap7.html"><a href="cap7.html#modelamiento-de-datos-adecuado"><i class="fa fa-check"></i><b>7.4</b> Modelamiento de datos adecuado</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="cap7.html"><a href="cap7.html#datos-de-normalizados"><i class="fa fa-check"></i><b>7.4.1</b> Datos De-normalizados</a></li>
+<li class="chapter" data-level="7.4.2" data-path="cap7.html"><a href="cap7.html#datos-tabulares"><i class="fa fa-check"></i><b>7.4.2</b> Datos tabulares</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="cap7.html"><a href="cap7.html#claves-primarias-y-foráneas"><i class="fa fa-check"></i><b>7.5</b> Claves primarias y foráneas</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="cap7.html"><a href="cap7.html#modelo-de-relación-entidad"><i class="fa fa-check"></i><b>7.5.1</b> Modelo de Relación-Entidad</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="cap7.html"><a href="cap7.html#joins"><i class="fa fa-check"></i><b>7.6</b> Combinando datos</a></li>
+<li class="chapter" data-level="7.7" data-path="cap7.html"><a href="cap7.html#guía-simple-para-datos-efectivos"><i class="fa fa-check"></i><b>7.7</b> Guía simple para datos efectivos</a></li>
+<li class="chapter" data-level="7.8" data-path="cap7.html"><a href="cap7.html#ejercicio-de-modelamiento-de-datos"><i class="fa fa-check"></i><b>7.8</b> Ejercicio de modelamiento de datos</a></li>
+<li class="chapter" data-level="7.9" data-path="cap7.html"><a href="cap7.html#recursos-relacionados"><i class="fa fa-check"></i><b>7.9</b> Recursos relacionados</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html"><i class="fa fa-check"></i><b>8</b> Limpieza y manipulación de datos</a><ul>
+<li class="chapter" data-level="8.1" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#objetivos-5"><i class="fa fa-check"></i><b>8.1</b> Objetivos</a></li>
+<li class="chapter" data-level="8.2" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#introducción-2"><i class="fa fa-check"></i><b>8.2</b> Introducción</a></li>
+<li class="chapter" data-level="8.3" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#configuración-setup"><i class="fa fa-check"></i><b>8.3</b> Configuración (Setup)</a></li>
+<li class="chapter" data-level="8.4" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#acerca-del-operador-de-pipe-tubo"><i class="fa fa-check"></i><b>8.4</b> Acerca del operador de pipe (tubo; <code>%&gt;%</code>)</a></li>
+<li class="chapter" data-level="8.5" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#funciones"><i class="fa fa-check"></i><b>8.5</b> Funciones</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#seleccionarremover-columnas-select"><i class="fa fa-check"></i><b>8.5.1</b> Seleccionar/remover columnas: <code>select()</code></a></li>
+<li class="chapter" data-level="8.5.2" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#cambiar-el-formato-gather-y-spread"><i class="fa fa-check"></i><b>8.5.2</b> Cambiar el formato: <code>gather()</code> y <code>spread()</code></a></li>
+<li class="chapter" data-level="8.5.3" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#renombrando-columnas-con-rename"><i class="fa fa-check"></i><b>8.5.3</b> Renombrando columnas con <code>rename()</code></a></li>
+<li class="chapter" data-level="8.5.4" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#agregando-columnas-mutate"><i class="fa fa-check"></i><b>8.5.4</b> Agregando columnas: <code>mutate()</code></a></li>
+<li class="chapter" data-level="8.5.5" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#group_by-y-summarise"><i class="fa fa-check"></i><b>8.5.5</b> <code>group_by</code> y <code>summarise</code></a></li>
+<li class="chapter" data-level="8.5.6" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#filtrando-columnas-filter"><i class="fa fa-check"></i><b>8.5.6</b> Filtrando columnas: <code>filter()</code></a></li>
+<li class="chapter" data-level="8.5.7" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#ordenando-sus-datos-arrange"><i class="fa fa-check"></i><b>8.5.7</b> Ordenando sus datos: <code>arrange()</code></a></li>
+<li class="chapter" data-level="8.5.8" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#joins-en-dplyr"><i class="fa fa-check"></i><b>8.5.8</b> Joins en dplyr</a></li>
+<li class="chapter" data-level="8.5.9" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#separate-y-unite"><i class="fa fa-check"></i><b>8.5.9</b> <code>separate()</code> y <code>unite()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="limpieza-y-manipulación-de-datos.html"><a href="limpieza-y-manipulación-de-datos.html#resumen"><i class="fa fa-check"></i><b>8.6</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html"><i class="fa fa-check"></i><b>9</b> Creando funciones de R</a><ul>
+<li class="chapter" data-level="9.1" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#objetivos-6"><i class="fa fa-check"></i><b>9.1</b> Objetivos</a></li>
+<li class="chapter" data-level="9.2" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#por-qué-usar-funciones"><i class="fa fa-check"></i><b>9.2</b> ¿Por qué usar funciones?</a></li>
+<li class="chapter" data-level="9.3" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#ejemplo-conversión-de-temperatura"><i class="fa fa-check"></i><b>9.3</b> Ejemplo: Conversión de temperatura</a></li>
+<li class="chapter" data-level="9.4" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#creando-una-función"><i class="fa fa-check"></i><b>9.4</b> Creando una función</a></li>
+<li class="chapter" data-level="9.5" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#actividad-5"><i class="fa fa-check"></i><b>9.5</b> Actividad</a></li>
+<li class="chapter" data-level="9.6" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#documentando-funciones-de-r"><i class="fa fa-check"></i><b>9.6</b> Documentando funciones de R</a></li>
+<li class="chapter" data-level="9.7" data-path="creando-funciones-de-r.html"><a href="creando-funciones-de-r.html#resumen-1"><i class="fa fa-check"></i><b>9.7</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html"><i class="fa fa-check"></i><b>10</b> Visualización de mapas basados en la web</a><ul>
+<li class="chapter" data-level="10.1" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#objetivos-7"><i class="fa fa-check"></i><b>10.1</b> Objetivos</a></li>
+<li class="chapter" data-level="10.2" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#introducción-3"><i class="fa fa-check"></i><b>10.2</b> Introducción</a></li>
+<li class="chapter" data-level="10.3" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#un-ejemplo-básico"><i class="fa fa-check"></i><b>10.3</b> Un ejemplo básico</a></li>
+<li class="chapter" data-level="10.4" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#un-ejemplo-ya-no-tan-básico"><i class="fa fa-check"></i><b>10.4</b> Un ejemplo ya no tan básico</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#carga-de-datos-escape-de-salmones"><i class="fa fa-check"></i><b>10.4.1</b> Carga de datos: escape de salmones</a></li>
+<li class="chapter" data-level="10.4.2" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#gráficos-estáticos"><i class="fa fa-check"></i><b>10.4.2</b> Gráficos estáticos</a></li>
+<li class="chapter" data-level="10.4.3" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#mapas-interactivos"><i class="fa fa-check"></i><b>10.4.3</b> Mapas interactivos</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#mapas-estáticos-con-ggplot-y-geom_sf"><i class="fa fa-check"></i><b>10.5</b> Mapas estáticos con <code>ggplot</code> y <code>geom_sf</code></a></li>
+<li class="chapter" data-level="10.6" data-path="visualización-de-mapas-basados-en-la-web.html"><a href="visualización-de-mapas-basados-en-la-web.html#recursos-1"><i class="fa fa-check"></i><b>10.6</b> Recursos</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html"><i class="fa fa-check"></i><b>11</b> Creando Paquetes de R</a><ul>
+<li class="chapter" data-level="11.1" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#objetivos-8"><i class="fa fa-check"></i><b>11.1</b> Objetivos</a></li>
+<li class="chapter" data-level="11.2" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#por-qué-usar-paquetes"><i class="fa fa-check"></i><b>11.2</b> ¿Por qué usar paquetes?</a></li>
+<li class="chapter" data-level="11.3" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#instalación-y-carga-de-los-paquetes"><i class="fa fa-check"></i><b>11.3</b> Instalación y carga de los paquetes</a></li>
+<li class="chapter" data-level="11.4" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#creación-de-un-paquete-básico"><i class="fa fa-check"></i><b>11.4</b> Creación de un paquete básico</a></li>
+<li class="chapter" data-level="11.5" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#agregando-su-código"><i class="fa fa-check"></i><b>11.5</b> Agregando su código</a></li>
+<li class="chapter" data-level="11.6" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#agregando-la-documentación"><i class="fa fa-check"></i><b>11.6</b> Agregando la documentación</a></li>
+<li class="chapter" data-level="11.7" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#verifique-su-paquete"><i class="fa fa-check"></i><b>11.7</b> Verifique su paquete</a></li>
+<li class="chapter" data-level="11.8" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#verificando-e-instalando-el-paquete-r-creado"><i class="fa fa-check"></i><b>11.8</b> Verificando e instalando el paquete R creado</a></li>
+<li class="chapter" data-level="11.9" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#compartiendo-y-publicando-su-paquete-de-r"><i class="fa fa-check"></i><b>11.9</b> Compartiendo y publicando su paquete de R</a></li>
+<li class="chapter" data-level="11.10" data-path="creando-paquetes-de-r.html"><a href="creando-paquetes-de-r.html#más-lecturas"><i class="fa fa-check"></i><b>11.10</b> Más lecturas</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>12</b> Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introducción a la Investigación Reproducible con RStudio y RMarkdown</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="visualización-de-mapas-basados-en-la-web" class="section level1">
+<h1><span class="header-section-number">10</span> Visualización de mapas basados en la web</h1>
+<div id="objetivos-7" class="section level2">
+<h2><span class="header-section-number">10.1</span> Objetivos</h2>
+<p>En este capítulo veremos:</p>
+<ul>
+<li>Como usar RMarkdown para crear un sitio web.</li>
+<li>Una revisión rápida de como producir visualizaciones con R y el paquete <code>ggplot</code>.</li>
+<li>Como crear mapas interactivos usando el paquete <code>leaflet</code>.</li>
+<li>Como publicar mapas interactivos usando RMarkdown para hacer un sitio web en GitHub.</li>
+</ul>
+</div>
+<div id="introducción-3" class="section level2">
+<h2><span class="header-section-number">10.2</span> Introducción</h2>
+<p>Compartir el trabajo científico de una manera interactiva y entretenida es fundamental para el avance de la ciencia. Hasta este
+punto del libro hemos hablado sobre las herramientas que nos ayudan a hacer ciencia abierta (<em>open science</em>):</p>
+<ul>
+<li>R y muchos de sus paquetes</li>
+<li>RStudio</li>
+<li>git</li>
+<li>GitHub</li>
+<li>RMarkdown</li>
+</ul>
+<p>RMarkdown es tremendamente potente para crear reportes científicos, sin embargo hasta ahora no hemos llegado ni a rozar en su
+verdadero potencial.</p>
+<p>En esta lección, vamos a tomar un repositorio ya existente en GitHub y lo transformaremos en un sitio web elegante y simple de
+leer usando algunas de las herramientas que hemos aprendido hasta este punto.</p>
+</div>
+<div id="un-ejemplo-básico" class="section level2">
+<h2><span class="header-section-number">10.3</span> Un ejemplo básico</h2>
+<ul>
+<li><p>En RStudio, cree un archivo nuevo al nivel tope se su repositorio <strong>git</strong> llamado <code>index.Rmd</code>. La forma más simple de hacer
+esto usando el menú de RStudio. Elija File -&gt; New File -&gt; RMarkdown… Esto abrirá una ventana de diálogo. Usted debe crear un
+“Document” en formato “HTML”. Esas son las opciones por defecto.</p></li>
+<li>Abra <code>index.Rmd</code> (si es que no está y abierto).</li>
+<li>Haga clic en <em>Knit</em>.
+<ul>
+<li>Vea la salida que se genera.</li>
+<li>Note que se ha creado un nuevo archivo <code>index.html</code> en el mismo directorio. Este es el resultado transformado a código
+HTML (página web) a partir del documento RMarkdown.</li>
+</ul></li>
+<li>Commit y push sus cambios (ambos archivos, index.Rmd e index.html).</li>
+<li>Abra su navegador web en la página www.GitHub.com de su repositorio.</li>
+<li><p>Vaya a Settings &gt; GitHub Pages y active <em>GitHub Pages</em> para la rama (branch) <code>master</code>.</p>
+<p>Ahora la versión del sitio web de su repositorio se va a mostrar en un URL especial.</p>
+<p>GitHub Pages sigue la convensión:</p>
+<pre><code>https://{username}.github.io/{repository}/
+https://cornejotux.github.io/claseRMarkdown/</code></pre>
+<p>Ponga atención que ahora el sitio no está en <strong>github.com</strong> si no que en <strong>github.io</strong>.</p></li>
+<li><p>Vaya a <a href="https://%7Busername%7D.github.io/%7Brepo_name%7D/" class="uri">https://{username}.github.io/{repo_name}/</a> (Hay que poner el <code>/</code> al final!).
+Y vea la versión generada de su sitio web.</p></li>
+</ul>
+</div>
+<div id="un-ejemplo-ya-no-tan-básico" class="section level2">
+<h2><span class="header-section-number">10.4</span> Un ejemplo ya no tan básico</h2>
+<p>Ahora que ha hemos visto como crear una página web desde RMarkdown, vamos a crear un sitio web que usa algunas de geniales
+funcionalidades que están disponibles en R. Vamos a seguir usando el mismo repositorio git y RStudio Project de arriba, pero
+vamos a agregar algunos archivos al repositorio y a modificar el documento <code>index.Rmd</code>.</p>
+<p>Primero tenemos que obtener datos. Vamos a re-usar los datos sobre el retorno para desove de salmones de Alaska disponible
+desde la base de datos OceanAK del Departamento de Pesca y Casa de Alaska (ADF&amp;G):</p>
+<ul>
+<li>Navegue a <a href="https://doi.org/10.5063/F1S46Q6M">Escapement Counts</a> (o visite el sitio KNB y busque por ‘oceanak’) y copie
+el Download URL para el archivo <code>ADFG_firstAttempt_reformatted.csv</code>.</li>
+<li>Descargue el archivo en R usando <code>read.csv</code> para hacer portable el código.</li>
+<li>Calcule el escape anual (se refiere al número de peces que no son capturados por la pesquería) por especie y región usando
+el paquete <code>dplyr</code>.</li>
+<li>Haga un gráfico de barras para el escape anual por especie usando el paquete <code>ggplot2</code>.</li>
+<li>Muestre los datos en una tabla interactiva usando la función <code>datatable</code> disponible en el paquete <code>DT</code>.</li>
+<li>Haga un mapa interactivo, tipo Google Maps, de los lugares donde se muestreó el escape de salmones.</li>
+</ul>
+<p>Para hacer esto, vamos a usar el paquete <a href="https://rstudio.github.io/leaflet/"><code>leaflet</code></a> que nos permite crear un mapa interactivo
+con marcadores en cada lugar de muestro:</p>
+<p>Primero, cargamos todos los paquetes que vamos a usar:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1">  <span class="kw">library</span>(leaflet)</a>
+<a class="sourceLine" id="cb129-2" data-line-number="2">  <span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb129-3" data-line-number="3">  <span class="kw">library</span>(tidyr)</a>
+<a class="sourceLine" id="cb129-4" data-line-number="4">  <span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb129-5" data-line-number="5">  <span class="kw">library</span>(DT)</a>
+<a class="sourceLine" id="cb129-6" data-line-number="6">  <span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb129-7" data-line-number="7">  <span class="kw">library</span>(ggmap) <span class="co"># devtools::install_github(&quot;dkahle/ggmap&quot;)</span></a></code></pre></div>
+<div id="carga-de-datos-escape-de-salmones" class="section level3">
+<h3><span class="header-section-number">10.4.1</span> Carga de datos: escape de salmones</h3>
+<p>Puede leer los datos en forma directa desde el repositorio de en <a href="https://knb.ecoinformatics.org/">KNB</a>, si es que no lo tiene
+en su computador:</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">data_url &lt;-<span class="st"> &quot;https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3Af119a05b-bbe7-4aea-93c6-85434dcb1c5e&quot;</span></a>
+<a class="sourceLine" id="cb130-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb130-3" data-line-number="3">esc &lt;-<span class="st"> </span><span class="kw">tryCatch</span>(</a>
+<a class="sourceLine" id="cb130-4" data-line-number="4">    <span class="kw">read.csv</span>(<span class="st">&quot;data/10.1_escapement.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>),</a>
+<a class="sourceLine" id="cb130-5" data-line-number="5">    <span class="dt">error=</span><span class="cf">function</span>(cond) {</a>
+<a class="sourceLine" id="cb130-6" data-line-number="6">        <span class="kw">message</span>(<span class="kw">paste</span>(<span class="st">&quot;Archivo de escape de salmos no existe, descarguelo desde KNB.&quot;</span>))</a>
+<a class="sourceLine" id="cb130-7" data-line-number="7">        esc &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">url</span>(data_url, <span class="dt">method =</span> <span class="st">&quot;libcurl&quot;</span>), <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb130-8" data-line-number="8">        <span class="kw">return</span>(esc)</a>
+<a class="sourceLine" id="cb130-9" data-line-number="9">    }</a>
+<a class="sourceLine" id="cb130-10" data-line-number="10">)</a>
+<a class="sourceLine" id="cb130-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb130-12" data-line-number="12"><span class="kw">head</span>(esc)</a></code></pre></div>
+<pre><code>##        Location SASAP.Region sampleDate Species DailyCount  Method
+## 1 Akalura Creek       Kodiak 1930-05-24 Sockeye          4 Unknown
+## 2 Akalura Creek       Kodiak 1930-05-25 Sockeye         10 Unknown
+## 3 Akalura Creek       Kodiak 1930-05-26 Sockeye          0 Unknown
+## 4 Akalura Creek       Kodiak 1930-05-27 Sockeye          0 Unknown
+## 5 Akalura Creek       Kodiak 1930-05-28 Sockeye          0 Unknown
+## 6 Akalura Creek       Kodiak 1930-05-29 Sockeye          0 Unknown
+##   Latitude Longitude Source
+## 1  57.1641 -154.2287   ADFG
+## 2  57.1641 -154.2287   ADFG
+## 3  57.1641 -154.2287   ADFG
+## 4  57.1641 -154.2287   ADFG
+## 5  57.1641 -154.2287   ADFG
+## 6  57.1641 -154.2287   ADFG</code></pre>
+</div>
+<div id="gráficos-estáticos" class="section level3">
+<h3><span class="header-section-number">10.4.2</span> Gráficos estáticos</h3>
+<p>Ahora que ya tenemos los datos, calculemos el escape anual por especie y región:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1">annual_esc &lt;-<span class="st"> </span>esc <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb132-2" data-line-number="2"><span class="st">  </span><span class="kw">separate</span>(sampleDate, <span class="kw">c</span>(<span class="st">&quot;Year&quot;</span>, <span class="st">&quot;Month&quot;</span>, <span class="st">&quot;Day&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb132-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Year =</span> <span class="kw">as.numeric</span>(Year)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb132-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(Species, SASAP.Region, Year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb132-5" data-line-number="5"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">escapement =</span> <span class="kw">sum</span>(DailyCount)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb132-6" data-line-number="6"><span class="st">  </span><span class="kw">filter</span>(Species <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Chinook&quot;</span>, <span class="st">&quot;Sockeye&quot;</span>, <span class="st">&quot;Chum&quot;</span>, <span class="st">&quot;Coho&quot;</span>, <span class="st">&quot;Pink&quot;</span>))</a>
+<a class="sourceLine" id="cb132-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb132-8" data-line-number="8"><span class="kw">head</span>(annual_esc)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+## # Groups:   Species, SASAP.Region [1]
+##   Species SASAP.Region                           Year escapement
+##   &lt;chr&gt;   &lt;chr&gt;                                 &lt;dbl&gt;      &lt;int&gt;
+## 1 Chinook Alaska Peninsula and Aleutian Islands  1974       1092
+## 2 Chinook Alaska Peninsula and Aleutian Islands  1975       1917
+## 3 Chinook Alaska Peninsula and Aleutian Islands  1976       3045
+## 4 Chinook Alaska Peninsula and Aleutian Islands  1977       4844
+## 5 Chinook Alaska Peninsula and Aleutian Islands  1978       3901
+## 6 Chinook Alaska Peninsula and Aleutian Islands  1979      10463</code></pre>
+<p>Este fragmento de código usa varios de los comandos de <code>dplyr</code> que ya hemos visto y algunos otros nuevos. La función <code>separate</code>
+es usada para dividir la columna <em>sampleDate</em> en las columnas <em>Year</em>, <em>Month</em> y <em>Day</em>, las que luego usamos en <code>group_by</code> para
+indicar que queremos calcular nuestros resultados para las combinaciones únicas de <em>species</em>, <em>region</em> y <em>year</em>. A continuación
+usamos <code>summarize</code> para calcular los valores de escape para cada uno de estos grupos. Finalmente, usamos un filtro y el operador
+<code>%in%</code> para seleccionar sólo las especies de salmones.</p>
+<p>Ahora vamos a hacer un gráficos con los resultados usando <code>ggplot</code>. <code>ggplot</code> usa <em>estéticas</em> de mapas (definidas usando <code>aes()</code>)
+y <em>geometrías</em> para crear el gráfico. Adicionalmente a geometrías/estéticas se pueden agregar a <code>ggplot</code> elementos de como temas
+para el formato gráfico y otros usando el operador <code>+</code>.</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1"><span class="kw">ggplot</span>(annual_esc, <span class="kw">aes</span>(<span class="dt">x =</span> Species, <span class="dt">y =</span> escapement)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb134-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_col</span>()</a></code></pre></div>
+<p><img src="RMarkdown-IFOP_files/figure-html/plot_esc-1.png" width="672" /></p>
+<p>¿Qué pasa si queremos que las barras sean azules en vez de grises? Podríamos intentar hacer lo siguiente:</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="kw">ggplot</span>(annual_esc, <span class="kw">aes</span>(<span class="dt">x =</span> Species, <span class="dt">y =</span> escapement, <span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb135-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_col</span>()</a></code></pre></div>
+<p><img src="RMarkdown-IFOP_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
+<p>¿Qué pasó en este gráfico?</p>
+<p>Vemos que al definir el color del gráfico dentro del llamado a la estética del mapa el color cambia, pero no es lo que
+queríamos hacer. Lo que ocurre, detrás de escena, es que se creó una columna llena con la palabra “blue” en el <code>data.frame</code>
+que usa <code>ggplot</code> y posteriormente fue mapeado a la estética <code>fill</code>, que finalmente seleccionó el color por defecto (rojo)
+para llenar las columnas.</p>
+<p>Lo que queríamos hacer era cambiar el color de las barras. Para hacer esto debemos llamar la opción del color dentro de la
+función <code>geom_bar</code> <strong>fuera</strong> de la llamada a la función estética del mapa.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="kw">ggplot</span>(annual_esc, <span class="kw">aes</span>(<span class="dt">x =</span> Species, <span class="dt">y =</span> escapement)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb136-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="RMarkdown-IFOP_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+<p>¿Y si ahora queremos mapear el color de la barras basado en una variable? por ejemplo región.,</p>
+<p><code>ggplot</code> es muy poderoso porque permite hacer fácilmente un gráfico que muestre estos aspectos de los datos.</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="kw">ggplot</span>(annual_esc, <span class="kw">aes</span>(<span class="dt">x =</span> Species, <span class="dt">y =</span> escapement, <span class="dt">fill =</span> SASAP.Region)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb137-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_col</span>()</a></code></pre></div>
+<p><img src="RMarkdown-IFOP_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<p>Aquí hay un ejemplo con una estética y geometría de mapas diferente que podemos usar con estos datos. Se puede además agregar
+título, ajustar etiquetas e incluir un tema.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="kw">filter</span>(annual_esc, SASAP.Region <span class="op">==</span><span class="st"> &quot;Kodiak&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> escapement, <span class="dt">color =</span> Species)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb138-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb138-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb138-4" data-line-number="4"><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Escapement&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb138-5" data-line-number="5"><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Kodiak Salmon Escapement&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb138-6" data-line-number="6"><span class="st">    </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<p><img src="RMarkdown-IFOP_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<p>Fíjese que en el código anterior se agregó un filtro a la función <code>ggplot</code>, esto se hizo para graficar sólo los salmones en
+registrados para la isla Kodiak.</p>
+<p><code>ggplot</code> tiene la funcion <code>facet_wrap</code> que permite crear fácilmente gráficos como este para cada región usando, todos en una
+solo gráfica, con el mismo formato y características.</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1"><span class="kw">ggplot</span>(annual_esc, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> escapement, <span class="dt">color =</span> Species)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb139-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb139-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb139-4" data-line-number="4"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>SASAP.Region, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb139-5" data-line-number="5"><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Escapement&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb139-6" data-line-number="6"><span class="st">    </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<p><img src="RMarkdown-IFOP_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
+</div>
+<div id="mapas-interactivos" class="section level3">
+<h3><span class="header-section-number">10.4.3</span> Mapas interactivos</h3>
+<p>Ahora vamos a convertir los datos de escape de salmones a una tabla donde exista una fila única para cada lugar de muestro:</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1">locations &lt;-<span class="st"> </span>esc <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb140-2" data-line-number="2"><span class="st">  </span><span class="kw">distinct</span>(Location, Latitude, Longitude) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb140-3" data-line-number="3"><span class="st">  </span><span class="kw">drop_na</span>()</a></code></pre></div>
+<p>Y la desplegamos en una tabla interactiva:</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1"><span class="kw">datatable</span>(locations)</a></code></pre></div>
+<div id="htmlwidget-8308d635c6fd8d6df5f5" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8308d635c6fd8d6df5f5">{"x":{"filter":"none","data":[["1","4","6","7","8","9","10","12","13","14","15","18","20","23","27","29","30","35","36","37","38","43","45","46","50","57","58","60","62","70","74","76","77","78","79","80","84","85","87","88","89","91","92","97","99","101","102","103","104","106","109","111","116","118","119","122","129","130","133","134","136","137","138","139","140","141","142","147"],["Akalura Creek","Anvik River","Ayakulik River","Bear Creek","Bear River","Big Bay Creek","Big Kitoi Creek","Black Lake","Buskin River","Chelatna Lake","Chignik River","Coghill River","Crescent River","Dog Salmon Creek","Eagle Sonar (Yukon/Canadian Border)","Egegik River","Eshamy River","Frazer Lake","Frosty Creek","George River","Goodnews River (Middle Fork)","Horse Marine Stream","Igushik River","Ilnik River","Judd Lake","Kanektok River","Karluk","Kasilof River","Kenai River","Kogrukluk River","Kvichak River","Lake Louise","Larson Lake","Litnik","Little Kitoi","Little River","Little Waterfall","Malina Creek","McLees","Middle Lagoon","Miles Lake","Morris Cove","Mortensens Creek","Naknek River","Nelson River","Nushagak River","Orzinski River","Pasagshak River","Pauls Bay","Pilot Station Sonar","Portage","Red Lake","Salmon River (Aniak)","Saltery Creek","Sandy River","Seal Bay Creek","Sturgeon River","Summer Bay","Takotna River","Tatlawiksuk River","Telaquana River","Thin Point Cove","Thorsheim","Togiak River","Uganik River","Ugashik River","Upper Station","Wood River"],[57.1641,62.7,57.1956,56.0389,56.0389,58.5426,58.1915,56.392,57.7768,62.4731,56.2623,61.0726,60.2252,57.1289,64.8,58.2461,60.4528,57.2027,55.1944,61.9,59.1,57.112,58.7132,55.8141,61.5706,59.8,57.563,60.3865,60.548,60.8,58.7969,57.7605,62.3387,58.0815,58.1963,57.7784,58.3955,58.173,54.0002,55.0827,60.6798,53.9167,55.1469,58.7173,55.8141,58.8677,55.731,57.4734,58.3898,62,56.2896,57.2648,61.1,57.5263,56.2163,58.3388,57.3388,53.8963,63,61.9,61.1,55.0109,58.2765,59.0722,57.6696,57.4881,57.0581,59.0523],[-154.2287,-160.2,-154.529,-160.2734,-160.2734,-152.5683,-152.3754,-158.937,-152.5372,-151.4545,-158.7054,-147.9109,-152.5585,-154.0287,-141,-157.6254,-148.1,-154.0573,-162.8535,-157.7,-161.5,-153.95,-158.8739,-161.2349,-151.5575,-161.9,-154.3843,-151.3001,-151.2642,-157.8,-157.0993,-152.5055,-149.892,-152.8286,-152.3681,-153.6666,-152.5058,-153.2158,-166.7281,-163.2164,-144.6684,-166.463,-162.6372,-157.053,-161.2349,-158.605,-160.0934,-152.4627,-152.3405,-162.9,-152.4284,-154.3573,-159.2,-152.7619,-160.055,-152.2238,-154.6931,-166.4596,-155.6,-156.2,-154.4,-162.6734,-152.8367,-160.3363,-153.3737,-157.5958,-154.3569,-158.4141]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Location<\/th>\n      <th>Latitude<\/th>\n      <th>Longitude<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>Con los datos en esta tabla hacermos un mapa usando <em>leaflet</em> que requiere (generalmente) sólo un par de lineas de código:</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="kw">leaflet</span>(locations) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb142-2" data-line-number="2"><span class="st">  </span><span class="kw">addTiles</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb142-3" data-line-number="3"><span class="st">  </span><span class="kw">addMarkers</span>(<span class="op">~</span><span class="st"> </span>Longitude, <span class="op">~</span><span class="st"> </span>Latitude, <span class="dt">popup =</span> <span class="op">~</span><span class="st"> </span>Location)</a></code></pre></div>
+<div id="htmlwidget-809e1e82188b0af17fb1" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-809e1e82188b0af17fb1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[[57.1641,62.7,57.1956,56.0389,56.0389,58.5426,58.1915,56.392,57.7768,62.4731,56.2623,61.0726,60.2252,57.1289,64.8,58.2461,60.4528,57.2027,55.1944,61.9,59.1,57.112,58.7132,55.8141,61.5706,59.8,57.563,60.3865,60.548,60.8,58.7969,57.7605,62.3387,58.0815,58.1963,57.7784,58.3955,58.173,54.0002,55.0827,60.6798,53.9167,55.1469,58.7173,55.8141,58.8677,55.731,57.4734,58.3898,62,56.2896,57.2648,61.1,57.5263,56.2163,58.3388,57.3388,53.8963,63,61.9,61.1,55.0109,58.2765,59.0722,57.6696,57.4881,57.0581,59.0523],[-154.2287,-160.2,-154.529,-160.2734,-160.2734,-152.5683,-152.3754,-158.937,-152.5372,-151.4545,-158.7054,-147.9109,-152.5585,-154.0287,-141,-157.6254,-148.1,-154.0573,-162.8535,-157.7,-161.5,-153.95,-158.8739,-161.2349,-151.5575,-161.9,-154.3843,-151.3001,-151.2642,-157.8,-157.0993,-152.5055,-149.892,-152.8286,-152.3681,-153.6666,-152.5058,-153.2158,-166.7281,-163.2164,-144.6684,-166.463,-162.6372,-157.053,-161.2349,-158.605,-160.0934,-152.4627,-152.3405,-162.9,-152.4284,-154.3573,-159.2,-152.7619,-160.055,-152.2238,-154.6931,-166.4596,-155.6,-156.2,-154.4,-162.6734,-152.8367,-160.3363,-153.3737,-157.5958,-154.3569,-158.4141],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Akalura Creek","Anvik River","Ayakulik River","Bear Creek","Bear River","Big Bay Creek","Big Kitoi Creek","Black Lake","Buskin River","Chelatna Lake","Chignik River","Coghill River","Crescent River","Dog Salmon Creek","Eagle Sonar (Yukon/Canadian Border)","Egegik River","Eshamy River","Frazer Lake","Frosty Creek","George River","Goodnews River (Middle Fork)","Horse Marine Stream","Igushik River","Ilnik River","Judd Lake","Kanektok River","Karluk","Kasilof River","Kenai River","Kogrukluk River","Kvichak River","Lake Louise","Larson Lake","Litnik","Little Kitoi","Little River","Little Waterfall","Malina Creek","McLees","Middle Lagoon","Miles Lake","Morris Cove","Mortensens Creek","Naknek River","Nelson River","Nushagak River","Orzinski River","Pasagshak River","Pauls Bay","Pilot Station Sonar","Portage","Red Lake","Salmon River (Aniak)","Saltery Creek","Sandy River","Seal Bay Creek","Sturgeon River","Summer Bay","Takotna River","Tatlawiksuk River","Telaquana River","Thin Point Cove","Thorsheim","Togiak River","Uganik River","Ugashik River","Upper Station","Wood River"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[53.8963,64.8],"lng":[-166.7281,-141]}},"evals":[],"jsHooks":[]}</script>
+<p>La función <code>addTiles()</code> obtiene la capa base desde <a href="https://www.openstreetmap.org/">OpenStreetMap</a> que es una alternativa
+de código abierto a Google Maps. <code>addMarkers</code> usa una sintaxis un poco rara en comparación a la que acabamos de ver con <code>ggplot2</code>,
+usa <code>~</code> antes de los nombres de columnas. Esto es similar a como trabaja la función <code>lm</code> (y algunas otras) y es necesario que
+usted se asegure que incluye <code>~</code> para que su mapa funcione.</p>
+<p>En <code>leaflet</code> también es posible usar capas desde Servicio de Mapas Web (Web Map Services o WMS). Aquí hay un ejemplo que utiliza
+una capa del mapa batimétrico general de los océanos <a href="https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/#getcapabilities">(GEBCO)</a> WMS. En este ejemplo
+además demostramos como usar marcadores más simples.</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1"><span class="kw">leaflet</span>(locations) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb143-2" data-line-number="2"><span class="st">  </span><span class="kw">addWMSTiles</span>(<span class="st">&quot;https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?&quot;</span>,</a>
+<a class="sourceLine" id="cb143-3" data-line-number="3">              <span class="dt">layers =</span> <span class="st">&#39;GEBCO_LATEST&#39;</span>,</a>
+<a class="sourceLine" id="cb143-4" data-line-number="4">              <span class="dt">attribution =</span> <span class="st">&quot;Imagen producida desde la grilla GEBCO_2014, versión 20150318, www.gebco.net&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb143-5" data-line-number="5"><span class="st">  </span><span class="kw">addCircleMarkers</span>(<span class="dt">lng =</span> <span class="op">~</span>Longitude,</a>
+<a class="sourceLine" id="cb143-6" data-line-number="6">                   <span class="dt">lat =</span> <span class="op">~</span>Latitude,</a>
+<a class="sourceLine" id="cb143-7" data-line-number="7">                   <span class="dt">popup =</span> <span class="op">~</span><span class="st"> </span>Location,</a>
+<a class="sourceLine" id="cb143-8" data-line-number="8">                   <span class="dt">radius =</span> <span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb143-9" data-line-number="9">                   <span class="co"># set fill properties</span></a>
+<a class="sourceLine" id="cb143-10" data-line-number="10">                   <span class="dt">fillColor =</span> <span class="st">&quot;salmon&quot;</span>,</a>
+<a class="sourceLine" id="cb143-11" data-line-number="11">                   <span class="dt">fillOpacity =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb143-12" data-line-number="12">                   <span class="co"># set stroke properties</span></a>
+<a class="sourceLine" id="cb143-13" data-line-number="13">                   <span class="dt">stroke =</span> T,</a>
+<a class="sourceLine" id="cb143-14" data-line-number="14">                   <span class="dt">weight =</span> <span class="fl">0.5</span>,</a>
+<a class="sourceLine" id="cb143-15" data-line-number="15">                   <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb143-16" data-line-number="16">                   <span class="dt">opacity =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div id="htmlwidget-aaf301632a51044a03a0" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-aaf301632a51044a03a0">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addWMSTiles","args":["https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?",null,null,{"styles":"","format":"image/jpeg","transparent":false,"version":"1.1.1","attribution":"Imagen producida desde la grilla GEBCO_2014, versión 20150318, www.gebco.net","layers":"GEBCO_LATEST"}]},{"method":"addCircleMarkers","args":[[57.1641,62.7,57.1956,56.0389,56.0389,58.5426,58.1915,56.392,57.7768,62.4731,56.2623,61.0726,60.2252,57.1289,64.8,58.2461,60.4528,57.2027,55.1944,61.9,59.1,57.112,58.7132,55.8141,61.5706,59.8,57.563,60.3865,60.548,60.8,58.7969,57.7605,62.3387,58.0815,58.1963,57.7784,58.3955,58.173,54.0002,55.0827,60.6798,53.9167,55.1469,58.7173,55.8141,58.8677,55.731,57.4734,58.3898,62,56.2896,57.2648,61.1,57.5263,56.2163,58.3388,57.3388,53.8963,63,61.9,61.1,55.0109,58.2765,59.0722,57.6696,57.4881,57.0581,59.0523],[-154.2287,-160.2,-154.529,-160.2734,-160.2734,-152.5683,-152.3754,-158.937,-152.5372,-151.4545,-158.7054,-147.9109,-152.5585,-154.0287,-141,-157.6254,-148.1,-154.0573,-162.8535,-157.7,-161.5,-153.95,-158.8739,-161.2349,-151.5575,-161.9,-154.3843,-151.3001,-151.2642,-157.8,-157.0993,-152.5055,-149.892,-152.8286,-152.3681,-153.6666,-152.5058,-153.2158,-166.7281,-163.2164,-144.6684,-166.463,-162.6372,-157.053,-161.2349,-158.605,-160.0934,-152.4627,-152.3405,-162.9,-152.4284,-154.3573,-159.2,-152.7619,-160.055,-152.2238,-154.6931,-166.4596,-155.6,-156.2,-154.4,-162.6734,-152.8367,-160.3363,-153.3737,-157.5958,-154.3569,-158.4141],5,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":0.5,"opacity":1,"fill":true,"fillColor":"salmon","fillOpacity":1},null,null,["Akalura Creek","Anvik River","Ayakulik River","Bear Creek","Bear River","Big Bay Creek","Big Kitoi Creek","Black Lake","Buskin River","Chelatna Lake","Chignik River","Coghill River","Crescent River","Dog Salmon Creek","Eagle Sonar (Yukon/Canadian Border)","Egegik River","Eshamy River","Frazer Lake","Frosty Creek","George River","Goodnews River (Middle Fork)","Horse Marine Stream","Igushik River","Ilnik River","Judd Lake","Kanektok River","Karluk","Kasilof River","Kenai River","Kogrukluk River","Kvichak River","Lake Louise","Larson Lake","Litnik","Little Kitoi","Little River","Little Waterfall","Malina Creek","McLees","Middle Lagoon","Miles Lake","Morris Cove","Mortensens Creek","Naknek River","Nelson River","Nushagak River","Orzinski River","Pasagshak River","Pauls Bay","Pilot Station Sonar","Portage","Red Lake","Salmon River (Aniak)","Saltery Creek","Sandy River","Seal Bay Creek","Sturgeon River","Summer Bay","Takotna River","Tatlawiksuk River","Telaquana River","Thin Point Cove","Thorsheim","Togiak River","Uganik River","Ugashik River","Upper Station","Wood River"],null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[53.8963,64.8],"lng":[-166.7281,-141]}},"evals":[],"jsHooks":[]}</script>
+<p><em>Leaflet</em> tiene muchas funcionalidades que permiten crear mapas elegantes y funcionales con facilidad.
+<a href="https://pages.github.nceas.ucsb.edu/NCEAS/sasap-data/language_vis.html">Aquí</a> hay ejemplos de mapas que fueron creados
+como parte del proyecto SASAP (Estado del Salmon de Alaska y Su Gente) usando las mismas herramientas que acabamos de aprender.
+Estos mapas le pueden dar una idea de cuan poderosa puede ser la combinación de RMarkdown y las páginas de GitHub.</p>
+</div>
+</div>
+<div id="mapas-estáticos-con-ggplot-y-geom_sf" class="section level2">
+<h2><span class="header-section-number">10.5</span> Mapas estáticos con <code>ggplot</code> y <code>geom_sf</code></h2>
+<p>También es posible crear mapas similares usando <code>ggplot</code> y la geometría <code>geom_sf</code>. Para hacer esto, lo primero que se debe
+hacer es transformar el <code>data.frame</code> con los datos de los lugares a un objeto <code>sf</code> entregando el sistema de coordenadas de
+referencia (EPSG:4326 es el sistema para geocoordenada en WGS84). También es necesario transformar los puntos a <code>EPSG:3857</code>
+que es el sistema de coordenadas de referencia usado para hacer los mapas en Google Maps, Stamen y OpenStreetMap, entre otros.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1">locations_sf &lt;-<span class="st"> </span>locations <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb144-2" data-line-number="2"><span class="st">  </span><span class="kw">st_as_sf</span>(<span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;Longitude&quot;</span>, <span class="st">&quot;Latitude&quot;</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)</a>
+<a class="sourceLine" id="cb144-3" data-line-number="3">locations_sf_<span class="dv">3857</span> &lt;-<span class="st"> </span><span class="kw">st_transform</span>(locations_sf, <span class="dv">3857</span>)</a></code></pre></div>
+<p>Después, tomamos un mapa base desde una capa en <em>Stamen</em> map server que cubra la región de interés. Esto incluye una
+transformación del polígono del área en <code>EPSSG:326</code> para dejarla en el mismo sistema de coordenadas <code>EPSG:3857</code>, que es la
+proyección que el mapa raster entregará desde <em>Stamen</em>.</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1"><span class="co"># Define una función para correrir el poligono a EPSG:3857</span></a>
+<a class="sourceLine" id="cb145-2" data-line-number="2"><span class="co"># See https://github.com/dkahle/ggmap/issues/160#issuecomment-397055208</span></a>
+<a class="sourceLine" id="cb145-3" data-line-number="3">ggmap_bbox_to_<span class="dv">3857</span> &lt;-<span class="st"> </span><span class="cf">function</span>(map) {</a>
+<a class="sourceLine" id="cb145-4" data-line-number="4">  <span class="cf">if</span> (<span class="op">!</span><span class="kw">inherits</span>(map, <span class="st">&quot;ggmap&quot;</span>)) <span class="kw">stop</span>(<span class="st">&quot;map must be a ggmap object&quot;</span>)</a>
+<a class="sourceLine" id="cb145-5" data-line-number="5">  <span class="co"># Extraer el polígono de contorno (en lat/lon) desde ggmap a un vector numérico, </span></a>
+<a class="sourceLine" id="cb145-6" data-line-number="6">  <span class="co"># y define los nombre que esperar sf::st_bbox:</span></a>
+<a class="sourceLine" id="cb145-7" data-line-number="7">  map_bbox &lt;-<span class="st"> </span><span class="kw">setNames</span>(<span class="kw">unlist</span>(<span class="kw">attr</span>(map, <span class="st">&quot;bb&quot;</span>)), </a>
+<a class="sourceLine" id="cb145-8" data-line-number="8">                       <span class="kw">c</span>(<span class="st">&quot;ymin&quot;</span>, <span class="st">&quot;xmin&quot;</span>, <span class="st">&quot;ymax&quot;</span>, <span class="st">&quot;xmax&quot;</span>))</a>
+<a class="sourceLine" id="cb145-9" data-line-number="9">  </a>
+<a class="sourceLine" id="cb145-10" data-line-number="10">  <span class="co"># Converte el polígino de contorno (bbox) a un poligono tipo sf, tranformandolo a 3857 y </span></a>
+<a class="sourceLine" id="cb145-11" data-line-number="11">  <span class="co"># lo convierte de regreso a un bbox (complicado, pero funciona!!)</span></a>
+<a class="sourceLine" id="cb145-12" data-line-number="12">  bbox_<span class="dv">3857</span> &lt;-<span class="st"> </span><span class="kw">st_bbox</span>(<span class="kw">st_transform</span>(<span class="kw">st_as_sfc</span>(<span class="kw">st_bbox</span>(map_bbox, <span class="dt">crs =</span> <span class="dv">4326</span>)), <span class="dv">3857</span>))</a>
+<a class="sourceLine" id="cb145-13" data-line-number="13">  </a>
+<a class="sourceLine" id="cb145-14" data-line-number="14">  <span class="co"># Sobre-escribe el bbox del objeto ggmap con las coordenadas transformadas</span></a>
+<a class="sourceLine" id="cb145-15" data-line-number="15">  <span class="kw">attr</span>(map, <span class="st">&quot;bb&quot;</span>)<span class="op">$</span>ll.lat &lt;-<span class="st"> </span>bbox_<span class="dv">3857</span>[<span class="st">&quot;ymin&quot;</span>]</a>
+<a class="sourceLine" id="cb145-16" data-line-number="16">  <span class="kw">attr</span>(map, <span class="st">&quot;bb&quot;</span>)<span class="op">$</span>ll.lon &lt;-<span class="st"> </span>bbox_<span class="dv">3857</span>[<span class="st">&quot;xmin&quot;</span>]</a>
+<a class="sourceLine" id="cb145-17" data-line-number="17">  <span class="kw">attr</span>(map, <span class="st">&quot;bb&quot;</span>)<span class="op">$</span>ur.lat &lt;-<span class="st"> </span>bbox_<span class="dv">3857</span>[<span class="st">&quot;ymax&quot;</span>]</a>
+<a class="sourceLine" id="cb145-18" data-line-number="18">  <span class="kw">attr</span>(map, <span class="st">&quot;bb&quot;</span>)<span class="op">$</span>ur.lon &lt;-<span class="st"> </span>bbox_<span class="dv">3857</span>[<span class="st">&quot;xmax&quot;</span>]</a>
+<a class="sourceLine" id="cb145-19" data-line-number="19">  map</a>
+<a class="sourceLine" id="cb145-20" data-line-number="20">}</a>
+<a class="sourceLine" id="cb145-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb145-22" data-line-number="22">bbox &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">170</span>, <span class="dv">52</span>, <span class="dv">-130</span>, <span class="dv">64</span>)   <span class="co"># Esto es bascamenete el sur de Alaska</span></a>
+<a class="sourceLine" id="cb145-23" data-line-number="23">ak_map &lt;-<span class="st"> </span><span class="kw">get_stamenmap</span>(bbox, <span class="dt">zoom =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb145-24" data-line-number="24">ak_map_<span class="dv">3857</span> &lt;-<span class="st"> </span><span class="kw">ggmap_bbox_to_3857</span>(ak_map)</a></code></pre></div>
+<p>Finalmente se grafica el mapa base raster con los puntos sobrepuestos, esto es fácil de hacer ahora que todo esta en la misma
+proyección (3857):</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="kw">ggmap</span>(ak_map_<span class="dv">3857</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb146-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> locations_sf_<span class="dv">3857</span>, <span class="dt">inherit.aes =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="RMarkdown-IFOP_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
+</div>
+<div id="recursos-1" class="section level2">
+<h2><span class="header-section-number">10.6</span> Recursos</h2>
+<ul>
+<li>Lisa Charlotte Rost. (2018) <a href="https://blog.datawrapper.de/dualaxis/">Why not to use two axes, and what to use instead: The case against dual axis charts</a></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="creando-funciones-de-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="creando-paquetes-de-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
